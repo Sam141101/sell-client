@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/sell-client/static/css/main.eb27fb6f.css",
+    "main.js": "/sell-client/static/js/main.4bab9067.js",
+    "static/js/787.2eb0564b.chunk.js": "/sell-client/static/js/787.2eb0564b.chunk.js",
+    "index.html": "/sell-client/index.html",
+    "main.eb27fb6f.css.map": "/sell-client/static/css/main.eb27fb6f.css.map",
+    "main.4bab9067.js.map": "/sell-client/static/js/main.4bab9067.js.map",
+    "787.2eb0564b.chunk.js.map": "/sell-client/static/js/787.2eb0564b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb27fb6f.css",
+    "static/js/main.4bab9067.js"
+  ]
+}
