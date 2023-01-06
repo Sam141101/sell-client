@@ -63,6 +63,7 @@ const Price = styled.span`
 `;
 
 const FilterContainer = styled.div`
+    flex-direction: column;
     // width: 50%;
     width: 100%;
     padding: 20px 20px;
@@ -78,11 +79,13 @@ const FilterContainer = styled.div`
 const Filter = styled.div`
     display: flex;
     align-items: center;
+    padding: 20px 0;
 `;
 
 const FilterTitle = styled.span`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 200;
+    padding-right: 30px;
 `;
 
 const FilterColor = styled.div`
@@ -112,20 +115,38 @@ const AddContainer = styled.div`
     })}
 `;
 const AmountContainer = styled.div`
+    padding: 20px 0;
     display: flex;
     align-items: center;
     font-weight: 700;
 `;
 
 const Amount = styled.span`
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid teal;
+    // width: 30px;
+    // height: 30px;
+    // border-radius: 10px;
+    // border: 1px solid teal;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // margin: 0 5px;
+
+
+    background: #fff;
+    font-weight: 600;
+    height: 38px;
+    padding: 0;
+    text-align: center;
+    width: 70px;
+    border: 1px solid #f5f5f5;
+    border-left: none;
+    border-right: none;
+    border-radius: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 5px;
+
+    -webkit-appearance: none;
 `;
 const Button = styled.button`
     padding: 15px;
@@ -159,18 +180,18 @@ const SwatchElement = styled.div`
 `;
 
 const SwatchBlock = styled.div`
-    display: block;
+        display: flex;
     margin: 0;
     background: #fff;
     width: 40px;
     height: 40px;
-    line-height: 40px;
     position: relative;
     border: 1px solid #e5e5e5;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
-    text-align: center;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
 `;
 
 const DesNote = styled.div`
@@ -182,6 +203,31 @@ const DesNote2 = styled.div`
 `;
 
 const Sp = styled.span``;
+
+const RemoveInput = styled.div`    display: flex;
+    background: #f5f5f5;
+    border: solid 1px #f5f5f5;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    outline: none;
+    height: 38px;
+    width: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;`
+const AddInput = styled.div`    display: flex;
+    background: #f5f5f5;
+    border: solid 1px #f5f5f5;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    outline: none;
+    height: 38px;
+    width: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;`
 
 const Product = () => {
     const location = useLocation();
@@ -222,6 +268,11 @@ const Product = () => {
         document.getElementById('text').innerHTML = '';
     };
 
+    const handleSize = (s) => {
+        // console.log(s)
+        setSize(s);
+    }
+
     // if (size === '') {
     //     console.log('roong');
     // }
@@ -259,7 +310,7 @@ const Product = () => {
         getProduct();
     }, [id]);
 
-    console.log(cat);
+    console.log(size);
 
     return (
         <Container>
@@ -289,7 +340,7 @@ const Product = () => {
 
                         <Filter>
                             <FilterTitle>Size</FilterTitle>
-                            <FilterSize
+                            {/* <FilterSize
                                 onBlur={blurSize}
                                 onChange={onChangeSize}
                                 // onChange={(e) => setSize(e.target.value)}
@@ -297,13 +348,13 @@ const Product = () => {
                                 {product.size?.map((s) => (
                                     <FilterSizeOption key={s}>{s}</FilterSizeOption>
                                 ))}
-                            </FilterSize>
+                            </FilterSize> */}
 
-                            {/* {product.size?.map((s) => (
+                            {product.size?.map((s) => (
                                 <SelectSwap key={s}>
                                     <SwatchElement>
                                         <SwatchBlock
-                                            onClick={handleSize}
+                                            onClick={() => handleSize(s)}
                                             style={
                                                 size === s
                                                     ? {
@@ -311,20 +362,41 @@ const Product = () => {
                                                           background: '#000',
                                                           border: '1px solid #000',
                                                       }
-                                                    : {}
+                                                    : {
+                                                        // color: '#000',
+                                                        //   background: '#fff',
+                                                        //   border: '1px solid #000',
+                                                    }
                                             }
                                         >
                                             <Sp>{s}</Sp>
                                         </SwatchBlock>
                                     </SwatchElement>
                                 </SelectSwap>
-                            ))} */}
+                            ))}
                         </Filter>
 
                         <AmountContainer>
-                            <Remove onClick={() => handleQuantity('dec')} />
+                        <FilterTitle>Số lượng</FilterTitle>
+
+                            {/* <Remove onClick={() => handleQuantity('dec')} />
                             <Amount>{quantity}</Amount>
+                            <Add onClick={() => handleQuantity('inc')} /> */}
+
+                            <RemoveInput>
+                            <Remove onClick={() => handleQuantity('dec')} />
+                            </RemoveInput>
+                            {/* <input
+                                type="text"
+                                // value={amount}
+                                // onChange={(e) => setAmount(e.target.value)}
+                                min="1"
+                                // className={cx('quantity-selector')}
+                            /> */}
+                            <Amount>{quantity}</Amount>
+                            <AddInput>
                             <Add onClick={() => handleQuantity('inc')} />
+                            </AddInput>
                         </AmountContainer>
                     </FilterContainer>
 

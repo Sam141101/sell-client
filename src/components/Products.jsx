@@ -27,6 +27,7 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
                         ? `http://localhost:5000/api/products?category=${cat}&page=${filterPage}`
                         : // : 'http://localhost:5000/api/products/',
                           `http://localhost:5000/api/products/pagination?page=${filterPage}`,
+                        //   `https://api-sell-vercel-lkxxh5xqq-sam141101.vercel.app/api/products/pagination?page=${filterPage}`,
                 );
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);

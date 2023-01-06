@@ -50,6 +50,15 @@ export const categories = [
         title: 'SHORT',
         cat: 'SHORT',
     },
+
+    {
+        id: 4,
+        img: 'https://product.hstatic.net/200000312481/product/upload_6b4e8106c4f344deae29ec0b1f640f8c_master.jpg',
+        title: 'POLO',
+        // cat: 'women',
+        cat: 'POLO',
+    },
+
 ];
 
 export const popularProducts = [

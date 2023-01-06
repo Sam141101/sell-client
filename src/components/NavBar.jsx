@@ -11,6 +11,7 @@ import { createAxios } from '../createInstance';
 import { loginSuccess, logoutSuccess } from '../redux/authRedux';
 import axios from 'axios';
 import Searchs from './Searchs';
+import { resetProduct } from '../redux/cartRedux';
 
 const Container = styled.div`
     height: 64px;
@@ -300,6 +301,7 @@ const Navbar = () => {
     const handleLogout = (e) => {
         e.preventDefault();
         logout(dispatch, navigate, id, accessToken, axiosJWT);
+        resetProduct()
     };
 
     // profile user
@@ -308,14 +310,14 @@ const Navbar = () => {
         navigate('/account/profile');
     };
 
-    // useEffect(() => {
-    //     const getCart = () => {
-    //         if (user) {
-    //             getAllCart(user.token, dispatch, user._id);
-    //         }
-    //     };
-    //     getCart();
-    // }, [dispatch, user]);
+    useEffect(() => {
+        const getCart = () => {
+            if (user) {
+                getAllCart(user.token, dispatch, user._id);
+            }
+        };
+        getCart();
+    }, [dispatch, user]);
 
     return (
         <Container>

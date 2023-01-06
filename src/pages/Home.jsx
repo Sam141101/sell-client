@@ -94,7 +94,7 @@ const Home = () => {
 
     return (
         <div>
-            <Button onClick={handleRemove}>test</Button>
+            {/* <Button onClick={handleRemove}>test</Button> */}
             <Announcement />
             <Navbar />
             <Slider />

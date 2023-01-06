@@ -5,7 +5,7 @@ import Products from '../components/Products';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 import { mobile } from '../responsive';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Pagination from '../components/Pagination';
 import axios from 'axios';
@@ -55,6 +55,10 @@ const ProductList = () => {
     const [filters, setFilters] = useState({});
     const [sort, setSort] = useState('newest');
 
+    // const navigate = useNavigate()
+
+    // const [changeCat, setChangeCat] = useState('')
+
     const handleFilters = (e) => {
         const value = e.target.value;
         setFilters({
@@ -62,6 +66,11 @@ const ProductList = () => {
             [e.target.name]: value,
         });
     };
+
+    // const handleCat = (e) => {
+    //     setFilters(e.target.value);
+    //     navigate(`/products/${e.target.value}`)
+    // };
 
     console.log(filters);
 
@@ -84,6 +93,7 @@ const ProductList = () => {
         //     page: newPage,
         // });
         setFilterPage(newPage);
+
     };
 
     // ----------------
@@ -102,7 +112,7 @@ const ProductList = () => {
                         <Option>BLACK</Option>
                         <Option>GREEN</Option>
                         <Option>BLUE</Option>
-                        <Option>NAVY</Option>
+                        {/* <Option>NAVY</Option> */}
                         <Option>BROWN</Option>
                     </Select>
 
@@ -111,8 +121,25 @@ const ProductList = () => {
                         <Option>S</Option>
                         <Option>M</Option>
                         <Option>L</Option>
-                        {/* <Option>XL</Option> */}
                     </Select>
+
+                    {/* <Select onChange={handleCat}>
+                        <Option disabled>Size</Option>
+                        <Option>
+                                HOODIE
+                        </Option>
+                        <Option>TEE</Option>
+                        <Option>POLO</Option>
+                        <Option>SHORT</Option>
+                    </Select> */}
+
+                    {/* <Select name="categories" onChange={handleFilters}>
+                        <Option disabled>Loại</Option>
+                        <Option>HOODIE</Option>
+                        <Option>TEE</Option>
+                        <Option>POLO</Option>
+                        <Option>SHORT</Option>
+                    </Select> */}
                 </Filter>
 
                 <Filter>

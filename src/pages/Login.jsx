@@ -57,14 +57,14 @@ const Button = styled.button`
     }
 `;
 
-const Link1 = styled.a`
+const Link1 = styled.p`
     margin: 5px 0;
     font-size: 14px;
     cursor: pointer;
     color: red;
 `;
 
-const Link2 = styled.a`
+const Link2 = styled.p`
     margin: 5px 0;
     font-size: 12px;
     cursor: pointer;
