@@ -7,11 +7,11 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Route, Router, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Announcement from '../components/Announcement';
-import Navbar from '../components/NavBar';
+import Announcement from '../components/Announcement/Announcement';
+import Navbar from '../components/NavBar/NavBar';
 import app from '../firebase';
 import { updateUser } from '../redux/apiCalls';
-import WaitPurchase from '../components/WaitPurchase';
+import WaitPurchase from '../components/WaitPurchase/WaitPurchase';
 // import app from '../firebase'
 
 const Container = styled.div`
@@ -293,7 +293,7 @@ const Purchase = () => {
             )} */}
 
             <div style={{ backgroundColor: 'white' }}>
-                <Announcement />
+                {/* <Announcement /> */}
                 <Navbar />
             </div>
 

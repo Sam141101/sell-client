@@ -1,0 +1,76 @@
+.confirm-delete-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 600;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+}
+
+.confirm-delete-wrapper {
+     padding: 20px;
+    background-color: #fff;
+    width: 500px;
+    max-height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: visible;
+}
+
+.confirm-delete-title {
+    margin-top: 30px;
+    font-weight: 500;
+    color: #ee4d2d;
+    font-size: 15px;
+}
+
+.confirm-delete-name-product {
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+.confirm-delete-wrapper-button {
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.confirm-delete-button-yes {
+    height: 40px;
+    padding: 10px;
+    flex: 1;
+    outline: 0;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
+    overflow: visible;
+    background: #ee4d2d;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-delete-button-no {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    padding: 10px;
+    flex: 1;
+    outline: 0;
+    background: #fff;
+    color: #555;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
+    overflow: visible;
+    font-size: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+

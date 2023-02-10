@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Announcement from '../components/Announcement';
-import Categories from '../components/Categories';
-import Footer from '../components/Footer';
-import Navbar from '../components/NavBar';
-import Newsletter from '../components/Newsletter';
-import Products from '../components/Products';
-import Slider from '../components/Slider';
+import Announcement from '../components/Announcement/Announcement';
+import Categories from '../components/Categories/Categories';
+import Footer from '../components/Footer/Footer';
+import Navbar from '../components/NavBar/NavBar';
+import Newsletter from '../components/Newsletter/Newsletter';
+import Products from '../components/Products/Products';
+import Slider from '../components/Slider/Slider';
 
 // tam
 import { createAxios } from '../createInstance';
@@ -65,7 +65,7 @@ const Info = styled.div`
     font-size: 20px;
     font-weight: 600;
     text-align: center;
-    padding: 10px 0;
+    padding: 30px 0;
     color: red;
 `;
 
@@ -95,12 +95,21 @@ const Home = () => {
     return (
         <div>
             {/* <Button onClick={handleRemove}>test</Button> */}
-            <Announcement />
+            {/* <Announcement /> */}
             <Navbar />
             <Slider />
             <Categories />
-            <Info>CÁC SẢN PHẨM MỚI NHẤT</Info>
+            <Info>CÁC SẢN PHẨM MỚI</Info>
+            {/* <div className="grid wide">
+                <div className="row">
+                    <div className="col l-12">
+                        <Products />
+                    </div>
+                </div>
+            </div> */}
+
             <Products />
+
             <Link to={`/products`} style={{ textDecoration: 'none' }}>
                 <MoreProduct>
                     <More>Xem thêm</More>

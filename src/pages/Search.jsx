@@ -7,14 +7,14 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Announcement from '../components/Announcement';
-import Navbar from '../components/NavBar';
+// import Announcement from '../components/Announcement/Announcement';
+import Navbar from '../components/NavBar/NavBar';
 import app from '../firebase';
 import { updateUser } from '../redux/apiCalls';
-import Footer from '../components/Footer';
-import Pagination from '../components/Pagination';
-import Products from '../components/Products';
-import Product from '../components/Product';
+import Footer from '../components/Footer/Footer';
+import Pagination from '../components/Pagination/Pagination';
+// import Products from '../components/Products';
+import Product from '../components/Product/Product';
 // import app from '../firebase'
 
 const Container = styled.div`
@@ -101,7 +101,7 @@ const Search = () => {
     return (
         <div style={{ height: '100vh' }}>
             <div style={{ backgroundColor: 'white' }}>
-                <Announcement />
+                {/* <Announcement /> */}
                 <Navbar />
             </div>
 

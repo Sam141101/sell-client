@@ -1,0 +1,22 @@
+.title-navba {
+    display: flex;
+    cursor: pointer;
+}
+
+.title-home-page {
+}
+
+.title-item {
+}
+
+.none {
+    opacity: 0.5;
+    cursor: initial;
+}
+
+.title-item::before {
+    content: '/';
+    /* display: block; */
+    margin-left: 10px;
+    margin-right: 10px;
+}

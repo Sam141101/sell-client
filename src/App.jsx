@@ -1,25 +1,28 @@
 import ProductList from './pages/ProductList';
 import Home from './pages/Home';
-import Product from './pages/Product';
+import Product from './pages/Product/Product';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Cart from './pages/Cart';
-import ConfirmDelete from './components/ConfirmDelete';
-import Pagination from './components/Pagination';
+import Cart from './pages/Cart/Cart';
+// import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
+// import Pagination from './components/Pagination/Pagination';
 
 import {
     BrowserRouter as Router,
     Routes,
     Route,
     Navigate,
-    Redirect,
+    // Redirect,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import UserProfile from './pages/UserProfile';
+import UserProfile from './pages/UserProfile/UserProfile';
 import Search from './pages/Search';
-import EmailVerify from './pages/EmailVerify';
+import EmailVerify from './pages/EmailVerify/EmailVerify';
 import ShipmentDetails from './pages/ShipmentDetails';
 import Purchase from './pages/Purchase';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import NewPassword from './pages/NewPassword/NewPassword';
+import ChangePassword from './pages/ChangePassword/ChangePassword';
 
 function App() {
     // test
@@ -30,6 +33,8 @@ function App() {
     return (
         <Router>
             <Routes>
+                <Route path="/ttt3" element={<ChangePassword />} />
+                <Route path="/ttt2" element={<ForgotPassword />} />
                 <Route path="/ttt" element={<Purchase />} />
 
                 {/* Thử nghiệm */}
@@ -64,6 +69,7 @@ function App() {
                     element={user ? <Navigate to="/" /> : <EmailVerify />}
                 />
                 <Route path="/auth/:id/verify/:token" element={<Register />} />
+                <Route path="/reset-password/:id/:token/" element={<NewPassword />} />
             </Routes>
         </Router>
     );

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import NavBar from '../components/NavBar';
-import Announcement from '../components/Announcement';
-import Products from '../components/Products';
-import Newsletter from '../components/Newsletter';
-import Footer from '../components/Footer';
+import NavBar from '../components/NavBar/NavBar';
+import Announcement from '../components/Announcement/Announcement';
+import Products from '../components/Products/Products';
+import Newsletter from '../components/Newsletter/Newsletter';
+import Footer from '../components/Footer/Footer';
 import { mobile } from '../responsive';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/Pagination/Pagination';
 import axios from 'axios';
 
 const Container = styled.div``;
@@ -22,7 +22,7 @@ const FilterContainer = styled.div`
 `;
 
 const Filter = styled.div`
-    margin: 20px;
+    margin: 20px 0;
     ${mobile({
         width: '0px 20px',
         display: 'flex',
@@ -41,7 +41,7 @@ const FilterText = styled.span`
 
 const Select = styled.select`
     padding: 10px;
-    margin-right: 20px;
+    // margin-right: 20px;
     ${mobile({
         margin: '10px 0px',
     })}
@@ -93,7 +93,6 @@ const ProductList = () => {
         //     page: newPage,
         // });
         setFilterPage(newPage);
-
     };
 
     // ----------------
@@ -101,29 +100,38 @@ const ProductList = () => {
     return (
         <Container>
             <NavBar />
-            <Announcement />
+            <Announcement item1="Danh mục" item2={cat} />
             <Title>{cat}</Title>
-            <FilterContainer>
-                <Filter>
-                    <FilterText>Kiểu sản phẩm:</FilterText>
-                    <Select name="color" onChange={handleFilters}>
-                        <Option disabled>Color</Option>
-                        <Option>WHITE</Option>
-                        <Option>BLACK</Option>
-                        <Option>GREEN</Option>
-                        <Option>BLUE</Option>
-                        {/* <Option>NAVY</Option> */}
-                        <Option>BROWN</Option>
-                    </Select>
 
-                    <Select name="size" onChange={handleFilters}>
-                        <Option disabled>Size</Option>
-                        <Option>S</Option>
-                        <Option>M</Option>
-                        <Option>L</Option>
-                    </Select>
+            <div className="grid wide">
+                <div className="row">
+                    <div className="col l-12">
+                        {/* <Products /> */}
+                        <FilterContainer>
+                            <Filter>
+                                <FilterText>Kiểu sản phẩm:</FilterText>
+                                <Select
+                                    style={{ marginRight: '20px' }}
+                                    name="color"
+                                    onChange={handleFilters}
+                                >
+                                    <Option disabled>Color</Option>
+                                    <Option>WHITE</Option>
+                                    <Option>BLACK</Option>
+                                    <Option>GREEN</Option>
+                                    <Option>BLUE</Option>
+                                    {/* <Option>NAVY</Option> */}
+                                    <Option>BROWN</Option>
+                                </Select>
 
-                    {/* <Select onChange={handleCat}>
+                                <Select name="size" onChange={handleFilters}>
+                                    <Option disabled>Size</Option>
+                                    <Option>S</Option>
+                                    <Option>M</Option>
+                                    <Option>L</Option>
+                                </Select>
+
+                                {/* <Select onChange={handleCat}>
                         <Option disabled>Size</Option>
                         <Option>
                                 HOODIE
@@ -133,24 +141,27 @@ const ProductList = () => {
                         <Option>SHORT</Option>
                     </Select> */}
 
-                    {/* <Select name="categories" onChange={handleFilters}>
+                                {/* <Select name="categories" onChange={handleFilters}>
                         <Option disabled>Loại</Option>
                         <Option>HOODIE</Option>
                         <Option>TEE</Option>
                         <Option>POLO</Option>
                         <Option>SHORT</Option>
                     </Select> */}
-                </Filter>
+                            </Filter>
 
-                <Filter>
-                    <FilterText>Sắp xếp sản phẩm:</FilterText>
-                    <Select onChange={(e) => setSort(e.target.value)}>
-                        <Option value="newest">mới nhất</Option>
-                        <Option value="asc">Giá tăng dần</Option>
-                        <Option value="desc">Giá giảm dần</Option>
-                    </Select>
-                </Filter>
-            </FilterContainer>
+                            <Filter>
+                                <FilterText>Sắp xếp sản phẩm:</FilterText>
+                                <Select onChange={(e) => setSort(e.target.value)}>
+                                    <Option value="newest">mới nhất</Option>
+                                    <Option value="asc">Giá tăng dần</Option>
+                                    <Option value="desc">Giá giảm dần</Option>
+                                </Select>
+                            </Filter>
+                        </FilterContainer>
+                    </div>
+                </div>
+            </div>
 
             <Products
                 cat={cat}

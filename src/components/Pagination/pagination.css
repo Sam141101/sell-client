@@ -1,0 +1,35 @@
+.pagination-container {
+    text-align: center;
+    margin: 0px 0 20px 0;
+}
+
+.pagination-pagi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.pagination-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.pagination-button {
+    padding: 10px;
+    background-color: red;
+    border-radius: 3px;
+    display: flex;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination-button:hover {
+    opacity: 0.85;
+}
+
+.pagination-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
