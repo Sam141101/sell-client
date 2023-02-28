@@ -80,6 +80,7 @@ export const getAllCart = async (token, dispatch, userId) => {
         dispatch(getAllProduct(res.data));
     } catch (err) {
         console.log('that bai');
+        console.log(err);
     }
 };
 
@@ -130,7 +131,7 @@ export const updateUser = async (token, dispatch, id, update) => {
         const res = await axios.put(`http://localhost:5000/api/users/${id}`, update, {
             headers: { token: `Bearer ${token}` },
         });
-        dispatch(updateSuccess(res.data));
+        // dispatch(updateSuccess(res.data));
     } catch (err) {
         dispatch(updateFailure());
     }

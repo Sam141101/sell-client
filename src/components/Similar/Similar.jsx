@@ -111,8 +111,9 @@ const Similar = ({ cat }) => {
             <div className="grid wide">
                 <div className="row">
                     {products?.map((item) => (
-                        <div className="col l-3">
-                            <Product item={item} key={item._id} />
+                        <div className="col l-3" key={item._id}>
+                            {/* <Product item={item} key={item._id} /> */}
+                            <Product item={item} />
                         </div>
                     ))}
                 </div>

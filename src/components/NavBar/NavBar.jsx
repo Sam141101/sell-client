@@ -18,6 +18,8 @@ const Navbar = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const quantity = useSelector((state) => state.cart?.quantity);
 
+    // console.log(user);
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const accessToken = user?.token;
@@ -50,6 +52,7 @@ const Navbar = () => {
     useEffect(() => {
         const getCart = () => {
             if (user) {
+                // console.log(user);
                 getAllCart(user.token, dispatch, user._id);
             }
         };
@@ -62,12 +65,12 @@ const Navbar = () => {
             <div className="navbar-container">
                 <div className="grid wide">
                     <div className="row">
-                        <div className="col l-5">
+                        {/* <div className="col l-5">
                             <div className="navbar-left">
                                 <Searchs />
                             </div>
-                        </div>
-                        <div className="col l-3">
+                        </div> */}
+                        <div className="col l-6">
                             <div className="navbar-center">
                                 <Link to="/">
                                     <img
@@ -78,7 +81,7 @@ const Navbar = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className="col l-4">
+                        <div className="col l-6">
                             <div className="navbar-right">
                                 {user ? (
                                     <>
@@ -170,71 +173,97 @@ const Navbar = () => {
             <div className="navbar-menu">
                 <div className="grid wide">
                     <div className="row">
-                        <div className="col l-12">
-                            <ul className="navbar-menu-list">
-                                <li className="navbar-menu-list-item">
+                        <div className="col l-7" style={{ display: 'flex' }}>
+                            {/* <div className="block-nav">
+                                
+                            </div> */}
+                            <div className="nav-menu">
+                                <span className="nav-label">
                                     <Link className="navbar-menu-item-link" to="/">
                                         HOME
                                     </Link>
-                                </li>
+                                </span>
+                                <div className="line"></div>
+                            </div>
 
-                                <li className="navbar-menu-list-item">
+                            <div className="nav-menu">
+                                <span className="nav-label">
                                     <Link
                                         className="navbar-menu-item-link"
                                         to="/products"
                                     >
-                                        TẤT CẢ SẢN PHẨM
+                                        Shop
+                                        <span
+                                            style={{
+                                                marginLeft: '3px',
+                                                fontSize: '16px',
+                                            }}
+                                        >
+                                            &#9662;
+                                        </span>
                                     </Link>
-                                </li>
+                                </span>
+                                <div className="line"></div>
+                                <ul className="nav-list">
+                                    <li className="nav-item">
+                                        <Link
+                                            className="nav-menu-item-link"
+                                            to="/products/TEE"
+                                        >
+                                            TEE
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link
+                                            className="nav-menu-item-link"
+                                            to="/products/HOODIE"
+                                        >
+                                            HOODIE
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link
+                                            className="nav-menu-item-link"
+                                            to="/products/POLO"
+                                        >
+                                            POLO
+                                        </Link>
+                                    </li>
 
-                                <li className="navbar-menu-list-item">
+                                    <li className="nav-item">
+                                        <Link
+                                            className="nav-menu-item-link"
+                                            to="/products/SHORT"
+                                        >
+                                            SHORT
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="nav-menu" style={{ zIndex: '7' }}>
+                                <span className="nav-label">
                                     <Link className="navbar-menu-item-link" to="/">
-                                        SẢN PHẨM MỚI
+                                        kiểm tra đơn hàng
                                     </Link>
-                                </li>
+                                </span>
+                                <div className="line"></div>
+                            </div>
 
-                                <li className="navbar-menu-list-item">
-                                    <Link
-                                        className="navbar-menu-item-link"
-                                        to="/products/TEE"
-                                    >
-                                        TEE
-                                    </Link>
-                                </li>
-
-                                <li className="navbar-menu-list-item">
-                                    <Link
-                                        className="navbar-menu-item-link"
-                                        to="/products/HOODIE"
-                                    >
-                                        HOODIE
-                                    </Link>
-                                </li>
-
-                                <li className="navbar-menu-list-item">
-                                    <Link
-                                        className="navbar-menu-item-link"
-                                        to="/products/POLO"
-                                    >
-                                        POLO
-                                    </Link>
-                                </li>
-
-                                <li className="navbar-menu-list-item">
-                                    <Link
-                                        className="navbar-menu-item-link"
-                                        to="/products/SHORT"
-                                    >
-                                        SHORT
-                                    </Link>
-                                </li>
-
-                                <li className="navbar-menu-list-item">
-                                    <Link className="navbar-menu-item-link" to="/">
+                            <div className="nav-menu">
+                                <span className="nav-label">
+                                    <Link className="navbar-menu-item-link" to="/about">
                                         ABOUT
                                     </Link>
-                                </li>
-                            </ul>
+                                </span>
+                                <div className="line"></div>
+                            </div>
+                        </div>
+
+                        <div className="col l-5">
+                            <div className="navbar-left">
+                                <Searchs />
+                            </div>
                         </div>
                     </div>
                 </div>

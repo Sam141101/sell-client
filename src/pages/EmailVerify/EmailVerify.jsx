@@ -67,6 +67,27 @@ const EmailVerify = () => {
 
     return (
         <div>
+            {/* <div className="email-verify-header">
+                <div className="grid wide">
+                    <div className="row">
+                        <div className="col l-12">
+                            <div className="email-verify-header-container">
+                                <Link to="/">
+                                    <HeaderImg src="https://file.hstatic.net/200000312481/file/2222_1790556c641f404aab8dfb038b47eb0e.png" />
+                                </Link>
+                                <HeaderTitle>Đăng kí</HeaderTitle>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col l-12">
+                            <HeaderHelp>Bạn cần giúp đỡ ?</HeaderHelp>
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+
             <div className="email-verify-header">
                 <div className="email-verify-header-container">
                     <Link to="/">
@@ -76,6 +97,7 @@ const EmailVerify = () => {
                 </div>
                 <HeaderHelp>Bạn cần giúp đỡ ?</HeaderHelp>
             </div>
+
             <div className="email-verify-container">
                 <div className="email-verify-wrapper">
                     <h1 className="email-verify-title" style={{ marginBottom: '30px' }}>

@@ -176,7 +176,10 @@ const Login = () => {
                                 justifyContent: 'space-between',
                             }}
                         >
-                            <Link style={{ textDecoration: 'none' }}>
+                            <Link
+                                to="/forgot-password"
+                                style={{ textDecoration: 'none' }}
+                            >
                                 <Link2>Quên mật khẩu</Link2>
                             </Link>
                             {/* <Link to="/register" style={{ textDecoration: 'none' }}> */}

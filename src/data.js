@@ -1,26 +1,52 @@
 export const sliderItems = [
+    // {
+    //     id: 1,
+    //     img: 'https://ginstore.com.vn/files/sanpham/1673/2/jpg/tee-outerity.jpg',
+    //     title: 'NEW YEAR COLLECITON',
+    //     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+    //     bg: '#f5fafd',
+    //     cat: 'women',
+    // },
+
+    // {
+    //     id: 2,
+    //     img: 'https://cf.shopee.vn/file/fb934cff300d6da5f586d83839eb1fff',
+    //     title: 'WINNER SALE',
+    //     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+    //     bg: '#fcf1ed',
+    //     cat: 'SPRING',
+    // },
+
+    // {
+    //     id: 3,
+    //     img: 'https://salt.tikicdn.com/cache/w1200/ts/product/5f/35/21/07c3c87f2910393f3bdf22167ba7bde0.jpg',
+    //     title: 'LIKE SALE',
+    //     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+    //     bg: '#fbf0f4',
+    //     cat: 'SUMMER',
+    // },
+
     {
         id: 1,
-        img: 'https://ginstore.com.vn/files/sanpham/1673/2/jpg/tee-outerity.jpg',
+        img: 'http://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
         title: 'NEW YEAR COLLECITON',
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
         bg: '#f5fafd',
-        // cat: 'NEW',
         cat: 'women',
     },
 
-    {
-        id: 2,
-        img: 'https://cf.shopee.vn/file/fb934cff300d6da5f586d83839eb1fff',
-        title: 'WINNER SALE',
-        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
-        bg: '#fcf1ed',
-        cat: 'SPRING',
-    },
+    // {
+    //     id: 2,
+    //     img: 'https://img.ws.mms.shopee.vn/promo-dim-01008fe34a4a46d7446497bb984be7285cdf',
+    //     title: 'WINNER SALE',
+    //     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+    //     bg: '#fcf1ed',
+    //     cat: 'SPRING',
+    // },
 
     {
         id: 3,
-        img: 'https://salt.tikicdn.com/cache/w1200/ts/product/5f/35/21/07c3c87f2910393f3bdf22167ba7bde0.jpg',
+        img: 'https://file.hstatic.net/200000312481/file/z3949117698340_9fe1c067c65fd89e397d86f27e9a904c_6ad273c5b80049ca85fd1a1aec326b93.jpg',
         title: 'LIKE SALE',
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
         bg: '#fbf0f4',
@@ -58,7 +84,6 @@ export const categories = [
         // cat: 'women',
         cat: 'POLO',
     },
-
 ];
 
 export const popularProducts = [

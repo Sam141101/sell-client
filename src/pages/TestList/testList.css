@@ -1,0 +1,89 @@
+/* .mm {
+    margin-top: 30px; 
+}
+
+.tt {
+    margin-bottom: 20px;
+}
+
+.tt1 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    line-height: 17px;
+}
+
+.active {
+    display: block !important ;
+}
+
+.gg2 {
+    display: none;
+}
+
+.mm2 {
+    list-style: none;
+    padding: 3px 0 3px 15px;
+}
+
+.gg-link {
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    opacity: 0.7;
+} */
+
+.mm {
+    /* margin-top: 30px;  */
+}
+
+.tt {
+    margin-bottom: 20px;
+}
+
+.tt1 {
+    margin-bottom: 10px;
+    /* margin-top: 10px; */
+    color: black;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    line-height: 17px;
+}
+
+.active {
+    /* display: block !important ; */
+    max-height: 100vh !important;
+    transition: max-height 0.7s ease-in;
+}
+
+.gg2 {
+    /* display: none; */
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.01s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.mm2 {
+    list-style: none;
+    padding: 3px 0 3px 15px;
+}
+
+.gg-link {
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    opacity: 0.7;
+}

@@ -6,6 +6,7 @@ import Product from '../Product/Product';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './products.css';
+import TestList from '../../pages/TestList/TestList';
 
 // const Wrapper = styled.div``;
 
@@ -19,6 +20,8 @@ import './products.css';
 const Products = ({ cat, filters, sort, filterPage, setPagination, pagination }) => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
+
+    // console.log(filteredProducts);
 
     useEffect(() => {
         const getProducts = async () => {
@@ -38,7 +41,7 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
         };
 
         getProducts();
-    }, [cat, filterPage]);
+    }, [cat, filterPage, setPagination]);
 
     useEffect(() => {
         cat &&
@@ -49,9 +52,11 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
                     ),
                 ),
             );
-    }, [products, cat, filters]);
+        // console.log('đã vô đây2');
+    }, [products, cat, filters, sort]);
 
     useEffect(() => {
+        // setFilteredProducts(products);
         if (sort === 'newest') {
             setFilteredProducts((prev) =>
                 // [...prev].sort((a, b) => b.createdAt - a.createdAt),
@@ -62,33 +67,52 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
         } else {
             setFilteredProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
         }
+        // console.log('đã vô đây3');
     }, [sort]);
 
     return (
-        // <div className="products-container">
-        //     {cat
-        //         ? filteredProducts.map((item) => <Product item={item} key={item._id} />)
-        //         : products
-        //               //   .slice(0, 8)
-        //               .map((item) => <Product item={item} key={item._id} />)}
-
-        // </div>
-        <div className="grid wide">
-            <div className="row">
-                {cat
-                    ? filteredProducts.map((item) => (
-                          <div className="col l-3">
-                              <Product item={item} key={item._id} />
-                          </div>
-                      ))
-                    : products.map((item) => (
-                          <div className="col l-3">
-                              <Product item={item} key={item._id} />
-                          </div>
-                      ))}
-            </div>
-        </div>
+        <>
+            {cat
+                ? filteredProducts.map((item) => (
+                      <div className="col l-3" key={item._id}>
+                          <Product item={item} />
+                      </div>
+                  ))
+                : products.map((item) => (
+                      <div className="col l-3" key={item._id}>
+                          <Product item={item} />
+                      </div>
+                  ))}
+        </>
     );
 };
 
 export default Products;
+
+{
+    /* {cat
+                    ? filteredProducts.map((item) => (
+                          <div className="col l-3" key={item._id}>
+                              <Product item={item} />
+                          </div>
+                      ))
+                    : products.map((item) => (
+                          <div className="col l-3" key={item._id}>
+                              <Product item={item} />
+                          </div>
+                      ))} */
+}
+
+{
+    /* {cat
+                    ? filteredProducts.map((item) => (
+                          <div className="col l-3" key={item._id}>
+                              <Product item={item} />
+                          </div>
+                      ))
+                    : products.map((item) => (
+                          <div className="col l-3" key={item._id}>
+                              <Product item={item} />
+                          </div>
+                      ))} */
+}

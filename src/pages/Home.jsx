@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAllCart, search } from '../redux/apiCalls';
 import axios from 'axios';
+import PromtionVideo from '../components/PromotionVideo/PromotionVideo';
 //
 
 const MoreProduct = styled.div`
@@ -99,6 +100,7 @@ const Home = () => {
             <Navbar />
             <Slider />
             <Categories />
+            <PromtionVideo />
             <Info>CÁC SẢN PHẨM MỚI</Info>
             {/* <div className="grid wide">
                 <div className="row">
@@ -108,7 +110,11 @@ const Home = () => {
                 </div>
             </div> */}
 
-            <Products />
+            <div className="grid wide">
+                <div className="row">
+                    <Products />
+                </div>
+            </div>
 
             <Link to={`/products`} style={{ textDecoration: 'none' }}>
                 <MoreProduct>

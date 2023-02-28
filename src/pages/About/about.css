@@ -1,0 +1,46 @@
+.about-wrapper {
+    padding: 30px 0;
+    /* display: flex; */
+}
+
+.about-container {
+    padding: 20px;
+    border: 1px solid #e3e5ec;
+}
+
+.about-title {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+}
+
+.about-list {
+    list-style: none;
+}
+
+.about-item {
+    color: #000000;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 1px;
+}
+
+.content-title {
+    margin-bottom: 25px;
+}
+
+.content-desc {
+    margin: 0 0 10px 0;
+    line-height: 21px;
+    font-size: 14px;
+}
+
+.about-underlined {
+    text-decoration: underline;
+    margin-right: 5px;
+}

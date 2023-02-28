@@ -31,6 +31,7 @@
     font-size: 16px;
     font-weight: 600;
     color: #000;
+    text-transform: uppercase;
 }
 
 .navbar-container {
@@ -50,6 +51,7 @@
     display: flex;
     height: 100%;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .navbar-language {
@@ -130,7 +132,7 @@
     display: flex;
     height: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .navbar-right {
@@ -280,4 +282,89 @@
 .navbar-header-img {
     height: 32px;
     cursor: pointer;
+}
+
+.nav-menu {
+    position: relative;
+    /* width: 80px;  */
+    margin-right: 25px;
+}
+
+.nav-menu > .nav-label {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    /* padding: 5px; */
+    padding: 11px 5px 11px 0;
+    border-bottom: 2px solid transparent;
+    /* border-radius: 4px; */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.nav-menu > .nav-list {
+    border-top: 2px solid white;
+    position: absolute;
+    top: 98%;
+    width: auto;
+    max-height: 0;
+    overflow: hidden;
+    /* padding: 0 5px; */
+    /* border-radius: 4px; */
+    list-style: none;
+    background-color: #fff;
+    /* transition: max-height 0.7s ease-in-out; */
+    transition: all 0.3s ease-in-out;
+
+    /* transition: max-height 0.01s ease-in; */
+
+    box-shadow: 2px 4px 12px rgb(0 0 0 / 10%);
+    min-width: 120px;
+    z-index: 2;
+}
+
+.nav-menu > .nav-line {
+    display: none;
+    height: 2px;
+    opacity: 0;
+}
+
+.nav-menu:hover .nav-label {
+    border-color: #5c5c5c;
+    /* background-color: green; */
+    color: #000;
+    z-index: 3;
+}
+
+.nav-menu:hover > .nav-list {
+    border-top: 2px solid #5c5c5c;
+    max-height: 100vh;
+    transition: max-height 0.7s ease-in;
+    background: #fff;
+    box-shadow: 2px 4px 12px rgb(0 0 0 / 10%);
+    min-width: 120px;
+    /* border: 1px solid #fff; */
+    z-index: 2;
+}
+
+.nav-menu:hover > .nav-line {
+    display: block;
+}
+
+.nav-menu-item-link {
+    text-decoration: none;
+    padding: 9px 18px;
+    white-space: nowrap;
+    text-align: left;
+    display: block;
+    font-size: 16px;
+    color: #000000;
+    /* background-color: red; */
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.nav-menu-item-link:hover {
+    background-color: #f6f6f6;
 }

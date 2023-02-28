@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import NavBar from '../../components/NavBar/NavBar';
+import Comment from '../../components/Comment/Comment';
 import Announcement from '../../components/Announcement/Announcement';
 import Newsletter from '../../components/Newsletter/Newsletter';
 import Footer from '../../components/Footer/Footer';
@@ -17,78 +18,6 @@ import Similar from '../../components/Similar/Similar';
 import axios from 'axios';
 import './product.css';
 
-const Container = styled.div``;
-
-const Wrapper = styled.div`
-    padding: 30px 85px;
-    display: flex;
-    ${mobile({
-        padding: '10px',
-        flexDirection: 'column',
-    })}
-`;
-
-const ImgContainer = styled.div`
-    flex: 1;
-`;
-
-const Image = styled.img`
-    width: 100%;
-    height: 90vh;
-    object-fit: cover;
-    ${mobile({
-        height: '40vh',
-    })}
-`;
-
-const InfoContainer = styled.div`
-    padding: 0 50px;
-    flex: 1;
-    ${mobile({
-        padding: '10px',
-    })}
-`;
-
-const Title = styled.h1`
-    font-weight: 200;
-`;
-
-const Desc = styled.p`
-    margin: 20px 0;
-`;
-
-const Price = styled.span`
-    font-weight: 500;
-    font-size: 40px;
-    color: red;
-`;
-
-const FilterContainer = styled.div`
-    flex-direction: column;
-    // width: 50%;
-    width: 100%;
-    padding: 20px 20px;
-    margin: 0px 0 20px 0;
-    display: flex;
-    justify-content: space-between;
-    ${mobile({
-        width: '100%',
-    })}
-    border: 1px solid ${(props) => props.borderColor};
-`;
-
-const Filter = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 20px 0;
-`;
-
-const FilterTitle = styled.span`
-    font-size: 18px;
-    font-weight: 200;
-    padding-right: 30px;
-`;
-
 const FilterColor = styled.div`
     height: 20px;
     width: 20px;
@@ -97,133 +26,6 @@ const FilterColor = styled.div`
     margin: 0px 5px;
     cursor: pointer;
     border: 1px solid #ccc;
-`;
-
-const AddContainer = styled.div`
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    ${mobile({
-        width: '100%',
-    })}
-`;
-const AmountContainer = styled.div`
-    padding: 20px 0;
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-`;
-
-const Amount = styled.span`
-    // width: 30px;
-    // height: 30px;
-    // border-radius: 10px;
-    // border: 1px solid teal;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // margin: 0 5px;
-
-    background: #fff;
-    font-weight: 600;
-    height: 38px;
-    padding: 0;
-    text-align: center;
-    width: 70px;
-    border: 1px solid #f5f5f5;
-    border-left: none;
-    border-right: none;
-    border-radius: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    -webkit-appearance: none;
-`;
-const Button = styled.button`
-    padding: 15px;
-    border: 2px solid teal;
-    background-color: white;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 16px;
-
-    &:hover {
-        background-color: #f8f4f4;
-    }
-`;
-
-const Span = styled.span`
-    padding: 10px;
-    color: red;
-    font-weight: 600;
-`;
-
-const SelectSwap = styled.div`
-    display: inline-block;
-    vertical-align: middle;
-`;
-
-const SwatchElement = styled.div`
-    display: inline-block;
-    margin-right: 8px;
-    position: relative;
-    vertical-align: bottom;
-`;
-
-const SwatchBlock = styled.div`
-    display: flex;
-    margin: 0;
-    background: #fff;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    border: 1px solid #e5e5e5;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-`;
-
-const DesNote = styled.div`
-    margin-top: 30px;
-`;
-
-const DesNote2 = styled.div`
-    margin-top: 10px;
-`;
-
-const Sp = styled.span``;
-
-const RemoveInput = styled.div`
-    display: flex;
-    background: #f5f5f5;
-    border: solid 1px #f5f5f5;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    outline: none;
-    height: 38px;
-    width: 38px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0;
-`;
-const AddInput = styled.div`
-    display: flex;
-    background: #f5f5f5;
-    border: solid 1px #f5f5f5;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    outline: none;
-    height: 38px;
-    width: 38px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0;
 `;
 
 const data = [
@@ -325,13 +127,15 @@ const Product = () => {
                     'http://localhost:5000/api/products/find/' + id,
                 );
                 setProduct(res.data);
-                setCat(res.data.categories[0]);
+                // setCat(res.data.categories[0]);
+                setCat(res.data.categories);
+                // console.log(res.data.categories);
             } catch (err) {}
         };
         getProduct();
     }, [id]);
 
-    console.log(size);
+    // console.log(product);
 
     return (
         <div>
@@ -537,6 +341,8 @@ const Product = () => {
                     </div>
                 </div>
             </div>
+
+            <Comment />
 
             <Similar cat={cat} />
             <Footer />

@@ -9,11 +9,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Pagination from '../components/Pagination/Pagination';
 import axios from 'axios';
+import TestList from './TestList/TestList';
 
 const Container = styled.div``;
 
 const Title = styled.h1`
-    margin: 20px;
+    font-size: 24px;
+    font-weight: 700;
 `;
 
 const FilterContainer = styled.div`
@@ -21,30 +23,16 @@ const FilterContainer = styled.div`
     justify-content: space-between;
 `;
 
-const Filter = styled.div`
-    margin: 20px 0;
-    ${mobile({
-        width: '0px 20px',
-        display: 'flex',
-        flexDirection: 'column',
-    })}
-`;
+const Filter = styled.div``;
 
 const FilterText = styled.span`
     font-size: 20px;
     margin-right: 20px;
     font-weight: 600;
-    ${mobile({
-        marginRight: '0px',
-    })}
 `;
 
 const Select = styled.select`
     padding: 10px;
-    // margin-right: 20px;
-    ${mobile({
-        margin: '10px 0px',
-    })}
 `;
 
 const Option = styled.option``;
@@ -72,8 +60,8 @@ const ProductList = () => {
     //     navigate(`/products/${e.target.value}`)
     // };
 
-    console.log(filters);
-
+    // console.log(filters);
+    console.log(sort);
     // ----------- Pagination --------
     // const [filterPage, setFilterPage] = useState({
     //     // limit: 10,
@@ -101,12 +89,10 @@ const ProductList = () => {
         <Container>
             <NavBar />
             <Announcement item1="Danh mục" item2={cat} />
-            <Title>{cat}</Title>
-
+            {/* 
             <div className="grid wide">
                 <div className="row">
                     <div className="col l-12">
-                        {/* <Products /> */}
                         <FilterContainer>
                             <Filter>
                                 <FilterText>Kiểu sản phẩm:</FilterText>
@@ -120,7 +106,6 @@ const ProductList = () => {
                                     <Option>BLACK</Option>
                                     <Option>GREEN</Option>
                                     <Option>BLUE</Option>
-                                    {/* <Option>NAVY</Option> */}
                                     <Option>BROWN</Option>
                                 </Select>
 
@@ -130,24 +115,6 @@ const ProductList = () => {
                                     <Option>M</Option>
                                     <Option>L</Option>
                                 </Select>
-
-                                {/* <Select onChange={handleCat}>
-                        <Option disabled>Size</Option>
-                        <Option>
-                                HOODIE
-                        </Option>
-                        <Option>TEE</Option>
-                        <Option>POLO</Option>
-                        <Option>SHORT</Option>
-                    </Select> */}
-
-                                {/* <Select name="categories" onChange={handleFilters}>
-                        <Option disabled>Loại</Option>
-                        <Option>HOODIE</Option>
-                        <Option>TEE</Option>
-                        <Option>POLO</Option>
-                        <Option>SHORT</Option>
-                    </Select> */}
                             </Filter>
 
                             <Filter>
@@ -161,16 +128,63 @@ const ProductList = () => {
                         </FilterContainer>
                     </div>
                 </div>
+            </div> */}
+
+            <div className="grid wide" style={{ marginTop: '50px' }}>
+                <div className="row">
+                    <div className="col l-3">
+                        <TestList />
+                    </div>
+                    <div className="col l-9">
+                        <div className="row">
+                            <div className="col l-12">
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        marginBottom: '40px',
+                                    }}
+                                >
+                                    <Title>Tất cả sản phẩm</Title>
+
+                                    <FilterContainer>
+                                        <Filter>
+                                            <FilterText>Sắp xếp sản phẩm:</FilterText>
+                                            <Select
+                                                onChange={(e) => setSort(e.target.value)}
+                                            >
+                                                <Option value="newest">mới nhất</Option>
+                                                <Option value="asc">Giá tăng dần</Option>
+                                                <Option value="desc">Giá giảm dần</Option>
+                                            </Select>
+                                        </Filter>
+                                    </FilterContainer>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <Products
+                                cat={cat}
+                                filters={filters}
+                                sort={sort}
+                                filterPage={filterPage}
+                                setPagination={setPagination}
+                                pagination={pagination}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <Products
+            {/* <Products
                 cat={cat}
                 filters={filters}
                 sort={sort}
                 filterPage={filterPage}
                 setPagination={setPagination}
                 pagination={pagination}
-            />
+            /> */}
 
             <Pagination pagination={pagination} onPageChange={handlePageChange} />
 

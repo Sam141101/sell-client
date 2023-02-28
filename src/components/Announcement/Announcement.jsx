@@ -12,7 +12,14 @@ const Container = styled.div`
     font-size: 14px;
 `;
 
-const Announcement = ({ item1 = 'Danh mục', item2 = 'Tất cả sản phẩm' }) => {
+const Announcement = ({
+    item1 = 'Danh mục',
+    item2 = 'Tất cả sản phẩm',
+    show1 = true,
+    show2 = true,
+}) => {
+    // console.log(typeof show1);
+
     return (
         <Container>
             <div className="grid wide">
@@ -27,13 +34,11 @@ const Announcement = ({ item1 = 'Danh mục', item2 = 'Tất cả sản phẩm' 
                                     Trang chủ
                                 </Link>
                             </div>
-                            {/* <div className="title-item">TEE</div>
-                            <div className="title-item none">
-                                ICE SIGNATURE TEE / BLACK COLOR
-                            </div> */}
 
-                            <div className="title-item">{item1}</div>
-                            <div className="title-item none">{item2}</div>
+                            {show1 && <div className="line1">/</div>}
+                            {show1 && <div className="title-item">{item1}</div>}
+                            {show2 && <div className="line1 none">/</div>}
+                            {show2 && <div className="title-item none">{item2}</div>}
                         </div>
                     </div>
                 </div>

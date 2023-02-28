@@ -11,43 +11,6 @@ import { useRef } from 'react';
 import useDebounce from '../../hooks/useDebounce';
 import './searchs.css';
 
-// const SearchContainer = styled.div`
-//     width: 70%;
-//     display: flex;
-//     position: relative;
-//     height: 40px;
-// `;
-
-// const Input = styled.input`
-//     padding: 10px 50px 9px 10px;
-//     width: 100%;
-//     background: #fff;
-//     border: 1px solid #ececec;
-//     font-size: 14px;
-//     font-weight: 500;
-//     margin: 0;
-//     display: inline-block;
-//     border-radius: 4px;
-//     -webkit-appearance: none;
-//     -moz-appearance: none;
-//     -o-appearance: none;
-//     appearance: none;
-//     -webkit-transition: all 150ms linear;
-//     transition: all 150ms linear;
-
-//     ::placeholder {
-//         font-size: 14px;
-//         display: flex;
-//         align-items: center;
-//     }
-
-//     &:focus-within {
-//         background: #ffffff;
-//         outline: none;
-//         border-color: #d1d1d1;
-//     }
-// `;
-
 const Button = styled.button`
     position: absolute;
     padding: 0;
@@ -73,74 +36,6 @@ const Button = styled.button`
         cursor: not-allowed;
     }
 `;
-
-// const ListSearch = styled.div`
-//     background: #fff;
-//     box-shadow: 0px 0px 10px rgb(0 0 0 / 8%);
-//     border-top: none !important;
-//     width: 100%;
-//     position: absolute;
-//     top: 100%;
-//     left: 0;
-//     cursor: pointer;
-//     z-index: 5;
-// `;
-
-// const ItemSearch = styled.div`
-//     padding: 10px 10px;
-//     border-bottom: 1px dotted #dfe0e1;
-//     clear: both;
-//     display: flex;
-//     align-items: center;
-//     cursor: pointer;
-
-//     &:hover {
-//         background: #f0f0f0;
-//     }
-// `;
-// const Item = styled.div`
-//     width: calc(100% - 40px);
-//     padding-right: 5px;
-//     float: left;
-//     line-height: 20px;
-//     position: relative;
-//     margin-top: 0px !important;
-// `;
-// const ItemTitle = styled.div``;
-// const ItemName = styled.div``;
-// const ItemPrice = styled.p`
-//     line-height: 15px;
-//     font-size: 12px;
-//     font-weight: 600;
-//     float: left;
-//     margin: 0;
-// `;
-// const ItemImg = styled.img`
-//     width: 40px;
-//     display: inline-block;
-//     text-align: right;
-//     padding: 0;
-//     max-width: 100%;
-//     vertical-align: middle;
-//     object-fit: cover;
-// `;
-
-// const ButtonClose = styled.div`
-//     position: absolute;
-//     right: 60px;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     display: flex;
-//     padding: 2px;
-//     background: #d1d1d1;
-//     border-radius: 50%;
-//     color: #393838;
-//     cursor: pointer;
-
-//     &:hover {
-//         opacity: 0.8;
-//     }
-// `;
 
 const Searchs = () => {
     const navigate = useNavigate();
@@ -171,7 +66,7 @@ const Searchs = () => {
     document.addEventListener('click', (e) => {
         const box = document.getElementById('search');
 
-        console.log(e.target);
+        // console.log(e.target);
         if (!box.contains(e.target)) {
             setShowResult(false);
         }
@@ -193,6 +88,7 @@ const Searchs = () => {
                 );
                 setListProduct(res.data);
                 // setLoading(false);
+                console.log(res.data);
             } catch (err) {
                 console.log(err);
             }
