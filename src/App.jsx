@@ -1,8 +1,8 @@
 import ProductList from './pages/ProductList';
 import Home from './pages/Home';
 import Product from './pages/Product/Product';
-import Register from './pages/Register';
-import Login from './pages/Login';
+import Register from './pages/Register/Register';
+import Login from './pages/Login/Login';
 import Cart from './pages/Cart/Cart';
 // import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
 // import Pagination from './components/Pagination/Pagination';
@@ -29,6 +29,7 @@ import PolicyReturn from './pages/PolicyReturn/PolicyReturn';
 import PolicyProtect from './pages/PolicyProtect/PolicyProtect';
 import PolicyService from './pages/PolicyService/PolicyService';
 import TestList from './pages/TestList/TestList';
+import Test from './pages/Test';
 
 function App() {
     // test
@@ -36,10 +37,49 @@ function App() {
 
     //
 
+    // const menu = [
+    //     {
+    //         id: '1',
+    //         title: 'Menu Item 1',
+    //         path: '/menu-item-1',
+    //     },
+    //     {
+    //         id: '2',
+    //         title: 'Menu Item 2',
+    //         path: '/menu-item-2',
+    //         children: [
+    //             {
+    //                 id: '3',
+    //                 title: 'Submenu Item 2.1',
+    //                 path: '/submenu-item-2-1',
+    //             },
+    //             {
+    //                 id: '4',
+    //                 title: 'Submenu Item 2.2',
+    //                 path: '/submenu-item-2-2',
+    //                 children: [
+    //                     {
+    //                         id: '5',
+    //                         title: 'Sub-Submenu Item 2.2.1',
+    //                         path: '/sub-submenu-item-2-2-1',
+    //                     },
+    //                 ],
+    //             },
+    //         ],
+    //     },
+    //     {
+    //         id: '6',
+    //         title: 'Menu Item 3',
+    //         path: '/menu-item-3',
+    //     },
+    // ];
+
     return (
         <Router>
             <Routes>
+                {/* <Route path="/test" element={<Test menu={menu} />} /> */}
                 <Route path="/ttt4" element={<TestList />} />
+                <Route path="/ttt5" element={<Register />} />
                 <Route path="/ttt3" element={<ChangePassword />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/chinh-sach-doi-tra" element={<PolicyReturn />} />
@@ -80,7 +120,7 @@ function App() {
                     path="/confirm/register"
                     element={user ? <Navigate to="/" /> : <EmailVerify />}
                 />
-                <Route path="/auth/:id/verify/:token" element={<Register />} />
+                {/* <Route path="/auth/:id/verify/:token" element={<Register />} /> */}
                 <Route path="/reset-password/:id/:token/" element={<NewPassword />} />
             </Routes>
         </Router>

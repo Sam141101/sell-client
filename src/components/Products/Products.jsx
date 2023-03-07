@@ -74,12 +74,12 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
         <>
             {cat
                 ? filteredProducts.map((item) => (
-                      <div className="col l-3" key={item._id}>
+                      <div className="col l-3 c-12" key={item._id}>
                           <Product item={item} />
                       </div>
                   ))
                 : products.map((item) => (
-                      <div className="col l-3" key={item._id}>
+                      <div className="col l-3 c-12" key={item._id}>
                           <Product item={item} />
                       </div>
                   ))}

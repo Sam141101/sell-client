@@ -79,3 +79,15 @@
     max-width: 100%;
     height: auto;
 }
+
+.mobile-block-img {
+    margin-bottom: 20px;
+    display: none;
+}
+
+.mobile-img-slider {
+    display: block;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}

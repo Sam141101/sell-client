@@ -49,6 +49,8 @@ const Searchs = () => {
     const [showResult, setShowResult] = useState(true);
     // const [loading, setLoading] = useState(false);
 
+    const [showNot, setShowNot] = useState(false);
+
     const debounced = useDebounce(searchTerm, 600);
 
     const handleSubmit = (e) => {
@@ -96,6 +98,16 @@ const Searchs = () => {
         showProduct();
     }, [debounced]);
 
+    useEffect(() => {
+        if (debounced === '') {
+            setShowNot(false);
+        } else if (debounced !== '' && listProduct.length === 0) {
+            setShowNot(true);
+        } else if (debounced !== '' && listProduct.length > 0) {
+            setShowNot(false);
+        }
+    }, [debounced, listProduct]);
+
     return (
         // <div
         //     onBlur={() => {
@@ -135,7 +147,7 @@ const Searchs = () => {
                         inputRef.current.focus();
                     }}
                 >
-                    <Close style={{ fontSize: '11px' }} />
+                    <Close className="button-close-icon" />
                 </div>
             )}
 
@@ -161,38 +173,23 @@ const Searchs = () => {
                 <Search fontSize="large" />
             </button> */}
 
-            <Button
+            <button
                 disabled={!searchTerm}
                 id="button"
                 onClick={handleSubmit}
-                searchValue={searchTerm ? '#393838' : 'white'}
+                // searchValue={searchTerm ? '#393838' : 'white'}
+                className="searchs-button"
             >
                 <Search fontSize="large" />
-            </Button>
+            </button>
 
             {showResult && searchTerm.length > 0 && (
-                <div
-                    className="searchs-list"
-                    // onBlur={() => {
-                    //     setShowResult(false);
-                    // }}
-
-                    // onFocusOut={() => {
-                    //     setShowResult(false);
-                    // }}
-                >
+                <div className="searchs-list">
                     {listProduct?.map((product, index) => (
                         <div
                             className="searchs-item-main"
                             key={index}
                             onClick={() => handleClick(product)}
-                            // onBlur={() => {
-                            //     setShowResult(false);
-                            // }}
-
-                            // onFocusOut={() => {
-                            //     setShowResult(false);
-                            // }}
                         >
                             <div className="searchs-item">
                                 <div>
@@ -209,6 +206,19 @@ const Searchs = () => {
                             />
                         </div>
                     ))}
+
+                    <div
+                        style={showNot ? { display: 'block' } : { display: 'none' }}
+                        className="result-more-item-link"
+                    >
+                        Không có sản phẩm nào...
+                    </div>
+
+                    {/* <div className="result-more-item">
+                        <Link className="result-more-item-link" to="/">
+                            Xem thêm 99 sản phẩm
+                        </Link>
+                    </div> */}
                 </div>
             )}
         </div>
@@ -217,32 +227,3 @@ const Searchs = () => {
 };
 
 export default Searchs;
-
-// <SearchContainer>
-//                         <Input
-//                             placeholder="Tìm kiếm sản phẩm..."
-//                             onChange={(e) => setSearchTerm(e.target.value)}
-//                             value={searchTerm}
-//                             id="search"
-//                         />
-
-//                         <Close />
-
-//                         <Button id="button" onClick={handleSubmit}>
-//                             <Search fontSize="large" />
-//                         </Button>
-
-//                         <ListSearch>
-//                             {listProduct?.map((product, index) => (
-//                                 <ItemSearch key={index}>
-//                                     <Item>
-//                                         <ItemTitle>
-//                                             <ItemName>{product.title}</ItemName>
-//                                             <ItemPrice>{product.price}₫</ItemPrice>
-//                                         </ItemTitle>
-//                                     </Item>
-//                                     <ItemImg src={product.img} />
-//                                 </ItemSearch>
-//                             ))}
-//                         </ListSearch>
-//                     </SearchContainer>

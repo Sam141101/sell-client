@@ -96,44 +96,53 @@ const Slider = () => {
     };
 
     return (
-        <div className="grid">
-            <div className="row">
-                {/* <div className="col l-12"> */}
-                <div className="slider-container">
-                    <Arrow direction="left" onClick={() => handleClick('left')}>
-                        <ArrowLeftOutlined />
-                    </Arrow>
+        <div className="slider-top-mobile">
+            <div className="hide-on-mobile">
+                <div className="grid ">
+                    <div className="row">
+                        <div className="col l-12">
+                            <div className="slider-container">
+                                <Arrow
+                                    direction="left"
+                                    onClick={() => handleClick('left')}
+                                >
+                                    <ArrowLeftOutlined />
+                                </Arrow>
 
-                    <Wrapper slideIndex={slideIndex}>
-                        {sliderItems.map((item) => (
-                            // <Slide bg={item.bg} key={item.id}>
-                            //     <ImgContainer>
-                            //         <Image src={item.img} />
-                            //     </ImgContainer>
+                                <Wrapper slideIndex={slideIndex}>
+                                    {sliderItems.map((item) => (
+                                        // <Slide bg={item.bg} key={item.id}>
+                                        //     <ImgContainer>
+                                        //         <Image src={item.img} />
+                                        //     </ImgContainer>
 
-                            //     <InfoContainer>
-                            //         <Title>{item.title}</Title>
-                            //         <Desc>{item.desc}</Desc>
-                            //         <Link
-                            //             to={`/products/${item.cat}`}
-                            //             style={{ textDecoration: 'none' }}
-                            //         >
-                            //             <Button>XEM NGAY</Button>
-                            //         </Link>
-                            //     </InfoContainer>
-                            // </Slide>
+                                        //     <InfoContainer>
+                                        //         <Title>{item.title}</Title>
+                                        //         <Desc>{item.desc}</Desc>
+                                        //         <Link
+                                        //             to={`/products/${item.cat}`}
+                                        //             style={{ textDecoration: 'none' }}
+                                        //         >
+                                        //             <Button>XEM NGAY</Button>
+                                        //         </Link>
+                                        //     </InfoContainer>
+                                        // </Slide>
 
-                            <Slide bg={item.bg} key={item.id}>
-                                {/* <ImgContainer>
+                                        <Slide bg={item.bg} key={item.id}>
+                                            {/* <ImgContainer>
                             <Image src={item.img} />
                         </ImgContainer> */}
-                                {/* <div className="col l-12"> */}
-                                <div className="img-container">
-                                    <img src={item.img} alt="" className="img-item" />
-                                </div>
-                                {/* </div> */}
+                                            {/* <div className="col l-12"> */}
+                                            <div className="img-container">
+                                                <img
+                                                    src={item.img}
+                                                    alt=""
+                                                    className="img-item"
+                                                />
+                                            </div>
+                                            {/* </div> */}
 
-                                {/* <InfoContainer>
+                                            {/* <InfoContainer>
                             <Title>{item.title}</Title>
                             <Desc>{item.desc}</Desc>
                             <Link
@@ -143,15 +152,28 @@ const Slider = () => {
                                 <Button>XEM NGAY</Button>
                             </Link>
                         </InfoContainer> */}
-                            </Slide>
-                        ))}
-                    </Wrapper>
+                                        </Slide>
+                                    ))}
+                                </Wrapper>
 
-                    <Arrow direction="right" onClick={() => handleClick('right')}>
-                        <ArrowRightOutlined />
-                    </Arrow>
+                                <Arrow
+                                    direction="right"
+                                    onClick={() => handleClick('right')}
+                                >
+                                    <ArrowRightOutlined />
+                                </Arrow>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {/* </div> */}
+            </div>
+
+            <div className="mobile-block-img">
+                <img
+                    src="https://file.hstatic.net/200000312481/file/z3949119209444_8fbde8be80833559e1e4ae7477cc13af_14b8c722c505407495bd2f3c98841131_large.jpg"
+                    alt=""
+                    className="mobile-img-slider"
+                />
             </div>
         </div>
     );

@@ -34,6 +34,7 @@ export const login = async (dispatch, user, navigate) => {
         navigate('/');
     } catch (err) {
         dispatch(loginFailure());
+        navigate('/login');
     }
 };
 

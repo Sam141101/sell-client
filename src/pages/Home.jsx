@@ -94,13 +94,14 @@ const Home = () => {
     };
 
     return (
-        <div>
+        <div style={{ overflow: 'hidden' }}>
+            {/* <div> */}
             {/* <Button onClick={handleRemove}>test</Button> */}
             {/* <Announcement /> */}
             <Navbar />
             <Slider />
-            <Categories />
-            <PromtionVideo />
+            {/* <Categories /> */}
+            {/* <PromtionVideo /> */}
             <Info>CÁC SẢN PHẨM MỚI</Info>
             {/* <div className="grid wide">
                 <div className="row">
@@ -110,9 +111,11 @@ const Home = () => {
                 </div>
             </div> */}
 
-            <div className="grid wide">
-                <div className="row">
-                    <Products />
+            <div className="container-product">
+                <div className="grid wide">
+                    <div className="row">
+                        <Products />
+                    </div>
                 </div>
             </div>
 
