@@ -124,9 +124,9 @@ const Cart = () => {
     }, [dispatch, user, navigate, confirm]);
 
     return (
-        <div>
+        <div className="cart-mobile-frame">
             <Navbar />
-            {/* <Announcement /> */}
+            <Announcement item2={`Giỏ hàng (${cart.quantity})`} show1={false} />
 
             <div className="grid wide">
                 <div className="row">
@@ -140,7 +140,7 @@ const Cart = () => {
 
                             <div className="cart-bottom">
                                 <div className="row">
-                                    <div className="col l-8">
+                                    <div className="col l-8 c-12">
                                         <div className="cart-info">
                                             {cart.products?.map((product, index) => (
                                                 <div className="cart-product" key={index}>
@@ -207,6 +207,12 @@ const Cart = () => {
                                                                     />
                                                                 </div>
                                                             </div>
+                                                            <div className="cart-product-price-mobile">
+                                                                Thành tiền:
+                                                                <span>
+                                                                    {product.price}₫
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -229,13 +235,14 @@ const Cart = () => {
                                                         </div>
                                                     </div>
 
-                                                    <Hr />
+                                                    {/* <Hr /> */}
+                                                    <hr className="hr hide-on-mobile"></hr>
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
 
-                                    <div className="col l-4">
+                                    <div className="col l-4 c-12">
                                         <div className="cart-summary">
                                             <h3 className="cart-summary-title">
                                                 Thông tin đơn hàng

@@ -132,10 +132,6 @@
     overflow: hidden;
 }
 
-.searchs-input::placeholder {
-    font-size: 14px;
-}
-
 .button-close-icon {
     font-size: 11px;
 }

@@ -47,13 +47,14 @@ const Search = () => {
     console.log(pagination.totalRows);
 
     return (
-        <div style={{ height: '100vh' }}>
+        // <div style={{ height: '100vh' }}>
+        <div className="search-page-mobile">
             {/* <Announcement /> */}
             <Navbar />
 
             <div className="grid wide">
                 <div className="row">
-                    <div className="col l-12">
+                    <div className="col l-12 c-12">
                         <div className="search-container">
                             <h3 className="search-title">Tìm kiếm</h3>
                             <p className="search-title-info">

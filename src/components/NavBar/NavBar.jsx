@@ -93,9 +93,17 @@ const Navbar = () => {
         list0.classList.remove('shop0');
         list2.classList.remove('selected2');
         list3.classList.remove('selected3');
+
+        if (action.classList.contains('actived')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
     };
 
     const handleClickMenu = () => {
+        // document.body.style.overflow = 'hidden';
+
         const action1 = document.querySelector('.nav-menu-mobile');
         if (action1) {
             action1.classList.toggle('actived');
@@ -115,6 +123,12 @@ const Navbar = () => {
         list0.classList.remove('shop0');
         list2.classList.remove('selected2');
         list3.classList.remove('selected3');
+
+        if (action1.classList.contains('actived')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
     };
 
     const handleClickHome = () => {
@@ -122,6 +136,7 @@ const Navbar = () => {
         const action1 = document.querySelector('.nav-menu-mobile');
         action.classList.remove('actived');
         action1.classList.remove('actived');
+        document.body.style.overflow = 'auto';
     };
 
     //login
@@ -134,6 +149,7 @@ const Navbar = () => {
 
     const handleClickLogin = (e) => {
         e.preventDefault();
+
         if (username === '') {
             inputRef1.current.focus();
         } else if (password === '') {
@@ -167,6 +183,7 @@ const Navbar = () => {
     };
 
     const handleClickMore = (e) => {
+        // document.body.style.overflow = 'hidden';
         const list1 = document.querySelector('#list1');
         const list0 = document.querySelector('#list0');
         const list2 = document.querySelector('#list2');
@@ -424,7 +441,7 @@ const Navbar = () => {
                                 </div>
 
                                 <div className="navbar-center">
-                                    <Link to="/" onclick={handleClickHome}>
+                                    <Link to="/" onClick={handleClickHome}>
                                         <img
                                             className="navbar-header-img"
                                             alt=""
@@ -515,12 +532,13 @@ const Navbar = () => {
                                                                         opacity: '1',
                                                                     }}
                                                                 >
-                                                                    VŨ HUY Sang
+                                                                    {/* VŨ HUY Sang */}
+                                                                    {user.username}
                                                                 </span>
                                                             </li>
                                                             <li className="nav-info-user-mobile-list-item">
                                                                 <Link
-                                                                    to="/"
+                                                                    to="/account/profile"
                                                                     className="nav-info-user-mobile-list-item-link"
                                                                 >
                                                                     Tài khoản của tôi

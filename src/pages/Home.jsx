@@ -16,6 +16,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAllCart, search } from '../redux/apiCalls';
 import axios from 'axios';
 import PromtionVideo from '../components/PromotionVideo/PromotionVideo';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { useState } from 'react';
 //
 
 const MoreProduct = styled.div`
@@ -69,6 +72,27 @@ const Info = styled.div`
     padding: 30px 0;
     color: red;
 `;
+function scrollIfNotActive(className) {
+    // const elements = document.querySelectorAll(`.${className}`);
+    // elements.forEach((element) => {
+    //     element.addEventListener('wheel', (event) => {
+    //         if (element.classList.contains('actived')) {
+    //             event.preventDefault();
+    //             console.log('ffffffff');
+    //         }
+    //     });
+    // });
+
+    const element = document.querySelector(`.${className}`);
+    // const vv = document.querySelector(`.nav-menu-mobile`);
+    console.log(element);
+    // element.addEventListener('wheel', (event) => {
+    //     if (element.classList.contains('actived')) {
+    //         event.preventDefault();
+    //         console.log('ffffffff');
+    //     }
+    // });
+}
 
 const Home = () => {
     // tam

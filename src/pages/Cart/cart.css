@@ -1,7 +1,9 @@
 .cart-wrapper {
     /* padding: 35px 50px 50px; */
     /* background-color: red; */
-    padding-top: 35px;
+    /* padding-top: 35px; */
+
+    padding: 35px 0 0 0;
 }
 
 .cart-title {
@@ -24,7 +26,7 @@
 }
 
 .cart-info {
-    flex: 2.5;
+    /* flex: 2.5; */
     margin-right: 20px;
 }
 
@@ -41,6 +43,7 @@
 
 .cart-image {
     width: 180px;
+    height: 180px;
     margin: 20px 10px;
     cursor: pointer;
 }
@@ -213,4 +216,26 @@
     font-weight: 700;
     font-size: 16px;
     color: #666666;
+}
+
+.cart-product-price-mobile {
+    margin: 15px 0;
+    text-align: left;
+    line-height: 21px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.cart-product-price-mobile span {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.hr {
+    background-color: #ededed;
+    border: none;
+    height: 2px;
+    position: absolute;
+    top: 100%;
+    width: 100%;
 }

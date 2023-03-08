@@ -138,21 +138,21 @@ const Product = () => {
     // console.log(product);
 
     return (
-        <div>
+        <div className="product-page-frame">
             <NavBar />
             <Announcement item1={cat} item2={product?.title} />
 
             <div className="product-wrapper">
                 <div className="grid wide">
                     <div className="row">
-                        <div className="col l-7">
+                        <div className="col l-7 c-12">
                             <div className="product-img-container-block">
                                 <div
                                     className="row"
                                     style={{ marginLeft: '-8px', marginRight: '-8px' }}
                                 >
                                     <div
-                                        className="col l-2"
+                                        className="col l-2 c-0"
                                         style={{
                                             paddingLeft: '8px',
                                             paddingRight: '8px',
@@ -202,7 +202,7 @@ const Product = () => {
                                         </div>
                                     </div>
                                     <div
-                                        className="col l-10"
+                                        className="col l-10 c-12"
                                         style={{
                                             paddingLeft: '8px',
                                             paddingRight: '8px',
@@ -223,7 +223,7 @@ const Product = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col l-5">
+                        <div className="col l-5 c-12">
                             <div className="product-info-container">
                                 <h1 className="product-title">{product?.title}</h1>
                                 <span className="product-price">{product?.price}₫</span>

@@ -149,77 +149,12 @@ const Login = () => {
             login(dispatch, { username, password }, navigate);
         }
     };
+
+    // console.l
     //
 
     return (
         <>
-            {/* <div>
-                <div className="login_header">
-                    <div className="login_header-container">
-                        <Link to="/">
-                            <img
-                                className="login_header-img"
-                                alt="Login"
-                                src="https://file.hstatic.net/200000312481/file/2222_1790556c641f404aab8dfb038b47eb0e.png"
-                            />
-                        </Link>
-                        <h2 className="login_header-title">Đăng nhập</h2>
-                    </div>
-                    <p className="login_header-help">Bạn cần giúp đỡ ?</p>
-                </div>
-
-                <div className="login_container">
-                    <div className="login_wrapper">
-                        <h1 className="login_title">Đăng nhập</h1>
-                        <div className="login_form">
-                            <input
-                                className="login_input"
-                                placeholder="username"
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                            <input
-                                className="login_input"
-                                placeholder="password"
-                                type="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <button
-                                className="login_button"
-                                onClick={handleClick}
-                                disabled={isFetching}
-                            >
-                                ĐĂNG NHẬP
-                            </button>
-                            {error && (
-                                <span className="login_error">
-                                    Tài khoản mật khẩu không chính xác...
-                                </span>
-                            )}
-                            <div
-                                style={{
-                                    marginTop: '5px',
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                }}
-                            >
-                                <Link
-                                    to="/forgot-password"
-                                    style={{ textDecoration: 'none' }}
-                                >
-                                    <p className="login_link2">Quên mật khẩu</p>
-                                </Link>
-                                <Link
-                                    to="/confirm/register"
-                                    style={{ textDecoration: 'none' }}
-                                >
-                                    <p className="login_link1">Đăng kí</p>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
             <div className="login_frame">
                 <Navbar />
                 <div className="login_main">
@@ -237,7 +172,7 @@ const Login = () => {
                                         <div className="login_form">
                                             {/* Email */}
                                             <div className="login_form-input">
-                                                {error && (
+                                                {!isFetching && (
                                                     <span className="login_error">
                                                         Yêu cầu không hợp lệ, hoặc quá
                                                         hạn, phiền bạn thử lại

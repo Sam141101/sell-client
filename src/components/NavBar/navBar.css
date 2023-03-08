@@ -72,6 +72,7 @@
     height: 64px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .navbar-wrapper {
@@ -482,7 +483,7 @@
     color: #677279;
     z-index: 12;
 
-    transform: translateX(200%);
+    transform: translateX(100%);
     transition: all 0.3s ease-out;
 
     height: calc(100vh - 64px);

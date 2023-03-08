@@ -17,11 +17,12 @@ const Announcement = ({
     item2 = 'Tất cả sản phẩm',
     show1 = true,
     show2 = true,
+    className,
 }) => {
     // console.log(typeof show1);
 
     return (
-        <Container>
+        <div className="announcement-container">
             <div className="grid wide">
                 <div className="row">
                     <div className="col l-12">
@@ -43,7 +44,7 @@ const Announcement = ({
                     </div>
                 </div>
             </div>
-        </Container>
+        </div>
     );
 };
 

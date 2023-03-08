@@ -11,7 +11,9 @@ import Pagination from '../components/Pagination/Pagination';
 import axios from 'axios';
 import TestList from './TestList/TestList';
 
-const Container = styled.div``;
+const Container = styled.div`
+    overflow: hidden;
+`;
 
 const Title = styled.h1`
     font-size: 24px;
@@ -130,48 +132,54 @@ const ProductList = () => {
                 </div>
             </div> */}
 
-            <div className="grid wide" style={{ marginTop: '50px' }}>
-                <div className="row">
-                    <div className="col l-3">
-                        <TestList />
-                    </div>
-                    <div className="col l-9">
-                        <div className="row">
-                            <div className="col l-12">
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        marginBottom: '40px',
-                                    }}
-                                >
-                                    <Title>Tất cả sản phẩm</Title>
-
-                                    <FilterContainer>
-                                        <Filter>
-                                            <FilterText>Sắp xếp sản phẩm:</FilterText>
-                                            <Select
-                                                onChange={(e) => setSort(e.target.value)}
-                                            >
-                                                <Option value="newest">mới nhất</Option>
-                                                <Option value="asc">Giá tăng dần</Option>
-                                                <Option value="desc">Giá giảm dần</Option>
-                                            </Select>
-                                        </Filter>
-                                    </FilterContainer>
+            <div className="product-list-mt">
+                <div className="grid wide">
+                    <div className="row">
+                        <div className="col l-3 c-12">
+                            <TestList />
+                        </div>
+                        <div className="col l-9 c-12">
+                            <div className="row">
+                                <div className="col l-12 c-12">
+                                    <div className="list-product-mobile-all">
+                                        {/* <Title>Tất cả sản phẩm</Title> */}
+                                        <Title>{cat ? cat : 'Tất cả sản phẩm'}</Title>
+                                        <div className="list-product-mobile-filter-container">
+                                            {/* <FilterContainer> */}
+                                            <Filter>
+                                                <FilterText>Sắp xếp sản phẩm:</FilterText>
+                                                <Select
+                                                    onChange={(e) =>
+                                                        setSort(e.target.value)
+                                                    }
+                                                >
+                                                    <Option value="newest">
+                                                        mới nhất
+                                                    </Option>
+                                                    <Option value="asc">
+                                                        Giá tăng dần
+                                                    </Option>
+                                                    <Option value="desc">
+                                                        Giá giảm dần
+                                                    </Option>
+                                                </Select>
+                                            </Filter>
+                                            {/* </FilterContainer> */}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="row">
-                            <Products
-                                cat={cat}
-                                filters={filters}
-                                sort={sort}
-                                filterPage={filterPage}
-                                setPagination={setPagination}
-                                pagination={pagination}
-                            />
+                            <div className="row">
+                                <Products
+                                    cat={cat}
+                                    filters={filters}
+                                    sort={sort}
+                                    filterPage={filterPage}
+                                    setPagination={setPagination}
+                                    pagination={pagination}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

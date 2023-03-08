@@ -135,7 +135,7 @@ const UserProfile = () => {
 
     return (
         // <div style={{ backgroundColor: '#f5f5f5', height: '100vh' }}>
-        <div>
+        <div className="user-profile-mobile-frame">
             {show && (
                 <div className="user-profile-wrapper">
                     <div className="user-profile-noti">
@@ -153,242 +153,263 @@ const UserProfile = () => {
             <Navbar />
 
             <div className="block-profile-form">
-                <div className="grid wide" style={{ paddingTop: '30px' }}>
-                    <div className="row">
-                        <div className="col l-3">
-                            <div className="user-profile-container-left">
-                                <div className="user-profile-info-user">
-                                    <img
-                                        className="user-profile-img-user"
-                                        src={
-                                            user.img ||
-                                            'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
-                                        }
-                                        alt=""
-                                    />
-                                    <div className="user-profile-change-info-user">
-                                        <h4 className="user-profile-title-user">
-                                            {user.username}
-                                        </h4>
-                                        <span className="user-profile-change-info">
-                                            <Create
-                                                style={{
-                                                    fontSize: '18px',
-                                                    marginRight: '5px',
-                                                }}
-                                            />
-                                            Sửa hồ sơ
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div className="user-profile-more-item">
-                                    <div className="user-profile-item">
+                <div className="block-user-profile-mobile">
+                    <div className="grid wide">
+                        <div className="row">
+                            <div className="col l-3 c-12">
+                                <div className="user-profile-container-left">
+                                    <div className="user-profile-info-user">
                                         <img
-                                            className="user-profile-img-item"
-                                            src="https://cf.shopee.vn/file/ba61750a46794d8847c3f463c5e71cc4"
+                                            className="user-profile-img-user"
+                                            src={
+                                                user.img ||
+                                                'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
+                                            }
                                             alt=""
                                         />
-                                        Tài khoản của tôi
+                                        <div className="user-profile-change-info-user">
+                                            <h4 className="user-profile-title-user">
+                                                {user.username}
+                                            </h4>
+                                            <span className="user-profile-change-info">
+                                                <Create
+                                                    style={{
+                                                        fontSize: '18px',
+                                                        marginRight: '5px',
+                                                    }}
+                                                />
+                                                Sửa hồ sơ
+                                            </span>
+                                        </div>
                                     </div>
-                                    <Link style={{ textDecoration: 'none' }} to="/ttt">
+
+                                    <div className="user-profile-more-item">
                                         <div className="user-profile-item">
                                             <img
                                                 className="user-profile-img-item"
-                                                src="https://cf.shopee.vn/file/f0049e9df4e536bc3e7f140d071e9078"
+                                                src="https://cf.shopee.vn/file/ba61750a46794d8847c3f463c5e71cc4"
                                                 alt=""
                                             />
-                                            Đơn mua
+                                            Tài khoản của tôi
                                         </div>
-                                    </Link>
+                                        <Link
+                                            style={{ textDecoration: 'none' }}
+                                            to="/ttt"
+                                        >
+                                            <div className="user-profile-item">
+                                                <img
+                                                    className="user-profile-img-item"
+                                                    src="https://cf.shopee.vn/file/f0049e9df4e536bc3e7f140d071e9078"
+                                                    alt=""
+                                                />
+                                                Đơn mua
+                                            </div>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="col l-9">
-                            <div className="user-profile-container-right">
-                                <div className="user-profile-manage-user">
-                                    <h4 className="user-profile-file-title">
-                                        Hồ Sơ Của Tôi
-                                    </h4>
-                                    <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
-                                </div>
+                            <div className="col l-9 c-12">
+                                <div className="user-profile-container-right">
+                                    <div className="user-profile-manage-user">
+                                        <h4 className="user-profile-file-title">
+                                            Hồ Sơ Của Tôi
+                                        </h4>
+                                        <p>
+                                            Quản lý thông tin hồ sơ để bảo mật tài khoản
+                                        </p>
+                                    </div>
 
-                                <div className="user-profile-form">
-                                    <div className="row">
-                                        <div className="col l-9">
-                                            <div className="user-profile-form-left">
-                                                <div className="user-profile-form-item">
-                                                    <div className="user-profile-form-key">
-                                                        Tên đăng nhập
+                                    <div className="user-profile-form">
+                                        <div className="row">
+                                            <div className="col l-9 c-12">
+                                                <div className="user-profile-form-left">
+                                                    <div className="user-profile-form-item">
+                                                        <div className="user-profile-form-key">
+                                                            Tên đăng nhập
+                                                        </div>
+                                                        <div className="user-profile-form-value">
+                                                            <input
+                                                                className="user-profile-form-input"
+                                                                name="username"
+                                                                type="text"
+                                                                placeholder={
+                                                                    user.username
+                                                                }
+                                                                onChange={handleChange}
+                                                            />
+                                                        </div>
                                                     </div>
-                                                    <div className="user-profile-form-value">
-                                                        <input
-                                                            className="user-profile-form-input"
-                                                            name="username"
-                                                            type="text"
-                                                            placeholder={user.username}
-                                                            onChange={handleChange}
-                                                        />
+
+                                                    <div className="user-profile-form-item">
+                                                        <div className="user-profile-form-key">
+                                                            Email
+                                                        </div>
+                                                        <div className="user-profile-form-value">
+                                                            <input
+                                                                className="user-profile-form-input"
+                                                                name="email"
+                                                                placeholder={user.email}
+                                                                type="text"
+                                                                onChange={handleChange}
+                                                            />
+                                                        </div>
                                                     </div>
+
+                                                    <div className="user-profile-form-item">
+                                                        <div className="user-profile-form-key">
+                                                            Số điện thoại
+                                                        </div>
+                                                        <div className="user-profile-form-value">
+                                                            <input
+                                                                className="user-profile-form-input"
+                                                                name="phone"
+                                                                placeholder={
+                                                                    user?.phone || ''
+                                                                }
+                                                                type="text"
+                                                                onChange={handleChange}
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="user-profile-form-item">
+                                                        <div className="user-profile-form-key">
+                                                            Địa chỉ
+                                                        </div>
+                                                        <div className="user-profile-form-value">
+                                                            <input
+                                                                className="user-profile-form-input"
+                                                                name="address"
+                                                                placeholder={
+                                                                    user?.address || ''
+                                                                }
+                                                                type="text"
+                                                                onChange={handleChange}
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="user-profile-form-item">
+                                                        <div className="user-profile-form-key">
+                                                            Giới tính
+                                                        </div>
+                                                        <div className="user-profile-form-value">
+                                                            <div
+                                                                style={{
+                                                                    display: 'flex',
+                                                                    marginLeft: '5px',
+                                                                }}
+                                                                onChange={handleChange}
+                                                            >
+                                                                <input
+                                                                    className="user-profile-form-value-select"
+                                                                    type="radio"
+                                                                    name="gender"
+                                                                    id="male"
+                                                                    value="Nam"
+                                                                />
+                                                                <label
+                                                                    className="user-profile-form-value-label"
+                                                                    htmlFor="male"
+                                                                >
+                                                                    Nam
+                                                                </label>
+                                                                <input
+                                                                    className="user-profile-form-value-select"
+                                                                    type="radio"
+                                                                    name="gender"
+                                                                    id="female"
+                                                                    value="Nữ"
+                                                                />
+                                                                <label
+                                                                    className="user-profile-form-value-label"
+                                                                    htmlFor="female"
+                                                                >
+                                                                    Nữ
+                                                                </label>
+                                                                <input
+                                                                    className="user-profile-form-value-select"
+                                                                    type="radio"
+                                                                    name="gender"
+                                                                    id="other"
+                                                                    value="Khác"
+                                                                />
+                                                                <label
+                                                                    className="user-profile-form-value-label"
+                                                                    htmlFor="other"
+                                                                >
+                                                                    Khác
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <button
+                                                        className="user-profile-form-save-info hide-on-mobile"
+                                                        onClick={handleClick}
+                                                    >
+                                                        Lưu
+                                                    </button>
+                                                    <div className="user-profile-drum"></div>
                                                 </div>
+                                            </div>
 
-                                                <div className="user-profile-form-item">
-                                                    <div className="user-profile-form-key">
-                                                        Email
-                                                    </div>
-                                                    <div className="user-profile-form-value">
-                                                        <input
-                                                            className="user-profile-form-input"
-                                                            name="email"
-                                                            placeholder={user.email}
-                                                            type="text"
-                                                            onChange={handleChange}
-                                                        />
-                                                    </div>
+                                            <div className="col l-3 c-12">
+                                                <div className="user-profile-change-img">
+                                                    Thay đổi hình ảnh
                                                 </div>
-
-                                                <div className="user-profile-form-item">
-                                                    <div className="user-profile-form-key">
-                                                        Số điện thoại
-                                                    </div>
-                                                    <div className="user-profile-form-value">
-                                                        <input
-                                                            className="user-profile-form-input"
-                                                            name="phone"
-                                                            placeholder={
-                                                                user?.phone || ''
+                                                <div className="user-profile-right">
+                                                    <label htmlFor="file">
+                                                        <img
+                                                            className="user-profile-img-user-current"
+                                                            src={
+                                                                // currentImg ||
+                                                                user.img ||
+                                                                'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
                                                             }
-                                                            type="text"
-                                                            onChange={handleChange}
+                                                            alt=""
+                                                            id="displayImg"
                                                         />
-                                                    </div>
-                                                </div>
+                                                    </label>
 
-                                                <div className="user-profile-form-item">
-                                                    <div className="user-profile-form-key">
-                                                        Địa chỉ
-                                                    </div>
-                                                    <div className="user-profile-form-value">
-                                                        <input
-                                                            className="user-profile-form-input"
-                                                            name="address"
-                                                            placeholder={
-                                                                user?.address || ''
-                                                            }
-                                                            type="text"
-                                                            onChange={handleChange}
-                                                        />
-                                                    </div>
-                                                </div>
+                                                    <label htmlFor="file">
+                                                        <div className="user-profile-btn-select">
+                                                            Chọn ảnh
+                                                        </div>
+                                                    </label>
 
-                                                <div className="user-profile-form-item">
-                                                    <div className="user-profile-form-key">
-                                                        Giới tính
-                                                    </div>
-                                                    <div className="user-profile-form-value">
-                                                        <div
-                                                            style={{
-                                                                display: 'flex',
-                                                                marginLeft: '5px',
-                                                            }}
-                                                            onChange={handleChange}
-                                                        >
-                                                            <input
-                                                                className="user-profile-form-value-select"
-                                                                type="radio"
-                                                                name="gender"
-                                                                id="male"
-                                                                value="Nam"
-                                                            />
-                                                            <label
-                                                                className="user-profile-form-value-label"
-                                                                htmlFor="male"
-                                                            >
-                                                                Nam
-                                                            </label>
-                                                            <input
-                                                                className="user-profile-form-value-select"
-                                                                type="radio"
-                                                                name="gender"
-                                                                id="female"
-                                                                value="Nữ"
-                                                            />
-                                                            <label
-                                                                className="user-profile-form-value-label"
-                                                                htmlFor="female"
-                                                            >
-                                                                Nữ
-                                                            </label>
-                                                            <input
-                                                                className="user-profile-form-value-select"
-                                                                type="radio"
-                                                                name="gender"
-                                                                id="other"
-                                                                value="Khác"
-                                                            />
-                                                            <label
-                                                                className="user-profile-form-value-label"
-                                                                htmlFor="other"
-                                                            >
-                                                                Khác
-                                                            </label>
+                                                    <input
+                                                        className="user-profile-button-select-img"
+                                                        type="file"
+                                                        id="file"
+                                                        onChange={(e) =>
+                                                            setFile(e.target.files[0])
+                                                        }
+
+                                                        // onChange={handleChangeFile}
+                                                    />
+
+                                                    <div style={{ marginTop: '12px' }}>
+                                                        <div className="user-profile-note">
+                                                            Dụng lượng file tối đa 1 MB
+                                                        </div>
+                                                        <div className="user-profile-note">
+                                                            Định dạng:.JPEG, .PNG
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <button
-                                                    className="user-profile-form-save-info"
-                                                    onClick={handleClick}
-                                                >
-                                                    Lưu
-                                                </button>
-                                                <div className="user-profile-drum"></div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div className="col l-3">
-                                            <div className="user-profile-right">
-                                                <label htmlFor="file">
-                                                    <img
-                                                        className="user-profile-img-user-current"
-                                                        src={
-                                                            // currentImg ||
-                                                            user.img ||
-                                                            'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
-                                                        }
-                                                        alt=""
-                                                        id="displayImg"
-                                                    />
-                                                </label>
-
-                                                <label htmlFor="file">
-                                                    <div className="user-profile-btn-select">
-                                                        Chọn ảnh
-                                                    </div>
-                                                </label>
-
-                                                <input
-                                                    className="user-profile-button-select-img"
-                                                    type="file"
-                                                    id="file"
-                                                    onChange={(e) =>
-                                                        setFile(e.target.files[0])
-                                                    }
-
-                                                    // onChange={handleChangeFile}
-                                                />
-
-                                                <div style={{ marginTop: '12px' }}>
-                                                    <div className="user-profile-note">
-                                                        Dụng lượng file tối đa 1 MB
-                                                    </div>
-                                                    <div className="user-profile-note">
-                                                        Định dạng:.JPEG, .PNG
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div className="user-profile-form-save-info-mobile-button">
+                                        <button
+                                            className="user-profile-form-save-info-mobile"
+                                            onClick={handleClick}
+                                        >
+                                            Lưu
+                                        </button>
                                     </div>
                                 </div>
                             </div>
