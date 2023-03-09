@@ -17,53 +17,6 @@ import Product from '../Product/Product';
 // import app from '../firebase'
 import './similar.css';
 
-// const Container = styled.div`
-//     display: flex;
-//     padding: 30px 65px 0 65px;
-//     flex-direction: column;
-// `;
-
-// const Title = styled.h3`
-//     text-align: center;
-//     font-size: 30px;
-// `;
-// const TitleInfo = styled.p`
-//     margin: 10px 0;
-//     font-size: 14px;
-//     text-align: center;
-//     opacity: 0.66;
-// `;
-// const Line = styled.div`
-//     position: relative;
-//     text-align: center;
-//     padding: 0 0 30px 0;
-
-//     &::after {
-//         content: '';
-//         background: #252a2b;
-//         display: block;
-//         width: 60px;
-//         height: 4px;
-//         margin: 25px auto 0;
-//     }
-// `;
-// const TitleResults = styled.div`
-//     // margin-bottom: 30px;
-// `;
-
-// const TitleRelate = styled.div`
-//     text-align: center;
-//     font-weight: 500;
-//     font-size: 30px;
-// `;
-
-// const Container1 = styled.div`
-//     padding: 20px;
-//     display: flex;
-//     flex-wrap: wrap;
-//     justify-content: space-between;
-// `;
-
 const Similar = ({ cat }) => {
     const location = useLocation();
     // const cat = location.pathname.split('/')[2];
@@ -75,7 +28,7 @@ const Similar = ({ cat }) => {
 
     const [pagination, setPagination] = useState({
         page: 1,
-        // limit: 12,
+        limit: 12,
         totalRows: 20,
     });
 
@@ -87,10 +40,11 @@ const Similar = ({ cat }) => {
         const getProducts = async () => {
             try {
                 const res = await axios.get(
-                    `http://localhost:5000/api/products?category=${cat}&page=${filterPage}`,
+                    `http://localhost:5000/api/products?category=${cat}&page=${filterPage}&limit=6`,
                 );
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);
+                // console.log(resultProducts.length);
                 setPagination(pagi);
                 // console.log(resultProducts);
             } catch (err) {}

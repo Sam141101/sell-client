@@ -17,6 +17,7 @@ import { addCart } from '../../redux/apiCalls';
 import Similar from '../../components/Similar/Similar';
 import axios from 'axios';
 import './product.css';
+import Products from '../../components/Products/Products';
 
 const FilterColor = styled.div`
     height: 20px;
@@ -129,13 +130,12 @@ const Product = () => {
                 setProduct(res.data);
                 // setCat(res.data.categories[0]);
                 setCat(res.data.categories);
-                // console.log(res.data.categories);
             } catch (err) {}
         };
         getProduct();
     }, [id]);
 
-    // console.log(product);
+    console.log('1');
 
     return (
         <div className="product-page-frame">
@@ -344,7 +344,16 @@ const Product = () => {
 
             <Comment />
 
-            <Similar cat={cat} />
+            {cat && <Similar cat={cat} />}
+
+            {/* <div className="container-product">
+                <div className="grid wide">
+                    <div className="row">
+                        <Products filterPage={1} pagination={pagination} />
+                    </div>
+                </div>
+            </div> */}
+
             <Footer />
         </div>
     );

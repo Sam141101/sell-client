@@ -43,7 +43,8 @@ const ProductList = () => {
     const location = useLocation();
     const cat = location.pathname.split('/')[2];
     const [filters, setFilters] = useState({});
-    const [sort, setSort] = useState('newest');
+    // const [sort, setSort] = useState('newest');
+    const [sort, setSort] = useState('');
 
     // const navigate = useNavigate()
 
@@ -74,7 +75,7 @@ const ProductList = () => {
 
     const [pagination, setPagination] = useState({
         page: 1,
-        // limit: 12,
+        limit: 12,
         totalRows: 20,
     });
 
@@ -91,46 +92,6 @@ const ProductList = () => {
         <Container>
             <NavBar />
             <Announcement item1="Danh mục" item2={cat} />
-            {/* 
-            <div className="grid wide">
-                <div className="row">
-                    <div className="col l-12">
-                        <FilterContainer>
-                            <Filter>
-                                <FilterText>Kiểu sản phẩm:</FilterText>
-                                <Select
-                                    style={{ marginRight: '20px' }}
-                                    name="color"
-                                    onChange={handleFilters}
-                                >
-                                    <Option disabled>Color</Option>
-                                    <Option>WHITE</Option>
-                                    <Option>BLACK</Option>
-                                    <Option>GREEN</Option>
-                                    <Option>BLUE</Option>
-                                    <Option>BROWN</Option>
-                                </Select>
-
-                                <Select name="size" onChange={handleFilters}>
-                                    <Option disabled>Size</Option>
-                                    <Option>S</Option>
-                                    <Option>M</Option>
-                                    <Option>L</Option>
-                                </Select>
-                            </Filter>
-
-                            <Filter>
-                                <FilterText>Sắp xếp sản phẩm:</FilterText>
-                                <Select onChange={(e) => setSort(e.target.value)}>
-                                    <Option value="newest">mới nhất</Option>
-                                    <Option value="asc">Giá tăng dần</Option>
-                                    <Option value="desc">Giá giảm dần</Option>
-                                </Select>
-                            </Filter>
-                        </FilterContainer>
-                    </div>
-                </div>
-            </div> */}
 
             <div className="product-list-mt">
                 <div className="grid wide">

@@ -72,27 +72,6 @@ const Info = styled.div`
     padding: 30px 0;
     color: red;
 `;
-function scrollIfNotActive(className) {
-    // const elements = document.querySelectorAll(`.${className}`);
-    // elements.forEach((element) => {
-    //     element.addEventListener('wheel', (event) => {
-    //         if (element.classList.contains('actived')) {
-    //             event.preventDefault();
-    //             console.log('ffffffff');
-    //         }
-    //     });
-    // });
-
-    const element = document.querySelector(`.${className}`);
-    // const vv = document.querySelector(`.nav-menu-mobile`);
-    console.log(element);
-    // element.addEventListener('wheel', (event) => {
-    //     if (element.classList.contains('actived')) {
-    //         event.preventDefault();
-    //         console.log('ffffffff');
-    //     }
-    // });
-}
 
 const Home = () => {
     // tam
@@ -100,22 +79,34 @@ const Home = () => {
     const dispatch = useDispatch();
     let axiosJWT = createAxios(user, dispatch, loginSuccess);
 
-    const handleRemove = async () => {
-        // getAllCart(user.token, dispatch, user._id);
-        // search();
-        // console.log('vô home');
-        try {
-            const res = await axios.get(
-                'http://localhost:5000/api/orders/find/' + user._id,
-                {
-                    headers: { token: `Bearer ${user.token}` },
-                },
-            );
-            console.log(res.data);
-        } catch (err) {
-            console.log(err);
-        }
+    // const [pagination, setPagination] = useState({
+    //     page: 1,
+    //     limit: 12,
+    //     totalRows: 20,
+    // });
+
+    const pagination = {
+        page: 1,
+        limit: 12,
+        totalRows: 20,
     };
+
+    // const handleRemove = async () => {
+    //     getAllCart(user.token, dispatch, user._id);
+    //     search();
+    //     console.log('vô home');
+    //     try {
+    //         const res = await axios.get(
+    //             'http://localhost:5000/api/orders/find/' + user._id,
+    //             {
+    //                 headers: { token: `Bearer ${user.token}` },
+    //             },
+    //         );
+    //         console.log(res.data);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
 
     return (
         <div style={{ overflow: 'hidden' }}>
@@ -127,18 +118,11 @@ const Home = () => {
             {/* <Categories /> */}
             {/* <PromtionVideo /> */}
             <Info>CÁC SẢN PHẨM MỚI</Info>
-            {/* <div className="grid wide">
-                <div className="row">
-                    <div className="col l-12">
-                        <Products />
-                    </div>
-                </div>
-            </div> */}
 
             <div className="container-product">
                 <div className="grid wide">
                     <div className="row">
-                        <Products />
+                        <Products filterPage={pagination.page} pagination={pagination} />
                     </div>
                 </div>
             </div>

@@ -21,27 +21,39 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
-    // console.log(filteredProducts);
+    let limit = pagination.limit;
+
+    console.log('coôs');
 
     useEffect(() => {
         const getProducts = async () => {
             try {
                 const res = await axios.get(
                     cat
-                        ? `http://localhost:5000/api/products?category=${cat}&page=${filterPage}`
+                        ? `http://localhost:5000/api/products?category=${cat}&page=${filterPage}&limit=${limit}`
                         : // : 'http://localhost:5000/api/products/',
-                          `http://localhost:5000/api/products/pagination?page=${filterPage}`,
+                          `http://localhost:5000/api/products/pagination?page=${filterPage}&limit=${limit}`,
                     //   `https://api-sell-vercel-lkxxh5xqq-sam141101.vercel.app/api/products/pagination?page=${filterPage}`,
                 );
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);
-                setPagination(pagi);
+                console.log('>>>> pagi');
+
+                if (setPagination) {
+                    setPagination(pagi);
+                    console.log('>>>> pagi1');
+                } else {
+                    console.log('>>>> pagi2');
+                    return;
+                }
+
                 // pagination = res.data.pagi;
             } catch (err) {}
+            console.log('useEffect1');
         };
 
         getProducts();
-    }, [cat, filterPage, setPagination]);
+    }, [cat, filterPage, setPagination, limit]);
 
     useEffect(() => {
         cat &&
@@ -52,7 +64,8 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
                     ),
                 ),
             );
-        // console.log('đã vô đây2');
+
+        console.log('useEffect2');
     }, [products, cat, filters, sort]);
 
     useEffect(() => {
@@ -67,7 +80,7 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
         } else {
             setFilteredProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
         }
-        // console.log('đã vô đây3');
+        console.log('useEffect3');
     }, [sort]);
 
     return (

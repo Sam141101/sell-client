@@ -4,8 +4,10 @@ import './pagination.css';
 
 const Pagination = (props) => {
     const { pagination, onPageChange } = props;
-    const { page, totalRows } = pagination;
-    const totalPages = Math.ceil(totalRows / 12);
+    const { page, totalRows, limit } = pagination;
+    const totalPages = Math.ceil(totalRows / limit);
+
+    console.log('paggi');
 
     const handlePageChange = (newPage) => {
         if (onPageChange) {
