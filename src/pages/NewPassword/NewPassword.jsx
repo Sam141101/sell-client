@@ -1,5 +1,6 @@
 import { KeyboardBackspace } from '@mui/icons-material';
 import axios from 'axios';
+import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -36,6 +37,9 @@ const NewPassword = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const inputRef1 = useRef();
+    const inputRef2 = useRef();
     const param = useParams();
 
     const blurEmail = (e) => {
@@ -87,129 +91,101 @@ const NewPassword = () => {
     }, [param]);
 
     return (
-        // <div>
-        //     <div className="new-password-header">
-        //         <div className="new-password-header-container">
-        //             <Link to="/">
-        //                 <HeaderImg src="https://file.hstatic.net/200000312481/file/2222_1790556c641f404aab8dfb038b47eb0e.png" />
-        //             </Link>
-        //             <HeaderTitle>Đặt lại mật khẩu</HeaderTitle>
-        //         </div>
-        //         <HeaderHelp>Bạn cần giúp đỡ ?</HeaderHelp>
-        //     </div>
-        //     <div className="new-password-container">
-        //         <div className="new-password-wrapper">
-        //             <div className="new-password-block-header">
-        //                 <Link
-        //                     to="/login"
-        //                     style={{ textDecoration: 'none', color: 'red' }}
-        //                 >
-        //                     <KeyboardBackspace className="new-password-icon-left" />
-        //                 </Link>
-        //                 <h1 className="new-password-title">Mật khẩu mới</h1>
-        //             </div>
-        //             <div className="new-password-form">
-        //                 <div>{email}</div>
-        //                 <div className="new-password-form-input">
-        //                     <input
-        //                         className="new-password-input"
-        //                         type="text"
-        //                         placeholder="Mật khẩu mới"
-        //                         onChange={(e) => setPassword(e.target.value)}
-        //                         value={password}
-        //                         // onBlur={blurEmail}
-        //                     />
-
-        //                     <input
-        //                         className="new-password-input"
-        //                         type="text"
-        //                         placeholder="Nhập lại mật khẩu"
-        //                         onChange={(e) => setPasswordConfirm(e.target.value)}
-        //                         value={passwordConfirm}
-        //                         // onBlur={blurEmail}
-        //                     />
-        //                     {msg && (
-        //                         <span className="new-password-span" id="email">
-        //                             {msg}
-        //                         </span>
-        //                     )}
-        //                     <button
-        //                         className="new-password-button"
-        //                         style={{ marginTop: '30px' }}
-        //                         disabled={!email}
-        //                         onClick={handleClick}
-        //                     >
-        //                         ĐỒNG Ý
-        //                     </button>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
-
         <>
             {validUrl ? (
-                <div>
-                    <div className="new-password-header">
-                        <div className="new-password-header-container">
-                            <Link to="/">
-                                <HeaderImg src="https://file.hstatic.net/200000312481/file/2222_1790556c641f404aab8dfb038b47eb0e.png" />
-                            </Link>
-                            <HeaderTitle>Đặt lại mật khẩu</HeaderTitle>
-                        </div>
-                        <HeaderHelp>Bạn cần giúp đỡ ?</HeaderHelp>
-                    </div>
-                    <div className="new-password-container">
-                        <div className="new-password-wrapper">
-                            <div className="new-password-block-header">
-                                <Link
-                                    to="/login"
-                                    style={{ textDecoration: 'none', color: 'red' }}
-                                >
-                                    <KeyboardBackspace className="new-password-icon-left" />
-                                </Link>
-                                <h1 className="new-password-title">Mật khẩu mới</h1>
-                            </div>
-                            <div className="new-password-form">
-                                <div>{email}</div>
-                                <div className="new-password-form-input">
-                                    <input
-                                        className="new-password-input"
-                                        type="text"
-                                        placeholder="Mật khẩu mới"
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        value={password}
-                                        // onBlur={blurEmail}
-                                    />
+                <>
+                    <div className="login_main">
+                        <div className="grid">
+                            <div className="row">
+                                <div className="col l-6 c-12">
+                                    <div className="login_header">
+                                        <h1 className="login_title">Đăng nhập</h1>
+                                    </div>
+                                </div>
 
-                                    <input
-                                        className="new-password-input"
-                                        type="text"
-                                        placeholder="Nhập lại mật khẩu"
-                                        onChange={(e) =>
-                                            setPasswordConfirm(e.target.value)
-                                        }
-                                        value={passwordConfirm}
-                                        // onBlur={blurEmail}
-                                    />
-                                    {msg && (
-                                        <span className="new-password-span" id="email">
-                                            {msg}
-                                        </span>
-                                    )}
-                                    <button
-                                        className="new-password-button"
-                                        style={{ marginTop: '30px' }}
-                                        disabled={!email}
-                                        onClick={handleClick}
-                                    >
-                                        ĐỒNG Ý
-                                    </button>
+                                <div className="col l-6 c-12">
+                                    <div className="login_container">
+                                        <div className="login_wrapper">
+                                            <div className="login_form">
+                                                <div className="forgot-password-title-text">
+                                                    Mật khẩu mới
+                                                </div>
+
+                                                {/* Email */}
+                                                <div className="title-email-user">
+                                                    {email}
+                                                </div>
+
+                                                <div className="login_form-input">
+                                                    <input
+                                                        className="login_input"
+                                                        type="text"
+                                                        ref={inputRef1}
+                                                        placeholder="Mật khẩu mới"
+                                                        onChange={(e) =>
+                                                            setPassword(e.target.value)
+                                                        }
+                                                        value={password}
+                                                        // onBlur={blurEmail}
+                                                    />
+
+                                                    <span
+                                                        className="login_span"
+                                                        id="username"
+                                                    ></span>
+
+                                                    <input
+                                                        className="login_input"
+                                                        placeholder="Nhập lại mật khẩu"
+                                                        type="text"
+                                                        value={passwordConfirm}
+                                                        ref={inputRef2}
+                                                        onChange={(e) =>
+                                                            setPasswordConfirm(
+                                                                e.target.value,
+                                                            )
+                                                        }
+                                                    />
+                                                    <span
+                                                        className="login_span"
+                                                        id="password"
+                                                    ></span>
+
+                                                    {msg && (
+                                                        <span
+                                                            className="new-password-span"
+                                                            id="email"
+                                                        >
+                                                            {msg}
+                                                        </span>
+                                                    )}
+
+                                                    <button
+                                                        className="login_button"
+                                                        // disabled={isFetching}
+                                                        onClick={handleClick}
+                                                    >
+                                                        ĐỒNG Ý
+                                                    </button>
+                                                </div>
+
+                                                <Link
+                                                    to="/"
+                                                    className="register_return-home large"
+                                                >
+                                                    <KeyboardBackspace className="register_return-home-icon" />
+                                                    <p className="register_return-home-text">
+                                                        Quay lại trang chủ
+                                                    </p>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </>
             ) : (
                 <h1>404 Not Found</h1>
             )}

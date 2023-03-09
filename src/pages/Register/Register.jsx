@@ -47,118 +47,119 @@ const Register = () => {
     const blurPassword = (e) => {};
     const blurConfirmPassword = (e) => {};
 
-    // useEffect(() => {
-    //     const verifyEmailUrl = async () => {
-    //         try {
-    //             const url = `http://localhost:5000/api/auth/${param.id}/verify/${param.token}`;
-    //             const res = await axios.get(url);
-    //             setUserid(res.data.id);
-    //             // console.log(data);
-    //             setValidUrl(true);
-    //         } catch (err) {
-    //             console.log(err, 'từ email để vô đăng kí thất bại');
-    //             setValidUrl(false);
-    //         }
-    //     };
-    //     verifyEmailUrl();
-    // }, [param]);
+    useEffect(() => {
+        const verifyEmailUrl = async () => {
+            try {
+                const url = `http://localhost:5000/api/auth/${param.id}/verify/${param.token}`;
+                const res = await axios.get(url);
+                setUserid(res.data.id);
+                // console.log(data);
+                setValidUrl(true);
+            } catch (err) {
+                console.log(err, 'từ email để vô đăng kí thất bại');
+                setValidUrl(false);
+            }
+        };
+        verifyEmailUrl();
+    }, [param]);
 
     return (
-        <div className="register-frame">
-            <Navbar />
-            <div className="register-main">
-                <div className="grid">
-                    <div className="row">
-                        <div className="col l-6 c-12">
-                            <div className="register_header">
-                                <h1 className="register_title">Tạo tài khoản</h1>
+        <>
+            {validUrl ? (
+                // <>
+                <div className="register-main">
+                    <div className="grid">
+                        <div className="row">
+                            <div className="col l-6 c-12">
+                                <div className="register_header">
+                                    <h1 className="register_title">Tạo tài khoản</h1>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="col l-6 c-12">
-                            <div className="register_container">
-                                <div className="register_wrapper">
-                                    <div className="register_form">
-                                        {/* Email */}
-                                        <div className="register_form-input">
-                                            <input
-                                                className="register_input"
-                                                // value={username}
-                                                type="text"
-                                                placeholder="Họ và Tên"
-                                                // onChange={(e) =>
-                                                //     setUsername(e.target.value)
-                                                // }
-                                                // onBlur={blurUsername}
-                                            />
-                                            <span
-                                                className="register_span"
-                                                id="username"
-                                            ></span>
-
-                                            {/* <div className="user-profile-form-value"> */}
-                                            <div
-                                                className="register_form-gender"
-
-                                                // onChange={handleChange}
-                                            >
+                            <div className="col l-6 c-12">
+                                <div className="register_container">
+                                    <div className="register_wrapper">
+                                        <div className="register_form">
+                                            {/* Email */}
+                                            <div className="register_form-input">
                                                 <input
-                                                    className="register_form-value-select"
-                                                    type="radio"
-                                                    name="gender"
-                                                    id="male"
-                                                    value="Nam"
+                                                    className="register_input"
+                                                    // value={username}
+                                                    type="text"
+                                                    placeholder="Họ và Tên"
+                                                    // onChange={(e) =>
+                                                    //     setUsername(e.target.value)
+                                                    // }
+                                                    // onBlur={blurUsername}
                                                 />
-                                                <label
-                                                    className="register_form-value-label"
-                                                    htmlFor="male"
-                                                >
-                                                    Nam
-                                                </label>
-                                                <input
-                                                    className="register_form-value-select"
-                                                    type="radio"
-                                                    name="gender"
-                                                    id="female"
-                                                    value="Nữ"
-                                                />
-                                                <label
-                                                    className="register_form-value-label"
-                                                    htmlFor="female"
-                                                >
-                                                    Nữ
-                                                </label>
-                                                <input
-                                                    className="register_form-value-select"
-                                                    type="radio"
-                                                    name="gender"
-                                                    id="other"
-                                                    value="Khác"
-                                                />
-                                                <label
-                                                    className="register_form-value-label"
-                                                    htmlFor="other"
-                                                >
-                                                    Khác
-                                                </label>
-                                            </div>
-                                            {/* </div> */}
+                                                <span
+                                                    className="register_span"
+                                                    id="username"
+                                                ></span>
 
-                                            <input
-                                                className="register_input"
-                                                value={username}
-                                                type="text"
-                                                placeholder="Tài khoản"
-                                                onChange={(e) =>
-                                                    setUsername(e.target.value)
-                                                }
-                                                onBlur={blurUsername}
-                                            />
-                                            <span
-                                                className="register_span"
-                                                id="username"
-                                            ></span>
-                                            {/* <Input
+                                                {/* <div className="user-profile-form-value"> */}
+                                                <div
+                                                    className="register_form-gender"
+
+                                                    // onChange={handleChange}
+                                                >
+                                                    <input
+                                                        className="register_form-value-select"
+                                                        type="radio"
+                                                        name="gender"
+                                                        id="male"
+                                                        value="Nam"
+                                                    />
+                                                    <label
+                                                        className="register_form-value-label"
+                                                        htmlFor="male"
+                                                    >
+                                                        Nam
+                                                    </label>
+                                                    <input
+                                                        className="register_form-value-select"
+                                                        type="radio"
+                                                        name="gender"
+                                                        id="female"
+                                                        value="Nữ"
+                                                    />
+                                                    <label
+                                                        className="register_form-value-label"
+                                                        htmlFor="female"
+                                                    >
+                                                        Nữ
+                                                    </label>
+                                                    <input
+                                                        className="register_form-value-select"
+                                                        type="radio"
+                                                        name="gender"
+                                                        id="other"
+                                                        value="Khác"
+                                                    />
+                                                    <label
+                                                        className="register_form-value-label"
+                                                        htmlFor="other"
+                                                    >
+                                                        Khác
+                                                    </label>
+                                                </div>
+                                                {/* </div> */}
+
+                                                <input
+                                                    className="register_input"
+                                                    value={username}
+                                                    type="text"
+                                                    placeholder="Tài khoản"
+                                                    onChange={(e) =>
+                                                        setUsername(e.target.value)
+                                                    }
+                                                    onBlur={blurUsername}
+                                                />
+                                                <span
+                                                    className="register_span"
+                                                    id="username"
+                                                ></span>
+                                                {/* <Input
                                 value={email}
                                 type="email"
                                 placeholder="email"
@@ -166,107 +167,107 @@ const Register = () => {
                                 onBlur={blurEmail}
                             />
                             <Span id="email"></Span> */}
-                                            <input
-                                                className="register_input"
-                                                value={password}
-                                                type="password"
-                                                placeholder="Mật khẩu"
-                                                onChange={(e) =>
-                                                    setPassword(e.target.value)
-                                                }
-                                                onBlur={blurPassword}
-                                                id="mk"
-                                            />
-                                            <span
-                                                className="register_span"
-                                                id="password"
-                                            ></span>
-                                            <input
-                                                className="register_input"
-                                                value={succesPw}
-                                                onChange={(e) =>
-                                                    setSuccesPw(e.target.value)
-                                                }
-                                                type="password"
-                                                placeholder="Xác thực mật khẩu"
-                                                onBlur={blurConfirmPassword}
-                                            />
-                                            <span
-                                                className="register_span"
-                                                id="confirm_password"
-                                            ></span>
+                                                <input
+                                                    className="register_input"
+                                                    value={password}
+                                                    type="password"
+                                                    placeholder="Mật khẩu"
+                                                    onChange={(e) =>
+                                                        setPassword(e.target.value)
+                                                    }
+                                                    onBlur={blurPassword}
+                                                    id="mk"
+                                                />
+                                                <span
+                                                    className="register_span"
+                                                    id="password"
+                                                ></span>
+                                                <input
+                                                    className="register_input"
+                                                    value={succesPw}
+                                                    onChange={(e) =>
+                                                        setSuccesPw(e.target.value)
+                                                    }
+                                                    type="password"
+                                                    placeholder="Xác thực mật khẩu"
+                                                    onBlur={blurConfirmPassword}
+                                                />
+                                                <span
+                                                    className="register_span"
+                                                    id="confirm_password"
+                                                ></span>
 
-                                            {/* <Span id="succes"></Span> */}
+                                                {/* <Span id="succes"></Span> */}
 
-                                            <button
-                                                className="register_button"
-                                                disabled={
-                                                    // !email || !password || !username || !succesPw
-                                                    !password || !username || !succesPw
-                                                }
-                                                onClick={handleClick}
-                                            >
-                                                ĐĂNG KÝ
-                                            </button>
-                                        </div>
+                                                <button
+                                                    className="register_button"
+                                                    disabled={
+                                                        // !email || !password || !username || !succesPw
+                                                        !password ||
+                                                        !username ||
+                                                        !succesPw
+                                                    }
+                                                    onClick={handleClick}
+                                                >
+                                                    ĐĂNG KÝ
+                                                </button>
+                                            </div>
 
-                                        <span className="register_agreement">
-                                            Bằng cách tạo một tài khoản, tôi đồng ý với
-                                            việc xử lý dữ liệu cá nhân của mình theo
-                                            <b
-                                                style={{
-                                                    color: '#ee4d2d',
-                                                    fontSize: '11px',
-                                                    marginLeft: '3px',
-                                                }}
-                                            >
-                                                ĐIỀU KHOẢN DỊCH VỤ
-                                            </b>{' '}
-                                            &{' '}
-                                            <b
-                                                style={{
-                                                    color: '#ee4d2d',
-                                                    fontSize: '11px',
-                                                }}
-                                            >
-                                                CHÍNH SÁCH BẢO MẬT
-                                            </b>
-                                        </span>
+                                            <span className="register_agreement">
+                                                Bằng cách tạo một tài khoản, tôi đồng ý
+                                                với việc xử lý dữ liệu cá nhân của mình
+                                                theo
+                                                <b
+                                                    style={{
+                                                        color: '#ee4d2d',
+                                                        fontSize: '11px',
+                                                        marginLeft: '3px',
+                                                    }}
+                                                >
+                                                    ĐIỀU KHOẢN DỊCH VỤ
+                                                </b>{' '}
+                                                &{' '}
+                                                <b
+                                                    style={{
+                                                        color: '#ee4d2d',
+                                                        fontSize: '11px',
+                                                    }}
+                                                >
+                                                    CHÍNH SÁCH BẢO MẬT
+                                                </b>
+                                            </span>
 
-                                        <p className="register_text">
-                                            Bạn đã có tài khoản?
-                                            <Link
-                                                style={{ textDecoration: 'none' }}
-                                                to="/login"
-                                            >
-                                                <span className="register_text-line">
-                                                    Đăng nhập
-                                                </span>
-                                            </Link>
-                                        </p>
-                                        {/* </div> */}
-
-                                        <Link to="/" className="register_return-home">
-                                            <KeyboardBackspace className="register_return-home-icon" />
-                                            <p className="register_return-home-text">
-                                                Quay lại trang chủ
+                                            <p className="register_text">
+                                                Bạn đã có tài khoản?
+                                                <Link
+                                                    style={{ textDecoration: 'none' }}
+                                                    to="/login"
+                                                >
+                                                    <span className="register_text-line">
+                                                        Đăng nhập
+                                                    </span>
+                                                </Link>
                                             </p>
-                                        </Link>
+                                            {/* </div> */}
+
+                                            <Link to="/" className="register_return-home">
+                                                <KeyboardBackspace className="register_return-home-icon" />
+                                                <p className="register_return-home-text">
+                                                    Quay lại trang chủ
+                                                </p>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <Footer />
-            {/* {validUrl ? (
-                <>
-                </>
             ) : (
+                // </>
                 <h1>404 Not Found</h1>
-            )} */}
-        </div>
+            )}
+        </>
     );
 };
 

@@ -32,6 +32,7 @@
 
 .content-title {
     margin-bottom: 25px;
+    font-size: 30px;
 }
 
 .content-desc {
@@ -43,4 +44,8 @@
 .about-underlined {
     text-decoration: underline;
     margin-right: 5px;
+}
+
+.policy-service-mobile {
+    display: flex;
 }

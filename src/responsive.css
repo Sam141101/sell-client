@@ -224,7 +224,7 @@
 
     .register-main {
         box-shadow: none;
-        margin-top: 108px;
+        /* margin-top: 108px; */
     }
 
     .register_title {
@@ -246,7 +246,7 @@
 
     .email-verify-main {
         box-shadow: none;
-        margin-top: 108px;
+        /* margin-top: 108px; */
     }
 
     .email-verify-title {
@@ -260,7 +260,7 @@
 
     .login_main {
         box-shadow: none;
-        margin-top: 108px;
+        /* margin-top: 108px; */
     }
 
     .login_title {
@@ -506,5 +506,86 @@
 
     .user-profile-drum {
         padding-bottom: 10px !important;
+    }
+
+    /* policy */
+    .default-layout-wrapper {
+        overflow: hidden;
+    }
+
+    .about-wrapper {
+        padding: 30px 15px !important;
+    }
+
+    .about-container {
+        margin-bottom: 30px !important;
+    }
+
+    .content-title {
+        text-align: center;
+    }
+
+    .content-title::after {
+        content: '';
+        background: #252a2b;
+        display: block;
+        width: 60px;
+        height: 4px;
+        margin: 25px auto 0;
+    }
+
+    .policy-service-mobile {
+        display: inline-block !important;
+    }
+
+    .about-underlined {
+        display: inline-block !important;
+    }
+
+    .about-list {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s;
+    }
+
+    .list-check {
+        max-height: 140px !important;
+    }
+
+    /* change password */
+    .change-password-container {
+        padding: 30px 15px 0 !important;
+    }
+
+    .change-password-more-item {
+        margin-bottom: 20px;
+    }
+
+    .change-password-background {
+        overflow: hidden;
+    }
+
+    .change-password-form-left {
+        padding-right: 0px !important;
+    }
+
+    .change-password-form-item {
+        flex-direction: column;
+    }
+
+    .change-password-form-value {
+        width: 100% !important;
+        padding-left: 0px !important;
+    }
+
+    .change-password-form-key {
+        width: 100% !important;
+        text-align: left !important;
+        padding-bottom: 5px;
+    }
+
+    .change-password-form-save-info {
+        margin-left: 0px !important;
+        padding: 12px 35px !important;
     }
 }

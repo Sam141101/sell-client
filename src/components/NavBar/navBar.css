@@ -2,6 +2,7 @@
     /* height: 110px; */
     /* overflow: hidden; */
     /* background-color: red; */
+    background-color: white;
 }
 
 .nav-list-mobile {
@@ -303,9 +304,9 @@
 }
 
 .navbar-info-user {
-    /* padding-top: ; */
     transition: all 0.3s;
-    padding: 10px 12px 10px 12px;
+    display: block;
+    padding: 8px 12px 8px 12px;
     cursor: pointer;
 }
 

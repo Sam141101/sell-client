@@ -216,6 +216,18 @@
     margin-top: 30px;
 }
 
+.register_return-home.large {
+    width: 100%;
+    padding-right: 50px;
+}
+
+.title-email-user {
+    padding-bottom: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+}
+
 .register_return-home-text {
     font-size: 14px;
     margin-left: 15px;

@@ -1,49 +1,36 @@
-import NavBar from '../../components/NavBar/NavBar';
-import Announcement from '../../components/Announcement/Announcement';
-import Footer from '../../components/Footer/Footer';
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link,
-    // Redirect,
-    useLocation,
-} from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addCart } from '../../redux/apiCalls';
-import axios from 'axios';
-import './about.css';
-import Introduce from '../../components/Introduce';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Announcement from '../Announcement/Announcement';
+import Footer from '../Footer/Footer';
+import Navbar from '../NavBar/NavBar';
 
-const About = ({ children }) => {
+function DefaultLayoutPolicy({ children, item2, show1 }) {
     const location = useLocation();
-    const id = location.pathname.split('/')[2];
-    const [product, setProduct] = useState({});
-    const [cat, setCat] = useState('');
-    const [quantity, setQuantity] = useState(1);
-    // const [color, setColor] = useState('');
-    const [size, setSize] = useState('');
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.auth?.currentUser);
+    const pathpolicy = location.pathname.split('/')[1];
 
-    // cảnh báo --------------------------------
-    const [checkSize, setCheckSize] = useState(false);
-    const [borderColor, setBorderColor] = useState('#ffffff');
+    const handleClickList = () => {
+        const check = document.querySelector('.about-list');
+        check.classList.toggle('list-check');
+    };
+
+    useEffect(() => {
+        const check = document.querySelector('.about-list');
+        check.classList.remove('list-check');
+    }, [pathpolicy]);
 
     return (
-        <>
-            {/* <div> */}
+        <div className="default-layout-wrapper">
+            <Navbar />
+            <Announcement item2={item2} show1={show1} />
 
-            {/* <NavBar /> */}
-            {/* <Announcement item2="Giới thiệu" show1={false} /> */}
-
-            {/* <div className="about-wrapper">
+            <div className="about-wrapper">
                 <div className="grid wide">
                     <div className="row">
-                        <div className="col l-3">
+                        <div className="col l-3 c-12">
                             <div className="about-container">
-                                <div className="about-title">danh mục trang</div>
+                                <div onClick={handleClickList} className="about-title">
+                                    danh mục trang
+                                </div>
                                 <ul className="about-list">
                                     <li className="about-item">
                                         <Link
@@ -108,36 +95,14 @@ const About = ({ children }) => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col l-9">
-                            <div className="content">
-                                <h1 className="content-title">Giới thiệu</h1>
-
-                                <p className="content-desc">
-                                    Chúng mình xuất hiện để đem tới mọi người một chất
-                                    lượng áo tốt nhất, với giá thành hấp dẫn nhất để đưa
-                                    Outerity đến với tất cả lứa tuổi và khắp mọi vùng miền
-                                    đất nước
-                                </p>
-                            </div>
-                        </div>
+                        <div className="col l-9 c-12">{children}</div>
                     </div>
                 </div>
-            </div> */}
-
-            {/* <Footer /> */}
-            {/* </div> */}
-
-            <div className="content">
-                <h1 className="content-title">Giới thiệu</h1>
-
-                <p className="content-desc">
-                    Chúng mình xuất hiện để đem tới mọi người một chất lượng áo tốt nhất,
-                    với giá thành hấp dẫn nhất để đưa Outerity đến với tất cả lứa tuổi và
-                    khắp mọi vùng miền đất nước
-                </p>
             </div>
-        </>
-    );
-};
 
-export default About;
+            <Footer />
+        </div>
+    );
+}
+
+export default DefaultLayoutPolicy;

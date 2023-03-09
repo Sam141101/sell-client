@@ -481,6 +481,16 @@ const Navbar = () => {
                                                         >
                                                             Tài khoản của tôi
                                                         </div>
+                                                        <Link
+                                                            to="/change-account"
+                                                            className="navbar-info-user"
+                                                            style={{
+                                                                textDecoration: 'none',
+                                                                color: 'inherit',
+                                                            }}
+                                                        >
+                                                            Đổi mật khẩu
+                                                        </Link>
                                                         <div
                                                             className="navbar-info-user"
                                                             style={{
@@ -542,6 +552,12 @@ const Navbar = () => {
                                                                     className="nav-info-user-mobile-list-item-link"
                                                                 >
                                                                     Tài khoản của tôi
+                                                                </Link>
+                                                                <Link
+                                                                    to="/change-account"
+                                                                    className="nav-info-user-mobile-list-item-link"
+                                                                >
+                                                                    Đổi mật khẩu
                                                                 </Link>
                                                             </li>
                                                             <li className="nav-info-user-mobile-list-item">
