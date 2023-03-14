@@ -1,59 +1,46 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import './test.css';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
-// const Test = ({ menu }) => {
-//     const [menuOpen, setMenuOpen] = useState(false);
+import './test.css';
 
-//     const toggleMenu = () => {
-//         setMenuOpen(!menuOpen);
-//     };
+const Test = ({ menu }) => {
+    const navigate = useNavigate();
 
-//     const renderMenuItems = (items) => {
-//         return items.map((item) => {
-//             if (item.children) {
-//                 return (
-//                     <li key={item.id} className="nav-item">
-//                         <button
-//                             onClick={toggleMenu}
-//                             className="nav-link"
-//                             aria-haspopup="true"
-//                         >
-//                             {item.title}
-//                         </button>
-//                         <ul className="sub-menu">{renderMenuItems(item.children)}</ul>
-//                     </li>
-//                 );
-//             } else {
-//                 return (
-//                     <li key={item.id} className="nav-item">
-//                         <Link onClick={toggleMenu} className="nav-link" to={item.path}>
-//                             {item.title}
-//                         </Link>
-//                     </li>
-//                 );
-//             }
-//         });
-//     };
+    const handleClick = async () => {
+        try {
+            const res = await axios.post('http://localhost:5000/api/paypal/pay');
+            // const res = await axios.post('http://localhost:5000/pay');
+            // navigate(`${res.data}`);
+            window.location.href = `${res.data}`;
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
-//     return (
-//         <nav>
-//             <button onClick={toggleMenu} className="menu-toggle" aria-expanded={menuOpen}>
-//                 <span className="sr-only">Toggle Navigation</span>
-//                 <i
-//                     className={`fa ${menuOpen ? 'fa-times' : 'fa-bars'}`}
-//                     aria-hidden="true"
-//                 ></i>
-//             </button>
-//             <div
-//                 className={`nav-overlay ${menuOpen ? 'show' : ''}`}
-//                 onClick={toggleMenu}
-//             ></div>
-//             <ul className={`nav-menu ${menuOpen ? 'show' : ''}`}>
-//                 {renderMenuItems(menu)}
-//             </ul>
-//         </nav>
-//     );
-// };
+    return (
+        <>
+            <div className="dienthoai">
+                <h1>
+                    <img
+                        src="https://cdn.tgdd.vn/Products/Images/42/50920/dien-thoai-di-dong-apple-iphone-4S-dienmay.com-b.jpg"
+                        alt=""
+                    />
+                </h1>
+                <p>Iphone 4s</p>
+                <h4>25.00 USD</h4>
+                {/* <div className="button">
+                    <form action="/pay" method="post">
+                        <input type="submit" value="Buy" />
+                    </form>
+                </div> */}
 
-// export default Test;
+                <button className="button" onClick={handleClick}>
+                    Buy
+                </button>
+            </div>
+        </>
+    );
+};
+
+export default Test;

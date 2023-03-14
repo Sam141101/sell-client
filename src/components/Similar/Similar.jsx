@@ -16,6 +16,7 @@ import Pagination from '../Pagination/Pagination';
 import Product from '../Product/Product';
 // import app from '../firebase'
 import './similar.css';
+import { BASE_URL_API } from '../../requestMethods';
 
 const Similar = ({ cat }) => {
     const location = useLocation();
@@ -40,7 +41,7 @@ const Similar = ({ cat }) => {
         const getProducts = async () => {
             try {
                 const res = await axios.get(
-                    `http://localhost:5000/api/products?category=${cat}&page=${filterPage}&limit=6`,
+                    BASE_URL_API + `products?category=${cat}&page=${filterPage}&limit=6`,
                 );
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);

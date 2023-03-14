@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/NavBar/NavBar';
 import { register } from '../../redux/apiCalls';
+import { BASE_URL_API } from '../../requestMethods';
 import { mobile } from '../../responsive';
 import './register.css';
 
@@ -50,7 +51,7 @@ const Register = () => {
     useEffect(() => {
         const verifyEmailUrl = async () => {
             try {
-                const url = `http://localhost:5000/api/auth/${param.id}/verify/${param.token}`;
+                const url = BASE_URL_API + `auth/${param.id}/verify/${param.token}`;
                 const res = await axios.get(url);
                 setUserid(res.data.id);
                 // console.log(data);

@@ -2,16 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import './announcement.css';
-const Container = styled.div`
-    height: 40px;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    font-size: 14px;
-`;
-
 const Announcement = ({
     item1 = 'Danh mục',
     item2 = 'Tất cả sản phẩm',

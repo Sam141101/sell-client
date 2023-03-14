@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 import useDebounce from '../../hooks/useDebounce';
 import './searchs.css';
+import { BASE_URL_API } from '../../requestMethods';
 
 const Button = styled.button`
     position: absolute;
@@ -83,10 +84,8 @@ const Searchs = () => {
                 }
                 // setLoading(true);
                 const res = await axios.get(
-                    // 'http://localhost:5000/api/search?search=' + searchTerm,
-                    `http://localhost:5000/api/search?search=${encodeURIComponent(
-                        debounced,
-                    )}`,
+                    // `http://localhost:5000/api/search?search=${encodeURIComponent(
+                    BASE_URL_API + `search?search=${encodeURIComponent(debounced)}`,
                 );
                 setListProduct(res.data);
                 // setLoading(false);

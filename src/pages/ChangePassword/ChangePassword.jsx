@@ -13,6 +13,7 @@ import app from '../../firebase';
 import { updateUser } from '../../redux/apiCalls';
 import './changePassword.css';
 import Footer from '../../components/Footer/Footer';
+import { BASE_URL_API } from '../../requestMethods';
 // import app from '../firebase'
 
 const ChangePassword = () => {
@@ -34,7 +35,7 @@ const ChangePassword = () => {
         // }, 3000);
 
         try {
-            const url = `http://localhost:5000/api/auth/change-password/${user._id}`;
+            const url = BASE_URL_API + `auth/change-password/${user._id}`;
             const res = await axios.post(
                 url,
                 {

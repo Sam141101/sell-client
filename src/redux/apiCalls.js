@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { BASE_URL_API } from '../requestMethods';
 
 import {
     loginFailure,
@@ -29,7 +30,8 @@ export const login = async (dispatch, user, navigate) => {
     dispatch(loginStart());
 
     try {
-        const res = await axios.post('http://localhost:5000/api/auth/login', user);
+        // const res = await axios.post('http://localhost:5000/api/auth/login', user);
+        const res = await axios.post(BASE_URL_API + 'auth/login', user);
         dispatch(loginSuccess(res.data));
         navigate('/');
     } catch (err) {
@@ -43,7 +45,7 @@ export const register = async (dispatch, user, navigate) => {
     dispatch(registerStart());
 
     try {
-        const res = await axios.post('http://localhost:5000/api/auth/register', user);
+        const res = await axios.post(BASE_URL_API + 'auth/register', user);
         dispatch(registerSuccess());
         console.log(res.data);
 
@@ -60,7 +62,7 @@ export const logout = async (dispatch, navigate, id, token, axiosJWT) => {
 
     try {
         // await axiosJWT.post('http://localhost:5000/api/auth/logout/' + id, {
-        await axiosJWT.post('http://localhost:5000/api/auth/logout', id, {
+        await axiosJWT.post(BASE_URL_API + 'auth/logout', id, {
             // await axios.post('http://localhost:5000/api/auth/logout', id, {
             headers: { token: `Bearer ${token}` },
         });
@@ -75,7 +77,7 @@ export const logout = async (dispatch, navigate, id, token, axiosJWT) => {
 // Get ALL product cart
 export const getAllCart = async (token, dispatch, userId) => {
     try {
-        const res = await axios.get('http://localhost:5000/api/carts/find/' + userId, {
+        const res = await axios.get(BASE_URL_API + 'carts/find/' + userId, {
             headers: { token: `Bearer ${token}` },
         });
         dispatch(getAllProduct(res.data));
@@ -88,7 +90,7 @@ export const getAllCart = async (token, dispatch, userId) => {
 // export const addCart = async (token, dispatch, product, cartproduct) => {
 export const addCart = async (token, dispatch, product, cartproduct) => {
     try {
-        const res = await axios.post('http://localhost:5000/api/carts/', product, {
+        const res = await axios.post(BASE_URL_API + 'carts/', product, {
             headers: { token: `Bearer ${token}` },
         });
         // dispatch(addProduct(cartproduct));
@@ -101,7 +103,7 @@ export const addCart = async (token, dispatch, product, cartproduct) => {
 // Update product cart
 export const updateProduct = async (token, dispatch, id, update, condition) => {
     try {
-        await axios.put('http://localhost:5000/api/carts/' + id, update, {
+        await axios.put(BASE_URL_API + 'carts/' + id, update, {
             headers: { token: `Bearer ${token}` },
         });
         dispatch(updatedProduct({ id, update }));
@@ -113,7 +115,7 @@ export const updateProduct = async (token, dispatch, id, update, condition) => {
 // Delete product cart
 export const deleteProduct = async (token, dispatch, id, axiosJWT, navigate) => {
     try {
-        await axios.delete('http://localhost:5000/api/carts/' + id, {
+        await axios.delete(BASE_URL_API + 'carts/' + id, {
             // await axiosJWT.delete('http://localhost:5000/api/carts/' + id, {
             headers: { token: `Bearer ${token}` },
         });
@@ -129,7 +131,7 @@ export const updateUser = async (token, dispatch, id, update) => {
     dispatch(updateStart());
 
     try {
-        const res = await axios.put(`http://localhost:5000/api/users/${id}`, update, {
+        const res = await axios.put(BASE_URL_API + `users/${id}`, update, {
             headers: { token: `Bearer ${token}` },
         });
         // dispatch(updateSuccess(res.data));
@@ -141,7 +143,7 @@ export const updateUser = async (token, dispatch, id, update) => {
 // ----------------------------------------------------------------
 export const search = async (dispatch, id, update) => {
     try {
-        const search = await axios.get('http://localhost:5000/api/search/');
+        const search = await axios.get(BASE_URL_API + 'search/');
         console.log(search.data);
     } catch (err) {
         console.log('that bai');

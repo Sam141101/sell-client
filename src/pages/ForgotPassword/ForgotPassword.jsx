@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { BASE_URL_API } from '../../requestMethods';
 import './forgotPassword.css';
 
 // --------------------------------------------------------------
@@ -31,7 +32,7 @@ const ForgotPassword = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            const url = `http://localhost:5000/api/auth/forgot-password`;
+            const url = BASE_URL_API + `auth/forgot-password`;
             const { data: res } = await axios.post(url, { email });
             console.log('xác thực email');
             setMsg(res.message);

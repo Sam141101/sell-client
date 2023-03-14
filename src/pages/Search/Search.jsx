@@ -9,6 +9,7 @@ import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
 import Product from '../../components/Product/Product';
 import './search.css';
+import { BASE_URL_API } from '../../requestMethods';
 
 const Search = () => {
     const location = useLocation();
@@ -32,7 +33,7 @@ const Search = () => {
         const getProducts = async () => {
             try {
                 const res = await axios.get(
-                    `http://localhost:5000/api/products?category=${cat}&page=${filterPage}`,
+                    BASE_URL_API + `products?category=${cat}&page=${filterPage}`,
                 );
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);

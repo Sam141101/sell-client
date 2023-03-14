@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { BASE_URL_API } from '../../requestMethods';
 
 const Comment = () => {
     const location = useLocation();
@@ -33,7 +34,8 @@ const Comment = () => {
         const addComment = async () => {
             try {
                 const res = await axios.post(
-                    'http://localhost:5000/api/comments/' + user._id,
+                    BASE_URL_API + 'comments/' + user._id,
+                    // 'http://localhost:5000/api/comments/' + user._id,
                     infoComment,
                     {
                         headers: { token: `Bearer ${user.token}` },

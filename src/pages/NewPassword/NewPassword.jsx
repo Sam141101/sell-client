@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { register } from '../../redux/apiCalls';
+import { BASE_URL_API } from '../../requestMethods';
 import { mobile } from '../../responsive';
 import './newPassword.css';
 
@@ -60,7 +61,7 @@ const NewPassword = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            const url = `http://localhost:5000/api/auth/new-password`;
+            const url = BASE_URL_API + `auth/new-password`;
             const res = await axios.post(url, { password: password, id: id });
             // console.log(res.data.message);
             console.log('cập nhật mật khẩu thành công');
@@ -75,7 +76,8 @@ const NewPassword = () => {
     useEffect(() => {
         const resetPassword = async () => {
             try {
-                const url = `http://localhost:5000/api/auth/reset-password/${param.id}/${param.token}`;
+                const url =
+                    BASE_URL_API + `auth/reset-password/${param.id}/${param.token}`;
                 const res = await axios.get(url);
                 setEmail(res.data.email);
                 setId(res.data.id);

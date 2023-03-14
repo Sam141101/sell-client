@@ -18,6 +18,7 @@ import Similar from '../../components/Similar/Similar';
 import axios from 'axios';
 import './product.css';
 import Products from '../../components/Products/Products';
+import { BASE_URL_API } from '../../requestMethods';
 
 const FilterColor = styled.div`
     height: 20px;
@@ -123,10 +124,8 @@ const Product = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                // const res = await publicRequest.get('/products/find/' + id);
-                const res = await axios.get(
-                    'http://localhost:5000/api/products/find/' + id,
-                );
+                const res = await axios.get(BASE_URL_API + 'products/find/' + id);
+                // console.log(BASE_URL_API + '/products/find/' + id);
                 setProduct(res.data);
                 // setCat(res.data.categories[0]);
                 setCat(res.data.categories);

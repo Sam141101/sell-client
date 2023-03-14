@@ -38,45 +38,6 @@ function App() {
     // test
     const user = useSelector((state) => state.auth?.currentUser);
 
-    //
-
-    // const menu = [
-    //     {
-    //         id: '1',
-    //         title: 'Menu Item 1',
-    //         path: '/menu-item-1',
-    //     },
-    //     {
-    //         id: '2',
-    //         title: 'Menu Item 2',
-    //         path: '/menu-item-2',
-    //         children: [
-    //             {
-    //                 id: '3',
-    //                 title: 'Submenu Item 2.1',
-    //                 path: '/submenu-item-2-1',
-    //             },
-    //             {
-    //                 id: '4',
-    //                 title: 'Submenu Item 2.2',
-    //                 path: '/submenu-item-2-2',
-    //                 children: [
-    //                     {
-    //                         id: '5',
-    //                         title: 'Sub-Submenu Item 2.2.1',
-    //                         path: '/sub-submenu-item-2-2-1',
-    //                     },
-    //                 ],
-    //             },
-    //         ],
-    //     },
-    //     {
-    //         id: '6',
-    //         title: 'Menu Item 3',
-    //         path: '/menu-item-3',
-    //     },
-    // ];
-
     return (
         <Router>
             <Routes>
@@ -102,6 +63,8 @@ function App() {
                         />
                     );
                 })}
+
+                <Route path="/test" element={<Test />} />
 
                 {/* <Route path="/ttt5" element={<Register />} /> */}
                 <Route path="/change-account" element={<ChangePassword />} />

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Route, Router, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL_API } from '../../requestMethods';
 
 const Container = styled.div`
     margin-top: 20px;
@@ -98,12 +99,9 @@ const WaitPurchase = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get(
-                    'http://localhost:5000/api/orders/find/' + user._id,
-                    {
-                        headers: { token: `Bearer ${user.token}` },
-                    },
-                );
+                const res = await axios.get(BASE_URL_API + 'orders/find/' + user._id, {
+                    headers: { token: `Bearer ${user.token}` },
+                });
                 setProduct(res.data.products);
             } catch (err) {}
         };

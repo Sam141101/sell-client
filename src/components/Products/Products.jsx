@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './products.css';
 import TestList from '../../pages/TestList/TestList';
+import { BASE_URL_API } from '../../requestMethods';
 
 // const Wrapper = styled.div``;
 
@@ -30,9 +31,12 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
             try {
                 const res = await axios.get(
                     cat
-                        ? `http://localhost:5000/api/products?category=${cat}&page=${filterPage}&limit=${limit}`
+                        ? // ? `http://localhost:5000/api/products?category=${cat}&page=${filterPage}&limit=${limit}`
+                          BASE_URL_API +
+                              `products?category=${cat}&page=${filterPage}&limit=${limit}`
                         : // : 'http://localhost:5000/api/products/',
-                          `http://localhost:5000/api/products/pagination?page=${filterPage}&limit=${limit}`,
+                          BASE_URL_API +
+                              `products/pagination?page=${filterPage}&limit=${limit}`,
                     //   `https://api-sell-vercel-lkxxh5xqq-sam141101.vercel.app/api/products/pagination?page=${filterPage}`,
                 );
                 const { resultProducts, pagi } = res.data;

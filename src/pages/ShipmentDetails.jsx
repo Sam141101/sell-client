@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { async } from '@firebase/util';
+import { BASE_URL_API } from '../requestMethods';
 
 const Container = styled.div`
     padding: 0 5%;
@@ -218,7 +219,7 @@ const ShipmentDetails = () => {
     const handleFinishClick = async () => {
         try {
             const res = await axios.post(
-                'http://localhost:5000/api/orders/',
+                BASE_URL_API + 'orders/',
                 { inputs, cart, userId, totalPrice },
                 {
                     headers: { token: `Bearer ${user.token}` },

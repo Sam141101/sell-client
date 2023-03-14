@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/NavBar/NavBar';
 import { register } from '../../redux/apiCalls';
+import { BASE_URL_API } from '../../requestMethods';
 import { mobile } from '../../responsive';
 import './emailVerify.css';
 
@@ -46,7 +47,7 @@ const EmailVerify = () => {
         //  else {
         // }
         try {
-            const url = `http://localhost:5000/api/auth/confirm/register`;
+            const url = BASE_URL_API + `auth/confirm/register`;
             const { data: res } = await axios.post(url, { email });
             console.log('xác thực email');
             setMsg(res.message);
