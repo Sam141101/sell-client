@@ -12,7 +12,8 @@ const Test = ({ menu }) => {
             const res = await axios.post('http://localhost:5000/api/paypal/pay');
             // const res = await axios.post('http://localhost:5000/pay');
             // navigate(`${res.data}`);
-            window.location.href = `${res.data}`;
+            // window.location.href = `${res.data}`;
+            console.log(res.data);
         } catch (err) {
             console.log(err);
         }

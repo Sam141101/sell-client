@@ -18,7 +18,7 @@ import { useSelector } from 'react-redux';
 import UserProfile from './pages/UserProfile/UserProfile';
 import Search from './pages/Search/Search';
 import EmailVerify from './pages/EmailVerify/EmailVerify';
-import ShipmentDetails from './pages/ShipmentDetails';
+import ShipmentDetails from './pages/ShipmentDetails/ShipmentDetails';
 import Purchase from './pages/Purchase';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import NewPassword from './pages/NewPassword/NewPassword';
@@ -33,6 +33,8 @@ import Test from './pages/Test';
 import { publicRoutes } from './routes/publicRouter';
 import DefaultLayoutPolicy from './components/Layout/DefaultLayoutPolicy';
 import { Fragment } from 'react';
+import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
+import OrderCancel from './pages/OrderSuccess/OrderCancel';
 
 function App() {
     // test
@@ -65,6 +67,8 @@ function App() {
                 })}
 
                 <Route path="/test" element={<Test />} />
+                <Route path="/test11" element={<OrderSuccess />} />
+                <Route path="/test12" element={<OrderCancel />} />
 
                 {/* <Route path="/ttt5" element={<Register />} /> */}
                 <Route path="/change-account" element={<ChangePassword />} />

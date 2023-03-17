@@ -1,4 +1,6 @@
 import DefaultLayoutAuth from '../components/Layout/DefaultLayoutAuth';
+import DefaultLayoutOrder from '../components/Layout/DefaultLayoutOrder';
+import WaitForTheGoods from '../components/WaitForTheGoods/WaitForTheGoods';
 import About from '../pages/About/About';
 import EmailVerify from '../pages/EmailVerify/EmailVerify';
 import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
@@ -66,6 +68,41 @@ const publicRoutes = [
         // path: 'ttt',
         component: Register,
         layout: DefaultLayoutAuth,
+    },
+
+    // order
+    {
+        path: '/wait-for-confirmation',
+        component: WaitForTheGoods,
+        layout: DefaultLayoutOrder,
+        show1: 1,
+    },
+    {
+        path: '/waiting-for-the-goods',
+        component: WaitForTheGoods,
+        layout: DefaultLayoutOrder,
+        show1: 2,
+    },
+
+    {
+        path: '/delivering',
+        component: WaitForTheGoods,
+        layout: DefaultLayoutOrder,
+        show1: 3,
+    },
+
+    {
+        path: '/complete',
+        component: WaitForTheGoods,
+        layout: DefaultLayoutOrder,
+        show1: 4,
+    },
+
+    {
+        path: '/canceled',
+        component: WaitForTheGoods,
+        layout: DefaultLayoutOrder,
+        show1: 5,
     },
 
     // { path: '/', component: Profile },

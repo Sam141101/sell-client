@@ -56,7 +56,7 @@ import './product.css';
 // export default Product;
 
 const Product = ({ item }) => {
-    console.log('vô product');
+    // console.log('vô product');
 
     return (
         <div className="product-container">

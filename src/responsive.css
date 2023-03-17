@@ -588,4 +588,99 @@
         margin-left: 0px !important;
         padding: 12px 35px !important;
     }
+
+    /* shipment detail */
+    .ship_ment-details-container {
+        overflow: hidden;
+    }
+
+    .ship_ment-details-container-left {
+        padding: 0 15px 15px 15px !important;
+    }
+
+    .ship_ment-details-title {
+        padding: 21px 15px;
+    }
+
+    .ship_ment-details-container-right {
+        padding: 0 !important;
+        background-color: #fafafa;
+    }
+
+    .ship_ment-details-product-list {
+        padding: 20px 15px !important;
+    }
+
+    .ship_ment-details-img {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .ship_ment-details-img {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .ship_ment-details-price-mobile {
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 5px;
+    }
+
+    .ship_ment-details-block-mobile-info {
+        margin-right: 15px !important;
+    }
+
+    .ship_ment-details-details-product:last-child {
+        margin-bottom: 0px;
+    }
+
+    .ship_ment-details-total-sum {
+        border-bottom: 1px solid #e1e1e1;
+        padding: 15px !important;
+    }
+
+    .ship_ment-details-text-sum {
+        font-weight: 500 !important;
+    }
+
+    .ship_ment-details-number-price {
+        font-size: 22px !important;
+    }
+
+    .ship_ment-details-show-mobile {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s;
+    }
+
+    .ship_ment-details-show-mobile.show-list {
+        max-height: initial;
+    }
+
+    .ship_ment-details-text-title {
+        font-weight: 500 !important;
+        color: #333 !important;
+        margin-top: 20px !important;
+    }
+
+    .ship_ment-details-info-user {
+        width: 100% !important;
+    }
+
+    .ship_ment-details-payment-method {
+        margin-top: 10px !important;
+        width: 100% !important;
+    }
+
+    .ship_ment-details-payment-name {
+        padding: 0px 40px !important;
+    }
+
+    .ship_ment-details-payment-paypal {
+        height: 30px !important;
+    }
+
+    .ship_ment-details-block-button {
+        width: 100% !important;
+        padding-left: 10px;
+    }
 }

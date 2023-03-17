@@ -7,6 +7,7 @@ import { Link, Route, Router, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 import './waitPurchase.css';
+import '../../pages/About/about.css';
 
 const NoOrder = styled.img`
         display: block;
@@ -21,7 +22,7 @@ const Size = styled.div``;
 const Quanti = styled.div``;
 const Price = styled.div``;
 
-const WaitPurchase = () => {
+const WaitForTheGoods = ({ selected }) => {
     const user = useSelector((state) => state.auth?.currentUser);
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(true);
@@ -88,4 +89,4 @@ const WaitPurchase = () => {
     );
 };
 
-export default WaitPurchase;
+export default WaitForTheGoods;

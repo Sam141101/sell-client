@@ -1,0 +1,280 @@
+.ship_ment-details-container {
+    /* padding: 0 5%;
+    margin: 0 120px;
+    display: flex;
+    width: 90%; */
+}
+
+.ship_ment-details-container-left {
+    width: 100%;
+    /* padding-right: 6%; */
+    padding-top: 56px;
+}
+
+.ship_ment-details-container-left-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.ship_ment-details-title {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.ship_ment-details-text-title {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.ship_ment-details-user {
+    display: flex;
+    align-items: center;
+    margin-left: 7px;
+    margin-bottom: 20px;
+}
+
+.ship_ment-details-user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    margin-right: 15px;
+}
+
+.ship_ment-details-user-text {
+    color: #737373;
+    font-size: 15px;
+}
+
+.ship_ment-details-logout-user {
+    color: #338dbc;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.ship_ment-details-logout-user:hover {
+    color: #2b78a0;
+    filter: brightness(1.2);
+}
+
+.ship_ment-details-info-user {
+    width: 90%;
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.ship_ment-details-payment-method {
+    margin-top: 25px;
+    font-size: 15px;
+    width: 90%;
+}
+
+.ship_ment-details-form-key {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.ship_ment-details-form-value {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.ship_ment-details-block-payment {
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+.ship_ment-details-form-value-select {
+    margin-right: 12px;
+}
+
+.ship_ment-details-block-button {
+    display: flex;
+    margin: 30px 0;
+    justify-content: space-between;
+    font-size: 15px;
+    align-items: center;
+    width: 90%;
+}
+
+.ship_ment-details-cart {
+    color: #338dbc;
+    font-weight: 500;
+}
+
+.ship_ment-details-cart:hover {
+    color: #2b78a0;
+    filter: brightness(1.2);
+}
+
+.ship_ment-details-finished {
+    display: inline-block;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 17px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    background: #338dbc;
+    color: white;
+    border: none;
+}
+
+.ship_ment-details-container-right {
+    width: 100%;
+    padding-top: 56px;
+    padding-left: 8%;
+    /* border-left: 1px solid #ccc; */
+}
+
+.ship_ment-details-product-list {
+    border-bottom: 1px solid;
+    border-color: #e1e1e1;
+    padding-bottom: 15px;
+}
+
+.ship_ment-details-details-product {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+    position: relative;
+}
+
+.ship_ment-details-img {
+    width: 65px;
+    height: 65px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.ship_ment-details-name {
+    font-weight: 500;
+}
+
+.ship_ment-details-size {
+    opacity: 0.7;
+}
+
+.ship_ment-details-quanti {
+    font-size: 12px;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    background: #949393;
+    top: -8px;
+    left: 55px;
+    z-index: 1;
+    align-items: center;
+    color: white;
+    justify-content: center;
+}
+
+.ship_ment-details-total-sum {
+    padding: 20px 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ship_ment-details-text-sum {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.ship_ment-details-text-price {
+    display: flex;
+    align-items: center;
+    color: #979696;
+}
+
+.ship_ment-details-number-price {
+    font-size: 25px;
+    font-weight: 500;
+    margin-left: 10px;
+    color: black;
+}
+
+.ship_ment-details-payment-name {
+    padding: 0px 70px;
+    background-color: #f7c039;
+    border-radius: 22px;
+    margin-left: 5px;
+}
+
+.ship_ment-details-payment-paypal {
+    height: 45px;
+    display: flex;
+}
+
+.custom-line {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 1px;
+    height: 100%;
+    background: #cbc9c9;
+    position: fixed;
+    top: 0;
+    left: 50%;
+}
+
+.ship-ment-background {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    background: #ccc;
+    width: 100%;
+    height: 100%;
+}
+
+.ship_ment-details-title-mobile {
+    display: flex;
+    justify-content: space-between;
+    padding: 17.5px 15px;
+    align-items: center;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 24px;
+}
+
+.ship_ment-details-title-mobile-left {
+    display: flex;
+    align-items: center;
+    color: #338dbc;
+}
+
+.ship_ment-details-title-mobile-icon {
+    font-size: 24px !important;
+}
+
+.ship_ment-details-title-mobile-info {
+    margin-left: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.ship_ment-details-info-mobile-icon {
+    font-size: 20px !important;
+    margin-top: 3px;
+}
+
+.ship_ment-details-title-mobile-right {
+    font-size: 18px;
+}

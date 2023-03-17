@@ -71,13 +71,13 @@ const Product = () => {
     const [showBorder, setShowBorder] = useState(data[0].img);
     // -------------------
 
-    const blurSize = (e) => {
-        if (!e.target.value) {
-            setCheckSize(false);
-        } else {
-            setCheckSize(true);
-        }
-    };
+    // const blurSize = (e) => {
+    //     if (!e.target.value) {
+    //         setCheckSize(false);
+    //     } else {
+    //         setCheckSize(true);
+    //     }
+    // };
 
     const handleQuantity = (type) => {
         if (type === 'dec') {
@@ -90,7 +90,7 @@ const Product = () => {
     const onChangeSize = (e) => {
         setSize(e.target.value);
         setBorderColor('#ffffff');
-        document.getElementById('text').innerHTML = '';
+        // document.getElementById('text').innerHTML = '';
     };
 
     const handleSize = (s) => {
@@ -111,14 +111,17 @@ const Product = () => {
             quantity_sp: quantity,
             size_sp: size,
         };
-        if (checkSize) {
-            addCart(user.token, dispatch, addProductCarts, cartProducts);
-            // setBorderColor('#ffffff');
-            // document.getElementById('text').innerHTML = '';
-        } else {
-            document.getElementById('text').innerHTML = 'Vui lòng chọn size';
-            setBorderColor('red');
-        }
+        // console.log('>>>>', checkSize);
+        addCart(user.token, dispatch, addProductCarts, cartProducts);
+
+        // if (checkSize) {
+        //     addCart(user.token, dispatch, addProductCarts, cartProducts);
+        // setBorderColor('#ffffff');
+        // document.getElementById('text').innerHTML = '';
+        // } else {
+        // document.getElementById('text').innerHTML = 'Vui lòng chọn size';
+        //     setBorderColor('red');
+        // }
     };
 
     useEffect(() => {
@@ -134,7 +137,7 @@ const Product = () => {
         getProduct();
     }, [id]);
 
-    console.log('1');
+    // console.log('1');
 
     return (
         <div className="product-page-frame">
