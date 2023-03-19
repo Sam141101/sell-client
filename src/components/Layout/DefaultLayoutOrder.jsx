@@ -62,7 +62,7 @@ function DefaultLayoutOrder({ children, show1 }) {
                                     <Link
                                         style={{
                                             textDecoration: 'none',
-                                            color: `${show1 ? 'red' : ''} `,
+                                            color: `${show1 ? '#ee4d2d' : ''} `,
                                         }}
                                         to="/wait-for-confirmation"
                                     >

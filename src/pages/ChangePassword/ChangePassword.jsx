@@ -117,7 +117,7 @@ const ChangePassword = () => {
                                         </div>
                                         <Link
                                             style={{ textDecoration: 'none' }}
-                                            to="/ttt"
+                                            to="/wait-for-confirmation"
                                         >
                                             <div className="change-password-item">
                                                 <img

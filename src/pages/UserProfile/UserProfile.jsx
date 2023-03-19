@@ -194,7 +194,7 @@ const UserProfile = () => {
                                         </div>
                                         <Link
                                             style={{ textDecoration: 'none' }}
-                                            to="/ttt"
+                                            to="/wait-for-confirmation"
                                         >
                                             <div className="user-profile-item">
                                                 <img
