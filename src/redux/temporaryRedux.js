@@ -5,6 +5,7 @@ const temporarySlice = createSlice({
     initialState: {
         amount: null,
         orderId: null,
+        cartid: null,
     },
     reducers: {
         // getTemporary: (state, action) => {
@@ -16,11 +17,13 @@ const temporarySlice = createSlice({
             console.log(action.payload);
             state.amount = action.payload.total;
             state.orderId = action.payload.orderId;
+            state.cartid = action.payload.cartid;
         },
 
         resetTemporary: (state, action) => {
             state.amount = null;
             state.orderId = null;
+            state.cartid = null;
         },
     },
 });

@@ -23,6 +23,7 @@ const ShipmentDetails = () => {
     const total = useSelector((state) => state?.cart);
     const [inputs, setInputs] = useState({});
     const [product, setProduct] = useState({});
+    const [show, setShow] = useState(false);
     const userId = user._id;
     const totalPrice = total.total;
 
@@ -54,18 +55,44 @@ const ShipmentDetails = () => {
                 },
             );
             console.log(res.data);
-            dispatch(addTemporary(res.data));
-            window.location.href = `${res.data.link}`;
+
+            if (inputs.method === 'paypal') {
+                dispatch(addTemporary(res.data));
+                window.location.href = `${res.data.link}`;
+            } else if (res.data === 'success') {
+                setShow(true);
+                setTimeout(() => {
+                    navigate('/wait-for-confirmation');
+                }, 5000);
+            }
 
             // navigate('/ttt');
-        } catch (e) {}
-
-        // console.log(inputs.method);
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     return (
         <div className="ship_ment-details-container">
-            {/* <div className="ship-ment-background"></div> */}
+            <>
+                {show && (
+                    <div className="user-profile-mobile-frame">
+                        <div className="user-profile-wrapper">
+                            <div className="user-profile-noti">
+                                <img
+                                    className="user-profile-noti-img"
+                                    src="https://png.pngtree.com/png-vector/20190228/ourmid/pngtree-check-mark-icon-design-template-vector-isolated-png-image_711429.jpg"
+                                    alt=""
+                                />
+
+                                <p className="user-profile-text-noti">
+                                    Đặt hàng thành công
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </>
 
             <div className="grid wide">
                 <div className="row">

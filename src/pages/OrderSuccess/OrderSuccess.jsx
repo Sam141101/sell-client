@@ -11,9 +11,11 @@ const OrderSuccess = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const amountProduct = useSelector((state) => state.temporary?.amount);
     const orderId = useSelector((state) => state.temporary?.orderId);
+    const cartId = useSelector((state) => state.temporary?.cartid);
 
     const token = user.token;
     const [show, setShow] = useState(true);
+    const [method, setMethod] = useState(false);
     const location = useLocation();
 
     let arr = window.location.search.slice(1).split('&');
@@ -32,7 +34,7 @@ const OrderSuccess = () => {
             try {
                 const res = await axios.get(
                     BASE_URL_API +
-                        `paypal/success/?paymentId=${paymentId}&PayerID=${payerId}&amount=${amountProduct}&orderId=${orderId}`,
+                        `paypal/success/?paymentId=${paymentId}&PayerID=${payerId}&amount=${amountProduct}&orderId=${orderId}&cartId=${cartId}`,
                 );
                 console.log(res.data);
                 if (res.data === 'Thanh toán thất bại') {

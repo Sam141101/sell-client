@@ -1,6 +1,10 @@
 import DefaultLayoutAuth from '../components/Layout/DefaultLayoutAuth';
 import DefaultLayoutOrder from '../components/Layout/DefaultLayoutOrder';
-import WaitForTheGoods from '../components/WaitForTheGoods/WaitForTheGoods';
+import Canceled from '../components/WaitForProduct/Canceled';
+import Complete from '../components/WaitForProduct/Complete';
+import Delivering from '../components/WaitForProduct/Delivering';
+import WaitForConfirmation from '../components/WaitForProduct/WaitForConfirmation';
+import WaitForTheGoods from '../components/WaitForProduct/WaitForTheGoods';
 import About from '../pages/About/About';
 import EmailVerify from '../pages/EmailVerify/EmailVerify';
 import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
@@ -73,7 +77,7 @@ const publicRoutes = [
     // order
     {
         path: '/wait-for-confirmation',
-        component: WaitForTheGoods,
+        component: WaitForConfirmation,
         layout: DefaultLayoutOrder,
         show1: 1,
     },
@@ -86,21 +90,21 @@ const publicRoutes = [
 
     {
         path: '/delivering',
-        component: WaitForTheGoods,
+        component: Delivering,
         layout: DefaultLayoutOrder,
         show1: 3,
     },
 
     {
         path: '/complete',
-        component: WaitForTheGoods,
+        component: Complete,
         layout: DefaultLayoutOrder,
         show1: 4,
     },
 
     {
         path: '/canceled',
-        component: WaitForTheGoods,
+        component: Canceled,
         layout: DefaultLayoutOrder,
         show1: 5,
     },

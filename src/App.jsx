@@ -19,7 +19,6 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import Search from './pages/Search/Search';
 import EmailVerify from './pages/EmailVerify/EmailVerify';
 import ShipmentDetails from './pages/ShipmentDetails/ShipmentDetails';
-import Purchase from './pages/Purchase';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import NewPassword from './pages/NewPassword/NewPassword';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
@@ -74,7 +73,6 @@ function App() {
                 <Route path="/change-account" element={<ChangePassword />} />
 
                 <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/ttt" element={<Purchase />} />
 
                 {/* sản phẩm */}
                 <Route path="/search/:category" element={<Search />} />
