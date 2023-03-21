@@ -79,6 +79,14 @@
     justify-content: flex-end;
 }
 
+.wait-purchase-evaluate-order {
+    padding-right: 50px;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
 .wait-purchase-info-block {
     display: flex;
     justify-content: space-around;
@@ -128,4 +136,18 @@
 .wait-purchase-total-price-text {
     color: red;
     margin-left: 10px;
+}
+
+.wait-purchase-evaluate {
+    padding: 13px 20px;
+    background: red;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    line-height: 18px;
+    text-decoration: none;
 }

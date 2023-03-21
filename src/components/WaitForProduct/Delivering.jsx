@@ -15,9 +15,22 @@ const Delivering = ({ selected }) => {
     const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleClick = (e) => {
-        e.preventDefault();
+    const handleClick = async (e) => {
+        try {
+            const res = await axios.put(
+                BASE_URL_API + 'orders/order-complete/' + user._id,
+                { orderId: e },
+                {
+                    headers: { token: `Bearer ${user.token}` },
+                },
+            );
+            console.log(res.data);
+            navigate('/complete');
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     useEffect(() => {
@@ -80,8 +93,11 @@ const Delivering = ({ selected }) => {
                                 </div>
                             </div>
                             <div className="wait-purchase-cancel-order">
-                                <button className="wait-purchase-cancel-order-button">
-                                    Huỷ đơn
+                                <button
+                                    className="wait-purchase-cancel-order-button"
+                                    onClick={handleClick(item._id)}
+                                >
+                                    Đã nhận được hàng
                                 </button>
                             </div>
                         </div>

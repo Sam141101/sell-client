@@ -7,6 +7,7 @@ import WaitForConfirmation from '../components/WaitForProduct/WaitForConfirmatio
 import WaitForTheGoods from '../components/WaitForProduct/WaitForTheGoods';
 import About from '../pages/About/About';
 import EmailVerify from '../pages/EmailVerify/EmailVerify';
+import Evaluate from '../pages/Evaluate/Evaluate';
 import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
 import Home from '../pages/Home';
 import Login from '../pages/Login/Login';
@@ -107,6 +108,14 @@ const publicRoutes = [
         component: Canceled,
         layout: DefaultLayoutOrder,
         show1: 5,
+    },
+
+    // Evaluate
+    {
+        // path: '/danh-gia-san-pham/:id',
+        path: '/danh-gia-san-pham',
+        component: Evaluate,
+        layout: DefaultLayoutAuth,
     },
 
     // { path: '/', component: Profile },

@@ -34,6 +34,8 @@ import DefaultLayoutPolicy from './components/Layout/DefaultLayoutPolicy';
 import { Fragment } from 'react';
 import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
 import OrderCancel from './pages/OrderSuccess/OrderCancel';
+import Evaluate from './pages/Evaluate/Evaluate';
+import Complete from './components/WaitForProduct/Complete';
 
 function App() {
     // test
@@ -65,6 +67,8 @@ function App() {
                     );
                 })}
 
+                <Route path="/testlll" element={<Evaluate />} />
+                <Route path="/testlll2" element={<Complete />} />
                 <Route path="/test" element={<Test />} />
                 <Route path="/test11" element={<OrderSuccess />} />
                 <Route path="/test12" element={<OrderCancel />} />

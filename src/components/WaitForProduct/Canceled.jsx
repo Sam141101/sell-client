@@ -81,7 +81,7 @@ const Canceled = ({ selected }) => {
                             </div>
                             <div className="wait-purchase-cancel-order">
                                 <button className="wait-purchase-cancel-order-button">
-                                    Huỷ đơn
+                                    Chi tiết Đơn huỷ
                                 </button>
                             </div>
                         </div>

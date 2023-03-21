@@ -15,9 +15,22 @@ const WaitForTheGoods = ({ selected }) => {
     const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleClick = (e) => {
-        e.preventDefault();
+    const handleClick = async (e) => {
+        try {
+            const res = await axios.put(
+                BASE_URL_API + 'orders/order-cancel/' + user._id,
+                { orderId: e },
+                {
+                    headers: { token: `Bearer ${user.token}` },
+                },
+            );
+            console.log(res.data);
+            navigate('/canceled');
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     useEffect(() => {
@@ -80,7 +93,10 @@ const WaitForTheGoods = ({ selected }) => {
                                 </div>
                             </div>
                             <div className="wait-purchase-cancel-order">
-                                <button className="wait-purchase-cancel-order-button">
+                                <button
+                                    className="wait-purchase-cancel-order-button"
+                                    onClick={handleClick(item._id)}
+                                >
                                     Huỷ đơn
                                 </button>
                             </div>

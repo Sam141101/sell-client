@@ -15,15 +15,27 @@ const WaitForConfirmation = ({ selected }) => {
     const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleClick = (e) => {
-        e.preventDefault();
+    const handleClick = async (e) => {
+        try {
+            const res = await axios.put(
+                BASE_URL_API + 'orders/order-cancel/' + user._id,
+                { orderId: e },
+                {
+                    headers: { token: `Bearer ${user.token}` },
+                },
+            );
+            console.log(res.data);
+            navigate('/canceled');
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     useEffect(() => {
         const getProduct = async () => {
             try {
-                // const res = await axios.get(BASE_URL_API + 'orders/find/' + user._id, {
                 const res = await axios.get(
                     BASE_URL_API + 'orders/find/wait-for-confirmation/' + user._id,
                     {
@@ -45,7 +57,7 @@ const WaitForConfirmation = ({ selected }) => {
             {show ? (
                 <div className="wait-purchase-container">
                     {product?.map((item) => (
-                        <div key={item._id}>
+                        <div className="wait-for-product-list" key={item._id}>
                             {item?.products.map((item1, index) => (
                                 <div className="wait-purchase-product-order" key={index}>
                                     <div className="wait-purchase-details-product">
@@ -65,25 +77,29 @@ const WaitForConfirmation = ({ selected }) => {
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="wait-purchase-block">
-                                        <div className="wait-purchase-status">
-                                            Chờ xác nhận
-                                        </div>
-                                        <div className="wait-purchase-cancel-order">
-                                            Huỷ đơn
-                                        </div>
-                                    </div>
                                 </div>
                             ))}
 
-                            <div className="wait-purchase-total-price">
-                                <span className="wait-purchase-total-price-text">
-                                    Tổng số tiền
-                                </span>
-                                <span className="wait-purchase-total-price-text">
-                                    {item.amount}
-                                </span>
+                            <div className="wait-purchase-block">
+                                <div className="wait-purchase-status">
+                                    <span>Trạng thái:</span>
+                                    Chờ xác nhận
+                                </div>
+
+                                <div className="wait-purchase-total-price">
+                                    Tổng số tiền:
+                                    <span className="wait-purchase-total-price-text">
+                                        {item.amount}₫
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="wait-purchase-cancel-order">
+                                <button
+                                    className="wait-purchase-cancel-order-button"
+                                    onClick={handleClick(item._id)}
+                                >
+                                    Huỷ đơn
+                                </button>
                             </div>
                         </div>
                     ))}
