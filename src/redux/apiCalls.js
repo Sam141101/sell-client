@@ -160,3 +160,13 @@ export const postCommnetUser = async (token, user_id, infoComment) => {
         console.log(err);
     }
 };
+
+// export const getInfoProduct = async (token, user_id, infoComment) => {
+//     try {
+//         await axios.post(BASE_URL_API + `comments/${user_id}`, infoComment, {
+//             headers: { token: `Bearer ${token}` },
+//         });
+//     } catch (err) {
+//         console.log(err);
+//     }
+// };

@@ -111,28 +111,7 @@ const Slider = () => {
 
                                 <Wrapper slideIndex={slideIndex}>
                                     {sliderItems.map((item) => (
-                                        // <Slide bg={item.bg} key={item.id}>
-                                        //     <ImgContainer>
-                                        //         <Image src={item.img} />
-                                        //     </ImgContainer>
-
-                                        //     <InfoContainer>
-                                        //         <Title>{item.title}</Title>
-                                        //         <Desc>{item.desc}</Desc>
-                                        //         <Link
-                                        //             to={`/products/${item.cat}`}
-                                        //             style={{ textDecoration: 'none' }}
-                                        //         >
-                                        //             <Button>XEM NGAY</Button>
-                                        //         </Link>
-                                        //     </InfoContainer>
-                                        // </Slide>
-
                                         <Slide bg={item.bg} key={item.id}>
-                                            {/* <ImgContainer>
-                            <Image src={item.img} />
-                        </ImgContainer> */}
-                                            {/* <div className="col l-12"> */}
                                             <div className="img-container">
                                                 <img
                                                     src={item.img}
@@ -140,18 +119,6 @@ const Slider = () => {
                                                     className="img-item"
                                                 />
                                             </div>
-                                            {/* </div> */}
-
-                                            {/* <InfoContainer>
-                            <Title>{item.title}</Title>
-                            <Desc>{item.desc}</Desc>
-                            <Link
-                                to={`/products/${item.cat}`}
-                                style={{ textDecoration: 'none' }}
-                            >
-                                <Button>XEM NGAY</Button>
-                            </Link>
-                        </InfoContainer> */}
                                         </Slide>
                                     ))}
                                 </Wrapper>

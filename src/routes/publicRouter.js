@@ -113,7 +113,7 @@ const publicRoutes = [
     // Evaluate
     {
         // path: '/danh-gia-san-pham/:id',
-        path: '/danh-gia-san-pham',
+        path: '/danh-gia-san-pham/:product_id/:order_id',
         component: Evaluate,
         layout: DefaultLayoutAuth,
     },

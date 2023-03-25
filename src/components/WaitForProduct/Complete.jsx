@@ -38,22 +38,22 @@ const Complete = ({ selected }) => {
                 <div className="wait-purchase-container">
                     {product?.map((item) => (
                         <div className="wait-for-product-list" key={item._id}>
-                            {item?.products.map((item, index) => (
+                            {item?.products.map((item1, index) => (
                                 <div className="wait-purchase-product-order" key={index}>
                                     <div className="wait-purchase-details-product">
                                         <img
                                             className="wait-purchase-img"
                                             alt=""
-                                            src={item.product_id.img}
+                                            src={item1.product_id.img}
                                         />
                                         <div className="wait-purchase-info">
                                             <div className="wait-purchase-name-size">
-                                                <div>{item.product_id.title}</div>
-                                                <div>{item.size}</div>
+                                                <div>{item1.product_id.title}</div>
+                                                <div>{item1.size}</div>
                                             </div>
                                             <div className="wait-purchase-price-quanti">
-                                                <div>x{item.quantity}</div>
-                                                <div>{item.price}₫</div>
+                                                <div>x{item1.quantity}</div>
+                                                <div>{item1.price}₫</div>
                                             </div>
                                         </div>
                                     </div>
@@ -62,9 +62,9 @@ const Complete = ({ selected }) => {
                                         <Link
                                             className="wait-purchase-evaluate"
                                             // to="/evalate/"
-                                            to={`/evaluate/${item.product_id._id}`}
+                                            to={`/danh-gia-san-pham/${item1.product_id._id}/${item._id}`}
                                         >
-                                            {item.checkEvaluate ? 'Mua lại' : 'Đánh giá'}
+                                            {item1.checkEvaluate ? 'Mua lại' : 'Đánh giá'}
                                         </Link>
                                     </div>
                                 </div>

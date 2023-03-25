@@ -95,7 +95,7 @@ const WaitForTheGoods = ({ selected }) => {
                             <div className="wait-purchase-cancel-order">
                                 <button
                                     className="wait-purchase-cancel-order-button"
-                                    onClick={handleClick(item._id)}
+                                    onClick={() => handleClick(item._id.toString())}
                                 >
                                     Huỷ đơn
                                 </button>

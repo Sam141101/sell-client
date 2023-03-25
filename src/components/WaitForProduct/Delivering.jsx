@@ -95,7 +95,7 @@ const Delivering = ({ selected }) => {
                             <div className="wait-purchase-cancel-order">
                                 <button
                                     className="wait-purchase-cancel-order-button"
-                                    onClick={handleClick(item._id)}
+                                    onClick={() => handleClick(item._id.toString())}
                                 >
                                     Đã nhận được hàng
                                 </button>

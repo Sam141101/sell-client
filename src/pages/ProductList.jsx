@@ -20,11 +20,6 @@ const Title = styled.h1`
     font-weight: 700;
 `;
 
-const FilterContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-`;
-
 const Filter = styled.div``;
 
 const FilterText = styled.span`

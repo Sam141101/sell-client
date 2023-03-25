@@ -12,42 +12,19 @@ import useDebounce from '../../hooks/useDebounce';
 import './searchs.css';
 import { BASE_URL_API } from '../../requestMethods';
 
-const Button = styled.button`
-    position: absolute;
-    padding: 0;
-    top: 0px;
-    bottom: 0;
-    right: 0px;
-    border-radius: 0 4px 4px 0;
-    border: 0;
-    width: 50px;
-    background: #d1d1d1;
-    transition: opacity 150ms linear;
-    cursor: pointer;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-
-    color: ${(props) => props.searchValue};
-
-    &:disabled {
-        // opacity: 0.7;
-        cursor: not-allowed;
-    }
-`;
-
 const Searchs = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     // --------------- Phần search --------------------
     const inputRef = useRef();
+    const listRef = useRef();
 
     const [searchTerm, setSearchTerm] = useState('');
     const [listProduct, setListProduct] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [isHoveringList, setIsHoveringList] = useState(false);
+
     // const [loading, setLoading] = useState(false);
 
     const [showNot, setShowNot] = useState(false);
@@ -62,18 +39,12 @@ const Searchs = () => {
     };
 
     const handleClick = (product) => {
+        console.log(product);
         navigate(`/product/${product._id}`);
-        setShowResult(false);
-    };
-
-    document.addEventListener('click', (e) => {
-        const box = document.getElementById('search');
-
-        // console.log(e.target);
-        if (!box.contains(e.target)) {
+        if (showResult) {
             setShowResult(false);
         }
-    });
+    };
 
     useEffect(() => {
         const showProduct = async () => {
@@ -98,6 +69,25 @@ const Searchs = () => {
     }, [debounced]);
 
     useEffect(() => {
+        const handleDocumentClick = (e) => {
+            if (
+                inputRef.current &&
+                !inputRef.current.contains(e.target) &&
+                listRef.current &&
+                !listRef.current.contains(e.target)
+            ) {
+                setShowResult(false);
+            }
+        };
+
+        document.addEventListener('click', handleDocumentClick);
+
+        return () => {
+            document.removeEventListener('click', handleDocumentClick);
+        };
+    }, []);
+
+    useEffect(() => {
         if (debounced === '') {
             setShowNot(false);
         } else if (debounced !== '' && listProduct.length === 0) {
@@ -108,23 +98,7 @@ const Searchs = () => {
     }, [debounced, listProduct]);
 
     return (
-        // <div
-        //     onBlur={() => {
-        //         setShowResult(false);
-        //     }}
-        // >
-        <div
-            className="searchs-container"
-            // onBlur={() => {
-            //     setShowResult(false);
-            // }}
-
-            // onFocusOut={() => {
-            //     setShowResult(false);
-            // }}
-            id="search"
-            // onClick={(e) => moveClick(e.target)}
-        >
+        <div className="searchs-container" id="search">
             <input
                 className="searchs-input"
                 ref={inputRef}
@@ -135,6 +109,7 @@ const Searchs = () => {
                 onFocus={() => setShowResult(true)}
                 // onBlur={() => {
                 //     setShowResult(false);
+                //     setIsHoveringList(false);
                 // }}
             />
 
@@ -150,28 +125,6 @@ const Searchs = () => {
                 </div>
             )}
 
-            {/* {loading && (
-                <ButtonClose
-                    onClick={() => {
-                        setSearchTerm('');
-                        inputRef.current.focus();
-                    }}
-                >
-                    <RotateRight style={{ fontSize: '11px',
-                 }} />
-                </ButtonClose>
-            )} */}
-
-            {/* <button
-                className="searchs-button"
-                disabled={!searchTerm}
-                id="button"
-                onClick={handleSubmit}
-                searchValue={searchTerm ? '#393838' : 'white'}
-            >
-                <Search fontSize="large" />
-            </button> */}
-
             <button
                 disabled={!searchTerm}
                 id="button"
@@ -183,7 +136,11 @@ const Searchs = () => {
             </button>
 
             {showResult && searchTerm.length > 0 && (
-                <div className="searchs-list">
+                <div
+                    className="searchs-list"
+                    ref={listRef}
+                    onMouseLeave={() => setShowResult(false)}
+                >
                     {listProduct?.map((product, index) => (
                         <div
                             className="searchs-item-main"
@@ -204,6 +161,27 @@ const Searchs = () => {
                                 src={product.img}
                             />
                         </div>
+
+                        // <Link
+                        //     className="searchs-item-main"
+                        //     key={index}
+                        //     onClick={() => handleClick(product)}
+                        //     to={`/product/${product._id}`}
+                        // >
+                        //     <div className="searchs-item">
+                        //         <div>
+                        //             <div className="searchs-item-title">
+                        //                 {product.title}
+                        //             </div>
+                        //             <p className="searchs-item-price">{product.price}₫</p>
+                        //         </div>
+                        //     </div>
+                        //     <img
+                        //         className="searchs-item-img"
+                        //         alt="Search"
+                        //         src={product.img}
+                        //     />
+                        // </Link>
                     ))}
 
                     <div
@@ -221,8 +199,33 @@ const Searchs = () => {
                 </div>
             )}
         </div>
-        // </div>
     );
 };
 
 export default Searchs;
+
+{
+    /* {loading && (
+                <ButtonClose
+                    onClick={() => {
+                        setSearchTerm('');
+                        inputRef.current.focus();
+                    }}
+                >
+                    <RotateRight style={{ fontSize: '11px',
+                 }} />
+                </ButtonClose>
+            )} */
+}
+
+{
+    /* <button
+                className="searchs-button"
+                disabled={!searchTerm}
+                id="button"
+                onClick={handleSubmit}
+                searchValue={searchTerm ? '#393838' : 'white'}
+            >
+                <Search fontSize="large" />
+            </button> */
+}

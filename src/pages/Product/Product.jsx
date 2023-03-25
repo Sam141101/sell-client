@@ -300,12 +300,12 @@ const Product = () => {
                                         Thêm vào giỏ
                                     </button>
 
-                                    <button
+                                    {/* <button
                                         className="product-button-buy"
                                         // onClick={handleClick}
                                     >
                                         Mua ngay
-                                    </button>
+                                    </button> */}
                                 </div>
 
                                 {/* <span className="product-span" id="text"></span> */}

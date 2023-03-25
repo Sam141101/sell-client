@@ -168,10 +168,6 @@
         padding: 0 15px;
     }
 
-    .footer-social-container {
-        margin-top: 15px;
-    }
-
     .newsletter-container {
         height: auto !important;
         padding: 0 15px 15px 15px;
@@ -310,7 +306,8 @@
     }
 
     .show-comment {
-        padding: 0 10px !important;
+        padding: 0 !important;
+        background-color: transparent !important;
     }
 
     .product-info-container {
@@ -682,5 +679,62 @@
     .ship_ment-details-block-button {
         width: 100% !important;
         padding-left: 10px;
+    }
+
+    .main-evaluate-comment {
+        border-bottom: 1px solid #ccc !important;
+        background-color: transparent !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .main-evaluate-comment-left {
+        margin-right: 5px !important;
+        flex-direction: row !important;
+        margin-bottom: 5px;
+    }
+
+    .main-evaluate-comment .MuiRating-iconFilled,
+    .main-evaluate-comment .MuiRating-iconEmpty,
+    .main-evaluate-comment .MuiRating-iconHover {
+        font-size: 19px !important;
+        margin-right: 0px;
+    }
+
+    .main-evaluate-comment-title-mobile {
+        display: block !important;
+    }
+
+    .main-evaluate-comment-right-option {
+        font-size: 13px !important;
+        height: 30px !important;
+        line-height: 13px !important;
+        background-color: #ccc !important;
+        border: none !important;
+        min-width: 0px !important;
+        display: inline-flex !important;
+        align-items: center;
+    }
+
+    .main-evaluate-comment-right {
+        margin-left: 0px !important;
+    }
+
+    .main-evaluate-comment {
+        flex-direction: column;
+        align-items: flex-start !important;
+        margin-bottom: 15px !important;
+    }
+
+    .user-img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .user-comment {
+        width: 100% !important;
     }
 }

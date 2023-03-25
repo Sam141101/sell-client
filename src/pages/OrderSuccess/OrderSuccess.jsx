@@ -51,7 +51,7 @@ const OrderSuccess = () => {
     useEffect(() => {
         setTimeout(() => {
             setShow(false);
-            navigate('/ttt');
+            navigate('/wait-for-confirmation');
         }, 5000);
     }, []);
 
