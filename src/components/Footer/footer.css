@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.footer.layout-voucher {
+    border-top: 2px solid white;
+}
+
 .footer-left {
     flex: 1;
     display: flex;
@@ -61,6 +65,10 @@
     display: flex;
     margin-bottom: 20px;
     align-items: center;
+}
+
+.footer {
+    padding-bottom: 500px;
 }
 
 .footer-contact-phone {

@@ -16,6 +16,8 @@ import PolicyProtect from '../pages/PolicyProtect/PolicyProtect';
 import PolicyReturn from '../pages/PolicyReturn/PolicyReturn';
 import PolicyService from '../pages/PolicyService/PolicyService';
 import Register from '../pages/Register/Register';
+import UserProfile from '../pages/UserProfile/UserProfile';
+import VoucherWarehouse from '../pages/VoucherWarehouse/VoucherWarehouse';
 
 const publicRoutes = [
     // policy
@@ -108,6 +110,22 @@ const publicRoutes = [
         component: Canceled,
         layout: DefaultLayoutOrder,
         show1: 5,
+    },
+
+    // user profile
+    {
+        path: '/account/profile',
+        component: UserProfile,
+        layout: DefaultLayoutOrder,
+        show2: 1,
+    },
+
+    // voucher Warehouse
+    {
+        path: '/voucher-user',
+        component: VoucherWarehouse,
+        layout: DefaultLayoutOrder,
+        show3: 1,
     },
 
     // Evaluate

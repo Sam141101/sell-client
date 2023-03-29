@@ -59,7 +59,12 @@ function App() {
                             key={index}
                             path={route.path}
                             element={
-                                <Layout item2={route.item2} show1={route.show1}>
+                                <Layout
+                                    item2={route.item2}
+                                    show1={route.show1}
+                                    show2={route.show2}
+                                    show3={route.show3}
+                                >
                                     <Page />
                                 </Layout>
                             }
@@ -80,7 +85,7 @@ function App() {
 
                 {/* sản phẩm */}
                 <Route path="/search/:category" element={<Search />} />
-                <Route path="/account/profile" element={<UserProfile />} />
+                {/* <Route path="/account/profile" element={<UserProfile />} /> */}
                 <Route path="/" element={<Home />} />
                 <Route path="/products/:category" element={<ProductList />} />
                 <Route path="/products" element={<ProductList />} />

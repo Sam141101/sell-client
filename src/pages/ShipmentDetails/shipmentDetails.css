@@ -242,6 +242,111 @@
     height: 100%;
 }
 
+.notify-voucher-line {
+    margin-top: 10px;
+    color: #ff6d6d;
+    font-size: 12.5px;
+    font-weight: 500;
+}
+
+.ship_ment-details-voucher {
+    padding: 20px 0 15px 0;
+    border-bottom: 1px solid #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.ship_ment-details-voucher-input {
+    box-shadow: 0 0 0 1px #d9d9d9;
+    transition: all 0.2s ease-out;
+    background-color: white;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 13px 40px 13px 11px;
+    word-break: normal;
+    border: none;
+    position: relative;
+}
+
+.ship_ment-details-voucher-block {
+    width: 100%;
+}
+
+.ship_ment-details-voucher-input::placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    /* margin-top: -5px; */
+    /* line-height: 15px; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 11px;
+}
+
+.ship_ment-details-voucher-block input[type='text']:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #338dbc;
+}
+
+.ship_ment-details-use-voucher {
+    cursor: default;
+    background: #c8c8c8;
+    box-shadow: none;
+    padding: 0 24px;
+    width: auto;
+    margin-left: 13px;
+    white-space: nowrap;
+    line-height: 42px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.ship_ment-details-total-delivery {
+    margin-top: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.ship_ment-details-title-price-product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ship_ment-details-title-price-product span {
+    font-size: 16px;
+    color: #717171;
+    font-weight: 500;
+}
+
+.ship_ment-details-voucher-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.ship_ment-details-delivery-price {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ship_ment-details-delivery-price span {
+    font-size: 16px;
+    color: #717171;
+    font-weight: 500;
+}
+
 .ship_ment-details-title-mobile {
     display: flex;
     justify-content: space-between;

@@ -737,4 +737,36 @@
     .user-comment {
         width: 100% !important;
     }
+
+    .info-title-footer-mobile {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.08s;
+    }
+
+    .info-title-footer-mobile.active-show-info {
+        /* display: block !important; */
+        max-height: 100vh !important;
+        transition: all 0.3s;
+    }
+
+    .footer-title {
+        font-size: 20px !important;
+        margin-bottom: 5px !important;
+        font-weight: 500 !important ;
+    }
+
+    .footer-contact-item {
+        margin-bottom: 10px !important;
+        margin-left: 10px !important;
+    }
+
+    .footer-list {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+
+    .info-title-footer-mobile p {
+        margin-left: 10px !important;
+    }
 }

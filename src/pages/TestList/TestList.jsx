@@ -9,7 +9,6 @@ import { mobile } from '../../responsive';
 import './testList.css';
 
 // --------------------------------------------------------------
-
 const data = [
     {
         id: 1,

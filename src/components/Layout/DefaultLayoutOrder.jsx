@@ -6,7 +6,7 @@ import Announcement from '../Announcement/Announcement';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 
-function DefaultLayoutOrder({ children, show1 }) {
+function DefaultLayoutOrder({ children, show1, show2, show3 }) {
     const location = useLocation();
     const pathpolicy = location.pathname.split('/')[1];
     const user = useSelector((state) => state.auth?.currentUser);
@@ -47,7 +47,11 @@ function DefaultLayoutOrder({ children, show1 }) {
 
                                 <div className="default-layout-order-more-items">
                                     <Link
-                                        style={{ textDecoration: 'none' }}
+                                        // style={{ textDecoration: 'none' }}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: `${show2 ? '#ee4d2d' : ''} `,
+                                        }}
                                         to="/account/profile"
                                     >
                                         <div className="default-layout-order-item">
@@ -75,50 +79,80 @@ function DefaultLayoutOrder({ children, show1 }) {
                                             Đơn mua
                                         </div>
                                     </Link>
+
+                                    <Link
+                                        // style={{ textDecoration: 'none' }}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: `${show3 ? '#ee4d2d' : ''} `,
+                                        }}
+                                        to="/voucher-user"
+                                    >
+                                        <div className="default-layout-order-item">
+                                            <img
+                                                className="default-layout-order-img-item "
+                                                src="https://down-vn.img.susercontent.com/file/84feaa363ce325071c0a66d3c9a88748"
+                                                alt=""
+                                            />
+                                            Kho voucher
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                         <div className="col l-9 c-12">
                             <div className="default-layout-order-container-right">
-                                <div className="default-layout-order-manage-user">
-                                    <Link
-                                        style={{ color: `${show1 === 1 ? 'red' : ''}` }}
-                                        className="default-layout-order-select-link"
-                                        to="/wait-for-confirmation"
-                                    >
-                                        Chờ xác nhận
-                                    </Link>
-                                    <Link
-                                        className="default-layout-order-select-link"
-                                        style={{ color: `${show1 === 2 ? 'red' : ''}` }}
-                                        to="/waiting-for-the-goods"
-                                    >
-                                        Chờ lấy hàng
-                                    </Link>
+                                {show1 && (
+                                    <div className="default-layout-order-manage-user">
+                                        <Link
+                                            style={{
+                                                color: `${show1 === 1 ? 'red' : ''}`,
+                                            }}
+                                            className="default-layout-order-select-link"
+                                            to="/wait-for-confirmation"
+                                        >
+                                            Chờ xác nhận
+                                        </Link>
+                                        <Link
+                                            className="default-layout-order-select-link"
+                                            style={{
+                                                color: `${show1 === 2 ? 'red' : ''}`,
+                                            }}
+                                            to="/waiting-for-the-goods"
+                                        >
+                                            Chờ lấy hàng
+                                        </Link>
 
-                                    <Link
-                                        className="default-layout-order-select-link"
-                                        style={{ color: `${show1 === 3 ? 'red' : ''}` }}
-                                        to="/delivering"
-                                    >
-                                        Đang giao
-                                    </Link>
+                                        <Link
+                                            className="default-layout-order-select-link"
+                                            style={{
+                                                color: `${show1 === 3 ? 'red' : ''}`,
+                                            }}
+                                            to="/delivering"
+                                        >
+                                            Đang giao
+                                        </Link>
 
-                                    <Link
-                                        className="default-layout-order-select-link"
-                                        style={{ color: `${show1 === 4 ? 'red' : ''}` }}
-                                        to="/complete"
-                                    >
-                                        Hoàn thành
-                                    </Link>
-                                    <Link
-                                        className="default-layout-order-select-link"
-                                        style={{ color: `${show1 === 5 ? 'red' : ''}` }}
-                                        to="/canceled"
-                                    >
-                                        Đã huỷ
-                                    </Link>
-                                </div>
+                                        <Link
+                                            className="default-layout-order-select-link"
+                                            style={{
+                                                color: `${show1 === 4 ? 'red' : ''}`,
+                                            }}
+                                            to="/complete"
+                                        >
+                                            Hoàn thành
+                                        </Link>
+                                        <Link
+                                            className="default-layout-order-select-link"
+                                            style={{
+                                                color: `${show1 === 5 ? 'red' : ''}`,
+                                            }}
+                                            to="/canceled"
+                                        >
+                                            Đã huỷ
+                                        </Link>
+                                    </div>
+                                )}
 
                                 <div>{children}</div>
                             </div>
@@ -127,7 +161,7 @@ function DefaultLayoutOrder({ children, show1 }) {
                 </div>
             </div>
 
-            {/* <Footer /> */}
+            {show3 && <Footer layoutVoucher={true} />}
         </div>
     );
 }
