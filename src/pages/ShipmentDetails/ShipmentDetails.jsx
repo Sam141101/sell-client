@@ -16,18 +16,21 @@ import { async } from '@firebase/util';
 import { BASE_URL_API } from '../../requestMethods';
 import './shipmentDetails.css';
 import { addTemporary } from '../../redux/temporaryRedux';
+// import useDebounce from '../../hooks/useDebounce';
 
 const ShipmentDetails = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const cart = useSelector((state) => state.cart?.products);
     const total = useSelector((state) => state?.cart);
     const [inputs, setInputs] = useState({});
-    const [product, setProduct] = useState({});
+    // const [product, setProduct] = useState({});
     const [show, setShow] = useState(false);
     const userId = user._id;
     const totalPrice = total.total;
 
     const [toggleInfo, setToggleInfo] = useState(true);
+    const [codeCoupon, setCodeCoupon] = useState('');
+    const [notify, setNotify] = useState();
 
     const handleClickToggle = () => {
         setToggleInfo(!toggleInfo);
@@ -43,34 +46,107 @@ const ShipmentDetails = () => {
             return { ...prev, [e.target.name]: e.target.value };
         });
     };
-    console.log(cart);
+
+    // const handleFinishClick = async () => {
+    //     try {
+    //         let voucher
+
+    //         if(notify !== "Át mã giảm giá thành công.") {
+    //             voucher = {
+    //                 coupon_code: codeCoupon,
+    //             }
+    //         } else if (notify === "") {
+    //             voucher = ''
+    //         }
+
+    //         const res = await axios.post(
+    //             BASE_URL_API + `${inputs.method}/pay/`,
+    //             { inputs, cart, userId, totalPrice, codeCoupon },
+    //             {
+    //                 headers: { token: `Bearer ${user.token}` },
+    //             },
+    //         );
+    //         console.log(res.data);
+
+    //         if (inputs.method === 'paypal') {
+    //             dispatch(addTemporary(res.data));
+    //             window.location.href = `${res.data.link}`;
+    //         } else if (res.data === 'success') {
+    //             setShow(true);
+    //             setTimeout(() => {
+    //                 navigate('/wait-for-confirmation');
+    //             }, 5000);
+    //         }
+
+    //         // navigate('/ttt');
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // };
 
     const handleFinishClick = async () => {
         try {
+            let infoOrder;
+
+            if (notify === 'Át mã giảm giá thành công.') {
+                infoOrder = {
+                    inputs: inputs,
+                    cart: cart,
+                    userId: userId,
+                    totalPrice: totalPrice,
+                    codeCoupon: codeCoupon,
+                };
+            } else if (notify === '') {
+                infoOrder = {
+                    inputs: inputs,
+                    cart: cart,
+                    userId: userId,
+                    totalPrice: totalPrice,
+                };
+                console.log('Không dùng phiếu giảm giá');
+            } else {
+                console.log('không thể dùng mã giảm giá');
+                return;
+            }
+
             const res = await axios.post(
                 BASE_URL_API + `${inputs.method}/pay/`,
-                { inputs, cart, userId, totalPrice },
+                infoOrder,
                 {
                     headers: { token: `Bearer ${user.token}` },
                 },
             );
             console.log(res.data);
-
-            if (inputs.method === 'paypal') {
-                dispatch(addTemporary(res.data));
-                window.location.href = `${res.data.link}`;
-            } else if (res.data === 'success') {
-                setShow(true);
-                setTimeout(() => {
-                    navigate('/wait-for-confirmation');
-                }, 5000);
-            }
-
-            // navigate('/ttt');
         } catch (e) {
             console.log(e);
         }
     };
+
+    const handleChangeInput = (e) => {
+        setCodeCoupon(e.target.value);
+        setNotify('');
+    };
+
+    console.log(inputs);
+
+    const handleUseVoucher = async (e) => {
+        e.preventDefault();
+
+        try {
+            const res = await axios.get(
+                BASE_URL_API +
+                    `discount/use-coupon/${user._id}/${codeCoupon}/${totalPrice}`,
+                {
+                    headers: { token: `Bearer ${user.token}` },
+                },
+            );
+            setNotify(res.data.message);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    useEffect(() => {}, []);
 
     return (
         <div className="ship_ment-details-container">
@@ -361,6 +437,57 @@ const ShipmentDetails = () => {
                                         ))}
                                     </div>
 
+                                    <div className="ship_ment-details-voucher">
+                                        <div className="ship_ment-details-voucher-wrapper">
+                                            <div className="ship_ment-details-voucher-block">
+                                                <input
+                                                    type="text"
+                                                    className="ship_ment-details-voucher-input"
+                                                    placeholder="Mã giảm giá"
+                                                    // ref={inputRef1}
+                                                    onChange={(e) => handleChangeInput(e)}
+                                                />
+                                            </div>
+
+                                            <button
+                                                style={
+                                                    codeCoupon !== ''
+                                                        ? {
+                                                              backgroundColor: '#338dbc',
+                                                              color: 'white',
+                                                              cursor: 'pointer',
+                                                          }
+                                                        : {}
+                                                }
+                                                className="ship_ment-details-use-voucher"
+                                                onClick={handleUseVoucher}
+                                            >
+                                                Sử dụng
+                                            </button>
+                                        </div>
+
+                                        {notify && (
+                                            <p className="notify-voucher-line">
+                                                {notify}
+                                                {/* Không thể sử dunjg */}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    <div className="ship_ment-details-total-delivery">
+                                        <div className="ship_ment-details-title-price-product">
+                                            <span>Tạm tính</span>
+                                            <span>{total.total}₫</span>
+                                        </div>
+                                        <div className="ship_ment-details-delivery-price">
+                                            <span>Phí vận chuyển</span>
+
+                                            {/* {user.address ? `${}₫` : '-'} */}
+
+                                            <span>{false ? `30000₫` : '–'}</span>
+                                        </div>
+                                    </div>
+
                                     <div className="ship_ment-details-total-sum">
                                         <div className="ship_ment-details-text-sum">
                                             Tổng cộng
@@ -376,10 +503,6 @@ const ShipmentDetails = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* <div className="col l-5">
-                        
-                    </div> */}
                 </div>
             </div>
         </div>
