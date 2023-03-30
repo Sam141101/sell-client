@@ -165,7 +165,7 @@
     }
 
     .footer-frame {
-        padding: 0 15px;
+        padding: 0 5px;
     }
 
     .newsletter-container {
@@ -750,10 +750,14 @@
         transition: all 0.3s;
     }
 
+    .footer-margin {
+        margin: 10px 0 !important;
+    }
+
     .footer-title {
-        font-size: 20px !important;
-        margin-bottom: 5px !important;
-        font-weight: 500 !important ;
+        font-size: 16px !important;
+        margin-bottom: 0px !important;
+        font-weight: 500 !important;
     }
 
     .footer-contact-item {
@@ -768,5 +772,156 @@
 
     .info-title-footer-mobile p {
         margin-left: 10px !important;
+    }
+
+    .ship_ment-details-voucher {
+        padding: 20px 15px 15px 15px !important;
+    }
+
+    .ship_ment-details-total-delivery {
+        margin: 14px 15px 0 15px !important;
+    }
+    .ship_ment-details-title-price-product span,
+    .ship_ment-details-delivery-price span {
+        font-size: 14px !important;
+    }
+
+    .default-layout-order-container-left {
+        margin: 0 15px !important;
+    }
+
+    .default-layout-order-more-items {
+        margin: 10px 0 !important;
+    }
+
+    .default-layout-order-container-right {
+        border-radius: 0 !important;
+        padding: 0 15px !important;
+    }
+
+    .default-layout-order-manage-user {
+        justify-content: flex-start !important;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 15px 0 !important;
+    }
+
+    .default-layout-order-select-link {
+        font-size: 16px !important;
+        margin-right: 15px !important;
+    }
+
+    .wait-for-product {
+        max-width: 100%;
+    }
+
+    .wait-purchase-img {
+        width: 75px !important;
+    }
+
+    .wait-purchase-details-product {
+        align-items: flex-start !important;
+    }
+
+    .wait-purchase-product-order {
+        margin-top: 0px !important;
+    }
+
+    .wait-for-product-list {
+        padding: 15px !important;
+    }
+
+    .wait-purchase-info {
+        padding: 0 0 0 15px !important;
+        flex-direction: column;
+        height: auto !important;
+    }
+
+    .wait-purchase-container {
+        padding: 12px 0 !important;
+    }
+
+    .wait-purchase-name-size {
+        height: initial !important;
+    }
+
+    .wait-purchase-name-size div {
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 235px;
+        margin-bottom: 7px;
+    }
+
+    .wait-purchase-name-size div:last-child {
+        margin-bottom: 4px;
+    }
+
+    .wait-purchase-price-quanti {
+        height: initial !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+    }
+
+    .wait-purchase-price-quanti div {
+        font-weight: 500;
+    }
+
+    .wait-purchase-block {
+        flex-direction: column;
+        padding: 5px 0 !important;
+        margin-right: 0 !important;
+        align-items: flex-start !important;
+    }
+
+    .wait-purchase-status {
+        margin-left: 0px !important;
+        font-size: 14px !important;
+    }
+
+    .wait-purchase-status span {
+        font-weight: 500;
+    }
+
+    .wait-purchase-total-price {
+        font-size: 18px !important;
+        margin-top: 5px;
+        font-weight: 400 !important;
+    }
+
+    .wait-purchase-total-price-text {
+        font-weight: 500;
+    }
+
+    .wait-purchase-cancel-order,
+    .wait-purchase-evaluate-order {
+        margin-right: 0px !important;
+    }
+
+    .wait-purchase-cancel-order-button,
+    .wait-purchase-evaluate {
+        padding: 10px 16px !important;
+        font-size: 15px !important;
+        line-height: 15px !important;
+    }
+
+    .list-choose-voucher {
+        justify-content: flex-start !important;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .item-choose-voucher {
+        padding: 0 25px !important;
+    }
+
+    .voucher-list-frame {
+        margin-top: 15px !important;
+        padding-bottom: 0px !important;
+    }
+
+    .voucher-item {
+        /* margin-bottom: 0 !important; */
     }
 }

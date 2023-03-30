@@ -22,15 +22,21 @@ const ShipmentDetails = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const cart = useSelector((state) => state.cart?.products);
     const total = useSelector((state) => state?.cart);
-    const [inputs, setInputs] = useState({});
-    // const [product, setProduct] = useState({});
-    const [show, setShow] = useState(false);
     const userId = user._id;
     const totalPrice = total.total;
+
+    const [inputs, setInputs] = useState({});
+    const [infoCoupon, setInfoCoupon] = useState({});
+    const [show, setShow] = useState(false);
 
     const [toggleInfo, setToggleInfo] = useState(true);
     const [codeCoupon, setCodeCoupon] = useState('');
     const [notify, setNotify] = useState();
+    const [totalPriceProduct, setTotalPriceProduct] = useState(totalPrice);
+    const [totalPriceDelivery, setTotalPriceDelivery] = useState(30000);
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleClickToggle = () => {
         setToggleInfo(!toggleInfo);
@@ -38,51 +44,11 @@ const ShipmentDetails = () => {
         showList.classList.toggle('show-list');
     };
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-
     const handleChange = (e) => {
         setInputs((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
     };
-
-    // const handleFinishClick = async () => {
-    //     try {
-    //         let voucher
-
-    //         if(notify !== "Át mã giảm giá thành công.") {
-    //             voucher = {
-    //                 coupon_code: codeCoupon,
-    //             }
-    //         } else if (notify === "") {
-    //             voucher = ''
-    //         }
-
-    //         const res = await axios.post(
-    //             BASE_URL_API + `${inputs.method}/pay/`,
-    //             { inputs, cart, userId, totalPrice, codeCoupon },
-    //             {
-    //                 headers: { token: `Bearer ${user.token}` },
-    //             },
-    //         );
-    //         console.log(res.data);
-
-    //         if (inputs.method === 'paypal') {
-    //             dispatch(addTemporary(res.data));
-    //             window.location.href = `${res.data.link}`;
-    //         } else if (res.data === 'success') {
-    //             setShow(true);
-    //             setTimeout(() => {
-    //                 navigate('/wait-for-confirmation');
-    //             }, 5000);
-    //         }
-
-    //         // navigate('/ttt');
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // };
 
     const handleFinishClick = async () => {
         try {
@@ -117,6 +83,16 @@ const ShipmentDetails = () => {
                 },
             );
             console.log(res.data);
+
+            if (inputs.method === 'paypal') {
+                dispatch(addTemporary(res.data));
+                window.location.href = `${res.data.link}`;
+            } else if (res.data === 'success') {
+                setShow(true);
+                setTimeout(() => {
+                    navigate('/wait-for-confirmation');
+                }, 5000);
+            }
         } catch (e) {
             console.log(e);
         }
@@ -127,11 +103,8 @@ const ShipmentDetails = () => {
         setNotify('');
     };
 
-    console.log(inputs);
-
     const handleUseVoucher = async (e) => {
         e.preventDefault();
-
         try {
             const res = await axios.get(
                 BASE_URL_API +
@@ -141,12 +114,36 @@ const ShipmentDetails = () => {
                 },
             );
             setNotify(res.data.message);
+            setInfoCoupon(res.data.infoCoupon);
+            console.log(res.data);
         } catch (e) {
             console.log(e);
         }
     };
 
-    useEffect(() => {}, []);
+    useEffect(() => {
+        if (notify === 'Át mã giảm giá thành công.') {
+            let newTotalPrice;
+
+            if (infoCoupon.descCoupon === 'Mã giảm giá') {
+                if (infoCoupon.discount_type === 'percentage') {
+                    newTotalPrice =
+                        totalPriceProduct * (1 - infoCoupon.discount_amount / 100);
+                } else {
+                    newTotalPrice = totalPriceProduct - infoCoupon.discount_amount;
+                }
+                setTotalPriceProduct(newTotalPrice);
+            } else {
+                if (infoCoupon.discount_type === 'percentage') {
+                    newTotalPrice =
+                        totalPriceProduct * (1 - infoCoupon.discount_amount / 100);
+                } else {
+                    newTotalPrice = totalPriceProduct - infoCoupon.discount_amount;
+                }
+                setTotalPriceDelivery(newTotalPrice);
+            }
+        }
+    }, [notify]);
 
     return (
         <div className="ship_ment-details-container">
@@ -243,6 +240,65 @@ const ShipmentDetails = () => {
                                     ))}
                                 </div>
 
+                                <div className="ship_ment-details-voucher">
+                                    <div className="ship_ment-details-voucher-wrapper">
+                                        <div className="ship_ment-details-voucher-block">
+                                            <input
+                                                type="text"
+                                                className="ship_ment-details-voucher-input"
+                                                placeholder="Mã giảm giá"
+                                                // ref={inputRef1}
+                                                onChange={(e) => handleChangeInput(e)}
+                                            />
+                                        </div>
+
+                                        <button
+                                            style={
+                                                codeCoupon !== ''
+                                                    ? {
+                                                          backgroundColor: '#338dbc',
+                                                          color: 'white',
+                                                          cursor: 'pointer',
+                                                      }
+                                                    : {}
+                                            }
+                                            className={`ship_ment-details-use-voucher ${
+                                                notify === 'Át mã giảm giá thành công.'
+                                                    ? 'disabled'
+                                                    : ''
+                                            }`}
+                                            onClick={handleUseVoucher}
+                                            // disabled={
+
+                                            // }
+                                        >
+                                            Sử dụng
+                                        </button>
+                                    </div>
+
+                                    {notify && (
+                                        <p className="notify-voucher-line">
+                                            {notify}
+                                            {/* Không thể sử dunjg */}
+                                        </p>
+                                    )}
+                                </div>
+
+                                <div className="ship_ment-details-total-delivery">
+                                    <div className="ship_ment-details-title-price-product">
+                                        <span>Tạm tính</span>
+                                        <span>{totalPriceProduct}₫</span>
+                                    </div>
+                                    <div className="ship_ment-details-delivery-price">
+                                        <span>Phí vận chuyển</span>
+                                        {user.address ? (
+                                            <span>{totalPriceDelivery}₫</span>
+                                        ) : (
+                                            <span>–</span>
+                                        )}
+                                    </div>
+                                </div>
+
                                 <div className="ship_ment-details-total-sum">
                                     <div className="ship_ment-details-text-sum">
                                         Tổng cộng
@@ -250,7 +306,7 @@ const ShipmentDetails = () => {
                                     <div className="ship_ment-details-text-price">
                                         VND{' '}
                                         <div className="ship_ment-details-number-price">
-                                            {total.total}₫
+                                            {totalPriceProduct + totalPriceDelivery}₫
                                         </div>
                                     </div>
                                 </div>
@@ -459,8 +515,16 @@ const ShipmentDetails = () => {
                                                           }
                                                         : {}
                                                 }
-                                                className="ship_ment-details-use-voucher"
+                                                className={`ship_ment-details-use-voucher ${
+                                                    notify ===
+                                                    'Át mã giảm giá thành công.'
+                                                        ? 'disabled'
+                                                        : ''
+                                                }`}
                                                 onClick={handleUseVoucher}
+                                                // disabled={
+
+                                                // }
                                             >
                                                 Sử dụng
                                             </button>
@@ -477,14 +541,15 @@ const ShipmentDetails = () => {
                                     <div className="ship_ment-details-total-delivery">
                                         <div className="ship_ment-details-title-price-product">
                                             <span>Tạm tính</span>
-                                            <span>{total.total}₫</span>
+                                            <span>{totalPriceProduct}₫</span>
                                         </div>
                                         <div className="ship_ment-details-delivery-price">
                                             <span>Phí vận chuyển</span>
-
-                                            {/* {user.address ? `${}₫` : '-'} */}
-
-                                            <span>{false ? `30000₫` : '–'}</span>
+                                            {user.address ? (
+                                                <span>{totalPriceDelivery}₫</span>
+                                            ) : (
+                                                <span>–</span>
+                                            )}
                                         </div>
                                     </div>
 
@@ -495,7 +560,7 @@ const ShipmentDetails = () => {
                                         <div className="ship_ment-details-text-price">
                                             VND{' '}
                                             <div className="ship_ment-details-number-price">
-                                                {total.total}₫
+                                                {totalPriceProduct + totalPriceDelivery}₫
                                             </div>
                                         </div>
                                     </div>

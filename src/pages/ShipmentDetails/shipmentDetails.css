@@ -310,6 +310,11 @@
     font-size: 14px;
 }
 
+.ship_ment-details-use-voucher.disabled {
+    cursor: not-allowed !important;
+    opacity: 0.7;
+}
+
 .ship_ment-details-total-delivery {
     margin-top: 14px;
     padding-bottom: 14px;

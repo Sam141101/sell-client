@@ -553,6 +553,9 @@ const Navbar = () => {
                                                                 >
                                                                     Tài khoản của tôi
                                                                 </Link>
+                                                            </li>
+
+                                                            <li className="nav-info-user-mobile-list-item">
                                                                 <Link
                                                                     to="/change-account"
                                                                     className="nav-info-user-mobile-list-item-link"
@@ -560,6 +563,7 @@ const Navbar = () => {
                                                                     Đổi mật khẩu
                                                                 </Link>
                                                             </li>
+
                                                             <li className="nav-info-user-mobile-list-item">
                                                                 <p
                                                                     // to="/"

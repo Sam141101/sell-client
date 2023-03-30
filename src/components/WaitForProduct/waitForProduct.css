@@ -45,7 +45,6 @@
 
 .wait-purchase-block {
     display: flex;
-    align-items: center;
     padding: 10px 0 15px 0;
     justify-content: space-between;
     align-items: center;
@@ -80,7 +79,7 @@
 }
 
 .wait-purchase-evaluate-order {
-    padding-right: 50px;
+    margin-right: 50px;
     display: flex;
     justify-content: flex-end;
     padding-top: 10px;
