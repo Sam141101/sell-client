@@ -59,7 +59,7 @@ const VoucherWarehouse = () => {
             try {
                 const res = await axios.get(
                     // BASE_URL_API + `discount/coupon/find/${id}/${typeCoupon}`,
-                    BASE_URL_API + `discounts   /coupon/find/${id}/${typeCoupon}`,
+                    BASE_URL_API + `discounts/coupon/find/${id}/${typeCoupon}`,
                     {
                         headers: { token: `Bearer ${token}` },
                     },
