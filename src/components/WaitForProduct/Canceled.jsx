@@ -24,7 +24,8 @@ const Canceled = ({ selected }) => {
         const getProduct = async () => {
             try {
                 const res = await axios.get(
-                    BASE_URL_API + 'orders/find/canceled/' + user._id,
+                    // BASE_URL_API + 'orders/find/canceled/' + user._id,
+                    BASE_URL_API + `orders/find/wait-for-order/${user._id}/cancel`,
                     {
                         headers: { token: `Bearer ${user.token}` },
                     },

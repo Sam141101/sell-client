@@ -37,7 +37,8 @@ const WaitForTheGoods = ({ selected }) => {
         const getProduct = async () => {
             try {
                 const res = await axios.get(
-                    BASE_URL_API + 'orders/find/waiting-for-the-goods/' + user._id,
+                    // BASE_URL_API + 'orders/find/waiting-for-the-goods/' + user._id,
+                    BASE_URL_API + `orders/find/wait-for-order/${user._id}/accept`,
                     {
                         headers: { token: `Bearer ${user.token}` },
                     },

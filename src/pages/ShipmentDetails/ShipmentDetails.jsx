@@ -34,6 +34,7 @@ const ShipmentDetails = () => {
     const [notify, setNotify] = useState();
     const [totalPriceProduct, setTotalPriceProduct] = useState(totalPrice);
     const [totalPriceDelivery, setTotalPriceDelivery] = useState(30000);
+    const [couponUpdated, setCouponUpdated] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -108,13 +109,15 @@ const ShipmentDetails = () => {
         try {
             const res = await axios.get(
                 BASE_URL_API +
-                    `discount/use-coupon/${user._id}/${codeCoupon}/${totalPrice}`,
+                    // `discount/use-coupon/${user._id}/${codeCoupon}/${totalPrice}`,
+                    `discounts/use-coupon/${user._id}/${codeCoupon}/${totalPrice}`,
                 {
                     headers: { token: `Bearer ${user.token}` },
                 },
             );
             setNotify(res.data.message);
             setInfoCoupon(res.data.infoCoupon);
+            setCouponUpdated(true);
             console.log(res.data);
         } catch (e) {
             console.log(e);
@@ -122,10 +125,10 @@ const ShipmentDetails = () => {
     };
 
     useEffect(() => {
-        if (notify === 'Át mã giảm giá thành công.') {
+        if (notify === 'Át mã giảm giá thành công.' && couponUpdated) {
             let newTotalPrice;
-
             if (infoCoupon.descCoupon === 'Mã giảm giá') {
+                // Giảm giá cho sản phẩm
                 if (infoCoupon.discount_type === 'percentage') {
                     newTotalPrice =
                         totalPriceProduct * (1 - infoCoupon.discount_amount / 100);
@@ -134,16 +137,18 @@ const ShipmentDetails = () => {
                 }
                 setTotalPriceProduct(newTotalPrice);
             } else {
+                // Giảm giá vận chuyển
                 if (infoCoupon.discount_type === 'percentage') {
                     newTotalPrice =
-                        totalPriceProduct * (1 - infoCoupon.discount_amount / 100);
+                        totalPriceDelivery * (1 - infoCoupon.discount_amount / 100);
                 } else {
-                    newTotalPrice = totalPriceProduct - infoCoupon.discount_amount;
+                    newTotalPrice = totalPriceDelivery - infoCoupon.discount_amount;
                 }
                 setTotalPriceDelivery(newTotalPrice);
             }
+            setCouponUpdated(false);
         }
-    }, [notify]);
+    }, [notify, infoCoupon, couponUpdated]);
 
     return (
         <div className="ship_ment-details-container">

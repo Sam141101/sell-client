@@ -37,7 +37,7 @@ const WaitForConfirmation = ({ selected }) => {
         const getProduct = async () => {
             try {
                 const res = await axios.get(
-                    BASE_URL_API + 'orders/find/wait-for-confirmation/' + user._id,
+                    BASE_URL_API + `orders/find/wait-for-order/${user._id}/pending`,
                     {
                         headers: { token: `Bearer ${user.token}` },
                     },

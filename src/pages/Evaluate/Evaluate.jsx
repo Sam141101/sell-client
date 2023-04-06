@@ -183,9 +183,6 @@ const Evaluate = () => {
         setFileList(newStorage);
     };
 
-    console.log(selectedFiles);
-    console.log(fileList);
-
     useEffect(() => {
         const getInfoProduct = async () => {
             try {
