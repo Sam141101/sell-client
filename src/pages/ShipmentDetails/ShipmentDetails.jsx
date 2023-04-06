@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 // import { Add, Details, East, Remove, Reply } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
     ExpandMore,
     KeyboardArrowDown,
@@ -9,7 +8,7 @@ import {
     ShoppingCart,
 } from '@mui/icons-material';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { async } from '@firebase/util';
@@ -35,6 +34,9 @@ const ShipmentDetails = () => {
     const [totalPriceProduct, setTotalPriceProduct] = useState(totalPrice);
     const [totalPriceDelivery, setTotalPriceDelivery] = useState(30000);
     const [couponUpdated, setCouponUpdated] = useState(false);
+
+    const [initialTotalPriceProduct, setInitialTotalPriceProduct] = useState(totalPrice);
+    const [initialTotalPriceDelivery, setInitialTotalPriceDelivery] = useState(30000); /// 30000 ------> total delivery
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -109,7 +111,6 @@ const ShipmentDetails = () => {
         try {
             const res = await axios.get(
                 BASE_URL_API +
-                    // `discount/use-coupon/${user._id}/${codeCoupon}/${totalPrice}`,
                     `discounts/use-coupon/${user._id}/${codeCoupon}/${totalPrice}`,
                 {
                     headers: { token: `Bearer ${user.token}` },
@@ -118,7 +119,6 @@ const ShipmentDetails = () => {
             setNotify(res.data.message);
             setInfoCoupon(res.data.infoCoupon);
             setCouponUpdated(true);
-            console.log(res.data);
         } catch (e) {
             console.log(e);
         }
@@ -128,7 +128,6 @@ const ShipmentDetails = () => {
         if (notify === 'Át mã giảm giá thành công.' && couponUpdated) {
             let newTotalPrice;
             if (infoCoupon.descCoupon === 'Mã giảm giá') {
-                // Giảm giá cho sản phẩm
                 if (infoCoupon.discount_type === 'percentage') {
                     newTotalPrice =
                         totalPriceProduct * (1 - infoCoupon.discount_amount / 100);
@@ -137,7 +136,6 @@ const ShipmentDetails = () => {
                 }
                 setTotalPriceProduct(newTotalPrice);
             } else {
-                // Giảm giá vận chuyển
                 if (infoCoupon.discount_type === 'percentage') {
                     newTotalPrice =
                         totalPriceDelivery * (1 - infoCoupon.discount_amount / 100);
@@ -147,6 +145,10 @@ const ShipmentDetails = () => {
                 setTotalPriceDelivery(newTotalPrice);
             }
             setCouponUpdated(false);
+        } else if (notify === '' || notify !== 'Át mã giảm giá thành công.') {
+            // Nếu không sử dụng mã giảm giá hoặc sử dụng mã thất bại, trả về giá trị ban đầu của sản phẩm
+            setTotalPriceProduct(initialTotalPriceProduct);
+            setTotalPriceDelivery(initialTotalPriceDelivery);
         }
     }, [notify, infoCoupon, couponUpdated]);
 
