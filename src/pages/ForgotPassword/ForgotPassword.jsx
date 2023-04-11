@@ -14,6 +14,8 @@ const ForgotPassword = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // const axiosJWT = createAxiosInstance(user, dispatch);
+
     const blurEmail = (e) => {
         // var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         // if (!e.target.value) {

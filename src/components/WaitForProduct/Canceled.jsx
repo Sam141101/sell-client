@@ -8,6 +8,7 @@ import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 const Canceled = ({ selected }) => {
     const user = useSelector((state) => state.auth?.currentUser);
@@ -20,10 +21,12 @@ const Canceled = ({ selected }) => {
         e.preventDefault();
     };
 
+    const axiosJWT = createAxiosInstance(user, dispatch);
+
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get(
+                const res = await axiosJWT.get(
                     // BASE_URL_API + 'orders/find/canceled/' + user._id,
                     BASE_URL_API + `orders/find/wait-for-order/${user._id}/cancel`,
                     {

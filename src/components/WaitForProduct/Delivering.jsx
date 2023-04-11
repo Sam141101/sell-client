@@ -8,6 +8,7 @@ import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 const Delivering = ({ selected }) => {
     const user = useSelector((state) => state.auth?.currentUser);
@@ -16,10 +17,11 @@ const Delivering = ({ selected }) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleClick = async (e) => {
         try {
-            const res = await axios.put(
+            const res = await axiosJWT.put(
                 BASE_URL_API + 'orders/order-complete/' + user._id,
                 { orderId: e },
                 {
@@ -36,7 +38,7 @@ const Delivering = ({ selected }) => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get(
+                const res = await axiosJWT.get(
                     // BASE_URL_API + 'orders/find/delivering/' + user._id,
                     BASE_URL_API + `orders/find/wait-for-order/${user._id}/delivery`,
                     {

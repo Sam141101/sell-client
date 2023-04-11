@@ -15,6 +15,7 @@ import { async } from '@firebase/util';
 import { BASE_URL_API } from '../../requestMethods';
 import './shipmentDetails.css';
 import { addTemporary } from '../../redux/temporaryRedux';
+import { createAxiosInstance } from '../../useAxiosJWT';
 // import useDebounce from '../../hooks/useDebounce';
 
 const ShipmentDetails = () => {
@@ -40,6 +41,8 @@ const ShipmentDetails = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleClickToggle = () => {
         setToggleInfo(!toggleInfo);
@@ -78,7 +81,7 @@ const ShipmentDetails = () => {
                 return;
             }
 
-            const res = await axios.post(
+            const res = await axiosJWT.post(
                 BASE_URL_API + `${inputs.method}/pay/`,
                 infoOrder,
                 {
@@ -109,7 +112,7 @@ const ShipmentDetails = () => {
     const handleUseVoucher = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.get(
+            const res = await axiosJWT.get(
                 BASE_URL_API +
                     `discounts/use-coupon/${user._id}/${codeCoupon}/${totalPrice}`,
                 {

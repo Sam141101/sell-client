@@ -168,6 +168,7 @@
 }
 
 .cart-btn-add {
+    cursor: pointer;
     width: 30px;
     background: white;
     height: 30px;

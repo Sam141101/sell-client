@@ -12,6 +12,7 @@ import Navbar from '../../components/NavBar/NavBar';
 import app from '../../firebase';
 import { updateUser } from '../../redux/apiCalls';
 import './userProfile.css';
+import { createAxiosInstance } from '../../useAxiosJWT';
 // import app from '../firebase'
 
 const UserProfile = () => {
@@ -25,6 +26,8 @@ const UserProfile = () => {
     const [inputs, setInputs] = useState({});
     const [file, setFile] = useState(null);
     const [currentImg, setCurrentImg] = useState(user.img);
+
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleChange = (e) => {
         setInputs((prev) => {
@@ -80,7 +83,7 @@ const UserProfile = () => {
 
         if (file === null) {
             const update = { ...inputs, token };
-            updateUser(user.token, dispatch, user._id, update);
+            updateUser(user.token, dispatch, user._id, update, axiosJWT);
         } else {
             // add info
             const fileName = new Date().getTime() + file.name;
@@ -123,7 +126,7 @@ const UserProfile = () => {
                         const update = { ...inputs, img: downloadURL, token };
                         console.log(update);
                         //   addProduct(product, dispatch);
-                        updateUser(user.token, dispatch, user._id, update);
+                        updateUser(user.token, dispatch, user._id, update, axiosJWT);
                         // sendData(update);
                     });
                 },

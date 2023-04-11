@@ -14,6 +14,7 @@ import { updateUser } from '../../redux/apiCalls';
 import './changePassword.css';
 import Footer from '../../components/Footer/Footer';
 import { BASE_URL_API } from '../../requestMethods';
+import { createAxiosInstance } from '../../useAxiosJWT';
 // import app from '../firebase'
 
 const ChangePassword = () => {
@@ -26,6 +27,8 @@ const ChangePassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const axiosJWT = createAxiosInstance(user, dispatch);
+
     const handleClick = async (e) => {
         e.preventDefault();
 
@@ -36,7 +39,7 @@ const ChangePassword = () => {
 
         try {
             const url = BASE_URL_API + `auth/change-password/${user._id}`;
-            const res = await axios.post(
+            const res = await axiosJWT.post(
                 url,
                 {
                     currentPassword: currentPassword,

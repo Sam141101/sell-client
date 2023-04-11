@@ -6,7 +6,7 @@ import Newsletter from '../../components/Newsletter/Newsletter';
 import Footer from '../../components/Footer/Footer';
 import { Add, AddShoppingCart, Remove } from '@mui/icons-material';
 import { mobile } from '../../responsive';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 // import { publicRequest } from '../requestMethods';
 // import { addProduct } from '../redux/cartRedux';
@@ -19,6 +19,7 @@ import axios from 'axios';
 import './product.css';
 import Products from '../../components/Products/Products';
 import { BASE_URL_API } from '../../requestMethods';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 const FilterColor = styled.div`
     height: 20px;
@@ -61,6 +62,8 @@ const Product = () => {
     // const [color, setColor] = useState('');
     const [size, setSize] = useState('');
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const user = useSelector((state) => state.auth?.currentUser);
 
     // cảnh báo --------------------------------
@@ -70,6 +73,8 @@ const Product = () => {
     const [showImg, setShowImg] = useState(data[0].img);
     const [showBorder, setShowBorder] = useState(data[0].img);
     // -------------------
+
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     // const blurSize = (e) => {
     //     if (!e.target.value) {
@@ -102,17 +107,20 @@ const Product = () => {
     //     console.log('roong');
     // }
     const handleClick = () => {
-        // const cartProducts = { ...product, quantity, color, size };
-        const cartProducts = { ...product, quantity, size };
+        if (!user) {
+            navigate('/login');
+        } else {
+            const cartProducts = { ...product, quantity, size };
 
-        const addProductCarts = {
-            userId: user._id,
-            product_id: id,
-            quantity_sp: quantity,
-            size_sp: size,
-        };
-        // console.log('>>>>', checkSize);
-        addCart(user.token, dispatch, addProductCarts, cartProducts);
+            const addProductCarts = {
+                userId: user._id,
+                product_id: id,
+                quantity_sp: quantity,
+                size_sp: size,
+            };
+            // console.log('>>>>', checkSize);
+            addCart(user.token, dispatch, addProductCarts, cartProducts, axiosJWT);
+        }
 
         // if (checkSize) {
         //     addCart(user.token, dispatch, addProductCarts, cartProducts);

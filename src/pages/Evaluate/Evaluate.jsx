@@ -12,6 +12,7 @@ import { IconButton, Rating } from '@mui/material';
 import { BASE_URL_API } from '../../requestMethods';
 import axios from 'axios';
 import useDebounce from '../../hooks/useDebounce';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 const ratingDescriptions = {
     1: 'Tệ',
@@ -36,7 +37,7 @@ const Evaluate = () => {
 
     const [rating, setRating] = useState(5);
 
-    console.log('loadddd');
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleRatingChange = (event, newValue) => {
         setRating(newValue);
@@ -134,7 +135,7 @@ const Evaluate = () => {
                     };
                     console.log(infoComment);
 
-                    postCommnetUser(token, user._id, infoComment);
+                    postCommnetUser(token, user._id, infoComment, axiosJWT);
                     setComment('');
                     navigate('/complete');
                 })
@@ -186,7 +187,7 @@ const Evaluate = () => {
     useEffect(() => {
         const getInfoProduct = async () => {
             try {
-                const res = await axios.get(
+                const res = await axiosJWT.get(
                     BASE_URL_API +
                         `orders/find-info-product/evaluate/${user._id}/${order_id}/${id}`,
                     // { infoFind: infoFind },

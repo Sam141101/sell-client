@@ -13,9 +13,10 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL_API } from '../../requestMethods';
 import { display } from '@mui/system';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 const changDate = (isoString) => {
     const date = new Date(isoString);
@@ -39,7 +40,10 @@ const Comment = () => {
     const [img, setImg] = useState('');
     const [slideIndex, setSlideIndex] = useState(0);
 
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.auth?.currentUser);
+
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleChangeImg = (imgItem) => {
         if (img === imgItem) {
@@ -50,9 +54,6 @@ const Comment = () => {
     };
 
     const handleClick = (imgArr, direction) => {
-        console.log(imgArr.indexOf(img));
-        console.log(imgArr.length);
-        console.log(imgArr);
         if (direction === 'left') {
             const currentIndex = imgArr.indexOf(img);
             if (currentIndex > 0) {
@@ -70,7 +71,7 @@ const Comment = () => {
         const getComment = async () => {
             try {
                 // const res = await publicRequest.get('/products/find/' + id);
-                const res = await axios.get(
+                const res = await axiosJWT.get(
                     `http://localhost:5000/api/comments/find/${id}/${option}`,
                 );
                 setListInfoComment(res.data);

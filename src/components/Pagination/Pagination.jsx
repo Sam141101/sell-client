@@ -7,8 +7,6 @@ const Pagination = (props) => {
     const { page, totalRows, limit } = pagination;
     const totalPages = Math.ceil(totalRows / limit);
 
-    // console.log('paggi');
-
     const handlePageChange = (newPage) => {
         if (onPageChange) {
             onPageChange(newPage);

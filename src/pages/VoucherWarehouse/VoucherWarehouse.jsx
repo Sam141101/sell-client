@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './voucherWarehouse.css';
 import { BASE_URL_API } from '../../requestMethods';
+import { createAxiosInstance } from '../../useAxiosJWT';
 // import app from '../firebase'
 
 const data = [
@@ -44,6 +45,9 @@ const VoucherWarehouse = () => {
     let token = user.token;
     const location = useLocation();
 
+    const dispatch = useDispatch();
+    const axiosJWT = createAxiosInstance(user, dispatch);
+
     const type = 0;
 
     const [typeCoupon, setTypeCoupon] = useState('all');
@@ -57,7 +61,7 @@ const VoucherWarehouse = () => {
     useEffect(() => {
         const getCoupon = async () => {
             try {
-                const res = await axios.get(
+                const res = await axiosJWT.get(
                     // BASE_URL_API + `discount/coupon/find/${id}/${typeCoupon}`,
                     BASE_URL_API + `discounts/coupon/find/${id}/${typeCoupon}`,
                     {

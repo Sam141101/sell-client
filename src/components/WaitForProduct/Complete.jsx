@@ -8,16 +8,21 @@ import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 const Complete = ({ selected }) => {
     const user = useSelector((state) => state.auth?.currentUser);
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(false);
 
+    const dispatch = useDispatch();
+
+    const axiosJWT = createAxiosInstance(user, dispatch);
+
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const res = await axios.get(
+                const res = await axiosJWT.get(
                     // BASE_URL_API + 'orders/find/complete/' + user._id,
                     BASE_URL_API + `orders/find/wait-for-order/${user._id}/complete`,
                     {

@@ -8,23 +8,16 @@ import { Link } from 'react-router-dom';
 import './products.css';
 import TestList from '../../pages/TestList/TestList';
 import { BASE_URL_API } from '../../requestMethods';
-
-// const Wrapper = styled.div``;
-
-// const Container = styled.div`
-//     padding: 20px;
-//     display: flex;
-//     flex-wrap: wrap;
-//     justify-content: space-between;
-// `;
+import { createAxiosInstance } from '../../useAxiosJWT';
+import { useSelector } from 'react-redux';
 
 const Products = ({ cat, filters, sort, filterPage, setPagination, pagination }) => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
     let limit = pagination.limit;
-
-    console.log('coôs');
+    // const user = useSelector((state) => state.auth?.currentUser);
+    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     useEffect(() => {
         const getProducts = async () => {
@@ -41,13 +34,13 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
                 );
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);
-                console.log('>>>> pagi');
+                // console.log('>>>> pagi');
 
                 if (setPagination) {
                     setPagination(pagi);
-                    console.log('>>>> pagi1');
+                    // console.log('>>>> pagi1');
                 } else {
-                    console.log('>>>> pagi2');
+                    // console.log('>>>> pagi2');
                     return;
                 }
 
@@ -69,7 +62,7 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
                 ),
             );
 
-        console.log('useEffect2');
+        // console.log('useEffect2');
     }, [products, cat, filters, sort]);
 
     useEffect(() => {
@@ -84,7 +77,7 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
         } else {
             setFilteredProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
         }
-        console.log('useEffect3');
+        // console.log('useEffect3');
     }, [sort]);
 
     return (

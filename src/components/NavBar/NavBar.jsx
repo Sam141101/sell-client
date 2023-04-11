@@ -23,13 +23,12 @@ import axios from 'axios';
 import Searchs from '../Searchs/Searchs';
 import { resetProduct } from '../../redux/cartRedux';
 import './navBar.css';
+import { createAxiosInstance } from '../../useAxiosJWT';
 // import '../../responesive.css';
 
-const Navbar = () => {
+const Navbar = React.memo(() => {
     const user = useSelector((state) => state.auth?.currentUser);
     const quantity = useSelector((state) => state.cart?.quantity);
-
-    // console.log(user);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -49,7 +48,9 @@ const Navbar = () => {
     };
 
     // Logout
-    let axiosJWT = createAxios(user, dispatch, loginSuccess);
+    // const axiosJWT = createAxios(user, dispatch, loginSuccess);
+    const axiosJWT = createAxiosInstance(user, dispatch);
+    console.log('axiosJWT', axiosJWT);
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -65,9 +66,8 @@ const Navbar = () => {
 
     useEffect(() => {
         const getCart = () => {
-            if (user) {
-                // console.log(user);
-                getAllCart(user.token, dispatch, user._id);
+            if (user && user?.token) {
+                getAllCart(user.token, dispatch, user._id, axiosJWT);
             }
         };
         getCart();
@@ -881,7 +881,7 @@ const Navbar = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Navbar;
 

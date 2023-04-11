@@ -3,21 +3,16 @@ import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/NavBar/NavBar';
 import Announcement from '../../components/Announcement/Announcement';
 import { Add, East, Remove, Reply } from '@mui/icons-material';
-// import { mobile } from '../../responsive';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ClearIcon from '@mui/icons-material/Clear';
 import { useEffect, useState, useRef } from 'react';
-// import { publicRequest } from '../requestMethods';
 import { deleteProduct, getAllCart, updateProduct } from '../../redux/apiCalls';
-
-// import axios from 'axios';
-// import jwt_decode from 'jwt-decode';
-import { loginSuccess } from '../../redux/authRedux';
-import { createAxios } from '../../createInstance';
 import { Link, useNavigate } from 'react-router-dom';
 import ConfirmDelete from '../../components/ConfirmDelete/ConfirmDelete';
 import './cart.css';
+import React from 'react';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 const SummaryItem = styled.div`
     font-weight: ${(props) => props.type === 'total' && '500'};
@@ -33,25 +28,25 @@ const Line = styled.div`
 `;
 
 const Cart = () => {
-    const [confirm, setConfirm] = useState(false);
     const [noti, setNoti] = useState('none');
+
+    const [comfirmDelete, setComfirmDelete] = useState('');
 
     const cart = useSelector((state) => state?.cart);
     const user = useSelector((state) => state.auth?.currentUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    let axiosJWT = createAxios(user, dispatch, loginSuccess);
+    // const axiosJWT = createAxios(user, dispatch, loginSuccess);
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleRemove = (id) => {
         deleteProduct(user.token, dispatch, id, axiosJWT);
     };
 
     const handleUpdown = (condition, id) => {
-        console.log(condition, id, typeof id);
         let test = cart?.products.filter((item) => item._id === id);
         let getQuanti = test[0].quantity;
         let getPrice = test[0].product_id.price;
-        // console.log(test);
 
         if (getQuanti === 1 && condition === 'add') {
             const quantiProduct = getQuanti + 1;
@@ -64,15 +59,11 @@ const Cart = () => {
                 condition: condition,
             };
 
-            updateProduct(user.token, dispatch, id, update, condition);
+            updateProduct(user.token, dispatch, id, update, condition, axiosJWT);
         } else if (getQuanti === 1 && condition === 'minus') {
             // hiện 1 bảng xác nhận có xoá vật phẩm khỏi giỏ hàng không
             setNoti('block');
-            if (confirm) {
-                deleteProduct(user.token, dispatch, id);
-            } else {
-                // coi như ko có thay đổi gì
-            }
+            setComfirmDelete(id);
         } else if (getQuanti > 1) {
             // thực hiện bình thường
             if (condition === 'minus') {
@@ -85,7 +76,7 @@ const Cart = () => {
                     totalpriceProduct: totalpriceProduct,
                     condition: condition,
                 };
-                updateProduct(user.token, dispatch, id, update, condition);
+                updateProduct(user.token, dispatch, id, update, condition, axiosJWT);
             } else if (condition === 'add') {
                 const quantiProduct = getQuanti + 1;
                 const priceProduct = test[0].price + getPrice;
@@ -97,7 +88,7 @@ const Cart = () => {
                     condition: condition,
                 };
                 console.log(update);
-                updateProduct(user.token, dispatch, id, update, condition);
+                updateProduct(user.token, dispatch, id, update, condition, axiosJWT);
             }
         }
     };
@@ -108,11 +99,11 @@ const Cart = () => {
                 navigate('/login');
             }
             if (user?.token) {
-                getAllCart(user.token, dispatch, user._id);
+                getAllCart(user.token, dispatch, user._id, axiosJWT);
             }
         };
         getCart();
-    }, [dispatch, user, navigate, confirm]);
+    }, [dispatch, user, navigate]);
 
     return (
         <div className="cart-mobile-frame">
@@ -129,6 +120,14 @@ const Cart = () => {
                             </p>
                             <Line></Line>
 
+                            <ConfirmDelete
+                                noti={noti}
+                                setNoti={setNoti}
+                                token={user ? user.token : null}
+                                comfirmDelete={comfirmDelete}
+                                setComfirmDelete={setComfirmDelete}
+                            />
+
                             <div className="cart-bottom">
                                 <div className="row">
                                     <div className="col l-8 c-12">
@@ -136,16 +135,6 @@ const Cart = () => {
                                             {cart.products?.map((product, index) => (
                                                 <div className="cart-product" key={index}>
                                                     <div className="cart-product-detail">
-                                                        <ConfirmDelete
-                                                            id={product._id}
-                                                            noti={noti}
-                                                            setNoti={setNoti}
-                                                            name={
-                                                                product.product_id.title
-                                                            }
-                                                            token={user.token}
-                                                        />
-
                                                         <img
                                                             className="cart-image"
                                                             alt=""

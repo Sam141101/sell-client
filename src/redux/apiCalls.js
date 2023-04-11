@@ -31,10 +31,14 @@ export const login = async (dispatch, user, navigate) => {
 
     try {
         // const res = await axios.post('http://localhost:5000/api/auth/login', user);
-        const res = await axios.post(BASE_URL_API + 'auth/login', user);
+        // const res = await axios.post(BASE_URL_API + 'auth/login', user);
+        const res = await axios.post(BASE_URL_API + 'auth/login', user, {
+            withCredentials: true,
+        });
         dispatch(loginSuccess(res.data));
         navigate('/');
     } catch (err) {
+        console.log(err);
         dispatch(loginFailure());
         navigate('/login');
     }
@@ -62,22 +66,29 @@ export const logout = async (dispatch, navigate, id, token, axiosJWT) => {
 
     try {
         // await axiosJWT.post('http://localhost:5000/api/auth/logout/' + id, {
-        await axiosJWT.post(BASE_URL_API + 'auth/logout', id, {
-            // await axios.post('http://localhost:5000/api/auth/logout', id, {
-            headers: { token: `Bearer ${token}` },
-        });
-        console.log('có');
+        await axiosJWT.post(
+            BASE_URL_API + 'auth/logout',
+            {
+                userId: id,
+            },
+            {
+                // await axios.post('http://localhost:5000/api/auth/logout', id, {
+                headers: { token: `Bearer ${token}` },
+            },
+        );
         dispatch(logoutSuccess());
         navigate('/');
     } catch (err) {
+        console.log(err);
         dispatch(logoutFailure());
     }
 };
 
 // Get ALL product cart
-export const getAllCart = async (token, dispatch, userId) => {
+export const getAllCart = async (token, dispatch, userId, axiosJWT) => {
     try {
-        const res = await axios.get(BASE_URL_API + 'carts/find/' + userId, {
+        // const res = await axios.get(BASE_URL_API + 'carts/find/' + userId, {
+        const res = await axiosJWT.get(BASE_URL_API + 'carts/find/' + userId, {
             headers: { token: `Bearer ${token}` },
         });
         dispatch(getAllProduct(res.data));
@@ -88,9 +99,10 @@ export const getAllCart = async (token, dispatch, userId) => {
 };
 
 // export const addCart = async (token, dispatch, product, cartproduct) => {
-export const addCart = async (token, dispatch, product, cartproduct) => {
+export const addCart = async (token, dispatch, product, cartproduct, axiosJWT) => {
     try {
-        const res = await axios.post(BASE_URL_API + 'carts/', product, {
+        // const res = await axios.post(BASE_URL_API + 'carts/', product, {
+        const res = await axiosJWT.post(BASE_URL_API + 'carts/', product, {
             headers: { token: `Bearer ${token}` },
         });
         // dispatch(addProduct(cartproduct));
@@ -101,9 +113,9 @@ export const addCart = async (token, dispatch, product, cartproduct) => {
 };
 
 // Update product cart
-export const updateProduct = async (token, dispatch, id, update, condition) => {
+export const updateProduct = async (token, dispatch, id, update, condition, axiosJWT) => {
     try {
-        await axios.put(BASE_URL_API + 'carts/' + id, update, {
+        await axiosJWT.put(BASE_URL_API + 'carts/' + id, update, {
             headers: { token: `Bearer ${token}` },
         });
         dispatch(updatedProduct({ id, update }));
@@ -115,23 +127,24 @@ export const updateProduct = async (token, dispatch, id, update, condition) => {
 // Delete product cart
 export const deleteProduct = async (token, dispatch, id, axiosJWT, navigate) => {
     try {
-        await axios.delete(BASE_URL_API + 'carts/' + id, {
-            // await axiosJWT.delete('http://localhost:5000/api/carts/' + id, {
+        // await axios.delete(BASE_URL_API + 'carts/' + id, {
+        await axiosJWT.delete('http://localhost:5000/api/carts/' + id, {
             headers: { token: `Bearer ${token}` },
         });
         dispatch(removeProduct(id));
         // navigate('/');
     } catch (err) {
+        console.log(err);
         console.log('that bai');
     }
 };
 
 // Update user
-export const updateUser = async (token, dispatch, id, update) => {
+export const updateUser = async (token, dispatch, id, update, axiosJWT) => {
     dispatch(updateStart());
 
     try {
-        const res = await axios.put(BASE_URL_API + `users/${id}`, update, {
+        const res = await axiosJWT.put(BASE_URL_API + `users/${id}`, update, {
             headers: { token: `Bearer ${token}` },
         });
         // dispatch(updateSuccess(res.data));
@@ -151,9 +164,9 @@ export const search = async (dispatch, id, update) => {
 };
 
 // user evaluate product
-export const postCommnetUser = async (token, user_id, infoComment) => {
+export const postCommnetUser = async (token, user_id, infoComment, axiosJWT) => {
     try {
-        await axios.post(BASE_URL_API + `comments/${user_id}`, infoComment, {
+        await axiosJWT.post(BASE_URL_API + `comments/${user_id}`, infoComment, {
             headers: { token: `Bearer ${token}` },
         });
     } catch (err) {
