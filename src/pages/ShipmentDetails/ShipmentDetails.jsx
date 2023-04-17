@@ -16,11 +16,13 @@ import { BASE_URL_API } from '../../requestMethods';
 import './shipmentDetails.css';
 import { addTemporary } from '../../redux/temporaryRedux';
 import { createAxiosInstance } from '../../useAxiosJWT';
+import FormInputAddress from '../../components/FormInputAddress/FormInputAddress';
 // import useDebounce from '../../hooks/useDebounce';
 
 const ShipmentDetails = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const cart = useSelector((state) => state.cart?.products);
+    const quantiProduct = useSelector((state) => state.cart?.quantity);
     const total = useSelector((state) => state?.cart);
     const userId = user._id;
     const totalPrice = total.total;
@@ -29,15 +31,31 @@ const ShipmentDetails = () => {
     const [infoCoupon, setInfoCoupon] = useState({});
     const [show, setShow] = useState(false);
 
+    const [servicePack, setServicePack] = useState({});
+
     const [toggleInfo, setToggleInfo] = useState(true);
     const [codeCoupon, setCodeCoupon] = useState('');
     const [notify, setNotify] = useState();
     const [totalPriceProduct, setTotalPriceProduct] = useState(totalPrice);
-    const [totalPriceDelivery, setTotalPriceDelivery] = useState(30000);
+    const [totalPriceDelivery, setTotalPriceDelivery] = useState(0);
     const [couponUpdated, setCouponUpdated] = useState(false);
 
     const [initialTotalPriceProduct, setInitialTotalPriceProduct] = useState(totalPrice);
-    const [initialTotalPriceDelivery, setInitialTotalPriceDelivery] = useState(30000); /// 30000 ------> total delivery
+    const [initialTotalPriceDelivery, setInitialTotalPriceDelivery] =
+        useState(totalPriceDelivery); /// 30000 ------> total delivery
+
+    const [address, setAddress] = useState({
+        address: '',
+        provinceId: 0,
+        districtId: 0,
+        wardId: 0,
+
+        provinceName: '',
+        districtName: '',
+        wardName: '',
+    });
+
+    const [confirmAddress, setConfirmAddress] = useState('');
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -54,6 +72,24 @@ const ShipmentDetails = () => {
         setInputs((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
+    };
+
+    const handleClickSave = async () => {
+        try {
+            let res;
+            if (confirmAddress === 'null') {
+                res = await axiosJWT.post(BASE_URL_API + 'address/' + userId, address, {
+                    headers: { token: `Bearer ${user.token}` },
+                });
+            } else {
+                res = await axiosJWT.put(BASE_URL_API + 'address/' + userId, address, {
+                    headers: { token: `Bearer ${user.token}` },
+                });
+            }
+            console.log(res.data);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const handleFinishClick = async () => {
@@ -154,6 +190,97 @@ const ShipmentDetails = () => {
             setTotalPriceDelivery(initialTotalPriceDelivery);
         }
     }, [notify, infoCoupon, couponUpdated]);
+
+    useEffect(() => {
+        const getAddress = async () => {
+            try {
+                const res = await axiosJWT.get(BASE_URL_API + 'address/' + userId, {
+                    headers: { token: `Bearer ${user.token}` },
+                });
+                if (res.data !== null) {
+                    setAddress({
+                        address: res.data.address,
+                        provinceId: res.data.province_id,
+                        districtId: res.data.district_id,
+                        wardId: res.data.ward_id,
+
+                        provinceName: res.data.province,
+                        districtName: res.data.district,
+                        wardName: res.data.ward,
+                    });
+                    // setInputs(res.data);
+                } else {
+                    setConfirmAddress(`${res.data}`);
+                }
+            } catch (err) {
+                console.log(err);
+                console.log('that bai');
+            }
+        };
+        getAddress();
+    }, [user.token, userId]);
+
+    // Lấy ra các phương thức vận chuyển
+    useEffect(() => {
+        const getService = async () => {
+            try {
+                const res = await axiosJWT.get(
+                    BASE_URL_API + 'shippings/service-pack/' + userId,
+                    {
+                        headers: { token: `Bearer ${user.token}` },
+                    },
+                );
+
+                setServicePack(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getService();
+    }, [user.token, userId, confirmAddress]);
+
+    // Lấy ra giá vận chuyển
+    useEffect(() => {
+        // if (confirmAddress === '' && inputs.service_id) {
+        // if (confirmAddress !== 'null' && inputs.service_id) {
+        const getServiceCharge = async () => {
+            try {
+                const res = await axiosJWT.post(
+                    BASE_URL_API + 'shippings/service-charge/' + userId,
+                    {
+                        service_id: inputs.service_id,
+                        to_district_id: address.districtId,
+                        to_ward_code: address.wardId,
+                        quantiProduct: quantiProduct,
+                    },
+                    {
+                        headers: { token: `Bearer ${user.token}` },
+                    },
+                );
+
+                console.log('res.data', res.data);
+                if (res.data !== 0) {
+                    setTotalPriceDelivery(res.data.data.total);
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getServiceCharge();
+        // }
+    }, [
+        user.token,
+        userId,
+        inputs.service_id,
+        confirmAddress,
+        address.districtId,
+        address.wardId,
+    ]);
+
+    console.log('address', address);
+    console.log('inputs', inputs);
+    console.log('cart', cart);
+    console.log('totalPriceDelivery', totalPriceDelivery);
 
     return (
         <div className="ship_ment-details-container">
@@ -301,7 +428,8 @@ const ShipmentDetails = () => {
                                     </div>
                                     <div className="ship_ment-details-delivery-price">
                                         <span>Phí vận chuyển</span>
-                                        {user.address ? (
+                                        {confirmAddress !== 'null' &&
+                                        inputs.service_id ? (
                                             <span>{totalPriceDelivery}₫</span>
                                         ) : (
                                             <span>–</span>
@@ -362,13 +490,6 @@ const ShipmentDetails = () => {
                                     <input
                                         className="ship_ment-details-info-user"
                                         type="text"
-                                        name="address"
-                                        onChange={handleChange}
-                                        placeholder="Thêm địa chỉ mới"
-                                    />
-                                    <input
-                                        className="ship_ment-details-info-user"
-                                        type="text"
                                         name="fullname"
                                         onChange={handleChange}
                                         placeholder="Họ và tên"
@@ -380,6 +501,53 @@ const ShipmentDetails = () => {
                                         onChange={handleChange}
                                         placeholder="Số điện thoại"
                                     />
+
+                                    <FormInputAddress
+                                        inputs={address}
+                                        setInputs={setAddress}
+                                        handleClick={handleClickSave}
+                                        notify={confirmAddress}
+                                    />
+                                </div>
+
+                                <div
+                                    className="ship_ment-details-payment-method"
+                                    style={{
+                                        display: `${
+                                            Object.keys(servicePack).length !== 0
+                                                ? 'block'
+                                                : 'none'
+                                        }`,
+                                    }}
+                                >
+                                    <div className="ship_ment-details-form-key">
+                                        Phương thức vận chuyển
+                                    </div>
+                                    <div className="ship_ment-details-form-value">
+                                        {servicePack?.listService &&
+                                            servicePack.listService.data.map(
+                                                (item, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="ship_ment-details-block-payment"
+                                                        onChange={handleChange}
+                                                    >
+                                                        <input
+                                                            className="ship_ment-details-form-value-select"
+                                                            type="radio"
+                                                            name="service_id"
+                                                            id={item.service_id.toString()}
+                                                            value={item.service_id}
+                                                        />
+                                                        <label
+                                                            htmlFor={item.service_id.toString()}
+                                                        >
+                                                            {item.short_name}
+                                                        </label>
+                                                    </div>
+                                                ),
+                                            )}
+                                    </div>
                                 </div>
 
                                 <div className="ship_ment-details-payment-method">
@@ -555,7 +723,8 @@ const ShipmentDetails = () => {
                                         </div>
                                         <div className="ship_ment-details-delivery-price">
                                             <span>Phí vận chuyển</span>
-                                            {user.address ? (
+                                            {confirmAddress !== 'null' &&
+                                            inputs.service_id ? (
                                                 <span>{totalPriceDelivery}₫</span>
                                             ) : (
                                                 <span>–</span>

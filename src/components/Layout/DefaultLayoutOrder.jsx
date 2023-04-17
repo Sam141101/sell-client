@@ -6,9 +6,27 @@ import Announcement from '../Announcement/Announcement';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 
+const profile = [
+    {
+        title: 'Hồ sơ',
+        to: 'profile',
+    },
+    {
+        title: 'Đổi mật khẩu',
+        to: 'change-password',
+    },
+    {
+        title: 'Địa chỉ',
+        to: 'address',
+    },
+];
+
 function DefaultLayoutOrder({ children, show1, show2, show3 }) {
     const location = useLocation();
     const pathpolicy = location.pathname.split('/')[1];
+
+    const accounttype = location.pathname.split('/')[2];
+
     const user = useSelector((state) => state.auth?.currentUser);
 
     return (
@@ -47,10 +65,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
 
                                 <div className="default-layout-order-more-items">
                                     <Link
-                                        // style={{ textDecoration: 'none' }}
                                         style={{
                                             textDecoration: 'none',
-                                            color: `${show2 ? '#ee4d2d' : ''} `,
+                                            color: `${
+                                                pathpolicy === 'account' ? '#ee4d2d' : ''
+                                            } `,
                                         }}
                                         to="/account/profile"
                                     >
@@ -63,10 +82,39 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             Tài khoản của tôi
                                         </div>
                                     </Link>
+
+                                    <div className="default-layout-order-account">
+                                        {profile.map((item, i) => (
+                                            <div
+                                                className="default-layout-order-account-frame"
+                                                key={i}
+                                            >
+                                                <Link
+                                                    className={`default-layout-order-account-link ${
+                                                        accounttype === `${item.to}`
+                                                            ? 'active'
+                                                            : ''
+                                                    }`}
+                                                    to={`/account/${item.to}`}
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+
                                     <Link
                                         style={{
                                             textDecoration: 'none',
-                                            color: `${show1 ? '#ee4d2d' : ''} `,
+                                            color: `${
+                                                pathpolicy === 'wait-for-confirmation' ||
+                                                pathpolicy === 'waiting-for-the-goods' ||
+                                                pathpolicy === 'delivering' ||
+                                                pathpolicy === 'complete' ||
+                                                pathpolicy === 'canceled'
+                                                    ? '#ee4d2d'
+                                                    : ''
+                                            } `,
                                         }}
                                         to="/wait-for-confirmation"
                                     >
@@ -84,7 +132,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                         // style={{ textDecoration: 'none' }}
                                         style={{
                                             textDecoration: 'none',
-                                            color: `${show3 ? '#ee4d2d' : ''} `,
+                                            color: `${
+                                                pathpolicy === 'voucher-user'
+                                                    ? '#ee4d2d'
+                                                    : ''
+                                            } `,
                                         }}
                                         to="/voucher-user"
                                     >
@@ -106,7 +158,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                     <div className="default-layout-order-manage-user">
                                         <Link
                                             style={{
-                                                color: `${show1 === 1 ? 'red' : ''}`,
+                                                color: `${
+                                                    pathpolicy === 'wait-for-confirmation'
+                                                        ? 'red'
+                                                        : ''
+                                                }`,
                                             }}
                                             className="default-layout-order-select-link"
                                             to="/wait-for-confirmation"
@@ -116,7 +172,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                         <Link
                                             className="default-layout-order-select-link"
                                             style={{
-                                                color: `${show1 === 2 ? 'red' : ''}`,
+                                                color: `${
+                                                    pathpolicy === 'waiting-for-the-goods'
+                                                        ? 'red'
+                                                        : ''
+                                                }`,
                                             }}
                                             to="/waiting-for-the-goods"
                                         >
@@ -126,7 +186,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                         <Link
                                             className="default-layout-order-select-link"
                                             style={{
-                                                color: `${show1 === 3 ? 'red' : ''}`,
+                                                color: `${
+                                                    pathpolicy === 'delivering'
+                                                        ? 'red'
+                                                        : ''
+                                                }`,
                                             }}
                                             to="/delivering"
                                         >
@@ -136,7 +200,9 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                         <Link
                                             className="default-layout-order-select-link"
                                             style={{
-                                                color: `${show1 === 4 ? 'red' : ''}`,
+                                                color: `${
+                                                    pathpolicy === 'complete' ? 'red' : ''
+                                                }`,
                                             }}
                                             to="/complete"
                                         >
@@ -145,7 +211,9 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                         <Link
                                             className="default-layout-order-select-link"
                                             style={{
-                                                color: `${show1 === 5 ? 'red' : ''}`,
+                                                color: `${
+                                                    pathpolicy === 'canceled' ? 'red' : ''
+                                                }`,
                                             }}
                                             to="/canceled"
                                         >

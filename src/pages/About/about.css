@@ -145,3 +145,23 @@
     font-size: 18px;
     color: #363636;
 }
+
+.default-layout-order-account {
+    margin-left: 40px;
+}
+
+.default-layout-order-account-frame {
+    padding: 6px 0;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.default-layout-order-account-link {
+    text-decoration: none;
+    color: rgb(105, 105, 105);
+    cursor: pointer;
+}
+
+.default-layout-order-account-link.active {
+    color: rgb(240, 52, 52);
+}

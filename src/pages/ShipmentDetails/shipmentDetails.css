@@ -70,7 +70,7 @@
 }
 
 .ship_ment-details-payment-method {
-    margin-top: 25px;
+    margin-top: 15px;
     font-size: 15px;
     width: 90%;
 }
@@ -84,7 +84,7 @@
 .ship_ment-details-form-value {
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding: 5px 15px;
     border-radius: 10px;
     border: 1px solid #ccc;
 }
@@ -95,7 +95,12 @@
     padding: 10px 5px;
 }
 
+.ship_ment-details-block-payment label {
+    cursor: pointer;
+}
+
 .ship_ment-details-form-value-select {
+    cursor: pointer;
     margin-right: 12px;
 }
 
@@ -218,7 +223,7 @@
 }
 
 .ship_ment-details-payment-paypal {
-    height: 45px;
+    height: 30px;
     display: flex;
 }
 

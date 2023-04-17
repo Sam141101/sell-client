@@ -12,6 +12,7 @@ import {
     Routes,
     Route,
     Navigate,
+    useNavigate,
     // Redirect,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -29,7 +30,7 @@ import PolicyProtect from './pages/PolicyProtect/PolicyProtect';
 import PolicyService from './pages/PolicyService/PolicyService';
 import TestList from './pages/TestList/TestList';
 import Test from './pages/Test';
-import { publicRoutes } from './routes/publicRouter';
+import { authenticatedRoutes, publicRoutes } from './routes/publicRouter';
 import DefaultLayoutPolicy from './components/Layout/DefaultLayoutPolicy';
 import { Fragment } from 'react';
 import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
@@ -40,6 +41,7 @@ import Complete from './components/WaitForProduct/Complete';
 function App() {
     // test
     const user = useSelector((state) => state.auth?.currentUser);
+    // const navigate = useNavigate();
 
     return (
         <Router>
@@ -72,11 +74,46 @@ function App() {
                     );
                 })}
 
-                <Route path="/testlll" element={<Evaluate />} />
+                {authenticatedRoutes.map((route, index) => {
+                    const Page = route.component;
+
+                    let Layout = DefaultLayoutPolicy;
+
+                    if (route.layout) {
+                        Layout = route.layout;
+                    } else if (route.layout === null) {
+                        Layout = Fragment;
+                    }
+
+                    // Thêm bảo vệ cho tuyến đường trong trường hợp người dùng chưa đăng nhập
+                    return (
+                        <Route
+                            key={index}
+                            path={route.path}
+                            element={
+                                user ? (
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                ) : (
+                                    <Navigate to="/login" replace />
+                                    // navigate('/')
+                                )
+                            }
+                        />
+                    );
+                })}
+
+                {/* <Route path="/account/profile" element={<UserProfile />} /> */}
+
+                {/* <Route path="/testlll" element={<Evaluate />} /> */}
                 <Route path="/testlll2" element={<Complete />} />
+
+                {/* test paypal */}
                 <Route path="/test" element={<Test />} />
-                <Route path="/test11" element={<OrderSuccess />} />
-                <Route path="/test12" element={<OrderCancel />} />
+
+                {/* <Route path="/test11" element={<OrderSuccess />} />
+                <Route path="/test12" element={<OrderCancel />} /> */}
 
                 {/* <Route path="/ttt5" element={<Register />} /> */}
                 <Route path="/change-account" element={<ChangePassword />} />
@@ -90,6 +127,7 @@ function App() {
                 <Route path="/products/:category" element={<ProductList />} />
                 <Route path="/products" element={<ProductList />} />
                 <Route path="/product/:id" element={<Product />} />
+
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/order" element={<ShipmentDetails />} />
 

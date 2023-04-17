@@ -184,7 +184,7 @@ const UserProfile = () => {
                                 </div>
                             </div>
 
-                            <div className="user-profile-form-item">
+                            {/* <div className="user-profile-form-item">
                                 <div className="user-profile-form-key">Địa chỉ</div>
                                 <div className="user-profile-form-value">
                                     <input
@@ -195,7 +195,7 @@ const UserProfile = () => {
                                         onChange={handleChange}
                                     />
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="user-profile-form-item">
                                 <div className="user-profile-form-key">Giới tính</div>

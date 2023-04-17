@@ -13,17 +13,17 @@ import { createAxiosInstance } from '../../useAxiosJWT';
 const data = [
     {
         title: 'Tất cả',
-        to: '/',
+        to: '/all',
         type: 'all',
     },
     {
         title: 'Mới nhất',
-        to: '/',
+        to: '/new',
         type: 'new',
     },
     {
         title: 'Sắp hết hạn',
-        to: '/',
+        to: '/expire',
         type: 'expire',
     },
 ];

@@ -60,164 +60,249 @@ const ChangePassword = () => {
     };
 
     return (
-        // <div style={{ backgroundColor: '#f5f5f5', height: '100vh' }}>
-        <div>
-            <div className="change-password-background">
-                {show && (
-                    <div className="change-password-wrapper">
-                        <div className="change-password-noti">
-                            <img
-                                className="change-password-noti-img"
-                                src="https://png.pngtree.com/png-vector/20190228/ourmid/pngtree-check-mark-icon-design-template-vector-isolated-png-image_711429.jpg"
-                                alt=""
-                            />
+        <>
+            {show && (
+                <div className="change-password-wrapper">
+                    <div className="change-password-noti">
+                        <img
+                            className="change-password-noti-img"
+                            src="https://png.pngtree.com/png-vector/20190228/ourmid/pngtree-check-mark-icon-design-template-vector-isolated-png-image_711429.jpg"
+                            alt=""
+                        />
 
-                            <p className="change-password-text-noti">Cập nhật hồ sơ</p>
-                        </div>
+                        <p className="change-password-text-noti">Cập nhật hồ sơ</p>
                     </div>
-                )}
+                </div>
+            )}
 
-                <Navbar />
+            <div className="row">
+                <div className="col l-12 c-12">
+                    <div className="change-password-container-right">
+                        <div className="change-password-manage-user">
+                            <h4 className="user-profile-file-title">Đổi mật khẩu</h4>
+                            {/* <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p> */}
+                        </div>
 
-                <div className="change-password-container">
-                    <div className="grid wide">
-                        <div className="row">
-                            <div className="col l-4 c-12">
-                                <div className="change-password-container-left">
-                                    <div className="change-password-info-user">
-                                        <img
-                                            className="change-password-img-user"
-                                            src={
-                                                user.img ||
-                                                'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
+                        <div className="change-password-form">
+                            <div className="change-password-form-left">
+                                <div className="change-password-form-item">
+                                    <div className="change-password-form-key">
+                                        Mật khẩu cũ
+                                    </div>
+                                    <div className="change-password-form-value">
+                                        <input
+                                            className="change-password-form-input"
+                                            type="text"
+                                            onChange={(e) =>
+                                                setCurrentPassword(e.target.value)
                                             }
-                                            alt=""
+                                            value={currentPassword}
                                         />
-                                        <div className="change-password-change-info-user">
-                                            <h4 className="change-password-title-user">
-                                                {user.username}
-                                            </h4>
-                                            <span className="change-password-change-info">
-                                                <Create
-                                                    style={{
-                                                        fontSize: '18px',
-                                                        marginRight: '5px',
-                                                    }}
-                                                />
-                                                Sửa hồ sơ
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="change-password-more-item">
-                                        <div className="change-password-item">
-                                            <img
-                                                className="change-password-img-item"
-                                                src="https://cf.shopee.vn/file/ba61750a46794d8847c3f463c5e71cc4"
-                                                alt=""
-                                            />
-                                            Tài khoản của tôi
-                                        </div>
-                                        <Link
-                                            style={{ textDecoration: 'none' }}
-                                            to="/wait-for-confirmation"
-                                        >
-                                            <div className="change-password-item">
-                                                <img
-                                                    className="change-password-img-item"
-                                                    src="https://cf.shopee.vn/file/f0049e9df4e536bc3e7f140d071e9078"
-                                                    alt=""
-                                                />
-                                                Đơn mua
-                                            </div>
-                                        </Link>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="col l-8 c-12">
-                                <div className="change-password-container-right">
-                                    <div className="change-password-manage-user">
-                                        <h4 className="change-password-file-title">
-                                            Hồ Sơ Của Tôi
-                                        </h4>
-                                        <p>
-                                            Quản lý thông tin hồ sơ để bảo mật tài khoản
-                                        </p>
+                                <div className="change-password-form-item">
+                                    <div className="change-password-form-key">
+                                        Mật khẩu mới
                                     </div>
-
-                                    <div className="change-password-form">
-                                        <div className="change-password-form-left">
-                                            <div className="change-password-form-item">
-                                                <div className="change-password-form-key">
-                                                    Mật khẩu cũ
-                                                </div>
-                                                <div className="change-password-form-value">
-                                                    <input
-                                                        className="change-password-form-input"
-                                                        type="text"
-                                                        onChange={(e) =>
-                                                            setCurrentPassword(
-                                                                e.target.value,
-                                                            )
-                                                        }
-                                                        value={currentPassword}
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className="change-password-form-item">
-                                                <div className="change-password-form-key">
-                                                    Mật khẩu mới
-                                                </div>
-                                                <div className="change-password-form-value">
-                                                    <input
-                                                        className="change-password-form-input"
-                                                        type="text"
-                                                        onChange={(e) =>
-                                                            setNewPassword(e.target.value)
-                                                        }
-                                                        value={newPassword}
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className="change-password-form-item">
-                                                <div className="change-password-form-key">
-                                                    Xác nhận mật khẩu
-                                                </div>
-                                                <div className="change-password-form-value">
-                                                    <input
-                                                        className="change-password-form-input"
-                                                        type="text"
-                                                        onChange={(e) =>
-                                                            setConfirmPassword(
-                                                                e.target.value,
-                                                            )
-                                                        }
-                                                        value={confirmPassword}
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <button
-                                                className="change-password-form-save-info"
-                                                onClick={handleClick}
-                                            >
-                                                Lưu
-                                            </button>
-                                        </div>
+                                    <div className="change-password-form-value">
+                                        <input
+                                            className="change-password-form-input"
+                                            type="text"
+                                            onChange={(e) =>
+                                                setNewPassword(e.target.value)
+                                            }
+                                            value={newPassword}
+                                        />
                                     </div>
                                 </div>
+
+                                <div className="change-password-form-item">
+                                    <div className="change-password-form-key">
+                                        Xác nhận mật khẩu
+                                    </div>
+                                    <div className="change-password-form-value">
+                                        <input
+                                            className="change-password-form-input"
+                                            type="text"
+                                            onChange={(e) =>
+                                                setConfirmPassword(e.target.value)
+                                            }
+                                            value={confirmPassword}
+                                        />
+                                    </div>
+                                </div>
+
+                                <button
+                                    className="change-password-form-save-info"
+                                    onClick={handleClick}
+                                >
+                                    Lưu
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {/* <Footer /> */}
             </div>
-        </div>
+        </>
     );
 };
 
 export default ChangePassword;
+
+// <div>
+// <div className="change-password-background">
+//     {show && (
+//         <div className="change-password-wrapper">
+//             <div className="change-password-noti">
+//                 <img
+//                     className="change-password-noti-img"
+//                     src="https://png.pngtree.com/png-vector/20190228/ourmid/pngtree-check-mark-icon-design-template-vector-isolated-png-image_711429.jpg"
+//                     alt=""
+//                 />
+
+//                 <p className="change-password-text-noti">Cập nhật hồ sơ</p>
+//             </div>
+//         </div>
+//     )}
+
+//     <Navbar />
+
+//     <div className="change-password-container">
+//         <div className="grid wide">
+//             <div className="row">
+//                 <div className="col l-4 c-12">
+//                     <div className="change-password-container-left">
+//                         <div className="change-password-info-user">
+//                             <img
+//                                 className="change-password-img-user"
+//                                 src={
+//                                     user.img ||
+//                                     'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
+//                                 }
+//                                 alt=""
+//                             />
+//                             <div className="change-password-change-info-user">
+//                                 <h4 className="change-password-title-user">
+//                                     {user.username}
+//                                 </h4>
+//                                 <span className="change-password-change-info">
+//                                     <Create
+//                                         style={{
+//                                             fontSize: '18px',
+//                                             marginRight: '5px',
+//                                         }}
+//                                     />
+//                                     Sửa hồ sơ
+//                                 </span>
+//                             </div>
+//                         </div>
+
+//                         <div className="change-password-more-item">
+//                             <div className="change-password-item">
+//                                 <img
+//                                     className="change-password-img-item"
+//                                     src="https://cf.shopee.vn/file/ba61750a46794d8847c3f463c5e71cc4"
+//                                     alt=""
+//                                 />
+//                                 Tài khoản của tôi
+//                             </div>
+//                             <Link
+//                                 style={{ textDecoration: 'none' }}
+//                                 to="/wait-for-confirmation"
+//                             >
+//                                 <div className="change-password-item">
+//                                     <img
+//                                         className="change-password-img-item"
+//                                         src="https://cf.shopee.vn/file/f0049e9df4e536bc3e7f140d071e9078"
+//                                         alt=""
+//                                     />
+//                                     Đơn mua
+//                                 </div>
+//                             </Link>
+//                         </div>
+//                     </div>
+//                 </div>
+
+//                 <div className="col l-8 c-12">
+//                     <div className="change-password-container-right">
+//                         <div className="change-password-manage-user">
+//                             <h4 className="change-password-file-title">
+//                                 Hồ Sơ Của Tôi
+//                             </h4>
+//                             <p>
+//                                 Quản lý thông tin hồ sơ để bảo mật tài khoản
+//                             </p>
+//                         </div>
+
+//                         <div className="change-password-form">
+//                             <div className="change-password-form-left">
+//                                 <div className="change-password-form-item">
+//                                     <div className="change-password-form-key">
+//                                         Mật khẩu cũ
+//                                     </div>
+//                                     <div className="change-password-form-value">
+//                                         <input
+//                                             className="change-password-form-input"
+//                                             type="text"
+//                                             onChange={(e) =>
+//                                                 setCurrentPassword(
+//                                                     e.target.value,
+//                                                 )
+//                                             }
+//                                             value={currentPassword}
+//                                         />
+//                                     </div>
+//                                 </div>
+
+//                                 <div className="change-password-form-item">
+//                                     <div className="change-password-form-key">
+//                                         Mật khẩu mới
+//                                     </div>
+//                                     <div className="change-password-form-value">
+//                                         <input
+//                                             className="change-password-form-input"
+//                                             type="text"
+//                                             onChange={(e) =>
+//                                                 setNewPassword(e.target.value)
+//                                             }
+//                                             value={newPassword}
+//                                         />
+//                                     </div>
+//                                 </div>
+
+//                                 <div className="change-password-form-item">
+//                                     <div className="change-password-form-key">
+//                                         Xác nhận mật khẩu
+//                                     </div>
+//                                     <div className="change-password-form-value">
+//                                         <input
+//                                             className="change-password-form-input"
+//                                             type="text"
+//                                             onChange={(e) =>
+//                                                 setConfirmPassword(
+//                                                     e.target.value,
+//                                                 )
+//                                             }
+//                                             value={confirmPassword}
+//                                         />
+//                                     </div>
+//                                 </div>
+
+//                                 <button
+//                                     className="change-password-form-save-info"
+//                                     onClick={handleClick}
+//                                 >
+//                                     Lưu
+//                                 </button>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+
+//     {/* <Footer /> */}
+// </div>
+// </div>

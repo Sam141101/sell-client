@@ -78,7 +78,7 @@
 }
 
 .user-profile-file-title {
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .user-profile-form {
@@ -93,7 +93,6 @@
 }
 
 .user-profile-form-left {
-    /* flex: 3; */
     padding-right: 50px;
 }
 
@@ -246,6 +245,9 @@
     align-items: center;
 }
 
+.user-profile-form-frame {
+}
+
 .user-profile-noti-img {
     width: 130px;
     background: white;
@@ -282,4 +284,53 @@
 
 .block-user-profile-mobile {
     padding: 30px 0;
+}
+
+.user-profile-form-item .login_form {
+    width: 100%;
+}
+
+.user-change-address-form-key {
+    color: rgba(85, 85, 85, 0.8);
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.address-manage-user {
+    border-bottom: 1px solid #efefef;
+    padding: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-address-btn {
+    display: inline-block;
+    padding: 10px;
+    background: #d1d1d1;
+    color: #fff !important;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+}
+
+.user-address-form-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+
+.user-address-form-item .login_form {
+    width: 500px;
+}
+
+.user-address-form-item input[type='text'] {
+    letter-spacing: 0.7px;
+}
+
+.user-address-form {
+    padding-top: 15px;
 }
