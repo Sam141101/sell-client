@@ -14,23 +14,6 @@ const ForgotPassword = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // const axiosJWT = createAxiosInstance(user, dispatch);
-
-    const blurEmail = (e) => {
-        // var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        // if (!e.target.value) {
-        //     document.getElementById('email').innerHTML = 'Vui lòng nhập trường này';
-        //     setConfirmEmail(false);
-        // } else if (!regex.test(e.target.value)) {
-        //     document.getElementById('email').innerHTML = 'Trường này phải là email';
-        //     setConfirmEmail(false);
-        // } else {
-        //     document.getElementById('email').innerHTML = '';
-        //     setConfirmEmail(true);
-        //     document.getElementById('succes').innerHTML = '';
-        // }
-    };
-
     const handleClick = async (e) => {
         e.preventDefault();
         try {
@@ -69,8 +52,6 @@ const ForgotPassword = () => {
                                                 placeholder="Gmail"
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 value={email}
-                                                onBlur={blurEmail}
-                                                // ref={inputRef}
                                             />
 
                                             {msg && (
@@ -98,7 +79,7 @@ const ForgotPassword = () => {
                                             <div className="forgot-password-buttons">
                                                 <button
                                                     className="email-verify-button"
-                                                    disabled={!email}
+                                                    // disabled={!email}
                                                     onClick={handleClick}
                                                 >
                                                     Gửi

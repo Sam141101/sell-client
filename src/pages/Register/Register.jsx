@@ -1,4 +1,4 @@
-import { KeyboardBackspace } from '@mui/icons-material';
+import { KeyboardBackspace, Visibility } from '@mui/icons-material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -10,43 +10,53 @@ import { register } from '../../redux/apiCalls';
 import { BASE_URL_API } from '../../requestMethods';
 import { mobile } from '../../responsive';
 import './register.css';
+import { togglePasswordVisibility } from '../../support';
 
 // --------------------------------------------------------------
 
 const Register = () => {
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [succesPw, setSuccesPw] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [username, setUsername] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [succesPw, setSuccesPw] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [confirmName, setConfirmName] = useState(false);
-    const [confirmEmail, setConfirmEmail] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState(false);
-    const [confirmSuccessPassword, setConfirmSuccessPassword] = useState(false);
+    // const [confirmName, setConfirmName] = useState(false);
+    // const [confirmEmail, setConfirmEmail] = useState(false);
+    // const [confirmPassword, setConfirmPassword] = useState(false);
+    // const [confirmSuccessPassword, setConfirmSuccessPassword] = useState(false);
+
+    const [inputs, setInputs] = useState({});
+    const [notify, setNotify] = useState('');
 
     // ------------- nhập gmail để tới bước tiếp theo ------
     const [userid, setUserid] = useState({});
-    const [gmail, setGmail] = useState('');
-    const confirm = true;
+    // const [gmail, setGmail] = useState('');
+    // const confirm = true;
 
     const [validUrl, setValidUrl] = useState(false);
+
     const param = useParams();
+
+    const handleChange = (e) => {
+        setInputs((prev) => {
+            return {
+                ...prev,
+                [e.target.name]: e.target.value,
+            };
+        });
+    };
 
     const handleClick = (e) => {
         e.preventDefault();
-        // register(dispatch, { username, password, email }, navigate);
-        register(dispatch, { username, password, userid }, navigate);
 
+        const inputss = {
+            userid: userid.id,
+            inputs,
+        };
+        register(dispatch, inputss, navigate, setNotify);
         // navigate('/login');
     };
-
-    const blurUsername = (e) => {};
-
-    const blurEmail = (e) => {};
-
-    const blurPassword = (e) => {};
-    const blurConfirmPassword = (e) => {};
 
     useEffect(() => {
         const verifyEmailUrl = async () => {
@@ -81,28 +91,17 @@ const Register = () => {
                                 <div className="register_container">
                                     <div className="register_wrapper">
                                         <div className="register_form">
-                                            {/* Email */}
                                             <div className="register_form-input">
                                                 <input
                                                     className="register_input"
-                                                    // value={username}
                                                     type="text"
                                                     placeholder="Họ và Tên"
-                                                    // onChange={(e) =>
-                                                    //     setUsername(e.target.value)
-                                                    // }
-                                                    // onBlur={blurUsername}
+                                                    name="fullname"
+                                                    onChange={handleChange}
                                                 />
-                                                <span
-                                                    className="register_span"
-                                                    id="username"
-                                                ></span>
-
-                                                {/* <div className="user-profile-form-value"> */}
                                                 <div
                                                     className="register_form-gender"
-
-                                                    // onChange={handleChange}
+                                                    onChange={handleChange}
                                                 >
                                                     <input
                                                         className="register_form-value-select"
@@ -144,70 +143,61 @@ const Register = () => {
                                                         Khác
                                                     </label>
                                                 </div>
-                                                {/* </div> */}
 
                                                 <input
                                                     className="register_input"
-                                                    value={username}
+                                                    name="username"
                                                     type="text"
                                                     placeholder="Tài khoản"
-                                                    onChange={(e) =>
-                                                        setUsername(e.target.value)
-                                                    }
-                                                    onBlur={blurUsername}
+                                                    onChange={handleChange}
                                                 />
-                                                <span
-                                                    className="register_span"
-                                                    id="username"
-                                                ></span>
-                                                {/* <Input
-                                value={email}
-                                type="email"
-                                placeholder="email"
-                                onChange={(e) => setEmail(e.target.value)}
-                                onBlur={blurEmail}
-                            />
-                            <Span id="email"></Span> */}
-                                                <input
-                                                    className="register_input"
-                                                    value={password}
-                                                    type="password"
-                                                    placeholder="Mật khẩu"
-                                                    onChange={(e) =>
-                                                        setPassword(e.target.value)
-                                                    }
-                                                    onBlur={blurPassword}
-                                                    id="mk"
-                                                />
-                                                <span
-                                                    className="register_span"
-                                                    id="password"
-                                                ></span>
-                                                <input
-                                                    className="register_input"
-                                                    value={succesPw}
-                                                    onChange={(e) =>
-                                                        setSuccesPw(e.target.value)
-                                                    }
-                                                    type="password"
-                                                    placeholder="Xác thực mật khẩu"
-                                                    onBlur={blurConfirmPassword}
-                                                />
-                                                <span
-                                                    className="register_span"
-                                                    id="confirm_password"
-                                                ></span>
 
-                                                {/* <Span id="succes"></Span> */}
+                                                <div className="block-register-input">
+                                                    <input
+                                                        className="register_input"
+                                                        type="password"
+                                                        name="password"
+                                                        placeholder="Mật khẩu"
+                                                        onChange={handleChange}
+                                                        id="password"
+                                                    />
+
+                                                    <Visibility
+                                                        onClick={() =>
+                                                            togglePasswordVisibility(
+                                                                'password',
+                                                            )
+                                                        }
+                                                        className="register-input-password-display"
+                                                    />
+                                                </div>
+
+                                                <div className="block-register-input">
+                                                    <input
+                                                        className="register_input"
+                                                        onChange={handleChange}
+                                                        type="password"
+                                                        name="confirmPassword"
+                                                        placeholder="Xác thực mật khẩu"
+                                                        id="password-confirm"
+                                                    />
+
+                                                    <Visibility
+                                                        onClick={() =>
+                                                            togglePasswordVisibility(
+                                                                'password-confirm',
+                                                            )
+                                                        }
+                                                        className="register-input-password-display"
+                                                    />
+                                                </div>
+
+                                                <span className="notify-info-message">
+                                                    {notify}
+                                                </span>
 
                                                 <button
                                                     className="register_button"
-                                                    disabled={
-                                                        // !email || !password || !username || !succesPw
-                                                        !password ||
-                                                        !username ||
-                                                        !succesPw
-                                                    }
                                                     onClick={handleClick}
                                                 >
                                                     ĐĂNG KÝ
@@ -249,7 +239,6 @@ const Register = () => {
                                                     </span>
                                                 </Link>
                                             </p>
-                                            {/* </div> */}
 
                                             <Link to="/" className="register_return-home">
                                                 <KeyboardBackspace className="register_return-home-icon" />

@@ -1,4 +1,4 @@
-import { KeyboardBackspace } from '@mui/icons-material';
+import { KeyboardBackspace, Visibility } from '@mui/icons-material';
 import axios from 'axios';
 import { useRef } from 'react';
 import { useEffect, useState } from 'react';
@@ -9,22 +9,7 @@ import { register } from '../../redux/apiCalls';
 import { BASE_URL_API } from '../../requestMethods';
 import { mobile } from '../../responsive';
 import './newPassword.css';
-
-const HeaderImg = styled.img`
-    height: 38px;
-    cursor: pointer;
-`;
-
-const HeaderTitle = styled.h2`
-    font-size: 26px;
-    padding-left: 25px;
-`;
-
-const HeaderHelp = styled.p`
-    color: red;
-    font-weight: 500;
-    cursor: pointer;
-`;
+import { togglePasswordVisibility } from '../../support';
 
 // --------------------------------------------------------------
 
@@ -34,6 +19,7 @@ const NewPassword = () => {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [msg, setMsg] = useState('');
+
     const [validUrl, setValidUrl] = useState(false);
 
     const dispatch = useDispatch();
@@ -43,26 +29,16 @@ const NewPassword = () => {
     const inputRef2 = useRef();
     const param = useParams();
 
-    const blurEmail = (e) => {
-        // var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        // if (!e.target.value) {
-        //     document.getElementById('email').innerHTML = 'Vui lòng nhập trường này';
-        //     setConfirmEmail(false);
-        // } else if (!regex.test(e.target.value)) {
-        //     document.getElementById('email').innerHTML = 'Trường này phải là email';
-        //     setConfirmEmail(false);
-        // } else {
-        //     document.getElementById('email').innerHTML = '';
-        //     setConfirmEmail(true);
-        //     document.getElementById('succes').innerHTML = '';
-        // }
-    };
-
     const handleClick = async (e) => {
         e.preventDefault();
+        console.log(password, passwordConfirm);
         try {
             const url = BASE_URL_API + `auth/new-password`;
-            const res = await axios.post(url, { password: password, id: id });
+            const res = await axios.post(url, {
+                password: password,
+                passwordConfirm: passwordConfirm,
+                id: id,
+            });
             // console.log(res.data.message);
             console.log('cập nhật mật khẩu thành công');
             setMsg(res.data.message);
@@ -113,7 +89,6 @@ const NewPassword = () => {
                                                     Mật khẩu mới
                                                 </div>
 
-                                                {/* Email */}
                                                 <div className="title-email-user">
                                                     {email}
                                                 </div>
@@ -128,7 +103,6 @@ const NewPassword = () => {
                                                             setPassword(e.target.value)
                                                         }
                                                         value={password}
-                                                        // onBlur={blurEmail}
                                                     />
 
                                                     <span
@@ -164,7 +138,6 @@ const NewPassword = () => {
 
                                                     <button
                                                         className="login_button"
-                                                        // disabled={isFetching}
                                                         onClick={handleClick}
                                                     >
                                                         ĐỒNG Ý

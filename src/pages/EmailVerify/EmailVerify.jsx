@@ -3,14 +3,8 @@ import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/NavBar/NavBar';
-import { register } from '../../redux/apiCalls';
 import { BASE_URL_API } from '../../requestMethods';
-import { mobile } from '../../responsive';
 import './emailVerify.css';
-import { createAxiosInstance } from '../../useAxiosJWT';
 
 // --------------------------------------------------------------
 
@@ -19,37 +13,13 @@ const EmailVerify = () => {
     const [email, setEmail] = useState('');
     const [msg, setMsg] = useState('');
 
-    const inputRef = useRef();
+    // const inputRef = useRef();
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // const axiosJWT = createAxiosInstance(user, dispatch);
-
-    const blurEmail = (e) => {
-        // var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        // if (!e.target.value) {
-        //     document.getElementById('email').innerHTML = 'Vui lòng nhập trường này';
-        //     setConfirmEmail(false);
-        // } else if (!regex.test(e.target.value)) {
-        //     document.getElementById('email').innerHTML = 'Trường này phải là email';
-        //     setConfirmEmail(false);
-        // } else {
-        //     document.getElementById('email').innerHTML = '';
-        //     setConfirmEmail(true);
-        //     document.getElementById('succes').innerHTML = '';
-        // }
-    };
-
     const handleClick = async (e) => {
         e.preventDefault();
-        // if (email === '') {
-        //     inputRef.current.focus();
-        //     console.log('ref');
-        // }
-
-        //  else {
-        // }
         try {
             const url = BASE_URL_API + `auth/confirm/register`;
             const { data: res } = await axios.post(url, { email });
@@ -83,7 +53,7 @@ const EmailVerify = () => {
                                                 placeholder="Gmail"
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 value={email}
-                                                onBlur={blurEmail}
+                                                // onBlur={blurEmail}
                                                 // ref={inputRef}
                                             />
                                             {msg && (
@@ -97,7 +67,7 @@ const EmailVerify = () => {
                                             <button
                                                 className="email-verify-button"
                                                 style={{ marginTop: '30px' }}
-                                                disabled={!email}
+                                                // disabled={!email}
                                                 onClick={handleClick}
                                             >
                                                 TIẾP THEO

@@ -101,13 +101,6 @@ const Login = () => {
                                             >
                                                 ĐĂNG NHẬP
                                             </button>
-                                            {/* <Button onClick={handleClick}>LOGIN</Button> */}
-                                            {/* {error && (
-                                                    <span className="login_error">
-                                                        Yêu cầu không hợp lệ, hoặc quá
-                                                        hạn, phiền bạn thử lại
-                                                    </span>
-                                                )} */}
                                         </div>
 
                                         <span className="login_agreement">
@@ -142,6 +135,13 @@ const Login = () => {
                                                 <span className="login_text-line">
                                                     Đăng nhập
                                                 </span>
+                                            </Link>
+                                            or
+                                            <Link
+                                                className="forgot-pass-title"
+                                                to="/forgot-password"
+                                            >
+                                                Quên mật khẩu?
                                             </Link>
                                         </p>
                                     </div>

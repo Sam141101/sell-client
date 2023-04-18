@@ -74,10 +74,40 @@
     border: 1px solid #ededed;
     background-color: #ededed;
     color: #000000;
-    padding: 0 20px;
+    padding: 0 50px 0 20px;
     font-weight: 500;
     -webkit-appearance: none;
     outline: none;
+    margin-bottom: 20px;
+}
+
+.block-register-input .register_input {
+    margin-bottom: 0 !important;
+}
+
+.notify-info-message {
+    font-size: 16px;
+    color: red;
+    margin-bottom: 15px;
+}
+
+.block-register-input {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.register-input-password-display {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 23.5%;
+    /* width: 20px !important; */
+    font-size: 20px !important;
+    cursor: pointer;
+}
+
+.register-input-password-display:hover {
+    opacity: 0.65;
 }
 
 .register_form input[type='email']:focus,
@@ -103,6 +133,7 @@
 }
 
 .register_button {
+    cursor: pointer;
     outline: none;
     width: fit-content;
     padding: 0 30px;

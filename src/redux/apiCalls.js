@@ -45,14 +45,14 @@ export const login = async (dispatch, user, navigate) => {
 };
 
 // Register
-export const register = async (dispatch, user, navigate) => {
+export const register = async (dispatch, inputss, navigate, setNotify) => {
     dispatch(registerStart());
 
     try {
-        const res = await axios.post(BASE_URL_API + 'auth/register', user);
+        const res = await axios.post(BASE_URL_API + 'auth/register', inputss);
         dispatch(registerSuccess());
-        console.log(res.data);
-
+        setNotify(res.data);
+        // console.log(res.data);
         navigate('/login');
     } catch (err) {
         dispatch(registerFailure());
