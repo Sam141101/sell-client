@@ -61,7 +61,7 @@ export const register = async (dispatch, inputss, navigate, setNotify) => {
 };
 
 // Logout
-export const logout = async (dispatch, navigate, id, token, axiosJWT) => {
+export const logout = async (dispatch, id, token, axiosJWT, navigate) => {
     dispatch(logoutStart());
 
     try {
@@ -77,7 +77,10 @@ export const logout = async (dispatch, navigate, id, token, axiosJWT) => {
             },
         );
         dispatch(logoutSuccess());
-        navigate('/');
+        // if (navigate !== undefined) {
+        if (!navigate) {
+            navigate('/');
+        }
     } catch (err) {
         console.log(err);
         dispatch(logoutFailure());

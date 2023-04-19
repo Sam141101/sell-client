@@ -15,7 +15,7 @@ import {
     useNavigate,
     // Redirect,
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import UserProfile from './pages/UserProfile/UserProfile';
 import Search from './pages/Search/Search';
 import EmailVerify from './pages/EmailVerify/EmailVerify';
@@ -37,11 +37,21 @@ import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
 import OrderCancel from './pages/OrderSuccess/OrderCancel';
 import Evaluate from './pages/Evaluate/Evaluate';
 import Complete from './components/WaitForProduct/Complete';
+import { useEffect } from 'react';
+import { BASE_URL_API } from './requestMethods';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
+import { checkAuth } from './support';
 
 function App() {
     // test
     const user = useSelector((state) => state.auth?.currentUser);
-    // const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        checkAuth(user, dispatch);
+    }, [user]);
 
     return (
         <Router>

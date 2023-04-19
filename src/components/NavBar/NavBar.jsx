@@ -54,7 +54,7 @@ const Navbar = React.memo(() => {
 
     const handleLogout = (e) => {
         e.preventDefault();
-        logout(dispatch, navigate, id, accessToken, axiosJWT);
+        logout(dispatch, id, accessToken, axiosJWT, navigate);
         resetProduct();
     };
 
