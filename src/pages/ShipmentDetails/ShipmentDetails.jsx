@@ -103,6 +103,7 @@ const ShipmentDetails = () => {
                     userId: userId,
                     totalPrice: totalPrice,
                     codeCoupon: codeCoupon,
+                    // service_id: inputs.service_id,
                 };
             } else if (notify === '') {
                 infoOrder = {
@@ -110,6 +111,7 @@ const ShipmentDetails = () => {
                     cart: cart,
                     userId: userId,
                     totalPrice: totalPrice,
+                    // service_id: inputs.service_id,
                 };
                 console.log('Không dùng phiếu giảm giá');
             } else {

@@ -102,7 +102,12 @@ function App() {
                             path={route.path}
                             element={
                                 user ? (
-                                    <Layout>
+                                    <Layout
+                                        item2={route.item2}
+                                        show1={route.show1}
+                                        show2={route.show2}
+                                        show3={route.show3}
+                                    >
                                         <Page />
                                     </Layout>
                                 ) : (
