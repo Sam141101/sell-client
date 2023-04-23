@@ -28,7 +28,6 @@ const Searchs = () => {
     // const [loading, setLoading] = useState(false);
 
     const [showNot, setShowNot] = useState(false);
-
     const debounced = useDebounce(searchTerm, 600);
 
     const handleSubmit = (e) => {
