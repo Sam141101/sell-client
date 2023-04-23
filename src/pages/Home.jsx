@@ -91,24 +91,31 @@ const Home = () => {
         totalRows: 20,
     };
 
-    // const handleRemove = async () => {
-    //     getAllCart(user.token, dispatch, user._id);
-    //     search();
-    //     console.log('vô home');
-    //     try {
-    //         const res = await axios.get(
-    //             'http://localhost:5000/api/orders/find/' + user._id,
-    //             {
-    //                 headers: { token: `Bearer ${user.token}` },
-    //             },
-    //         );
-    //         console.log(res.data);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
+    const [test, setTest] = useState({});
+    const handleRemove = async () => {
+        try {
+            const res = await axios.get(
+                'https://test1245.vercel.app/api/products/find/6381853221cefae6d34b31e0',
+            );
+            console.log(res.data);
+            setTest(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
+        // <div style={{ overflow: 'hidden' }}>
+        //     <div className="container-product">
+        //         <div className="grid wide">
+        //             <div className="row">
+        //                 <button onClick={handleRemove}>click</button>
+        //                 <div>{test && test.title}</div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
+
         <div style={{ overflow: 'hidden' }}>
             {/* <div> */}
             {/* <Button onClick={handleRemove}>test</Button> */}
@@ -139,3 +146,30 @@ const Home = () => {
 };
 
 export default Home;
+
+// <div style={{ overflow: 'hidden' }}>
+// {/* <div> */}
+// {/* <Button onClick={handleRemove}>test</Button> */}
+// {/* <Announcement /> */}
+// <Navbar />
+// <Slider />
+// {/* <Categories /> */}
+// {/* <PromtionVideo /> */}
+// <Info>CÁC SẢN PHẨM MỚI</Info>
+
+// <div className="container-product">
+//     <div className="grid wide">
+//         <div className="row">
+//             <Products filterPage={pagination.page} pagination={pagination} />
+//         </div>
+//     </div>
+// </div>
+
+// <Link to={`/products`} style={{ textDecoration: 'none' }}>
+//     <MoreProduct>
+//         <More>Xem thêm</More>
+//     </MoreProduct>
+// </Link>
+// <Newsletter />
+// <Footer />
+// </div>

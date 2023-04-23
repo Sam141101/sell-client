@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { popularProducts } from '../../data';
+// import { popularProducts } from '../../data';
 import Product from '../Product/Product';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -22,63 +22,38 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
     useEffect(() => {
         const getProducts = async () => {
             try {
+                // const res = await axios.get(
+                //     cat
+                //         ? BASE_URL_API +
+                //               `products?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`
+                //         : BASE_URL_API +
+                //               `products/pagination?page=${filterPage}&limit=${limit}&sort=${sort}`,
+                // );
+
                 const res = await axios.get(
-                    cat
-                        ? // ? `http://localhost:5000/api/products?category=${cat}&page=${filterPage}&limit=${limit}`
-                          BASE_URL_API +
-                              `products?category=${cat}&page=${filterPage}&limit=${limit}`
-                        : // : 'http://localhost:5000/api/products/',
-                          BASE_URL_API +
-                              `products/pagination?page=${filterPage}&limit=${limit}`,
-                    //   `https://api-sell-vercel-lkxxh5xqq-sam141101.vercel.app/api/products/pagination?page=${filterPage}`,
+                    BASE_URL_API +
+                        `products/?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`,
                 );
+
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);
-                // console.log('>>>> pagi');
 
                 if (setPagination) {
                     setPagination(pagi);
-                    // console.log('>>>> pagi1');
                 } else {
-                    // console.log('>>>> pagi2');
                     return;
                 }
 
+                console.log(res.data);
                 // pagination = res.data.pagi;
             } catch (err) {}
             console.log('useEffect1');
         };
 
         getProducts();
-    }, [cat, filterPage, setPagination, limit]);
+    }, [cat, filterPage, setPagination, limit, sort]);
 
-    useEffect(() => {
-        cat &&
-            setFilteredProducts(
-                products.filter((item) =>
-                    Object.entries(filters).every(([key, value]) =>
-                        item[key].includes(value),
-                    ),
-                ),
-            );
-
-        // console.log('useEffect2');
-    }, [products, cat, filters, sort]);
-
-    useEffect(() => {
-        // setFilteredProducts(products);
-        if (sort === 'newest') {
-            setFilteredProducts((prev) =>
-                // [...prev].sort((a, b) => b.createdAt - a.createdAt),
-                [...prev].sort((a, b) => a.createdAt.localeCompare(b.createdAt)),
-            );
-        } else if (sort === 'asc') {
-            setFilteredProducts((prev) => [...prev].sort((a, b) => a.price - b.price));
-        } else {
-            setFilteredProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
-        }
-        // console.log('useEffect3');
-    }, [sort]);
+    console.log('sort', sort);
 
     return (
         <>

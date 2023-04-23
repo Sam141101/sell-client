@@ -30,6 +30,8 @@ const FilterText = styled.span`
 
 const Select = styled.select`
     padding: 10px;
+    border: 1px solid #ccc !important;
+    appearance: auto !important;
 `;
 
 const Option = styled.option``;
@@ -39,7 +41,7 @@ const ProductList = () => {
     const cat = location.pathname.split('/')[2];
     const [filters, setFilters] = useState({});
     // const [sort, setSort] = useState('newest');
-    const [sort, setSort] = useState('');
+    const [sort, setSort] = useState('newest');
 
     // const navigate = useNavigate()
 

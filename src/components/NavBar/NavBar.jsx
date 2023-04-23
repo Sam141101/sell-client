@@ -13,7 +13,6 @@ import {
 import Badge from '@mui/material/Badge';
 import styled from 'styled-components';
 
-import { mobile } from '../../responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAllCart, login, logout } from '../../redux/apiCalls';
@@ -24,7 +23,56 @@ import Searchs from '../Searchs/Searchs';
 import { resetProduct } from '../../redux/cartRedux';
 import './navBar.css';
 import { createAxiosInstance } from '../../useAxiosJWT';
+import { listItemNavBar } from '../../data';
 // import '../../responesive.css';
+
+{
+    /* <ul className="nav-menu-list-mobile">
+<li className="nav-menu-list-item-mobile">
+    <Link
+        className="navbar-menu-item-link"
+        to="/"
+    >
+        HOME
+    </Link>
+</li>
+<li className="nav-menu-list-item-mobile">
+    <Link
+        className="navbar-menu-item-link"
+        to="#"
+        id="click0"
+        onClick={handleClickMore}
+    >
+        Shop
+        <KeyboardArrowRight className="navbar-menu-item-more" />
+    </Link>
+</li>
+<li className="nav-menu-list-item-mobile">
+    <Link
+        className="navbar-menu-item-link"
+        to="/"
+    >
+        kiểm tra đơn hàng
+    </Link>
+</li>
+<li className="nav-menu-list-item-mobile">
+    <Link
+        className="navbar-menu-item-link"
+        to="/about"
+    >
+        ABOUT
+    </Link>
+</li>
+</ul> */
+}
+
+const listItemNav = [
+    {
+        key: 1,
+        to: '/about',
+        onclick: true,
+    },
+];
 
 const Navbar = React.memo(() => {
     const user = useSelector((state) => state.auth?.currentUser);
@@ -810,8 +858,20 @@ const Navbar = React.memo(() => {
                                         </Link>
                                     </span>
                                     <div className="line"></div>
+                                    {/* ffff */}
                                     <ul className="nav-list">
-                                        <li className="nav-item">
+                                        {listItemNavBar.map((item, index) => (
+                                            <li key={index} className="nav-item">
+                                                <Link
+                                                    className="nav-menu-item-link"
+                                                    to={item.to}
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                            </li>
+                                        ))}
+
+                                        {/* <li className="nav-item">
                                             <Link
                                                 className="nav-menu-item-link"
                                                 to="/products/TEE"
@@ -843,7 +903,7 @@ const Navbar = React.memo(() => {
                                             >
                                                 SHORT
                                             </Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
 

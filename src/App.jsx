@@ -43,6 +43,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import { checkAuth } from './support';
+import React from 'react';
 
 function App() {
     // test
@@ -64,7 +65,8 @@ function App() {
                     if (route.layout) {
                         Layout = route.layout;
                     } else if (route.layout === null) {
-                        Layout = Fragment;
+                        // Layout = Fragment;
+                        Layout = React.Fragment;
                     }
                     return (
                         <Route
@@ -74,8 +76,8 @@ function App() {
                                 <Layout
                                     item2={route.item2}
                                     show1={route.show1}
-                                    show2={route.show2}
-                                    show3={route.show3}
+                                    // show2={route.show2}
+                                    // show3={route.show3}
                                 >
                                     <Page />
                                 </Layout>
@@ -92,7 +94,15 @@ function App() {
                     if (route.layout) {
                         Layout = route.layout;
                     } else if (route.layout === null) {
-                        Layout = Fragment;
+                        // if (route.show1 || route.show2 || route.show3) {
+                        //     Layout = 'div';
+                        // } else {
+                        //     Layout = React.Fragment;
+                        // }
+
+                        // Layout = React.Fragment;
+
+                        Layout = 'div';
                     }
 
                     // Thêm bảo vệ cho tuyến đường trong trường hợp người dùng chưa đăng nhập
@@ -103,7 +113,7 @@ function App() {
                             element={
                                 user ? (
                                     <Layout
-                                        item2={route.item2}
+                                        // item2={route.item2}
                                         show1={route.show1}
                                         show2={route.show2}
                                         show3={route.show3}
@@ -147,6 +157,8 @@ function App() {
 
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/order" element={<ShipmentDetails />} />
+
+                {/* <Route path="/products/:category/" element={<ProductList />} /> */}
 
                 {/* Thử nghiệm */}
                 {/* <Route

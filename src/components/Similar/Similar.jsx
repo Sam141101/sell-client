@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Close, Create, Person, ShoppingCart } from '@mui/icons-material';
-import styled from 'styled-components';
-
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-// import Announcement from '../Announcement/Announcement';
-import app from '../../firebase';
-import { updateUser } from '../../redux/apiCalls';
-import Footer from '../Footer/Footer';
 import Pagination from '../Pagination/Pagination';
-// import Products from '../components/Products';
 import Product from '../Product/Product';
-// import app from '../firebase'
 import './similar.css';
 import { BASE_URL_API } from '../../requestMethods';
 
@@ -41,7 +29,7 @@ const Similar = ({ cat }) => {
         const getProducts = async () => {
             try {
                 const res = await axios.get(
-                    BASE_URL_API + `products?category=${cat}&page=${filterPage}&limit=6`,
+                    BASE_URL_API + `products/?category=${cat}&page=${filterPage}&limit=6`,
                 );
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);
