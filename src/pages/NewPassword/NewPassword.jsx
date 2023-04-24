@@ -1,15 +1,12 @@
-import { KeyboardBackspace, Visibility } from '@mui/icons-material';
+import { KeyboardBackspace } from '@mui/icons-material';
 import axios from 'axios';
 import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import styled from 'styled-components';
-import { register } from '../../redux/apiCalls';
+
 import { BASE_URL_API } from '../../requestMethods';
-import { mobile } from '../../responsive';
 import './newPassword.css';
-import { togglePasswordVisibility } from '../../support';
 
 // --------------------------------------------------------------
 

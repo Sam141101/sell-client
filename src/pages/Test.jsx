@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Close, Create, Person, Search, ShoppingCart } from '@mui/icons-material';
-import styled from 'styled-components';
-
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import '../pages/UserProfile/userProfile.css';
 import FormInputAddress from '../components/FormInputAddress/FormInputAddress';
 import { BASE_URL_API } from '../requestMethods';

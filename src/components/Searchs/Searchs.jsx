@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Close, RotateRight, Search } from '@mui/icons-material';
-import Badge from '@mui/material/Badge';
-import styled from 'styled-components';
 
-import { mobile } from '../../responsive';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useRef } from 'react';
 import useDebounce from '../../hooks/useDebounce';

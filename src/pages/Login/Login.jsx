@@ -1,11 +1,8 @@
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
 import { login } from '../../redux/apiCalls';
 import { useNavigate, Link } from 'react-router-dom';
 import './login.css';
-import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/NavBar/NavBar';
 
 const Login = () => {
     const [username, setUsername] = useState('');

@@ -4,20 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { sliderItems } from '../../data';
-import { mobile } from '../../responsive';
 import './slider.css';
-
-const Container = styled.div`
-    width: 100%;
-    // height: 100vh;
-    height: 80vh;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    ${mobile({
-        display: 'none',
-    })}
-`;
 
 const Arrow = styled.div`
     width: 50px;
@@ -51,37 +38,6 @@ const Slide = styled.div`
     display: flex;
     align-items: center;
     background-color: ${(props) => props.bg};
-`;
-const ImgContainer = styled.div`
-    flex: 1;
-    height: 100%;
-`;
-
-const Image = styled.img`
-    height: 80%;
-`;
-
-const InfoContainer = styled.div`
-    flex: 1;
-    padding: 0 50px 50px 50px;
-`;
-
-const Title = styled.h1`
-    font-size: 70px;
-`;
-
-const Desc = styled.p`
-    font-size: 20px;
-    margin: 50px 0px;
-    font-weight: 500;
-    letter-spacing: 3px;
-`;
-
-const Button = styled.button`
-    font-size: 20px;
-    padding: 10px 12px;
-    cursor: pointer;
-    background-color: transparent;
 `;
 
 const Slider = () => {

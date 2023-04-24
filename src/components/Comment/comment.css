@@ -113,22 +113,6 @@
 }
 
 .button-arrow-evaluate-left {
-    /* background-color: #dcd9d9;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
-    opacity: 0.5;
-
-    padding: 15px;
-    z-index: 2;
-    transition: all 0.3s; */
-
     background-color: #dcd9d9;
     width: 25px;
     height: 25px;
@@ -148,13 +132,6 @@
 }
 
 .button-arrow-evaluate-left-icon {
-    /* font-size: 22px !important;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s; */
-
     height: 17px !important;
     width: 17px !important;
     color: rgba(0, 0, 0, 0.54);
@@ -175,7 +152,6 @@
 }
 
 .buy {
-    /* background-color: beige; */
     padding: 15px 0;
     border-bottom: 1px solid #ccc;
 }
@@ -196,7 +172,6 @@
 }
 
 .comment-block-img {
-    /* border: 1px solid #ccc; */
     margin-right: 15px;
 }
 
@@ -286,9 +261,6 @@
     background-color: rgb(192, 192, 220);
     margin-top: 30px;
 }
-/* .block-rating {
-    display: flex;
-} */
 
 .rating-comment {
     font-size: 21px;
@@ -330,10 +302,6 @@
 .evaluate .MuiRating-iconFilled {
     color: #ee4d2d;
 }
-
-/* .evaluate .MuiRating-iconEmpty {
-    color: #7d7c7c;
-} */
 
 .main-evaluate-comment .MuiRating-iconFilled,
 .main-evaluate-comment .MuiRating-iconEmpty,

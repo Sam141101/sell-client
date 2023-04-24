@@ -1,8 +1,7 @@
-import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import './formInputAddress.css';
-import { Home, Person } from '@mui/icons-material';
+import { Home } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
@@ -146,11 +145,6 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
                     placeholder="Địa chỉ"
                     onChange={handleChange}
                     className="form-control"
-                    // value={notify !== null ? inputs.address || '' : undefined}
-                    // value={notify !== null ? inputs.address || '' : ''}
-                    // value={notify !== null ? inputs.address || '' : ''}
-
-                    // value={notify !== 'null' ? inputs.address : undefined}
                     value={notify !== 'null' ? inputs.address : inputs.address}
                 />
             </div>
@@ -168,7 +162,6 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
                         name="province"
                         onChange={handleChange}
                         value={notify !== 'null' ? inputs.provinceId : undefined}
-                        // value={notify ? inputs.provinceId || '' : undefined}
                     >
                         <option value={0}>Chọn Tỉnh / Thành</option>
                         {listAddress.province.map((item) => (
@@ -190,7 +183,6 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
                     <select
                         name="district"
                         onChange={handleChange}
-                        // value={notify ? inputs.districtId || '' : undefined}
                         value={notify !== 'null' ? inputs.districtId : undefined}
                     >
                         <option value={0}>Chọn Quận / Huyện</option>

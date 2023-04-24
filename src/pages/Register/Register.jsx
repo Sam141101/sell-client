@@ -3,12 +3,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import styled from 'styled-components';
-import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/NavBar/NavBar';
 import { register } from '../../redux/apiCalls';
 import { BASE_URL_API } from '../../requestMethods';
-import { mobile } from '../../responsive';
+
 import './register.css';
 import { togglePasswordVisibility } from '../../support';
 

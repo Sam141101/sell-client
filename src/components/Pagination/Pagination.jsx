@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import './pagination.css';
 

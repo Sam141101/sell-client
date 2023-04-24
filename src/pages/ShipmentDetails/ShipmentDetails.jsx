@@ -1,23 +1,13 @@
-import styled from 'styled-components';
-// import { Add, Details, East, Remove, Reply } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    ExpandMore,
-    KeyboardArrowDown,
-    KeyboardArrowUp,
-    ShoppingCart,
-} from '@mui/icons-material';
+import { KeyboardArrowDown, KeyboardArrowUp, ShoppingCart } from '@mui/icons-material';
 
-import { useEffect, useState, useRef, useMemo } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { async } from '@firebase/util';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL_API } from '../../requestMethods';
 import './shipmentDetails.css';
 import { addTemporary } from '../../redux/temporaryRedux';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import FormInputAddress from '../../components/FormInputAddress/FormInputAddress';
-// import useDebounce from '../../hooks/useDebounce';
 
 const ShipmentDetails = () => {
     const user = useSelector((state) => state.auth?.currentUser);

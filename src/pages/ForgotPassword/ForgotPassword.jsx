@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { BASE_URL_API } from '../../requestMethods';
 import './forgotPassword.css';
 

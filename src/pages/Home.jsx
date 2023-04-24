@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Announcement from '../components/Announcement/Announcement';
-import Categories from '../components/Categories/Categories';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/NavBar/NavBar';
 import Newsletter from '../components/Newsletter/Newsletter';
@@ -12,12 +10,10 @@ import Slider from '../components/Slider/Slider';
 import { createAxios } from '../createInstance';
 import { loginSuccess } from '../redux/authRedux';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { getAllCart, search } from '../redux/apiCalls';
+import { Link } from 'react-router-dom';
+import { search } from '../redux/apiCalls';
 import axios from 'axios';
 import PromtionVideo from '../components/PromotionVideo/PromotionVideo';
-import { useEffect } from 'react';
-import { useRef } from 'react';
 import { useState } from 'react';
 //
 

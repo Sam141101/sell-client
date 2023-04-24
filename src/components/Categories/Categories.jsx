@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-// import { categories } from '../../data';
 import { categories } from '../../data';
 import './categories.css';
 

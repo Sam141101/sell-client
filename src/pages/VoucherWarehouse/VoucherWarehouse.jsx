@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Close, Create, Person, Search, ShoppingCart } from '@mui/icons-material';
-import styled from 'styled-components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import './voucherWarehouse.css';
 import { BASE_URL_API } from '../../requestMethods';
 import { createAxiosInstance } from '../../useAxiosJWT';
-// import app from '../firebase'
 
 const data = [
     {

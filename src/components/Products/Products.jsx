@@ -1,15 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
-
-// import { popularProducts } from '../../data';
+import { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './products.css';
-import TestList from '../../pages/TestList/TestList';
 import { BASE_URL_API } from '../../requestMethods';
-import { createAxiosInstance } from '../../useAxiosJWT';
-import { useSelector } from 'react-redux';
 
 const Products = ({ cat, filters, sort, filterPage, setPagination, pagination }) => {
     const [products, setProducts] = useState([]);

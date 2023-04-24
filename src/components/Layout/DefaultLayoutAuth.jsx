@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Announcement from '../Announcement/Announcement';
+import { useLocation } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 

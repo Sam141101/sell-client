@@ -2,22 +2,17 @@ import styled from 'styled-components';
 import NavBar from '../../components/NavBar/NavBar';
 import Comment from '../../components/Comment/Comment';
 import Announcement from '../../components/Announcement/Announcement';
-import Newsletter from '../../components/Newsletter/Newsletter';
 import Footer from '../../components/Footer/Footer';
-import { Add, AddShoppingCart, Remove } from '@mui/icons-material';
-import { mobile } from '../../responsive';
+import { Add, Remove } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import { publicRequest } from '../requestMethods';
-// import { addProduct } from '../redux/cartRedux';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../../redux/apiCalls';
-// import axios from 'axios';
-// import Pagination from '../components/Pagination';
+
 import Similar from '../../components/Similar/Similar';
 import axios from 'axios';
 import './product.css';
-import Products from '../../components/Products/Products';
 import { BASE_URL_API } from '../../requestMethods';
 import { createAxiosInstance } from '../../useAxiosJWT';
 

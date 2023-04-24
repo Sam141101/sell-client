@@ -1,8 +1,6 @@
 import { Create } from '@mui/icons-material';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import Announcement from '../Announcement/Announcement';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 

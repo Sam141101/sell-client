@@ -1,21 +1,11 @@
-import styled from 'styled-components';
-import {
-    ArrowLeftOutlined,
-    ArrowRightOutlined,
-    KeyboardArrowLeft,
-    KeyboardArrowRight,
-    Star,
-} from '@mui/icons-material';
+import { KeyboardArrowLeft, KeyboardArrowRight, Star } from '@mui/icons-material';
 import { Rating } from '@mui/material';
-
 import './comment.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL_API } from '../../requestMethods';
-import { display } from '@mui/system';
 import { createAxiosInstance } from '../../useAxiosJWT';
 
 const changDate = (isoString) => {
@@ -70,9 +60,8 @@ const Comment = () => {
     useEffect(() => {
         const getComment = async () => {
             try {
-                // const res = await publicRequest.get('/products/find/' + id);
                 const res = await axiosJWT.get(
-                    `http://localhost:5000/api/comments/find/${id}/${option}`,
+                    BASE_URL_API + `comments/find/${id}/${option}`,
                 );
                 setListInfoComment(res.data);
             } catch (err) {}

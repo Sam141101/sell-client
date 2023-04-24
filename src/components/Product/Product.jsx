@@ -1,59 +1,6 @@
-import {
-    FavoriteBorder,
-    SearchOutlined,
-    ShoppingCartOutlined,
-} from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import './product.css';
-
-// const Product = ({ item }) => {
-//     const SoldOut = true;
-
-//     return (
-//         <div>
-//             <div className={cx('wrapper')}>
-//                 <div className={cx('product-img')}>
-//                     {SoldOut ? (
-//                         <div className={cx('sold-out')}>
-//                             <span>Hết hàng</span>
-//                         </div>
-//                     ) : (
-//                         <div className={cx('product-sale')}>
-//                             {/* <span>-38%</span> */}
-//                             <span>{data.sale}</span>
-//                         </div>
-//                     )}
-
-//                     <Button to={data.to} className={cx('product-img-height')}>
-//                         <Image src={data.img} className={cx('img-loop')} />
-//                     </Button>
-//                 </div>
-
-//                 <div className={cx('product-detail')}>
-//                     <div className={cx('box-pro-detail')}>
-//                         <h3 className={cx('pro-name')}>
-//                             <Button to={data.to} className={cx('pro-name-link')}>
-//                                 {data.content}
-//                             </Button>
-//                         </h3>
-
-//                         <div className={cx('box-pro-prices')}>
-//                             <p className={cx('pro-price')}>
-//                                 <span className={cx('highlight')}>{data.price}</span>
-//                                 <span className={cx('pro-price-del')}>
-//                                     <del>{data.discount}</del>
-//                                 </span>
-//                             </p>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Product;
+import img from '../../assets/download.png';
 
 const Product = ({ item }) => {
     // console.log('vô product');
@@ -61,6 +8,7 @@ const Product = ({ item }) => {
     return (
         <div className="product-container">
             <Link style={{ textDecoration: 'none' }} to={`/product/${item._id}`}>
+                {/* <img className="product-image-des" alt="" lazy-src={item.img} src={img} /> */}
                 <img className="product-image-des" alt="" src={item.img} />
             </Link>
             {/* <div className="product-circle">

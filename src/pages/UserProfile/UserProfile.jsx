@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Close, Create, Person, Search, ShoppingCart } from '@mui/icons-material';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import Announcement from '../../components/Announcement/Announcement';
-import Navbar from '../../components/NavBar/NavBar';
+import { Link, useLocation } from 'react-router-dom';
 import app from '../../firebase';
 import { updateUser } from '../../redux/apiCalls';
 import './userProfile.css';

@@ -1,17 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
-import styled from 'styled-components';
-import { login, postCommnetUser } from '../../redux/apiCalls';
+import { postCommnetUser } from '../../redux/apiCalls';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './evaluate.css';
 import { CameraAlt, Clear, KeyboardBackspace, Star } from '@mui/icons-material';
 import app from '../../firebase';
-import { IconButton, Rating } from '@mui/material';
+import { Rating } from '@mui/material';
 import { BASE_URL_API } from '../../requestMethods';
-import axios from 'axios';
-import useDebounce from '../../hooks/useDebounce';
 import { createAxiosInstance } from '../../useAxiosJWT';
 
 const ratingDescriptions = {

@@ -4,11 +4,9 @@ import Announcement from '../components/Announcement/Announcement';
 import Products from '../components/Products/Products';
 import Newsletter from '../components/Newsletter/Newsletter';
 import Footer from '../components/Footer/Footer';
-import { mobile } from '../responsive';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 import Pagination from '../components/Pagination/Pagination';
-import axios from 'axios';
 import TestList from './TestList/TestList';
 
 const Container = styled.div`

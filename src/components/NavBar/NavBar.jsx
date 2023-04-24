@@ -11,20 +11,14 @@ import {
     ShoppingCart,
 } from '@mui/icons-material';
 import Badge from '@mui/material/Badge';
-import styled from 'styled-components';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAllCart, login, logout } from '../../redux/apiCalls';
-import { createAxios } from '../../createInstance';
-import { loginSuccess, logoutSuccess } from '../../redux/authRedux';
-import axios from 'axios';
 import Searchs from '../Searchs/Searchs';
 import { resetProduct } from '../../redux/cartRedux';
 import './navBar.css';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import { listItemNavBar } from '../../data';
-// import '../../responesive.css';
 
 {
     /* <ul className="nav-menu-list-mobile">
