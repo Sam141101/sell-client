@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import './product.css';
-import img from '../../assets/download.png';
+// import img from '../../assets/download.png';
+// import { importImagesUrls } from '../utils/images';
+
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Product = ({ item }) => {
     // console.log('vô product');
@@ -8,26 +11,19 @@ const Product = ({ item }) => {
     return (
         <div className="product-container">
             <Link style={{ textDecoration: 'none' }} to={`/product/${item._id}`}>
-                {/* <img className="product-image-des" alt="" lazy-src={item.img} src={img} /> */}
-                <img className="product-image-des" alt="" src={item.img} />
+                {/* <img className="product-image-des" alt=""  src={item.img} /> */}
+
+                <LazyLoadImage
+                    className="product-image-des"
+                    src={item.img}
+                    loading="lazy"
+                    alt=""
+                    height="250"
+                    width="250"
+                    effect="blur"
+                    // placeholderSrc={item.img}
+                />
             </Link>
-            {/* <div className="product-circle">
-            </div> */}
-            {/* <div className="product-info">
-                <div className="product-icon">
-                    <ShoppingCartOutlined />
-                </div>
-
-                <div className="product-icon">
-                    <Link to={`/product/${item._id}`}>
-                        <SearchOutlined />
-                    </Link>
-                </div>
-
-                <div className="product-icon">
-                    <FavoriteBorder />
-                </div>
-            </div> */}
 
             <div className="product-des-block">
                 <Link

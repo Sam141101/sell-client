@@ -39,18 +39,20 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
 
                 console.log(res.data);
                 // pagination = res.data.pagi;
-            } catch (err) {}
+            } catch (err) {
+                console.log(err);
+            }
             console.log('useEffect1');
         };
 
         getProducts();
     }, [cat, filterPage, setPagination, limit, sort]);
 
-    console.log('sort', sort);
+    console.log('products', products);
 
     return (
         <>
-            {cat
+            {/* {cat
                 ? filteredProducts.map((item) => (
                       <div className="col l-3 c-12" key={item._id}>
                           <Product item={item} />
@@ -60,7 +62,13 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
                       <div className="col l-3 c-12" key={item._id}>
                           <Product item={item} />
                       </div>
-                  ))}
+                  ))} */}
+
+            {products.map((item) => (
+                <div className="col l-3 c-12" key={item._id}>
+                    <Product item={item} />
+                </div>
+            ))}
         </>
     );
 };
