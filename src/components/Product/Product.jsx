@@ -4,25 +4,45 @@ import './product.css';
 // import { importImagesUrls } from '../utils/images';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { mobile } from '../../responsive';
+import { useEffect, useState } from 'react';
+import { BASE_URL_API } from '../../requestMethods';
+import axios from 'axios';
 
 const Product = ({ item }) => {
     // console.log('vô product');
 
+    // const productDiscount = 10;
+    // const [productDiscount, setProductDiscount] = useState(0);
+
+    // const outOfStock = true;
+
     return (
         <div className="product-container">
-            <Link style={{ textDecoration: 'none' }} to={`/product/${item._id}`}>
-                {/* <img className="product-image-des" alt=""  src={item.img} /> */}
-
-                <LazyLoadImage
-                    className="product-image-des"
-                    src={item.img}
-                    loading="lazy"
-                    alt=""
-                    height="250"
-                    width="250"
-                    effect="blur"
-                    // placeholderSrc={item.img}
-                />
+            <Link
+                style={{ textDecoration: 'none' }}
+                to={`/product/${item._id}`}
+                className="product-frame-img"
+            >
+                {item.discountProduct_id?.discount_amount &&
+                    item.discountProduct_id.discount_amount !== 0 && (
+                        <span className="product-discount">-32%</span>
+                    )}
+                <div className="frame-block-product">
+                    <LazyLoadImage
+                        // className="lazy-loading-width-height-mobile lazy-loading-width-height-pc"
+                        className="product-image-des"
+                        src={item.img}
+                        loading="lazy"
+                        alt=""
+                        height="250"
+                        width="250"
+                        effect="blur"
+                    />
+                </div>
+                {item.sizes?.every((size) => size.inStock === 0) && (
+                    <span className="product-out-of-stock">Hết hàng</span>
+                )}
             </Link>
 
             <div className="product-des-block">
@@ -32,7 +52,22 @@ const Product = ({ item }) => {
                 >
                     <div className="product-title-text">{item.title}</div>
                 </Link>
-                <div className="product-price-text">{item.price}₫</div>
+                <p className="product-price-text">
+                    <span>
+                        {item.discountProduct_id?.discount_amount
+                            ? item.price *
+                              (1 - item.discountProduct_id.discount_amount / 100)
+                            : item.price}
+                        ₫
+                    </span>
+
+                    {item.discountProduct_id?.discount_amount &&
+                        item.discountProduct_id.discount_amount !== 0 && (
+                            <span className="pro-price-del">
+                                <del>{item.price}₫</del>
+                            </span>
+                        )}
+                </p>
             </div>
         </div>
     );

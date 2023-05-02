@@ -52,32 +52,21 @@ const Product = () => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
     const [product, setProduct] = useState({});
-    const [cat, setCat] = useState('');
+    const [outOfStock, setOutOfStock] = useState(false);
+    // const [cat, setCat] = useState('');
     const [quantity, setQuantity] = useState(1);
     // const [color, setColor] = useState('');
-    const [size, setSize] = useState('');
+    const [size, setSize] = useState('M');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const user = useSelector((state) => state.auth?.currentUser);
-
-    // cảnh báo --------------------------------
-    const [checkSize, setCheckSize] = useState(false);
-    const [borderColor, setBorderColor] = useState('#ffffff');
 
     const [showImg, setShowImg] = useState(data[0].img);
     const [showBorder, setShowBorder] = useState(data[0].img);
     // -------------------
 
     const axiosJWT = createAxiosInstance(user, dispatch);
-
-    // const blurSize = (e) => {
-    //     if (!e.target.value) {
-    //         setCheckSize(false);
-    //     } else {
-    //         setCheckSize(true);
-    //     }
-    // };
 
     const handleQuantity = (type) => {
         if (type === 'dec') {
@@ -87,20 +76,11 @@ const Product = () => {
         }
     };
 
-    const onChangeSize = (e) => {
-        setSize(e.target.value);
-        setBorderColor('#ffffff');
-        // document.getElementById('text').innerHTML = '';
-    };
-
     const handleSize = (s) => {
         // console.log(s)
         setSize(s);
     };
 
-    // if (size === '') {
-    //     console.log('roong');
-    // }
     const handleClick = () => {
         if (!user) {
             navigate('/login');
@@ -131,21 +111,26 @@ const Product = () => {
         const getProduct = async () => {
             try {
                 const res = await axios.get(BASE_URL_API + 'products/find/' + id);
-                // console.log(BASE_URL_API + '/products/find/' + id);
                 setProduct(res.data);
-                // setCat(res.data.categories[0]);
-                setCat(res.data.categories);
-            } catch (err) {}
+                // setCat(res.data.categories);
+                // res.data.sizes.forEach((item) => {
+                //     if(item.inStock ===)
+                // })
+
+                if (res.data.sizes.every((size) => size.inStock === 0)) {
+                    setOutOfStock(true);
+                }
+            } catch (err) {
+                console.log(err);
+            }
         };
         getProduct();
     }, [id]);
 
-    // console.log('1');
-
     return (
         <div className="product-page-frame">
             <NavBar />
-            <Announcement item1={cat} item2={product?.title} />
+            <Announcement item1={product?.categories} item2={product?.title} />
 
             <div className="product-wrapper">
                 <div className="grid wide">
@@ -228,44 +213,74 @@ const Product = () => {
                                 </div>
                             </div>
                         </div>
+
                         <div className="col l-5 c-12">
                             <div className="product-info-container">
                                 <h1 className="product-title">{product?.title}</h1>
-                                <span className="product-price">{product?.price}₫</span>
-                                <div className="product-filter">
-                                    {/* <span className="product-filter-title">Color</span> */}
-                                    {product?.color?.map((c) => (
-                                        <FilterColor
-                                            color={c}
-                                            key={c}
-                                            // onClick={() => setColor(c)}
-                                        />
-                                    ))}
+                                <div className="product-price">
+                                    {product.discountProduct_id?.discount_amount &&
+                                        product.discountProduct_id?.discount_amount !==
+                                            0 && (
+                                            <span className="block-product-discount">
+                                                -
+                                                {
+                                                    product.discountProduct_id
+                                                        ?.discount_amount
+                                                }
+                                                %
+                                            </span>
+                                        )}
+
+                                    <span className="pro-price">
+                                        {product.discountProduct_id?.discount_amount
+                                            ? product.price *
+                                              (1 -
+                                                  product.discountProduct_id
+                                                      ?.discount_amount /
+                                                      100)
+                                            : product.price}
+                                        ₫
+                                    </span>
+                                    {product.discountProduct_id?.discount_amount &&
+                                        product.discountProduct_id?.discount_amount !==
+                                            0 && <del>{product.price}₫</del>}
                                 </div>
 
                                 <div className="product-filter">
-                                    {/* <span className="product-filter-title">Size</span> */}
-                                    {product.size?.map((s) => (
-                                        <div className="product-select-swap" key={s}>
+                                    {product?.color?.map((c) => (
+                                        <FilterColor color={c} key={c} />
+                                    ))}
+                                </div>
+
+                                <div
+                                    className="product-filter"
+                                    style={{
+                                        display: `${
+                                            outOfStock === true ? 'none' : 'flex'
+                                        }`,
+                                    }}
+                                >
+                                    {product.sizes?.map((s) => (
+                                        <div className="product-select-swap" key={s._id}>
                                             <div className="roduct-select-swap">
                                                 <div
-                                                    className="product-swatch-block"
-                                                    onClick={() => handleSize(s)}
+                                                    className={`product-swatch-block ${
+                                                        s.inStock === 0
+                                                            ? 'block-close'
+                                                            : ''
+                                                    }`}
+                                                    onClick={() => handleSize(s.size)}
                                                     style={
-                                                        size === s
+                                                        size === s.size
                                                             ? {
                                                                   color: '#fff',
                                                                   background: '#000',
                                                                   border: '1px solid #000',
                                                               }
-                                                            : {
-                                                                  // color: '#000',
-                                                                  //   background: '#fff',
-                                                                  //   border: '1px solid #000',
-                                                              }
+                                                            : {}
                                                     }
                                                 >
-                                                    <span>{s}</span>
+                                                    <span>{s.size}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,22 +288,10 @@ const Product = () => {
                                 </div>
 
                                 <div className="product-amount-container">
-                                    {/* <span className="product-filter-title">Số lượng</span> */}
-
-                                    {/* <Remove onClick={() => handleQuantity('dec')} />
-                            <Amount>{quantity}</Amount>
-                            <Add onClick={() => handleQuantity('inc')} /> */}
-
                                     <div className="product-remove-input">
                                         <Remove onClick={() => handleQuantity('dec')} />
                                     </div>
-                                    {/* <input
-                                type="text"
-                                // value={amount}
-                                // onChange={(e) => setAmount(e.target.value)}
-                                min="1"
-                                // className={cx('quantity-selector')}
-                            /> */}
+
                                     <span className="product-amount">{quantity}</span>
                                     <div className="product-add-input">
                                         <Add onClick={() => handleQuantity('inc')} />
@@ -296,22 +299,19 @@ const Product = () => {
                                 </div>
 
                                 <div className="product-add-container">
-                                    <button
-                                        className="product-button"
-                                        onClick={handleClick}
-                                    >
-                                        Thêm vào giỏ
-                                    </button>
-
-                                    {/* <button
-                                        className="product-button-buy"
-                                        // onClick={handleClick}
-                                    >
-                                        Mua ngay
-                                    </button> */}
+                                    {outOfStock === true ? (
+                                        <button className="product-button disabled">
+                                            Hết hàng
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className="product-button"
+                                            onClick={handleClick}
+                                        >
+                                            Thêm vào giỏ
+                                        </button>
+                                    )}
                                 </div>
-
-                                {/* <span className="product-span" id="text"></span> */}
 
                                 <span className="product-des-note3">Mô tả</span>
 
@@ -349,15 +349,7 @@ const Product = () => {
 
             <Comment />
 
-            {cat && <Similar cat={cat} />}
-
-            {/* <div className="container-product">
-                <div className="grid wide">
-                    <div className="row">
-                        <Products filterPage={1} pagination={pagination} />
-                    </div>
-                </div>
-            </div> */}
+            {product?.categories && <Similar cat={product?.categories} />}
 
             <Footer />
         </div>

@@ -7,3 +7,8 @@ export const mobile = (props) => {
         }
     `;
 };
+
+export const mobileOrPc = (defaultValue, mobileValue) => {
+    const value = window.innerWidth >= 1113 ? defaultValue : mobileValue;
+    return parseInt(value);
+};

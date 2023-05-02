@@ -38,14 +38,35 @@
 }
 
 .product-price {
-    letter-spacing: 0.3px;
-    font-size: 20px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dotted #dfe0e1;
+}
+
+.product-price del {
+    font-size: 15px;
+    color: #777a7b;
+    padding-left: 10px;
+    font-weight: 500;
+}
+
+.block-product-discount {
+    display: inline-block;
+    padding: 5px 15px;
+    margin-right: 10px;
+    background: #ededed;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    color: #f94c43;
+}
+
+.pro-price {
+    font-size: 18px;
     opacity: 0.92;
     font-weight: bold;
     color: red;
-    padding: 10px 0;
-    display: block;
-    border-bottom: 1px dotted #dfe0e1;
 }
 
 .product-filter {
@@ -107,6 +128,11 @@
     justify-content: center;
 }
 
+.product-button.disabled {
+    cursor: default;
+    opacity: 0.8;
+}
+
 .product-button-buy {
     display: flex;
     align-items: center;
@@ -159,6 +185,21 @@
     cursor: pointer;
     align-items: center;
     justify-content: center;
+}
+
+.block-close::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    background: url(//theme.hstatic.net/200000312481/1000699457/14/sold_out.png?v=232)
+        no-repeat;
+    background-size: contain;
 }
 
 .product-des-note {

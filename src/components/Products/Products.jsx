@@ -15,14 +15,6 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
     useEffect(() => {
         const getProducts = async () => {
             try {
-                // const res = await axios.get(
-                //     cat
-                //         ? BASE_URL_API +
-                //               `products?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`
-                //         : BASE_URL_API +
-                //               `products/pagination?page=${filterPage}&limit=${limit}&sort=${sort}`,
-                // );
-
                 const res = await axios.get(
                     BASE_URL_API +
                         `products/?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`,
@@ -52,18 +44,6 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
 
     return (
         <>
-            {/* {cat
-                ? filteredProducts.map((item) => (
-                      <div className="col l-3 c-12" key={item._id}>
-                          <Product item={item} />
-                      </div>
-                  ))
-                : products.map((item) => (
-                      <div className="col l-3 c-12" key={item._id}>
-                          <Product item={item} />
-                      </div>
-                  ))} */}
-
             {products.map((item) => (
                 <div className="col l-3 c-12" key={item._id}>
                     <Product item={item} />
@@ -74,31 +54,3 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
 };
 
 export default Products;
-
-{
-    /* {cat
-                    ? filteredProducts.map((item) => (
-                          <div className="col l-3" key={item._id}>
-                              <Product item={item} />
-                          </div>
-                      ))
-                    : products.map((item) => (
-                          <div className="col l-3" key={item._id}>
-                              <Product item={item} />
-                          </div>
-                      ))} */
-}
-
-{
-    /* {cat
-                    ? filteredProducts.map((item) => (
-                          <div className="col l-3" key={item._id}>
-                              <Product item={item} />
-                          </div>
-                      ))
-                    : products.map((item) => (
-                          <div className="col l-3" key={item._id}>
-                              <Product item={item} />
-                          </div>
-                      ))} */
-}

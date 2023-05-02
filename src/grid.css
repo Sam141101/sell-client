@@ -31,6 +31,11 @@
     padding-right: 0;
 }
 
+.lazy-loading-width-height-mobile {
+    height: 200px;
+    width: 200px;
+}
+
 .c-0 {
     display: none;
 }
@@ -485,6 +490,11 @@
     .wide .l-11,
     .wide .l-12 {
         display: block;
+    }
+
+    .wide .lazy-loading-width-height-pc {
+        height: 200px;
+        width: 200px;
     }
 
     .wide .l-1 {
