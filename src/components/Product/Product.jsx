@@ -4,19 +4,8 @@ import './product.css';
 // import { importImagesUrls } from '../utils/images';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { mobile } from '../../responsive';
-import { useEffect, useState } from 'react';
-import { BASE_URL_API } from '../../requestMethods';
-import axios from 'axios';
 
 const Product = ({ item }) => {
-    // console.log('vô product');
-
-    // const productDiscount = 10;
-    // const [productDiscount, setProductDiscount] = useState(0);
-
-    // const outOfStock = true;
-
     return (
         <div className="product-container">
             <Link

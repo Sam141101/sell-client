@@ -96,15 +96,6 @@ const Product = () => {
             // console.log('>>>>', checkSize);
             addCart(user.token, dispatch, addProductCarts, cartProducts, axiosJWT);
         }
-
-        // if (checkSize) {
-        //     addCart(user.token, dispatch, addProductCarts, cartProducts);
-        // setBorderColor('#ffffff');
-        // document.getElementById('text').innerHTML = '';
-        // } else {
-        // document.getElementById('text').innerHTML = 'Vui lòng chọn size';
-        //     setBorderColor('red');
-        // }
     };
 
     useEffect(() => {
@@ -112,11 +103,6 @@ const Product = () => {
             try {
                 const res = await axios.get(BASE_URL_API + 'products/find/' + id);
                 setProduct(res.data);
-                // setCat(res.data.categories);
-                // res.data.sizes.forEach((item) => {
-                //     if(item.inStock ===)
-                // })
-
                 if (res.data.sizes.every((size) => size.inStock === 0)) {
                     setOutOfStock(true);
                 }
