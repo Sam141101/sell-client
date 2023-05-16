@@ -64,7 +64,11 @@ const Complete = ({ selected }) => {
                                         <Link
                                             className="wait-purchase-evaluate"
                                             // to="/evalate/"
-                                            to={`/danh-gia-san-pham/${item1.product_id._id}/${item._id}`}
+                                            to={
+                                                item1.checkEvaluate
+                                                    ? `/product/${item1.product_id._id}`
+                                                    : `/danh-gia-san-pham/${item1.product_id._id}/${item._id}`
+                                            }
                                         >
                                             {item1.checkEvaluate ? 'Mua lại' : 'Đánh giá'}
                                         </Link>

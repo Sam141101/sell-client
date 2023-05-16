@@ -10,6 +10,7 @@ import ChangePassword from '../pages/ChangePassword/ChangePassword';
 import EmailVerify from '../pages/EmailVerify/EmailVerify';
 import Evaluate from '../pages/Evaluate/Evaluate';
 import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
+import HandleAddress from '../pages/HandleAddress/HandleAddress';
 import Home from '../pages/Home';
 import Login from '../pages/Login/Login';
 import NewPassword from '../pages/NewPassword/NewPassword';
@@ -212,10 +213,11 @@ const authenticatedRoutes = [
         // show2: 1,
     },
 
-    // change password
+    // change address
     {
         path: '/account/address',
-        component: Test,
+        // component: Test,
+        component: HandleAddress,
         layout: DefaultLayoutOrder,
         // show2: 1,
     },

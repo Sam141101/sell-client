@@ -143,7 +143,7 @@ function App() {
                 <Route path="/test12" element={<OrderCancel />} /> */}
 
                 {/* <Route path="/ttt5" element={<Register />} /> */}
-                <Route path="/change-account" element={<ChangePassword />} />
+                {/* <Route path="/change-account" element={<ChangePassword />} /> */}
 
                 <Route path="/forgot-password" element={<ForgotPassword />} />
 

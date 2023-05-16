@@ -310,7 +310,7 @@ const Navbar = React.memo(() => {
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
                                                             className="navbar-menu-item-link"
-                                                            to="/"
+                                                            to="/wait-for-confirmation"
                                                         >
                                                             kiểm tra đơn hàng
                                                         </Link>
@@ -524,7 +524,8 @@ const Navbar = React.memo(() => {
                                                             Tài khoản của tôi
                                                         </div>
                                                         <Link
-                                                            to="/change-account"
+                                                            // to="/change-account"
+                                                            to="/account/change-password"
                                                             className="navbar-info-user"
                                                             style={{
                                                                 textDecoration: 'none',
@@ -599,7 +600,8 @@ const Navbar = React.memo(() => {
 
                                                             <li className="nav-info-user-mobile-list-item">
                                                                 <Link
-                                                                    to="/change-account"
+                                                                    // to="/change-account"
+                                                                    to="/account/change-password"
                                                                     className="nav-info-user-mobile-list-item-link"
                                                                 >
                                                                     Đổi mật khẩu
@@ -903,7 +905,10 @@ const Navbar = React.memo(() => {
 
                                 <div className="nav-menu" style={{ zIndex: '7' }}>
                                     <span className="nav-label">
-                                        <Link className="navbar-menu-item-link" to="/">
+                                        <Link
+                                            className="navbar-menu-item-link"
+                                            to="/wait-for-confirmation"
+                                        >
                                             kiểm tra đơn hàng
                                         </Link>
                                     </span>

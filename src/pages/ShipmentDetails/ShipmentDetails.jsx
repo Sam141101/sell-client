@@ -93,6 +93,12 @@ const ShipmentDetails = () => {
                     userId: userId,
                     totalPrice: totalPrice,
                     codeCoupon: codeCoupon,
+                    address: {
+                        codeCoupon: codeCoupon,
+                        codeCoupon: codeCoupon,
+                        codeCoupon: codeCoupon,
+                        codeCoupon: codeCoupon,
+                    },
                     // service_id: inputs.service_id,
                 };
             } else if (notify === '') {
@@ -140,9 +146,14 @@ const ShipmentDetails = () => {
     const handleUseVoucher = async (e) => {
         e.preventDefault();
         try {
-            const res = await axiosJWT.get(
+            const checkAddress = {
+                inputs: inputs.service_id,
+            };
+
+            const res = await axiosJWT.post(
                 BASE_URL_API +
                     `discounts/use-coupon/${user._id}/${codeCoupon}/${totalPrice}`,
+                checkAddress,
                 {
                     headers: { token: `Bearer ${user.token}` },
                 },
