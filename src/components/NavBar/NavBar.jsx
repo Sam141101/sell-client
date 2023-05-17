@@ -635,7 +635,7 @@ const Navbar = React.memo(() => {
                                                         }}
                                                     >
                                                         <div className="navbar-menu-item">
-                                                            REGISTER
+                                                            Đăng kí
                                                         </div>
                                                     </Link>
                                                     <Link
@@ -646,7 +646,7 @@ const Navbar = React.memo(() => {
                                                         }}
                                                     >
                                                         <div className="navbar-menu-item">
-                                                            SIGN IN
+                                                            Đăng nhập
                                                         </div>
                                                     </Link>
                                                 </div>

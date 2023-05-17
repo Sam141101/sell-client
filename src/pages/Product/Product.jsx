@@ -123,80 +123,11 @@ const Product = () => {
                     <div className="row">
                         <div className="col l-7 c-12">
                             <div className="product-img-container-block">
-                                <div
-                                    className="row"
-                                    style={{ marginLeft: '-8px', marginRight: '-8px' }}
-                                >
-                                    <div
-                                        className="col l-2 c-0"
-                                        style={{
-                                            paddingLeft: '8px',
-                                            paddingRight: '8px',
-                                        }}
-                                    >
-                                        <div className="block-list-small-product">
-                                            {data.map((item) => (
-                                                // <div
-                                                //     className="block-item-small-product"
-                                                //     key={item.id}
-                                                //     onClick={() => setShowImg(item.img)}
-                                                // >
-                                                <img
-                                                    style={
-                                                        showImg === item.img
-                                                            ? {
-                                                                  border: '1px solid rgb(136, 136, 136)',
-                                                              }
-                                                            : {
-                                                                  border: '1px solid white',
-                                                              }
-                                                    }
-                                                    key={item.id}
-                                                    onClick={() => setShowImg(item.img)}
-                                                    className="product-img-container active"
-                                                    src={item.img}
-                                                    alt=""
-                                                />
-                                                // </div>
-                                            ))}
-
-                                            {/* <div className="block-item-small-product">
-                                                <img
-                                                    className="product-img-container active"
-                                                    src="https://product.hstatic.net/200000312481/product/aso3003_2_4975fdb66e8e4a26863763cb2a7d15e9_master.jpg"
-                                                    alt=""
-                                                />
-                                            </div>
-
-                                            <div className="block-item-small-product">
-                                                <img
-                                                    className="product-img-container active"
-                                                    src="https://product.hstatic.net/200000312481/product/aso3003_2_4975fdb66e8e4a26863763cb2a7d15e9_master.jpg"
-                                                    alt=""
-                                                />
-                                            </div> */}
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="col l-10 c-12"
-                                        style={{
-                                            paddingLeft: '8px',
-                                            paddingRight: '8px',
-                                        }}
-                                    >
-                                        <img
-                                            className="product-image"
-                                            alt=""
-                                            src={product?.img}
-                                        />
-
-                                        {/* <img
-                                            className="product-image"
-                                            alt=""
-                                            src={showImg}
-                                        /> */}
-                                    </div>
-                                </div>
+                                <img
+                                    className="product-image"
+                                    alt=""
+                                    src={product?.img}
+                                />
                             </div>
                         </div>
 

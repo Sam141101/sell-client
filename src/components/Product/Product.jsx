@@ -6,6 +6,7 @@ import './product.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Product = ({ item }) => {
+    console.log(item);
     return (
         <div className="product-container">
             <Link
