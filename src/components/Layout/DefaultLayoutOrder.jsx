@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BASE_URL_API } from '../../requestMethods';
 
 const profile = [
     {
@@ -26,6 +29,35 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
     const accounttype = location.pathname.split('/')[2];
 
     const user = useSelector((state) => state.auth?.currentUser);
+
+    const [inputs, setInputs] = useState({
+        pending: 0,
+        accept: 0,
+        delivery: 0,
+        complete: 0,
+        cancel: 0,
+    });
+
+    useEffect(() => {
+        const getProduct = async () => {
+            try {
+                const res = await axios.get(
+                    BASE_URL_API + `orders/amount-order-status/${user._id}`,
+                );
+
+                setInputs({
+                    pending: res.data.pending,
+                    accept: res.data.accept,
+                    delivery: res.data.delivery,
+                    complete: res.data.complete,
+                    cancel: res.data.cancel,
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getProduct();
+    }, [user._id]);
 
     return (
         <div className="default-layout-wrapper">
@@ -166,6 +198,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/wait-for-confirmation"
                                         >
                                             Chờ xác nhận
+                                            {inputs.pending !== 0 && (
+                                                <span className="amount-order">
+                                                    {inputs.pending}
+                                                </span>
+                                            )}
                                         </Link>
                                         <Link
                                             className="default-layout-order-select-link"
@@ -179,6 +216,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/waiting-for-the-goods"
                                         >
                                             Chờ lấy hàng
+                                            {inputs.accept !== 0 && (
+                                                <span className="amount-order">
+                                                    {inputs.accept}
+                                                </span>
+                                            )}
                                         </Link>
 
                                         <Link
@@ -193,6 +235,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/delivering"
                                         >
                                             Đang giao
+                                            {inputs.delivery !== 0 && (
+                                                <span className="amount-order">
+                                                    {inputs.delivery}
+                                                </span>
+                                            )}
                                         </Link>
 
                                         <Link
@@ -205,6 +252,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/complete"
                                         >
                                             Hoàn thành
+                                            {inputs.complete !== 0 && (
+                                                <span className="amount-order">
+                                                    {inputs.complete}
+                                                </span>
+                                            )}
                                         </Link>
                                         <Link
                                             className="default-layout-order-select-link"
@@ -216,6 +268,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/canceled"
                                         >
                                             Đã huỷ
+                                            {inputs.cancel !== 0 && (
+                                                <span className="amount-order">
+                                                    {inputs.cancel}
+                                                </span>
+                                            )}
                                         </Link>
                                     </div>
                                 )}

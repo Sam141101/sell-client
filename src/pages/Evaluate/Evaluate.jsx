@@ -24,6 +24,9 @@ const Evaluate = () => {
     const id = location.pathname.split('/')[2];
     const order_id = location.pathname.split('/')[3];
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const user = useSelector((state) => state.auth?.currentUser);
     console.log(user);
     const token = user.token;
@@ -41,9 +44,6 @@ const Evaluate = () => {
     };
 
     // const debounced = useDebounce(comment, 600);
-
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     // const handleChange = (e) => {
     //     setComment(e.target.value);
@@ -276,7 +276,10 @@ const Evaluate = () => {
                                                 </div>
 
                                                 <div className="evaluate-upload-img">
-                                                    <label htmlFor="file">
+                                                    <label
+                                                        className="evaluate-label"
+                                                        htmlFor="file"
+                                                    >
                                                         <div className="evaluate-quality-img-block">
                                                             <CameraAlt className="camera-img-icon" />
                                                             <div className="evaluate-upload-title">

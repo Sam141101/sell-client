@@ -96,6 +96,8 @@ const VoucherWarehouse = () => {
                         >
                             {item.title}
                         </span>
+
+                        {/* <span className="amount-vouch"></span> */}
                     </li>
                 ))}
             </ul>

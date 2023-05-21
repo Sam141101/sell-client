@@ -32,7 +32,7 @@ function DefaultLayoutPolicy({ children, item2, show1 }) {
                                     danh mục trang
                                 </div>
                                 <ul className="about-list">
-                                    <li className="about-item">
+                                    {/* <li className="about-item">
                                         <Link
                                             to="/"
                                             style={{
@@ -43,7 +43,7 @@ function DefaultLayoutPolicy({ children, item2, show1 }) {
                                         >
                                             Tìm kiếm
                                         </Link>
-                                    </li>
+                                    </li> */}
                                     <li className="about-item">
                                         <Link
                                             to="/about"

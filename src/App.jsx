@@ -134,6 +134,8 @@ function App() {
                 {/* <Route path="/testlll" element={<Evaluate />} /> */}
                 <Route path="/testlll2" element={<Complete />} />
 
+                {/* <Route path="/baocao" element={<NewPassword />} /> */}
+
                 <Route path="/registerTest" element={<ChangePassword />} />
 
                 {/* test paypal */}

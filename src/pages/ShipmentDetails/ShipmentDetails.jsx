@@ -17,7 +17,10 @@ const ShipmentDetails = () => {
     const userId = user._id;
     const totalPrice = total.total;
 
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState({
+        fullname: user.fullname,
+        phone: user.phone,
+    });
     const [infoCoupon, setInfoCoupon] = useState({});
     const [show, setShow] = useState(false);
 
@@ -25,7 +28,7 @@ const ShipmentDetails = () => {
 
     const [toggleInfo, setToggleInfo] = useState(true);
     const [codeCoupon, setCodeCoupon] = useState('');
-    const [notify, setNotify] = useState();
+    const [notify, setNotify] = useState('');
     const [totalPriceProduct, setTotalPriceProduct] = useState(totalPrice);
     const [totalPriceDelivery, setTotalPriceDelivery] = useState(0);
     const [couponUpdated, setCouponUpdated] = useState(false);
@@ -93,13 +96,6 @@ const ShipmentDetails = () => {
                     userId: userId,
                     totalPrice: totalPrice,
                     codeCoupon: codeCoupon,
-                    address: {
-                        codeCoupon: codeCoupon,
-                        codeCoupon: codeCoupon,
-                        codeCoupon: codeCoupon,
-                        codeCoupon: codeCoupon,
-                    },
-                    // service_id: inputs.service_id,
                 };
             } else if (notify === '') {
                 infoOrder = {
@@ -107,7 +103,6 @@ const ShipmentDetails = () => {
                     cart: cart,
                     userId: userId,
                     totalPrice: totalPrice,
-                    // service_id: inputs.service_id,
                 };
                 console.log('Không dùng phiếu giảm giá');
             } else {
@@ -188,6 +183,7 @@ const ShipmentDetails = () => {
             }
             setCouponUpdated(false);
         } else if (notify === '' || notify !== 'Át mã giảm giá thành công.') {
+            // } else if (notify !== 'Át mã giảm giá thành công.') {
             // Nếu không sử dụng mã giảm giá hoặc sử dụng mã thất bại, trả về giá trị ban đầu của sản phẩm
             setTotalPriceProduct(initialTotalPriceProduct);
             setTotalPriceDelivery(initialTotalPriceDelivery);
@@ -264,6 +260,7 @@ const ShipmentDetails = () => {
                 console.log('res.data', res.data);
                 if (res.data !== 0) {
                     setTotalPriceDelivery(res.data.data.total);
+                    setInitialTotalPriceDelivery(res.data.data.total);
                 }
             } catch (err) {
                 console.log(err);
@@ -284,6 +281,8 @@ const ShipmentDetails = () => {
     console.log('inputs', inputs);
     console.log('cart', cart);
     console.log('totalPriceDelivery', totalPriceDelivery);
+
+    console.log('notify', notify);
 
     return (
         <div className="ship_ment-details-container">
@@ -496,6 +495,7 @@ const ShipmentDetails = () => {
                                         name="fullname"
                                         onChange={handleChange}
                                         placeholder="Họ và tên"
+                                        value={inputs.fullname}
                                     />
                                     <input
                                         className="ship_ment-details-info-user"
@@ -503,6 +503,7 @@ const ShipmentDetails = () => {
                                         name="phone"
                                         onChange={handleChange}
                                         placeholder="Số điện thoại"
+                                        value={inputs.phone}
                                     />
 
                                     <FormInputAddress

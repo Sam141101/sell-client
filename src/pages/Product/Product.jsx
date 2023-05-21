@@ -92,6 +92,7 @@ const Product = () => {
                 product_id: id,
                 quantity_sp: quantity,
                 size_sp: size,
+                discount: product.discountProduct_id.discount_amount,
             };
             // console.log('>>>>', checkSize);
             addCart(user.token, dispatch, addProductCarts, cartProducts, axiosJWT);
@@ -112,6 +113,8 @@ const Product = () => {
         };
         getProduct();
     }, [id]);
+
+    console.log('product', product.discountProduct_id?.discount_amount);
 
     return (
         <div className="product-page-frame">

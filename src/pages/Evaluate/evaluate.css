@@ -2,6 +2,11 @@
     width: 100%;
 }
 
+.evaluate-label {
+    width: fit-content;
+    cursor: pointer;
+}
+
 .evaluate_title {
     font-size: 45px;
     font-weight: 600;

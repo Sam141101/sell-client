@@ -127,10 +127,10 @@ const Login = () => {
                                             Bạn đã có tài khoản?
                                             <Link
                                                 style={{ textDecoration: 'none' }}
-                                                to="/login"
+                                                to="/confirm/register"
                                             >
                                                 <span className="login_text-line">
-                                                    Đăng nhập
+                                                    Đăng kí
                                                 </span>
                                             </Link>
                                             or
