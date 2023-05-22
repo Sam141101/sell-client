@@ -54,8 +54,23 @@ const Complete = ({ selected }) => {
                                                 <div>{item1.size}</div>
                                             </div>
                                             <div className="wait-purchase-price-quanti">
-                                                <div>x{item1.quantity}</div>
-                                                <div>{item1.price}₫</div>
+                                                <div style={{ textAlign: 'right' }}>
+                                                    x{item1.quantity}
+                                                </div>
+                                                <div>
+                                                    {item1.discount !== 0 && (
+                                                        <del>
+                                                            {item1.product_id.price}₫
+                                                        </del>
+                                                    )}
+                                                    <span className="disocunt-product">
+                                                        {item1.discount
+                                                            ? item1.product_id.price *
+                                                              (1 - item1.discount / 100)
+                                                            : item1.product_id.price}
+                                                        ₫
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +100,7 @@ const Complete = ({ selected }) => {
                                 <div className="wait-purchase-total-price">
                                     Tổng số tiền:
                                     <span className="wait-purchase-total-price-text">
-                                        {item.amount}₫
+                                        {item.amount + item.transportFee}₫
                                     </span>
                                 </div>
                             </div>

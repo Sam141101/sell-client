@@ -94,21 +94,25 @@ const ShipmentDetails = () => {
                     inputs: inputs,
                     cart: cart,
                     userId: userId,
-                    totalPrice: totalPrice,
+                    totalPrice: totalPriceProduct,
                     codeCoupon: codeCoupon,
+                    totalPriceDelivery: totalPriceDelivery,
                 };
             } else if (notify === '') {
                 infoOrder = {
                     inputs: inputs,
                     cart: cart,
                     userId: userId,
-                    totalPrice: totalPrice,
+                    totalPriceDelivery: totalPriceDelivery,
+                    totalPrice: totalPriceProduct,
                 };
                 console.log('Không dùng phiếu giảm giá');
             } else {
                 console.log('không thể dùng mã giảm giá');
                 return;
             }
+
+            console.log('infoOrder', infoOrder);
 
             const res = await axiosJWT.post(
                 BASE_URL_API + `${inputs.method}/pay/`,

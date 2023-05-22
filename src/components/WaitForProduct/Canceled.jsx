@@ -58,8 +58,23 @@ const Canceled = ({ selected }) => {
                                                 <div>{item.size}</div>
                                             </div>
                                             <div className="wait-purchase-price-quanti">
-                                                <div>x{item.quantity}</div>
-                                                <div>{item.price}₫</div>
+                                                <div style={{ textAlign: 'right' }}>
+                                                    x{item.quantity}
+                                                </div>
+                                                <div>
+                                                    {item.discount !== 0 && (
+                                                        <del>
+                                                            {item.product_id.price}₫
+                                                        </del>
+                                                    )}
+                                                    <span className="disocunt-product">
+                                                        {item.discount
+                                                            ? item.product_id.price *
+                                                              (1 - item.discount / 100)
+                                                            : item.product_id.price}
+                                                        ₫
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +90,7 @@ const Canceled = ({ selected }) => {
                                 <div className="wait-purchase-total-price">
                                     Tổng số tiền:
                                     <span className="wait-purchase-total-price-text">
-                                        {item.amount}₫
+                                        {item.amount + item.transportFee}₫
                                     </span>
                                 </div>
                             </div>
