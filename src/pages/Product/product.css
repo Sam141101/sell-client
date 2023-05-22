@@ -2,6 +2,12 @@
     overflow: hidden;
 }
 
+.amount-sizes {
+    margin-left: 35px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
 .product-wrapper {
     padding: 30px 0px;
     /* display: flex; */

@@ -105,6 +105,8 @@ const Cart = () => {
         getCart();
     }, [dispatch, user, navigate]);
 
+    console.log('cart', cart);
+
     return (
         <div className="cart-mobile-frame">
             <Navbar />
@@ -144,10 +146,45 @@ const Cart = () => {
                                                             <span className="cart-product-name">
                                                                 {product.product_id.title}
                                                             </span>
-                                                            <span className="cart-product-id">
+                                                            {/* <span className="cart-product-id">
                                                                 {product.product_id.price}
                                                                 ₫
+                                                            </span> */}
+
+                                                            <span className="cart-product-id">
+                                                                <span className="cart-product-id">
+                                                                    {product.product_id
+                                                                        .discountProduct_id
+                                                                        ?.discount_amount
+                                                                        ? product
+                                                                              .product_id
+                                                                              .price *
+                                                                          (1 -
+                                                                              product
+                                                                                  .product_id
+                                                                                  .discountProduct_id
+                                                                                  ?.discount_amount /
+                                                                                  100)
+                                                                        : product
+                                                                              .product_id
+                                                                              .price}
+                                                                    ₫
+                                                                </span>
+                                                                {product.product_id
+                                                                    .discountProduct_id
+                                                                    ?.discount_amount !==
+                                                                    0 && (
+                                                                    <del>
+                                                                        {
+                                                                            product
+                                                                                .product_id
+                                                                                .price
+                                                                        }
+                                                                        ₫
+                                                                    </del>
+                                                                )}
                                                             </span>
+
                                                             <span className="cart-product-size">
                                                                 {product.size}
                                                             </span>

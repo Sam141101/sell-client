@@ -65,6 +65,12 @@
     font-weight: 500;
 }
 
+.cart-product-id del {
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
 .cart-product-size {
     font-size: 18px;
     font-weight: 500;
@@ -80,6 +86,7 @@
 }
 
 .cart-product-amount-container {
+    margin-top: 5px;
     display: flex;
     align-items: center;
     width: fit-content;

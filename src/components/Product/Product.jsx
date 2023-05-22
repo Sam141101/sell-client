@@ -16,7 +16,9 @@ const Product = ({ item }) => {
             >
                 {item.discountProduct_id?.discount_amount &&
                     item.discountProduct_id.discount_amount !== 0 && (
-                        <span className="product-discount">-32%</span>
+                        <span className="product-discount">
+                            -{item.discountProduct_id.discount_amount}%
+                        </span>
                     )}
                 <div className="frame-block-product">
                     <LazyLoadImage

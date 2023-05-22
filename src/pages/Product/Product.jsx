@@ -53,17 +53,14 @@ const Product = () => {
     const id = location.pathname.split('/')[2];
     const [product, setProduct] = useState({});
     const [outOfStock, setOutOfStock] = useState(false);
-    // const [cat, setCat] = useState('');
     const [quantity, setQuantity] = useState(1);
-    // const [color, setColor] = useState('');
-    const [size, setSize] = useState('M');
+    const [amountInStock, setAmountInStock] = useState(0);
+    const [size, setSize] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const user = useSelector((state) => state.auth?.currentUser);
 
-    const [showImg, setShowImg] = useState(data[0].img);
-    const [showBorder, setShowBorder] = useState(data[0].img);
     // -------------------
 
     const axiosJWT = createAxiosInstance(user, dispatch);
@@ -76,9 +73,10 @@ const Product = () => {
         }
     };
 
-    const handleSize = (s) => {
-        // console.log(s)
+    const handleSize = (s, amount) => {
+        console.log('s', s);
         setSize(s);
+        setAmountInStock(amount);
     };
 
     const handleClick = () => {
@@ -189,7 +187,9 @@ const Product = () => {
                                                             ? 'block-close'
                                                             : ''
                                                     }`}
-                                                    onClick={() => handleSize(s.size)}
+                                                    onClick={() =>
+                                                        handleSize(s.size, s.inStock)
+                                                    }
                                                     style={
                                                         size === s.size
                                                             ? {
@@ -205,6 +205,11 @@ const Product = () => {
                                             </div>
                                         </div>
                                     ))}
+                                    {amountInStock !== 0 && (
+                                        <div className="amount-sizes">
+                                            {amountInStock} có sẵn
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="product-amount-container">
