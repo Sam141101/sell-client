@@ -2,7 +2,7 @@ import { KeyboardBackspace } from '@mui/icons-material';
 import axios from 'axios';
 import { useRef } from 'react';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { BASE_URL_API } from '../../requestMethods';
@@ -19,7 +19,7 @@ const NewPassword = () => {
 
     const [validUrl, setValidUrl] = useState(false);
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const inputRef1 = useRef();
@@ -28,6 +28,25 @@ const NewPassword = () => {
 
     const handleClick = async (e) => {
         e.preventDefault();
+
+        let errorMessage = '';
+        if (!password || !passwordConfirm) {
+            errorMessage = 'Vui lòng điền đầy đủ thông tin cần thiết.';
+        }
+
+        if (password.length < 6) {
+            errorMessage = 'Mật khẩu không được ít hơn 6 kí tự.';
+        }
+
+        if (password !== passwordConfirm) {
+            errorMessage = 'Mật khẩu không trùng khớp.';
+        }
+
+        if (errorMessage) {
+            alert(errorMessage);
+            return;
+        }
+
         console.log(password, passwordConfirm);
         try {
             const url = BASE_URL_API + `auth/new-password`;

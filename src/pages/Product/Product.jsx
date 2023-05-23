@@ -83,6 +83,16 @@ const Product = () => {
         if (!user) {
             navigate('/login');
         } else {
+            let errorMessage = '';
+            if (!size) {
+                errorMessage = 'Vui lòng chọn Size.';
+            }
+
+            if (errorMessage) {
+                alert(errorMessage);
+                return;
+            }
+
             const cartProducts = { ...product, quantity, size };
 
             const addProductCarts = {

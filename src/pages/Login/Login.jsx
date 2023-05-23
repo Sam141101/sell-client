@@ -32,6 +32,7 @@ const Login = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
+
         if (username === '') {
             inputRef1.current.focus();
         } else if (password === '') {

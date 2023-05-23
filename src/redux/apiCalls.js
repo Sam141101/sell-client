@@ -30,8 +30,6 @@ export const login = async (dispatch, user, navigate) => {
     dispatch(loginStart());
 
     try {
-        // const res = await axios.post('http://localhost:5000/api/auth/login', user);
-        // const res = await axios.post(BASE_URL_API + 'auth/login', user);
         const res = await axios.post(BASE_URL_API + 'auth/login', user, {
             withCredentials: true,
         });
@@ -65,14 +63,12 @@ export const logout = async (dispatch, id, token, axiosJWT, navigate) => {
     dispatch(logoutStart());
 
     try {
-        // await axiosJWT.post('http://localhost:5000/api/auth/logout/' + id, {
         await axiosJWT.post(
             BASE_URL_API + 'auth/logout',
             {
                 userId: id,
             },
             {
-                // await axios.post('http://localhost:5000/api/auth/logout', id, {
                 headers: { token: `Bearer ${token}` },
             },
         );
@@ -130,8 +126,8 @@ export const updateProduct = async (token, dispatch, id, update, condition, axio
 // Delete product cart
 export const deleteProduct = async (token, dispatch, id, axiosJWT, navigate) => {
     try {
-        // await axios.delete(BASE_URL_API + 'carts/' + id, {
-        await axiosJWT.delete('http://localhost:5000/api/carts/' + id, {
+        // await axiosJWT.delete('http://localhost:5000/api/carts/' + id, {
+        await axiosJWT.delete(BASE_URL_API + 'carts/' + id, {
             headers: { token: `Bearer ${token}` },
         });
         dispatch(removeProduct(id));

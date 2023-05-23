@@ -1,11 +1,14 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import { BASE_URL_API } from './requestMethods';
 
 export const refreshToken = async (id) => {
     try {
         // axios.defaults.withCredentials = true; // thêm vào đây
         const res = await axios.post(
             'http://localhost:5000/api/auth/refresh/' + id,
+            // BASE_URL_API +'auth/refresh/' + id,
+
             // , {
             //     withCredentials: true,
             // }

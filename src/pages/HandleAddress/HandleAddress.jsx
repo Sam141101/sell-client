@@ -32,7 +32,46 @@ const HandleAddress = () => {
     const [notify, setNotify] = useState('');
     const [advertise, setAdvertise] = useState('');
 
+    console.log('inputs', inputs);
     const handleClick = async () => {
+        // if (
+        //     !inputs.address ||
+        //     !inputs.provinceId ||
+        //     !inputs.districtId ||
+        //     !inputs.wardId
+        // ) {
+        //     return;
+        // }
+
+        let isMissingFields = false;
+        const missingFields = [];
+
+        if (!inputs.address) {
+            isMissingFields = true;
+            missingFields.push('Địa chỉ');
+        }
+        if (!inputs.provinceId) {
+            isMissingFields = true;
+            missingFields.push('Tỉnh / Thành');
+        }
+        if (!inputs.districtId) {
+            isMissingFields = true;
+            missingFields.push('Quận / Huyện');
+        }
+        if (!inputs.wardId) {
+            isMissingFields = true;
+            missingFields.push('Phường / Xã');
+        }
+
+        if (isMissingFields) {
+            alert(
+                `Vui lòng cung cấp đầy đủ thông tin cho các trường: ${missingFields.join(
+                    ', ',
+                )}`,
+            );
+            return;
+        }
+
         try {
             let res;
             if (notify === 'null') {
@@ -44,7 +83,6 @@ const HandleAddress = () => {
                     headers: { token: `Bearer ${user.token}` },
                 });
             }
-            // console.log(res.data);
             setAdvertise(res.data.message);
         } catch (err) {
             console.log(err);

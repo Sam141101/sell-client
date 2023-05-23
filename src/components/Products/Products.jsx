@@ -15,6 +15,11 @@ const Products = ({ cat, filters, sort, filterPage, setPagination, pagination })
     useEffect(() => {
         const getProducts = async () => {
             try {
+                console.log(
+                    'link',
+                    BASE_URL_API +
+                        `products/?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`,
+                );
                 const res = await axios.get(
                     BASE_URL_API +
                         `products/?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`,

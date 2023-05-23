@@ -12,16 +12,8 @@ import { togglePasswordVisibility } from '../../support';
 // --------------------------------------------------------------
 
 const Register = () => {
-    // const [email, setEmail] = useState('');
-    // const [username, setUsername] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [succesPw, setSuccesPw] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const [confirmName, setConfirmName] = useState(false);
-    // const [confirmEmail, setConfirmEmail] = useState(false);
-    // const [confirmPassword, setConfirmPassword] = useState(false);
-    // const [confirmSuccessPassword, setConfirmSuccessPassword] = useState(false);
 
     const [inputs, setInputs] = useState({});
     const [notify, setNotify] = useState('');
@@ -46,6 +38,34 @@ const Register = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
+        let errorMessage = '';
+
+        if (
+            !inputs.username ||
+            !inputs.fullname ||
+            !inputs.gender ||
+            !inputs.password ||
+            !inputs.confirmPassword
+        ) {
+            errorMessage = 'Vui lòng điền đầy đủ thông tin cần thiết.';
+        }
+
+        if (inputs.username.length < 6 && inputs.username.trim()) {
+            errorMessage = 'Tên tài khoản ít hơn 6 kí tự hoặc có khoảng trắng.';
+        }
+
+        if (inputs.password.length < 6) {
+            errorMessage = 'Mật khẩu không được ít hơn 6 kí tự.';
+        }
+
+        if (inputs.password !== inputs.confirmPassword) {
+            errorMessage = 'Mật khẩu không trùng khớp.';
+        }
+
+        if (errorMessage) {
+            alert(errorMessage);
+            return;
+        }
 
         const inputss = {
             userid: userid.id,

@@ -1,7 +1,7 @@
 import { KeyboardBackspace } from '@mui/icons-material';
 import axios from 'axios';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL_API } from '../../requestMethods';
 import './emailVerify.css';
@@ -15,11 +15,27 @@ const EmailVerify = () => {
 
     // const inputRef = useRef();
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
 
     const handleClick = async (e) => {
         e.preventDefault();
+
+        let errorMessage = '';
+        if (!email) {
+            errorMessage = 'Vui lòng nhập Email.';
+        }
+
+        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!regex.test(email)) {
+            errorMessage = 'Email không hợp lệ!';
+        }
+
+        if (errorMessage) {
+            alert(errorMessage);
+            return;
+        }
+
         try {
             const url = BASE_URL_API + `auth/confirm/register`;
             const { data: res } = await axios.post(url, { email });

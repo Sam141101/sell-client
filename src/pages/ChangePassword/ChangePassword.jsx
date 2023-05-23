@@ -24,6 +24,24 @@ const ChangePassword = () => {
         //     setShow(false);
         // }, 3000);
 
+        let errorMessage = '';
+        if (!currentPassword || !newPassword || !confirmPassword) {
+            errorMessage = 'Vui lòng điền đầy đủ thông tin cần thiết.';
+        }
+
+        if (newPassword.length < 6) {
+            errorMessage = 'Mật khẩu không được ít hơn 6 kí tự.';
+        }
+
+        if (newPassword !== confirmPassword) {
+            errorMessage = 'Mật khẩu xác nhận không trùng khớp.';
+        }
+
+        if (errorMessage) {
+            alert(errorMessage);
+            return;
+        }
+
         try {
             const url = BASE_URL_API + `auth/change-password/${user._id}`;
             const res = await axiosJWT.post(

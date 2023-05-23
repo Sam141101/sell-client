@@ -87,8 +87,29 @@ const ShipmentDetails = () => {
 
     const handleFinishClick = async () => {
         try {
-            let infoOrder;
+            let errorMessage = '';
+            if (!inputs.fullname) {
+                errorMessage = 'Vui lòng điền tên người nhận.';
+            }
 
+            if (!inputs.phone) {
+                errorMessage = 'Điền số điện thoại người nhận.';
+            }
+
+            if (!inputs.service_id) {
+                errorMessage = 'Chọn phương thức vận chuyển.';
+            }
+
+            if (!inputs.method) {
+                errorMessage = 'Chọn phương thức thanh toán.';
+            }
+
+            if (errorMessage) {
+                alert(errorMessage);
+                return;
+            }
+
+            let infoOrder;
             if (notify === 'Át mã giảm giá thành công.') {
                 infoOrder = {
                     inputs: inputs,
