@@ -182,6 +182,9 @@ const ShipmentDetails = () => {
                         totalPriceDelivery * (1 - infoCoupon.discount_amount / 100);
                 } else {
                     newTotalPrice = totalPriceDelivery - infoCoupon.discount_amount;
+                    if (newTotalPrice < 0) {
+                        newTotalPrice = 0;
+                    }
                 }
                 setTotalPriceDelivery(newTotalPrice);
             }

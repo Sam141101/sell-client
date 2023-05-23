@@ -192,7 +192,7 @@ const authenticatedRoutes = [
     },
 
     {
-        path: '/dat-hang-that bai',
+        path: '/dat-hang-that-bai',
         component: OrderCancel,
         layout: null,
     },
