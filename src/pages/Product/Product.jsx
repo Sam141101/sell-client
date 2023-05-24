@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import NavBar from '../../components/NavBar/NavBar';
-import Comment from '../../components/Comment/Comment';
+// import Comment from '../../components/Comment/Comment';
 import Announcement from '../../components/Announcement/Announcement';
 import Footer from '../../components/Footer/Footer';
 import { Add, Remove } from '@mui/icons-material';
@@ -10,11 +10,16 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart } from '../../redux/apiCalls';
 
-import Similar from '../../components/Similar/Similar';
+// import Similar from '../../components/Similar/Similar';
 import axios from 'axios';
 import './product.css';
 import { BASE_URL_API } from '../../requestMethods';
 import { createAxiosInstance } from '../../useAxiosJWT';
+import React from 'react';
+import { Suspense } from 'react';
+
+const Comment = React.lazy(() => import('../../components/Comment/Comment'));
+const Similar = React.lazy(() => import('../../components/Similar/Similar'));
 
 const FilterColor = styled.div`
     height: 20px;
@@ -282,9 +287,13 @@ const Product = () => {
                 </div>
             </div>
 
-            <Comment />
+            <Suspense fallback={<p>Loading...</p>}>
+                <Comment />
 
-            {product?.categories && <Similar cat={product?.categories} />}
+                {product?.categories && <Similar cat={product?.categories} />}
+            </Suspense>
+
+            {/* {product?.categories && <Similar cat={product?.categories} />} */}
 
             <Footer />
         </div>
