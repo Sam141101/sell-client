@@ -105,6 +105,7 @@ export const addCart = async (token, dispatch, product, cartproduct, axiosJWT) =
             headers: { token: `Bearer ${token}` },
         });
         // dispatch(addProduct(cartproduct));
+
         dispatch(addProduct(res.data));
     } catch (err) {
         console.log(err);

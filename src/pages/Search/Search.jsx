@@ -19,7 +19,7 @@ const Search = () => {
 
     const [pagination, setPagination] = useState({
         page: 1,
-        // limit: 12,
+        limit: 10,
         totalRows: 20,
     });
 
@@ -31,12 +31,15 @@ const Search = () => {
         const getProducts = async () => {
             try {
                 const res = await axios.get(
-                    BASE_URL_API + `products?category=${cat}&page=${filterPage}`,
+                    BASE_URL_API +
+                        `search/find?search=${encodeURIComponent(
+                            cat,
+                        )}&page=${filterPage}&limit=10`,
                 );
+
                 const { resultProducts, pagi } = res.data;
                 setProducts(resultProducts);
                 setPagination(pagi);
-                console.log(resultProducts);
             } catch (err) {}
         };
 
@@ -46,9 +49,7 @@ const Search = () => {
     console.log(pagination.totalRows);
 
     return (
-        // <div style={{ height: '100vh' }}>
         <div className="search-page-mobile">
-            {/* <Announcement /> */}
             <Navbar />
 
             <div className="grid wide">
@@ -63,15 +64,17 @@ const Search = () => {
 
                             <div className="search-title-results">
                                 Kết quả tìm kiếm cho
-                                <strong className="search-strong">'{cat}'</strong>
+                                <strong className="search-strong">
+                                    '{decodeURIComponent(cat)}'
+                                </strong>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="row">
-                    {products.map((item) => (
-                        <div className="col l-3">
+                    {products.map((item, index) => (
+                        <div className="col l-3" key={index}>
                             <div className="search-container1">
                                 <Product item={item} key={item._id} />
                             </div>
@@ -80,7 +83,9 @@ const Search = () => {
                 </div>
             </div>
 
-            <Pagination pagination={pagination} onPageChange={handlePageChange} />
+            {pagination.totalRows >= pagination.limit && (
+                <Pagination pagination={pagination} onPageChange={handlePageChange} />
+            )}
 
             <Footer />
         </div>

@@ -866,40 +866,6 @@ const Navbar = React.memo(() => {
                                                 </Link>
                                             </li>
                                         ))}
-
-                                        {/* <li className="nav-item">
-                                            <Link
-                                                className="nav-menu-item-link"
-                                                to="/products/TEE"
-                                            >
-                                                TEE
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link
-                                                className="nav-menu-item-link"
-                                                to="/products/HOODIE"
-                                            >
-                                                HOODIE
-                                            </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link
-                                                className="nav-menu-item-link"
-                                                to="/products/POLO"
-                                            >
-                                                POLO
-                                            </Link>
-                                        </li>
-
-                                        <li className="nav-item">
-                                            <Link
-                                                className="nav-menu-item-link"
-                                                to="/products/SHORT"
-                                            >
-                                                SHORT
-                                            </Link>
-                                        </li> */}
                                     </ul>
                                 </div>
 

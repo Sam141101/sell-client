@@ -21,6 +21,8 @@ const Similar = ({ cat }) => {
         totalRows: 20,
     });
 
+    console.log('ké');
+
     const handlePageChange = (newPage) => {
         setFilterPage(newPage);
     };

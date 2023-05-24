@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL_API } from '../../requestMethods';
 import { createAxiosInstance } from '../../useAxiosJWT';
+// import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const changDate = (isoString) => {
     const date = new Date(isoString);
