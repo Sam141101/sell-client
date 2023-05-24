@@ -69,6 +69,7 @@ const listItemNav = [
 ];
 
 const Navbar = React.memo(() => {
+    // console.log('log', log);
     const user = useSelector((state) => state.auth?.currentUser);
     const quantity = useSelector((state) => state.cart?.quantity);
 

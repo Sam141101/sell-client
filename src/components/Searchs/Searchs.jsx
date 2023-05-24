@@ -158,7 +158,23 @@ const Searchs = () => {
                                     <div className="searchs-item-title">
                                         {product.title}
                                     </div>
-                                    <p className="searchs-item-price">{product.price}₫</p>
+                                    <p className="searchs-item-price">
+                                        {/* {product.price}₫ */}
+                                        <span>
+                                            {product?.discount_amount
+                                                ? product.price *
+                                                  (1 - product.discount_amount / 100)
+                                                : product.price}
+                                            ₫
+                                        </span>
+
+                                        {product?.discount_amount &&
+                                            product.discount_amount !== 0 && (
+                                                <span className="pro-price-del">
+                                                    <del>{product.price}₫</del>
+                                                </span>
+                                            )}
+                                    </p>
                                 </div>
                             </div>
                             <img

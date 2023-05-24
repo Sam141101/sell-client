@@ -6,7 +6,7 @@ import { BASE_URL_API } from '../../requestMethods';
 
 const Products = ({ cat, filters, sort, filterPage, setPagination, pagination }) => {
     const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
+    // const [filteredProducts, setFilteredProducts] = useState([]);
 
     let limit = pagination.limit;
     // const user = useSelector((state) => state.auth?.currentUser);

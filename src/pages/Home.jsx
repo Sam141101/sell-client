@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/NavBar/NavBar';
@@ -15,6 +15,8 @@ import { search } from '../redux/apiCalls';
 import axios from 'axios';
 import PromtionVideo from '../components/PromotionVideo/PromotionVideo';
 import { useState } from 'react';
+import Product from '../components/Product/Product';
+import { BASE_URL_API } from '../requestMethods';
 //
 
 const MoreProduct = styled.div`
@@ -53,14 +55,6 @@ const More = styled.div`
     }
 `;
 
-const Button = styled.button`
-    width: 100%;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    font-weight: 600;
-`;
-
 const Info = styled.div`
     font-size: 20px;
     font-weight: 600;
@@ -72,8 +66,8 @@ const Info = styled.div`
 const Home = () => {
     // tam
     const user = useSelector((state) => state.auth?.currentUser);
-    const dispatch = useDispatch();
-    let axiosJWT = createAxios(user, dispatch, loginSuccess);
+    // const dispatch = useDispatch();
+    // let axiosJWT = createAxios(user, dispatch, loginSuccess);
 
     // const [pagination, setPagination] = useState({
     //     page: 1,
@@ -81,40 +75,30 @@ const Home = () => {
     //     totalRows: 20,
     // });
 
+    const [products, setProducts] = useState([]);
+
     const pagination = {
         page: 1,
         limit: 12,
         totalRows: 20,
     };
 
-    const [test, setTest] = useState({});
-    const handleRemove = async () => {
-        try {
-            const res = await axios.get(
-                'https://test1245.vercel.app/api/products/find/6381853221cefae6d34b31e0',
-            );
-            console.log(res.data);
-            setTest(res.data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    useEffect(() => {
+        const getProducts = async () => {
+            try {
+                const res = await axios.get(BASE_URL_API + `products/home/`);
+                setProducts(res.data);
+                console.log(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        getProducts();
+    }, []);
 
     return (
-        // <div style={{ overflow: 'hidden' }}>
-        //     <div className="container-product">
-        //         <div className="grid wide">
-        //             <div className="row">
-        //                 <button onClick={handleRemove}>click</button>
-        //                 <div>{test && test.title}</div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
-
         <div style={{ overflow: 'hidden' }}>
-            {/* <div> */}
-            {/* <Button onClick={handleRemove}>test</Button> */}
             {/* <Announcement /> */}
             <Navbar />
             <Slider />
@@ -125,7 +109,12 @@ const Home = () => {
             <div className="container-product">
                 <div className="grid wide">
                     <div className="row">
-                        <Products filterPage={pagination.page} pagination={pagination} />
+                        {/* <Products filterPage={pagination.page} pagination={pagination} /> */}
+                        {products.map((item) => (
+                            <div className="col l-3 c-12" key={item._id}>
+                                <Product item={item} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -142,30 +131,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// <div style={{ overflow: 'hidden' }}>
-// {/* <div> */}
-// {/* <Button onClick={handleRemove}>test</Button> */}
-// {/* <Announcement /> */}
-// <Navbar />
-// <Slider />
-// {/* <Categories /> */}
-// {/* <PromtionVideo /> */}
-// <Info>CÁC SẢN PHẨM MỚI</Info>
-
-// <div className="container-product">
-//     <div className="grid wide">
-//         <div className="row">
-//             <Products filterPage={pagination.page} pagination={pagination} />
-//         </div>
-//     </div>
-// </div>
-
-// <Link to={`/products`} style={{ textDecoration: 'none' }}>
-//     <MoreProduct>
-//         <More>Xem thêm</More>
-//     </MoreProduct>
-// </Link>
-// <Newsletter />
-// <Footer />
-// </div>
