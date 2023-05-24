@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Close, RotateRight, Search } from '@mui/icons-material';
+import { Close, Search } from '@mui/icons-material';
 
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useRef } from 'react';
@@ -11,7 +11,7 @@ import { BASE_URL_API } from '../../requestMethods';
 
 const Searchs = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     // --------------- Phần search --------------------
     const inputRef = useRef();
@@ -20,7 +20,7 @@ const Searchs = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [listProduct, setListProduct] = useState([]);
     const [showResult, setShowResult] = useState(true);
-    const [isHoveringList, setIsHoveringList] = useState(false);
+    // const [isHoveringList, setIsHoveringList] = useState(false);
 
     // const [loading, setLoading] = useState(false);
 
@@ -30,7 +30,17 @@ const Searchs = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        navigate(`/search/${debounced}`);
+        let errorMessage = '';
+        if (!debounced || !debounced.trim()) {
+            errorMessage = 'Vui lòng nhập trường tìm kiếm.';
+        }
+
+        if (errorMessage) {
+            alert(errorMessage);
+            return;
+        }
+
+        navigate(`/search/${encodeURIComponent(debounced)}`);
         setSearchTerm('');
     };
 
@@ -122,7 +132,7 @@ const Searchs = () => {
             )}
 
             <button
-                disabled={!searchTerm}
+                // disabled={!searchTerm}
                 id="button"
                 onClick={handleSubmit}
                 // searchValue={searchTerm ? '#393838' : 'white'}
