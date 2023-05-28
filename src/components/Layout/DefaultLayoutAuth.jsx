@@ -3,6 +3,9 @@ import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import axios from 'axios';
+import { BASE_URL_API } from '../../requestMethods';
 
 function DefaultLayoutAuth({ children, page }) {
     const user = useSelector((state) => state.auth?.currentUser);
@@ -23,7 +26,21 @@ function DefaultLayoutAuth({ children, page }) {
                 dispatch={dispatch}
             />
 
-            <>{children}</>
+            {/* <>{children}</> */}
+
+            <>
+                {React.Children.map(children, (child) =>
+                    React.cloneElement(child, {
+                        axiosJWT: axiosJWT,
+                        quantity: quantity,
+                        user: user,
+                        navigate: navigate,
+                        axios: axios,
+                        dispatch: dispatch,
+                        BASE_URL_API: BASE_URL_API,
+                    }),
+                )}
+            </>
 
             <Footer />
         </div>

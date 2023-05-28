@@ -4,9 +4,9 @@ import './comment.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { BASE_URL_API } from '../../requestMethods';
-import { createAxiosInstance } from '../../useAxiosJWT';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { BASE_URL_API } from '../../requestMethods';
+// import { createAxiosInstance } from '../../useAxiosJWT';
 // import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const changDate = (isoString) => {
@@ -20,7 +20,8 @@ const changDate = (isoString) => {
     return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
 };
 
-const Comment = () => {
+// const Comment = ({dispatch, user, axiosJWT, BASE_URL_API}) => {
+const Comment = ({ axios, BASE_URL_API }) => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
 
@@ -31,10 +32,10 @@ const Comment = () => {
     const [img, setImg] = useState('');
     // const [slideIndex, setSlideIndex] = useState(0);
 
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.auth?.currentUser);
+    // const dispatch = useDispatch();
+    // const user = useSelector((state) => state.auth?.currentUser);
 
-    const axiosJWT = createAxiosInstance(user, dispatch);
+    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleChangeImg = (imgItem) => {
         if (img === imgItem) {
@@ -61,7 +62,8 @@ const Comment = () => {
     useEffect(() => {
         const getComment = async () => {
             try {
-                const res = await axiosJWT.get(
+                // const res = await axiosJWT.get(
+                const res = await axios.get(
                     BASE_URL_API + `comments/find/${id}/${option}`,
                 );
                 setListInfoComment(res.data);

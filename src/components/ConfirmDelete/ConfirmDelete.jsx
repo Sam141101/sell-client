@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { deleteProduct } from '../../redux/apiCalls';
 import './confirmDelete.css';
@@ -11,9 +11,10 @@ const ConfirmDelete = ({
     comfirmDelete,
     setComfirmDelete,
     axiosJWT,
+    dispatch,
 }) => {
     // const user = useSelector((state) => state.auth?.currentUser);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const productId = useSelector((state) =>
         state.cart.products.filter((product) => product._id === comfirmDelete),

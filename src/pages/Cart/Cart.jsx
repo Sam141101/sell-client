@@ -3,16 +3,16 @@ import styled from 'styled-components';
 // import Navbar from '../../components/NavBar/NavBar';
 import Announcement from '../../components/Announcement/Announcement';
 import { Add, East, Remove, Reply } from '@mui/icons-material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import ClearIcon from '@mui/icons-material/Clear';
 import { useEffect, useState, useRef } from 'react';
 import { deleteProduct, getAllCart, updateProduct } from '../../redux/apiCalls';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ConfirmDelete from '../../components/ConfirmDelete/ConfirmDelete';
 import './cart.css';
 import React from 'react';
-import { createAxiosInstance } from '../../useAxiosJWT';
+// import { createAxiosInstance } from '../../useAxiosJWT';
 
 const SummaryItem = styled.div`
     font-weight: ${(props) => props.type === 'total' && '500'};
@@ -27,17 +27,17 @@ const Line = styled.div`
     margin: 25px auto 0;
 `;
 
-const Cart = () => {
+const Cart = ({ axiosJWT, dispatch, navigate, user }) => {
     const [noti, setNoti] = useState('none');
 
     const [comfirmDelete, setComfirmDelete] = useState('');
 
     const cart = useSelector((state) => state?.cart);
-    const user = useSelector((state) => state.auth?.currentUser);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const user = useSelector((state) => state.auth?.currentUser);
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
     // const axiosJWT = createAxios(user, dispatch, loginSuccess);
-    const axiosJWT = createAxiosInstance(user, dispatch);
+    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleRemove = (id) => {
         deleteProduct(user.token, dispatch, id, axiosJWT);
@@ -124,6 +124,7 @@ const Cart = () => {
                             <Line></Line>
 
                             <ConfirmDelete
+                                dispatch={dispatch}
                                 axiosJWT={axiosJWT}
                                 noti={noti}
                                 setNoti={setNoti}

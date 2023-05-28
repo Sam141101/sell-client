@@ -2,9 +2,18 @@ import { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 import axios from 'axios';
 import './products.css';
-import { BASE_URL_API } from '../../requestMethods';
+// import { BASE_URL_API } from '../../requestMethods';
 
-const Products = ({ cat, filters, sort, filterPage, setPagination, pagination }) => {
+const Products = ({
+    cat,
+    filters,
+    sort,
+    filterPage,
+    setPagination,
+    pagination,
+    axios,
+    BASE_URL_API,
+}) => {
     const [products, setProducts] = useState([]);
     // const [filteredProducts, setFilteredProducts] = useState([]);
 

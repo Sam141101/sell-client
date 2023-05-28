@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useLocation } from 'react-router-dom';
 import './voucherWarehouse.css';
 import { BASE_URL_API } from '../../requestMethods';
-import { createAxiosInstance } from '../../useAxiosJWT';
+// import { createAxiosInstance } from '../../useAxiosJWT';
 
 const data = [
     {
@@ -39,14 +39,14 @@ const changDate = (isoString) => {
     }
 };
 
-const VoucherWarehouse = () => {
-    const user = useSelector((state) => state.auth?.currentUser);
+const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate }) => {
+    // const user = useSelector((state) => state.auth?.currentUser);
     let id = user._id;
     let token = user.token;
     // const location = useLocation();
 
-    const dispatch = useDispatch();
-    const axiosJWT = createAxiosInstance(user, dispatch);
+    // const dispatch = useDispatch();
+    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     // const type = 0;
 

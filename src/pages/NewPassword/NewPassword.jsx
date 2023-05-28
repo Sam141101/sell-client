@@ -1,16 +1,16 @@
 import { KeyboardBackspace } from '@mui/icons-material';
-import axios from 'axios';
+// import axios from 'axios';
 import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 // import { useDispatch } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
-import { BASE_URL_API } from '../../requestMethods';
+// import { BASE_URL_API } from '../../requestMethods';
 import './newPassword.css';
 
 // --------------------------------------------------------------
 
-const NewPassword = () => {
+const NewPassword = ({ axios, BASE_URL_API, navigate }) => {
     const [email, setEmail] = useState('');
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
@@ -20,7 +20,7 @@ const NewPassword = () => {
     const [validUrl, setValidUrl] = useState(false);
 
     // const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const inputRef1 = useRef();
     const inputRef2 = useRef();

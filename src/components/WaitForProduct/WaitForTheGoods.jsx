@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
 import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
-import { createAxiosInstance } from '../../useAxiosJWT';
+// import { createAxiosInstance } from '../../useAxiosJWT';
 
-const WaitForTheGoods = ({ selected }) => {
-    const user = useSelector((state) => state.auth?.currentUser);
+const WaitForTheGoods = ({ user, axiosJWT, navigate }) => {
+    // const user = useSelector((state) => state.auth?.currentUser);
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(false);
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
 
-    const axiosJWT = createAxiosInstance(user, dispatch);
+    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleClick = async (e) => {
         try {

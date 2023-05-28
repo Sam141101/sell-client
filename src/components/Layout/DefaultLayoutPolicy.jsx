@@ -1,12 +1,22 @@
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Announcement from '../Announcement/Announcement';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 function DefaultLayoutPolicy({ children, item2, show1 }) {
     const location = useLocation();
     const pathpolicy = location.pathname.split('/')[1];
+
+    const user = useSelector((state) => state.auth?.currentUser);
+    const quantity = useSelector((state) => state.cart?.quantity);
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleClickList = () => {
         const check = document.querySelector('.about-list');
@@ -20,7 +30,13 @@ function DefaultLayoutPolicy({ children, item2, show1 }) {
 
     return (
         <div className="default-layout-wrapper">
-            <Navbar />
+            <Navbar
+                axiosJWT={axiosJWT}
+                quantity={quantity}
+                user={user}
+                navigate={navigate}
+                dispatch={dispatch}
+            />
             <Announcement item2={item2} show1={show1} />
 
             <div className="about-wrapper">

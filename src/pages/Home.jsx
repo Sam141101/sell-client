@@ -63,7 +63,7 @@ const Info = styled.div`
     color: red;
 `;
 
-const Home = () => {
+const Home = ({ axios, BASE_URL_API }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {

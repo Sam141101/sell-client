@@ -1,13 +1,13 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { BASE_URL_API } from '../../requestMethods';
+// import { BASE_URL_API } from '../../requestMethods';
 import './forgotPassword.css';
 
 // --------------------------------------------------------------
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ BASE_URL_API, axios }) => {
     const [email, setEmail] = useState('');
     const [msg, setMsg] = useState('');
 

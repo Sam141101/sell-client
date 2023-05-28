@@ -31,7 +31,7 @@ const FilterColor = styled.div`
     border: 1px solid #ccc;
 `;
 
-const Product = () => {
+const Product = ({ axios, BASE_URL_API, dispatch, navigate, user, axiosJWT }) => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
     const [product, setProduct] = useState({});
@@ -39,14 +39,14 @@ const Product = () => {
     const [quantity, setQuantity] = useState(1);
     const [amountInStock, setAmountInStock] = useState(0);
     const [size, setSize] = useState('');
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
 
-    const user = useSelector((state) => state.auth?.currentUser);
+    // const user = useSelector((state) => state.auth?.currentUser);
 
     // -------------------
 
-    const axiosJWT = createAxiosInstance(user, dispatch);
+    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleQuantity = (type) => {
         if (type === 'dec') {
@@ -266,10 +266,15 @@ const Product = () => {
             </div>
 
             <Suspense fallback={<p>Loading...</p>}>
-                <Comment />
+                <Comment BASE_URL_API={BASE_URL_API} axios={axios} />
 
                 {product?.categories && (
-                    <Similar cat={product?.categories} color={product?.color} />
+                    <Similar
+                        cat={product?.categories}
+                        BASE_URL_API={BASE_URL_API}
+                        axios={axios}
+                        color={product?.color}
+                    />
                 )}
             </Suspense>
 

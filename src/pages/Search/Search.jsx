@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 // import Navbar from '../../components/NavBar/NavBar';
 // import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
 import Product from '../../components/Product/Product';
 import './search.css';
-import { BASE_URL_API } from '../../requestMethods';
+// import { BASE_URL_API } from '../../requestMethods';
 
-const Search = () => {
+const Search = ({ axios, BASE_URL_API }) => {
     const location = useLocation();
     const cat = location.pathname.split('/')[2];
     const [products, setProducts] = useState([]);

@@ -1,19 +1,19 @@
 import { KeyboardBackspace, Visibility } from '@mui/icons-material';
-import axios from 'axios';
+// import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
 import { register } from '../../redux/apiCalls';
-import { BASE_URL_API } from '../../requestMethods';
+// import { BASE_URL_API } from '../../requestMethods';
 
 import './register.css';
 import { togglePasswordVisibility } from '../../support';
 
 // --------------------------------------------------------------
 
-const Register = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+const Register = ({ axios, BASE_URL_API, dispatch, navigate }) => {
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
 
     const [inputs, setInputs] = useState({});
     const [notify, setNotify] = useState('');

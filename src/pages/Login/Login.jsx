@@ -1,17 +1,17 @@
 import { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { login } from '../../redux/apiCalls';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './login.css';
 
-const Login = () => {
+const Login = ({ navigate, dispatch }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const inputRef1 = useRef();
     const inputRef2 = useRef();
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
 
     // test
     const { isFetching, error } = useSelector((state) => state?.auth);

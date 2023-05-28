@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 import { createAxiosInstance } from '../../useAxiosJWT';
@@ -22,6 +22,24 @@ const profile = [
         to: 'address',
     },
 ];
+
+const ParentComponent = ({ children }) => {
+    return (
+        <div>
+            {React.Children.map(children, (child) => {
+                return React.cloneElement(child, { newProp: 'value' }); // add new prop to child
+            })}
+        </div>
+    );
+};
+
+const ChildComponent = ({ newProp }) => {
+    return (
+        <>
+            <p>New Prop: {newProp}</p>
+        </>
+    );
+};
 
 function DefaultLayoutOrder({ children, show1, show2, show3 }) {
     const location = useLocation();
@@ -290,7 +308,20 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                     </div>
                                 )}
 
-                                <div>{children}</div>
+                                {/* <div>{children}</div> */}
+                                <div>
+                                    {React.Children.map(children, (child) =>
+                                        React.cloneElement(child, {
+                                            axiosJWT: axiosJWT,
+                                            quantity: quantity,
+                                            user: user,
+                                            navigate: navigate,
+                                            dispatch: dispatch,
+                                            BASE_URL_API: BASE_URL_API,
+                                            axios: axios,
+                                        }),
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>

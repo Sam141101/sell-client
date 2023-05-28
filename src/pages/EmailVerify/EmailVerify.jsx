@@ -1,14 +1,14 @@
 import { KeyboardBackspace } from '@mui/icons-material';
-import axios from 'axios';
+// import axios from 'axios';
 import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { BASE_URL_API } from '../../requestMethods';
+// import { BASE_URL_API } from '../../requestMethods';
 import './emailVerify.css';
 
 // --------------------------------------------------------------
 
-const EmailVerify = () => {
+const EmailVerify = ({ axios, BASE_URL_API }) => {
     const [email, setEmail] = useState('');
     const [msg, setMsg] = useState('');
 

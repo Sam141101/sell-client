@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 import { postCommnetUser } from '../../redux/apiCalls';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './evaluate.css';
 import { CameraAlt, Clear, KeyboardBackspace, Star } from '@mui/icons-material';
 import app from '../../firebase';
 import { Rating } from '@mui/material';
-import { BASE_URL_API } from '../../requestMethods';
-import { createAxiosInstance } from '../../useAxiosJWT';
+// import { BASE_URL_API } from '../../requestMethods';
+// import { createAxiosInstance } from '../../useAxiosJWT';
 
 const ratingDescriptions = {
     1: 'Tệ',
@@ -19,15 +19,15 @@ const ratingDescriptions = {
     5: 'Tuyệt vời',
 };
 
-const Evaluate = () => {
+const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
     const order_id = location.pathname.split('/')[3];
 
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
 
-    const user = useSelector((state) => state.auth?.currentUser);
+    // const user = useSelector((state) => state.auth?.currentUser);
     console.log(user);
     const token = user.token;
     const [comment, setComment] = useState('');
@@ -37,7 +37,7 @@ const Evaluate = () => {
 
     const [rating, setRating] = useState(5);
 
-    const axiosJWT = createAxiosInstance(user, dispatch);
+    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleRatingChange = (event, newValue) => {
         setRating(newValue);

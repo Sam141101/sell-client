@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import './changePassword.css';
 import { BASE_URL_API } from '../../requestMethods';
-import { createAxiosInstance } from '../../useAxiosJWT';
+// import { createAxiosInstance } from '../../useAxiosJWT';
 import Notify from '../../components/Notify/Notify';
 
-const ChangePassword = () => {
-    const user = useSelector((state) => state.auth?.currentUser);
+const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
+    // const user = useSelector((state) => state.auth?.currentUser);
     const [show, setShow] = useState(false);
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const axiosJWT = createAxiosInstance(user, dispatch);
+    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleClick = async (e) => {
         e.preventDefault();
