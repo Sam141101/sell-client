@@ -5,6 +5,7 @@ import axios from 'axios';
 import './orderSuccess.css';
 import { BASE_URL_API } from '../../requestMethods';
 import { resetTemporary } from '../../redux/temporaryRedux';
+import Notify from '../../components/Notify/Notify';
 // import app from '../firebase'
 
 const OrderSuccess = () => {
@@ -57,7 +58,7 @@ const OrderSuccess = () => {
 
     return (
         <>
-            {show && (
+            {/* {show && (
                 <div className="user-profile-mobile-frame">
                     <div className="user-profile-wrapper">
                         <div className="user-profile-noti">
@@ -71,7 +72,9 @@ const OrderSuccess = () => {
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
+
+            <Notify show={show} title="Đặt hàng thành công" />
         </>
     );
 };

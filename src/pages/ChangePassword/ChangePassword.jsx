@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './changePassword.css';
 import { BASE_URL_API } from '../../requestMethods';
 import { createAxiosInstance } from '../../useAxiosJWT';
+import Notify from '../../components/Notify/Notify';
 
 const ChangePassword = () => {
     const user = useSelector((state) => state.auth?.currentUser);
@@ -66,7 +67,7 @@ const ChangePassword = () => {
 
     return (
         <>
-            {show && (
+            {/* {show && (
                 <div className="change-password-wrapper">
                     <div className="change-password-noti">
                         <img
@@ -78,7 +79,9 @@ const ChangePassword = () => {
                         <p className="change-password-text-noti">Cập nhật hồ sơ</p>
                     </div>
                 </div>
-            )}
+            )} */}
+
+            <Notify show={show} title="Đổi mật khẩu thành công" />
 
             <div className="row">
                 <div className="col l-12 c-12">

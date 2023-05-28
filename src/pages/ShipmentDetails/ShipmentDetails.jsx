@@ -8,10 +8,13 @@ import './shipmentDetails.css';
 import { addTemporary } from '../../redux/temporaryRedux';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import FormInputAddress from '../../components/FormInputAddress/FormInputAddress';
+import Notify from '../../components/Notify/Notify';
 
 const ShipmentDetails = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const cart = useSelector((state) => state.cart?.products);
+    // cart: cart,
+    console.log('cart', cart);
     const quantiProduct = useSelector((state) => state.cart?.quantity);
     const total = useSelector((state) => state?.cart);
     const userId = user._id;
@@ -315,7 +318,7 @@ const ShipmentDetails = () => {
     return (
         <div className="ship_ment-details-container">
             <>
-                {show && (
+                {/* {show && (
                     <div className="user-profile-mobile-frame">
                         <div className="user-profile-wrapper">
                             <div className="user-profile-noti">
@@ -331,7 +334,9 @@ const ShipmentDetails = () => {
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
+
+                <Notify show={show} title="Đặt hàng thành công" />
             </>
 
             <div className="grid wide">
