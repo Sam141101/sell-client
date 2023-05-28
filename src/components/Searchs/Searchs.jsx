@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Close, Search } from '@mui/icons-material';
 
 // import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useRef } from 'react';
 import useDebounce from '../../hooks/useDebounce';
 import './searchs.css';
 import { BASE_URL_API } from '../../requestMethods';
 
-const Searchs = () => {
-    const navigate = useNavigate();
+const Searchs = ({ navigate }) => {
+    // const navigate = useNavigate();
     // const dispatch = useDispatch();
 
     // --------------- Phần search --------------------
@@ -53,24 +53,27 @@ const Searchs = () => {
     };
 
     useEffect(() => {
-        const showProduct = async () => {
-            try {
-                if (!debounced.trim()) {
-                    setListProduct([]);
-                    return;
+        if (debounced !== '') {
+            console.log('debounced------');
+            const showProduct = async () => {
+                try {
+                    if (!debounced.trim()) {
+                        setListProduct([]);
+                        return;
+                    }
+                    // setLoading(true);
+                    const res = await axios.get(
+                        BASE_URL_API + `search?search=${encodeURIComponent(debounced)}`,
+                    );
+                    setListProduct(res.data);
+                    // setLoading(false);
+                    console.log('res.data');
+                } catch (err) {
+                    console.log(err);
                 }
-                // setLoading(true);
-                const res = await axios.get(
-                    BASE_URL_API + `search?search=${encodeURIComponent(debounced)}`,
-                );
-                setListProduct(res.data);
-                // setLoading(false);
-                console.log('res.data');
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        showProduct();
+            };
+            showProduct();
+        }
     }, [debounced]);
 
     useEffect(() => {
@@ -226,29 +229,3 @@ const Searchs = () => {
 };
 
 export default Searchs;
-
-{
-    /* {loading && (
-                <ButtonClose
-                    onClick={() => {
-                        setSearchTerm('');
-                        inputRef.current.focus();
-                    }}
-                >
-                    <RotateRight style={{ fontSize: '11px',
-                 }} />
-                </ButtonClose>
-            )} */
-}
-
-{
-    /* <button
-                className="searchs-button"
-                disabled={!searchTerm}
-                id="button"
-                onClick={handleSubmit}
-                searchValue={searchTerm ? '#393838' : 'white'}
-            >
-                <Search fontSize="large" />
-            </button> */
-}

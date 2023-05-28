@@ -12,13 +12,13 @@ import {
     ShoppingCart,
 } from '@mui/icons-material';
 import Badge from '@mui/material/Badge';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getAllCart, login, logout } from '../../redux/apiCalls';
 import Searchs from '../Searchs/Searchs';
 import { resetProduct } from '../../redux/cartRedux';
 import './navBar.css';
-import { createAxiosInstance } from '../../useAxiosJWT';
+// import { createAxiosInstance } from '../../useAxiosJWT';
 import { listItemNavBar } from '../../data';
 
 // const listItemNav = [
@@ -29,13 +29,15 @@ import { listItemNavBar } from '../../data';
 //     },
 // ];
 
-const Navbar = React.memo(() => {
+// const Navbar = React.memo(({axiosJWT ,quantity}) => {
+// const Navbar = (axiosJWT ,quantity}) => {
+const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
     // console.log('log', log);
-    const user = useSelector((state) => state.auth?.currentUser);
-    const quantity = useSelector((state) => state.cart?.quantity);
+    // const user = useSelector((state) => state.auth?.currentUser);
+    // const quantity = useSelector((state) => state.cart?.quantity);
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+    // const navigate = useNavigate();
+    // const dispatch = useDispatch();
     const inputRef1 = useRef();
     const inputRef2 = useRef();
 
@@ -53,7 +55,7 @@ const Navbar = React.memo(() => {
 
     // Logout
     // const axiosJWT = createAxios(user, dispatch, loginSuccess);
-    const axiosJWT = createAxiosInstance(user, dispatch);
+    // const axiosJWT = createAxiosInstance(user, dispatch);
     console.log('axiosJWT', axiosJWT);
 
     const handleLogout = (e) => {
@@ -148,8 +150,6 @@ const Navbar = React.memo(() => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-    // const [showErrorMessage, setShowErrorMessage] = useState(false);
 
     const handleClickLogin = (e) => {
         e.preventDefault();
@@ -870,7 +870,7 @@ const Navbar = React.memo(() => {
 
                         <div className="col l-5 c-12">
                             <div className="navbar-left">
-                                <Searchs />
+                                <Searchs navigate={navigate} />
                             </div>
                         </div>
                     </div>
@@ -879,6 +879,6 @@ const Navbar = React.memo(() => {
             </div>
         </div>
     );
-});
+};
 
 export default Navbar;
