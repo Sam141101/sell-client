@@ -99,7 +99,7 @@ const Home = () => {
     return (
         <div style={{ overflow: 'hidden' }}>
             {/* <Announcement /> */}
-            <Navbar />
+            {/* <Navbar /> */}
             <Slider />
             {/* <PromtionVideo /> */}
             <Info>CÁC SẢN PHẨM MỚI</Info>
@@ -116,13 +116,13 @@ const Home = () => {
                 </div>
             </div>
 
-            <Link to={`/products`} style={{ textDecoration: 'none' }}>
+            <Link to={`/products/all?page=${1}`} style={{ textDecoration: 'none' }}>
                 <MoreProduct>
                     <More>Xem thêm</More>
                 </MoreProduct>
             </Link>
             <Newsletter />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

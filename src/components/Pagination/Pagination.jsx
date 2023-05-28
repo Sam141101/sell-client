@@ -11,7 +11,6 @@ const Pagination = (props) => {
 
     for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(
-            // <Link style={{ textDecoration: 'none', color: 'inherit' }} to={`/products/${}?search=${}`}>
             <span
                 key={i}
                 className={`pagination-number ${i === page ? 'active' : ''}`}
@@ -33,81 +32,40 @@ const Pagination = (props) => {
         onPageChange(newPage);
     };
 
-    // return (
-    //     <div className="pagination-container">
-    //         {/* <span className="pagination-text">
-    //             Trang số {page} - {totalPages}
-    //         </span> */}
-
-    //         <div className="pagination-pagi">
-    //             <button
-    //                 className="pagination-button"
-    //                 style={page && page <= 1 ? { display: 'none' } : { display: 'flex' }}
-    //                 // disabled={page <= 1}
-    //                 onClick={() => handlePageChange(page - 1)}
-    //             >
-    //                 <KeyboardArrowLeft
-    //                     style={{ color: 'white', fontWeight: 'bold' }}
-    //                     fontSize="large"
-    //                 />
-    //             </button>
-
-    //             <>
-    //                 <span className="pagination-number" onClick={handleClick}>
-    //                     1
-    //                 </span>
-    //                 <span className="pagination-number">2</span>
-    //                 <span className="pagination-number">3</span>
-    //             </>
-
-    //             <button
-    //                 className="pagination-button"
-    //                 // disabled={page >= totalPages}
-    //                 style={
-    //                     page && totalPages && page >= totalPages
-    //                         ? { display: 'none' }
-    //                         : { display: 'flex' }
-    //                 }
-    //                 onClick={() => handlePageChange(page + 1)}
-    //             >
-    //                 <KeyboardArrowRight
-    //                     style={{ color: 'white', fontWeight: 'bold' }}
-    //                     fontSize="large"
-    //                 />
-    //             </button>
-    //         </div>
-    //     </div>
-    // );
-
     return (
         <div className="pagination-container">
-            <div className="pagination-pagi">
-                {page > 1 && (
-                    <button
-                        className="pagination-button"
-                        onClick={() => handlePageChange(page - 1)}
-                    >
-                        <KeyboardArrowLeft
-                            style={{ color: 'white', fontWeight: 'bold' }}
-                            fontSize="large"
-                        />
-                    </button>
-                )}
+            {/* <span className="pagination-text">
+                Trang số {page} - {totalPages}{' '}
+            </span> */}
+            {totalPages > 1 && (
+                <div className="pagination-pagi">
+                    {page > 1 && (
+                        <button
+                            className="pagination-button"
+                            onClick={() => handlePageChange(page - 1)}
+                        >
+                            <KeyboardArrowLeft
+                                style={{ color: 'white', fontWeight: 'bold' }}
+                                fontSize="large"
+                            />
+                        </button>
+                    )}
 
-                {pageNumbers}
+                    {pageNumbers}
 
-                {page < totalPages && (
-                    <button
-                        className="pagination-button"
-                        onClick={() => handlePageChange(page + 1)}
-                    >
-                        <KeyboardArrowRight
-                            style={{ color: 'white', fontWeight: 'bold' }}
-                            fontSize="large"
-                        />
-                    </button>
-                )}
-            </div>
+                    {page < totalPages && (
+                        <button
+                            className="pagination-button"
+                            onClick={() => handlePageChange(page + 1)}
+                        >
+                            <KeyboardArrowRight
+                                style={{ color: 'white', fontWeight: 'bold' }}
+                                fontSize="large"
+                            />
+                        </button>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

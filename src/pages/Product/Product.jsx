@@ -109,7 +109,7 @@ const Product = () => {
 
     return (
         <div className="product-page-frame">
-            <NavBar />
+            {/* <NavBar /> */}
             <Announcement item1={product?.categories} item2={product?.title} />
 
             <div className="product-wrapper">
@@ -275,7 +275,7 @@ const Product = () => {
 
             {/* {product?.categories && <Similar cat={product?.categories} />} */}
 
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

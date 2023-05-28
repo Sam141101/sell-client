@@ -50,7 +50,7 @@ const Search = () => {
 
     return (
         <div className="search-page-mobile">
-            <Navbar />
+            {/* <Navbar /> */}
 
             <div className="grid wide">
                 <div className="row">
@@ -81,9 +81,7 @@ const Search = () => {
                         </div>
                     ))}
                 </div>
-            </div>
 
-            <div className="grid wide">
                 <div className="row">
                     <div className="col l-12 c-12">
                         {pagination.totalRows >= pagination.limit && (
@@ -96,7 +94,7 @@ const Search = () => {
                 </div>
             </div>
 
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

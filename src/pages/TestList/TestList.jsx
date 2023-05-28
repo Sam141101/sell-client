@@ -11,15 +11,18 @@ const data = [
         item: [
             {
                 name: 'HOODIE',
-                to: '/products/HOODIE',
+                // to: '/products/HOODIE',
+                to: `/products/HOODIE?page=${1}`,
             },
             {
-                to: '/products/TEE',
                 name: 'TEE',
+                // to: '/products/TEE',
+                to: `/products/TEE?page=${1}`,
             },
             {
-                to: '/products/POLO',
                 name: 'POLO',
+                // to: '/products/POLO',
+                to: `/products/POLO?page=${1}`,
             },
         ],
     },
@@ -29,8 +32,9 @@ const data = [
         title: 'BOTTOM',
         item: [
             {
-                to: '/products/SHORT',
+                // to: '/products/SHORT',
                 name: 'SHORT',
+                to: `/products/SHORT?page=${1}`,
             },
         ],
     },

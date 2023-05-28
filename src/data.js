@@ -59,24 +59,28 @@ export const listItemNavBar = [
     {
         id: 1,
         title: 'TEE',
-        to: '/products/TEE',
+        // to: '/products/TEE',
+        to: `/products/TEE?page=${1}`,
     },
 
     {
         id: 2,
         title: 'HOODIE',
-        to: '/products/HOODIE',
+        // to: '/products/HOODIE',
+        to: `/products/HOODIE?page=${1}`,
     },
 
     {
         id: 1,
         title: 'POLO',
-        to: '/products/POLO',
+        // to: '/products/POLO',
+        to: `/products/POLO?page=${1}`,
     },
 
     {
         id: 1,
         title: 'SHORT',
-        to: '/products/SHORT',
+        // to: '/products/SHORT',
+        to: `/products/SHORT?page=${1}`,
     },
 ];

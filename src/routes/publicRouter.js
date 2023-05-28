@@ -6,6 +6,7 @@ import Delivering from '../components/WaitForProduct/Delivering';
 import WaitForConfirmation from '../components/WaitForProduct/WaitForConfirmation';
 import WaitForTheGoods from '../components/WaitForProduct/WaitForTheGoods';
 import About from '../pages/About/About';
+import Cart from '../pages/Cart/Cart';
 import ChangePassword from '../pages/ChangePassword/ChangePassword';
 import EmailVerify from '../pages/EmailVerify/EmailVerify';
 import Evaluate from '../pages/Evaluate/Evaluate';
@@ -19,7 +20,10 @@ import OrderSuccess from '../pages/OrderSuccess/OrderSuccess';
 import PolicyProtect from '../pages/PolicyProtect/PolicyProtect';
 import PolicyReturn from '../pages/PolicyReturn/PolicyReturn';
 import PolicyService from '../pages/PolicyService/PolicyService';
+import Product from '../pages/Product/Product';
+import ProductList from '../pages/ProductList';
 import Register from '../pages/Register/Register';
+import Search from '../pages/Search/Search';
 import Test from '../pages/Test';
 import TestList from '../pages/TestList/TestList';
 import UserProfile from '../pages/UserProfile/UserProfile';
@@ -78,73 +82,39 @@ const publicRoutes = [
 
     {
         path: '/auth/:id/verify/:token',
-        // path: 'ttt',
         component: Register,
         layout: DefaultLayoutAuth,
     },
 
-    // // order
-    // {
-    //     path: '/wait-for-confirmation',
-    //     component: WaitForConfirmation,
-    //     layout: DefaultLayoutOrder,
-    //     show1: 1,
-    // },
-    // {
-    //     path: '/waiting-for-the-goods',
-    //     component: WaitForTheGoods,
-    //     layout: DefaultLayoutOrder,
-    //     show1: 2,
-    // },
+    {
+        path: '/products/:category',
+        component: ProductList,
+        layout: DefaultLayoutAuth,
+    },
 
-    // {
-    //     path: '/delivering',
-    //     component: Delivering,
-    //     layout: DefaultLayoutOrder,
-    //     show1: 3,
-    // },
+    {
+        path: '/product/:id',
+        component: Product,
+        layout: DefaultLayoutAuth,
+    },
 
-    // {
-    //     path: '/complete',
-    //     component: Complete,
-    //     layout: DefaultLayoutOrder,
-    //     show1: 4,
-    // },
+    {
+        path: '/',
+        component: Home,
+        layout: DefaultLayoutAuth,
+    },
 
-    // {
-    //     path: '/canceled',
-    //     component: Canceled,
-    //     layout: DefaultLayoutOrder,
-    //     show1: 5,
-    // },
+    {
+        path: '/search/:category',
+        component: Search,
+        layout: DefaultLayoutAuth,
+    },
 
-    // // user profile
-    // {
-    //     path: '/account/profile',
-    //     component: UserProfile,
-    //     layout: DefaultLayoutOrder,
-    //     show2: 1,
-    // },
-
-    // // voucher Warehouse
-    // {
-    //     path: '/voucher-user',
-    //     component: VoucherWarehouse,
-    //     layout: DefaultLayoutOrder,
-    //     show3: 1,
-    // },
-
-    // // Evaluate
-    // {
-    //     // path: '/danh-gia-san-pham/:id',
-    //     path: '/danh-gia-san-pham/:product_id/:order_id',
-    //     component: Evaluate,
-    //     layout: DefaultLayoutAuth,
-    // },
-
-    // { path: '/', component: Profile },
-    // { path: '/', component: Upload, layout: HeaderOnly },
-    // { path: '/', component: Search, layout: null },
+    {
+        path: '/cart',
+        component: Cart,
+        layout: DefaultLayoutAuth,
+    },
 ];
 
 // Người dùng đăng nhập

@@ -363,7 +363,8 @@ const Navbar = React.memo(() => {
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
                                                             className="navbar-menu-item-link text-inherit"
-                                                            to="/products"
+                                                            // to="/products"
+                                                            to={`/products/TEE?page=${1}`}
                                                             // onClick={handleClickMore}
                                                         >
                                                             Xem tất cả "Shop"
@@ -421,7 +422,8 @@ const Navbar = React.memo(() => {
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
                                                             className="navbar-menu-item-link four"
-                                                            to="/products/TEE"
+                                                            // to="/products/TEE"
+                                                            to={`/products/TEE?page=${1}`}
                                                         >
                                                             - TEE
                                                         </Link>
@@ -429,7 +431,8 @@ const Navbar = React.memo(() => {
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
                                                             className="navbar-menu-item-link four"
-                                                            to="/products/POLO"
+                                                            // to="/products/POLO"
+                                                            to={`/products/POLO?page=${1}`}
                                                         >
                                                             - POLO
                                                         </Link>
@@ -437,7 +440,8 @@ const Navbar = React.memo(() => {
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
                                                             className="navbar-menu-item-link four"
-                                                            to="/products/HOODIE"
+                                                            // to="/products/HOODIE"
+                                                            to={`/products/HOODIE?page=${1}`}
                                                         >
                                                             - HOODIE
                                                         </Link>
@@ -472,7 +476,8 @@ const Navbar = React.memo(() => {
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
                                                             className="navbar-menu-item-link four"
-                                                            to="/products/SHORT"
+                                                            // to="/products/SHORT"
+                                                            to={`/products/SHORT?page=${1}`}
                                                         >
                                                             - SHORT
                                                         </Link>
@@ -841,7 +846,8 @@ const Navbar = React.memo(() => {
                                     <span className="nav-label">
                                         <Link
                                             className="navbar-menu-item-link"
-                                            to="/products"
+                                            // to="/products"
+                                            to={`/products/all?page=${1}`}
                                         >
                                             Shop
                                             <span

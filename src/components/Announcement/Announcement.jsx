@@ -28,7 +28,12 @@ const Announcement = ({
                             {show1 && <div className="line1">/</div>}
                             {show1 && <div className="title-item">{item1}</div>}
                             {show2 && <div className="line1 none">/</div>}
-                            {show2 && <div className="title-item none">{item2}</div>}
+                            {/* {show2 && <div className="title-item none">{item2}</div>} */}
+                            {show2 && (
+                                <div className="title-item none">
+                                    {item2 === 'all' ? 'Tất cả sản phẩm' : item2}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

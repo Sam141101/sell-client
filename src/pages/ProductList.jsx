@@ -8,6 +8,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import Pagination from '../components/Pagination/Pagination';
 import TestList from './TestList/TestList';
+import { useEffect } from 'react';
 
 const Container = styled.div`
     overflow: hidden;
@@ -38,12 +39,10 @@ const ProductList = () => {
     const location = useLocation();
     const cat = location.pathname.split('/')[2];
     const [filters, setFilters] = useState({});
-    // const [sort, setSort] = useState('newest');
     const [sort, setSort] = useState('newest');
 
-    // const navigate = useNavigate()
-
-    // const [changeCat, setChangeCat] = useState('')
+    const url = new URL(window.location.href);
+    const pageIndex = url.searchParams.get('page'); // "1"
 
     const handleFilters = (e) => {
         const value = e.target.value;
@@ -53,20 +52,7 @@ const ProductList = () => {
         });
     };
 
-    // const handleCat = (e) => {
-    //     setFilters(e.target.value);
-    //     navigate(`/products/${e.target.value}`)
-    // };
-
-    // console.log(filters);
-    console.log(sort);
-    // ----------- Pagination --------
-    // const [filterPage, setFilterPage] = useState({
-    //     // limit: 10,
-    //     page: 1,
-    // });
-
-    const [filterPage, setFilterPage] = useState(1);
+    const [filterPage, setFilterPage] = useState(pageIndex);
 
     const [pagination, setPagination] = useState({
         page: 1,
@@ -75,17 +61,117 @@ const ProductList = () => {
     });
 
     const handlePageChange = (newPage) => {
-        // setFilterPage({
-        //     page: newPage,
-        // });
+        // Update the filterPage state with the new page value
         setFilterPage(newPage);
+
+        // Get the current URL and append the new "page" query parameter
+        const url = new URL(window.location.href);
+        url.searchParams.set('page', newPage);
+
+        // Change the URL and add a new record to the browser's history
+        window.history.pushState({}, '', url);
     };
+
+    console.log('pageIndexx', pageIndex, filterPage);
 
     // ----------------
 
     return (
+        // <Container>
+        //     <NavBar />
+        //     <Announcement item1="Danh mục" item2={cat} />
+
+        //     <div className="product-list-mt">
+        //         <div className="grid wide">
+        //             <div className="row">
+        //                 <div className="col l-3 c-12">
+        //                     <TestList />
+        //                 </div>
+        //                 <div className="col l-9 c-12">
+        //                     <div className="row">
+        //                         <div className="col l-12 c-12">
+        //                             <div className="list-product-mobile-all">
+        //                                 {/* <Title>Tất cả sản phẩm</Title> */}
+        //                                 <Title>
+        //                                     {cat === 'all' ? 'Tất cả sản phẩm' : cat}
+        //                                 </Title>
+        //                                 <div className="list-product-mobile-filter-container">
+        //                                     {/* <FilterContainer> */}
+        //                                     <Filter>
+        //                                         <FilterText>Sắp xếp sản phẩm:</FilterText>
+        //                                         <Select
+        //                                             onChange={(e) =>
+        //                                                 setSort(e.target.value)
+        //                                             }
+        //                                         >
+        //                                             <Option value="newest">
+        //                                                 mới nhất
+        //                                             </Option>
+        //                                             <Option value="asc">
+        //                                                 Giá tăng dần
+        //                                             </Option>
+        //                                             <Option value="desc">
+        //                                                 Giá giảm dần
+        //                                             </Option>
+        //                                         </Select>
+        //                                     </Filter>
+        //                                     {/* </FilterContainer> */}
+        //                                 </div>
+        //                             </div>
+        //                         </div>
+        //                     </div>
+
+        //                     <div className="row">
+        //                         <Products
+        //                             cat={cat}
+        //                             filters={filters}
+        //                             sort={sort}
+        //                             filterPage={filterPage}
+        //                             setPagination={setPagination}
+        //                             pagination={pagination}
+        //                         />
+        //                     </div>
+
+        //                     <Pagination
+        //                         pagination={pagination}
+        //                         onPageChange={handlePageChange}
+        //                     />
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+
+        //     {/* <Products
+        //         cat={cat}
+        //         filters={filters}
+        //         sort={sort}
+        //         filterPage={filterPage}
+        //         setPagination={setPagination}
+        //         pagination={pagination}
+        //     /> */}
+
+        //     {/* <div className="grid wide">
+        //         <div className="row">
+        //         <div className="col l-12 c-12">
+
+        //             <div className="col l-12 c-12">
+        //                 {pagination.totalRows >= pagination.limit && (
+        //                     <Pagination
+        //                         pagination={pagination}
+        //                         onPageChange={handlePageChange}
+        //                     />
+        //                 )}
+        //             </div>
+        //         </div>
+        //     </div>
+
+        //     <Pagination pagination={pagination} onPageChange={handlePageChange} /> */}
+
+        //     <Newsletter />
+        //     <Footer />
+        // </Container>
+
         <Container>
-            <NavBar />
             <Announcement item1="Danh mục" item2={cat} />
 
             <div className="product-list-mt">
@@ -99,7 +185,9 @@ const ProductList = () => {
                                 <div className="col l-12 c-12">
                                     <div className="list-product-mobile-all">
                                         {/* <Title>Tất cả sản phẩm</Title> */}
-                                        <Title>{cat ? cat : 'Tất cả sản phẩm'}</Title>
+                                        <Title>
+                                            {cat === 'all' ? 'Tất cả sản phẩm' : cat}
+                                        </Title>
                                         <div className="list-product-mobile-filter-container">
                                             {/* <FilterContainer> */}
                                             <Filter>
@@ -147,33 +235,30 @@ const ProductList = () => {
             </div>
 
             {/* <Products
-                cat={cat}
-                filters={filters}
-                sort={sort}
-                filterPage={filterPage}
-                setPagination={setPagination}
-                pagination={pagination}
-            /> */}
+            cat={cat}
+            filters={filters}
+            sort={sort}
+            filterPage={filterPage}
+            setPagination={setPagination}
+            pagination={pagination}
+        /> */}
 
             {/* <div className="grid wide">
-                <div className="row">
-                <div className="col l-12 c-12">
+            <div className="row">
+            <div className="col l-12 c-12">
 
-                    <div className="col l-12 c-12">
-                        {pagination.totalRows >= pagination.limit && (
-                            <Pagination
-                                pagination={pagination}
-                                onPageChange={handlePageChange}
-                            />
-                        )}
-                    </div>
+                <div className="col l-12 c-12">
+                    {pagination.totalRows >= pagination.limit && (
+                        <Pagination
+                            pagination={pagination}
+                            onPageChange={handlePageChange}
+                        />
+                    )}
                 </div>
             </div>
+        </div>
 
-            <Pagination pagination={pagination} onPageChange={handlePageChange} /> */}
-
-            <Newsletter />
-            <Footer />
+        <Pagination pagination={pagination} onPageChange={handlePageChange} /> */}
         </Container>
     );
 };

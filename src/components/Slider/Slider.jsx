@@ -9,7 +9,7 @@ import './slider.css';
 const Arrow = styled.div`
     width: 50px;
     height: 50px;
-    background-color: #fff7f7;
+    background-color: #c7c3c3;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -69,7 +69,10 @@ const Slider = () => {
                                     {sliderItems.map((item) => (
                                         <Slide bg={item.bg} key={item.id}>
                                             <div className="img-container">
-                                                <Link to={`/products/${item.cat}`}>
+                                                {/* <Link to={`/products/${item.cat}`}> */}
+                                                <Link
+                                                    to={`/products/${item.cat}?page=${1}`}
+                                                >
                                                     <img
                                                         src={item.img}
                                                         alt=""

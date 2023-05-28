@@ -108,8 +108,9 @@ const Cart = () => {
     console.log('cart', cart);
 
     return (
-        <div className="cart-mobile-frame">
-            <Navbar />
+        // <div className="cart-mobile-frame">
+        <>
+            {/* <Navbar /> */}
             <Announcement item2={`Giỏ hàng (${cart.quantity})`} show1={false} />
 
             <div className="grid wide">
@@ -292,7 +293,7 @@ const Cart = () => {
                                             </Link>
                                             <p className="cart-keep-shopping">
                                                 <Link
-                                                    to="/products"
+                                                    to={`/products/all?page=${1}`}
                                                     style={{
                                                         color: '#D1D1D1',
                                                         textDecoration: 'none',
@@ -338,8 +339,10 @@ const Cart = () => {
                 </div>
             </div>
 
-            <Footer />
-        </div>
+            {/* <Footer /> */}
+        </>
+
+        // </div>
     );
 };
 

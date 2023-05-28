@@ -1,15 +1,15 @@
-import ProductList from './pages/ProductList';
-import Home from './pages/Home';
-import Product from './pages/Product/Product';
-import Cart from './pages/Cart/Cart';
+// import ProductList from './pages/ProductList';
+// import Home from './pages/Home';
+// import Product from './pages/Product/Product';
+// import Cart from './pages/Cart/Cart';
 // import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
 // import Pagination from './components/Pagination/Pagination';
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Search from './pages/Search/Search';
+// import Search from './pages/Search/Search';
 import ShipmentDetails from './pages/ShipmentDetails/ShipmentDetails';
-import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+// import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
 // import Test from './pages/Test';
 import { authenticatedRoutes, publicRoutes } from './routes/publicRouter';
@@ -129,17 +129,17 @@ function App() {
                 {/* <Route path="/ttt5" element={<Register />} /> */}
                 {/* <Route path="/change-account" element={<ChangePassword />} /> */}
 
-                <Route path="/forgot-password" element={<ForgotPassword />} />
+                {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
 
                 {/* sản phẩm */}
-                <Route path="/search/:category" element={<Search />} />
+                {/* <Route path="/search/:category" element={<Search />} /> */}
                 {/* <Route path="/account/profile" element={<UserProfile />} /> */}
-                <Route path="/" element={<Home />} />
-                <Route path="/products/:category" element={<ProductList />} />
-                <Route path="/products" element={<ProductList />} />
-                <Route path="/product/:id" element={<Product />} />
+                {/* <Route path="/" element={<Home />} /> */}
+                {/* <Route path="/products/:category" element={<ProductList />} /> */}
+                {/* <Route path="/products" element={<ProductList />} /> */}
+                {/* <Route path="/product/:id" element={<Product />} /> */}
 
-                <Route path="/cart" element={<Cart />} />
+                {/* <Route path="/cart" element={<Cart />} /> */}
                 <Route path="/order" element={<ShipmentDetails />} />
 
                 {/* <Route path="/products/:category/" element={<ProductList />} /> */}
