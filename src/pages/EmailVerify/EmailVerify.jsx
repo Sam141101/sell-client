@@ -9,14 +9,8 @@ import './emailVerify.css';
 // --------------------------------------------------------------
 
 const EmailVerify = () => {
-    // const user = useSelector((state) => state.auth?.currentUser);
     const [email, setEmail] = useState('');
     const [msg, setMsg] = useState('');
-
-    // const inputRef = useRef();
-
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
 
     const handleClick = async (e) => {
         e.preventDefault();

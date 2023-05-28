@@ -65,7 +65,7 @@ const Info = styled.div`
 
 const Home = () => {
     // tam
-    const user = useSelector((state) => state.auth?.currentUser);
+    // const user = useSelector((state) => state.auth?.currentUser);
     // const dispatch = useDispatch();
     // let axiosJWT = createAxios(user, dispatch, loginSuccess);
 
@@ -77,11 +77,11 @@ const Home = () => {
 
     const [products, setProducts] = useState([]);
 
-    const pagination = {
-        page: 1,
-        limit: 12,
-        totalRows: 20,
-    };
+    // const pagination = {
+    //     page: 1,
+    //     limit: 12,
+    //     totalRows: 20,
+    // };
 
     useEffect(() => {
         const getProducts = async () => {
@@ -93,7 +93,6 @@ const Home = () => {
                 console.log(err);
             }
         };
-
         getProducts();
     }, []);
 
@@ -102,15 +101,13 @@ const Home = () => {
             {/* <Announcement /> */}
             <Navbar />
             <Slider />
-            {/* <Categories /> */}
             {/* <PromtionVideo /> */}
             <Info>CÁC SẢN PHẨM MỚI</Info>
 
             <div className="container-product">
                 <div className="grid wide">
                     <div className="row">
-                        {/* <Products filterPage={pagination.page} pagination={pagination} /> */}
-                        {products.map((item) => (
+                        {products.map((item, index) => (
                             <div className="col l-3 c-12" key={item._id}>
                                 <Product item={item} />
                             </div>

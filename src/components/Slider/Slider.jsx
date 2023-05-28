@@ -69,11 +69,13 @@ const Slider = () => {
                                     {sliderItems.map((item) => (
                                         <Slide bg={item.bg} key={item.id}>
                                             <div className="img-container">
-                                                <img
-                                                    src={item.img}
-                                                    alt=""
-                                                    className="img-item"
-                                                />
+                                                <Link to={`/products/${item.cat}`}>
+                                                    <img
+                                                        src={item.img}
+                                                        alt=""
+                                                        className="img-item"
+                                                    />
+                                                </Link>
                                             </div>
                                         </Slide>
                                     ))}

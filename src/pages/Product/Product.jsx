@@ -31,28 +31,6 @@ const FilterColor = styled.div`
     border: 1px solid #ccc;
 `;
 
-const data = [
-    {
-        id: 1,
-        img: 'https://product.hstatic.net/200000312481/product/2c767f33-606c-4224-b341-ec54e5481b67_b6b84db6b775424a9a163f2750ee85b8_master.jpeg',
-    },
-
-    {
-        id: 2,
-        img: 'https://product.hstatic.net/200000312481/product/c1195926-7bef-45e6-9091-26383c3f1cc1_454d1744b6b54ea2b30a72fea76c493d_master.jpeg',
-    },
-
-    {
-        id: 3,
-        img: 'https://product.hstatic.net/200000312481/product/ada835a0-31cb-47dd-b660-4d50fe656027_c53e59ba532f4faba854de4f9a3fd8c7_master.jpeg',
-    },
-
-    {
-        id: 4,
-        img: 'https://product.hstatic.net/200000312481/product/f9b9cf4e-8e64-4e2e-a4e7-ea97ace48e26_ae21f426513b42f88f516861f020b73c_master.jpeg',
-    },
-];
-
 const Product = () => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
@@ -290,7 +268,9 @@ const Product = () => {
             <Suspense fallback={<p>Loading...</p>}>
                 <Comment />
 
-                {product?.categories && <Similar cat={product?.categories} />}
+                {product?.categories && (
+                    <Similar cat={product?.categories} color={product?.color} />
+                )}
             </Suspense>
 
             {/* {product?.categories && <Similar cat={product?.categories} />} */}

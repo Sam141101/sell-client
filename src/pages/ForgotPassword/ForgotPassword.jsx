@@ -10,8 +10,6 @@ import './forgotPassword.css';
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [msg, setMsg] = useState('');
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
 
     const handleClick = async (e) => {
         e.preventDefault();

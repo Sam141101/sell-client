@@ -1,46 +1,28 @@
 import ProductList from './pages/ProductList';
 import Home from './pages/Home';
 import Product from './pages/Product/Product';
-import Register from './pages/Register/Register';
-import Login from './pages/Login/Login';
 import Cart from './pages/Cart/Cart';
 // import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
 // import Pagination from './components/Pagination/Pagination';
 
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-    useNavigate,
-    // Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import UserProfile from './pages/UserProfile/UserProfile';
 import Search from './pages/Search/Search';
-import EmailVerify from './pages/EmailVerify/EmailVerify';
 import ShipmentDetails from './pages/ShipmentDetails/ShipmentDetails';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
-import NewPassword from './pages/NewPassword/NewPassword';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
-import About from './pages/About/About';
-import Introduce from './components/Introduce';
-import PolicyReturn from './pages/PolicyReturn/PolicyReturn';
-import PolicyProtect from './pages/PolicyProtect/PolicyProtect';
-import PolicyService from './pages/PolicyService/PolicyService';
-import TestList from './pages/TestList/TestList';
-import Test from './pages/Test';
+// import Test from './pages/Test';
 import { authenticatedRoutes, publicRoutes } from './routes/publicRouter';
 import DefaultLayoutPolicy from './components/Layout/DefaultLayoutPolicy';
-import { Fragment } from 'react';
-import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
-import OrderCancel from './pages/OrderSuccess/OrderCancel';
-import Evaluate from './pages/Evaluate/Evaluate';
+// import { Fragment } from 'react';
+// import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
+// import OrderCancel from './pages/OrderSuccess/OrderCancel';
+// import Evaluate from './pages/Evaluate/Evaluate';
 import Complete from './components/WaitForProduct/Complete';
 import { useEffect } from 'react';
-import { BASE_URL_API } from './requestMethods';
-import axios from 'axios';
-import Cookies from 'js-cookie';
+// import { BASE_URL_API } from './requestMethods';
+// import axios from 'axios';
+// import Cookies from 'js-cookie';
 
 import { checkAuth } from './support';
 import React from 'react';
@@ -139,7 +121,7 @@ function App() {
                 <Route path="/registerTest" element={<ChangePassword />} />
 
                 {/* test paypal */}
-                <Route path="/test" element={<Test />} />
+                {/* <Route path="/test" element={<Test />} /> */}
 
                 {/* <Route path="/test11" element={<OrderSuccess />} />
                 <Route path="/test12" element={<OrderCancel />} /> */}

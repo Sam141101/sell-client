@@ -61,12 +61,11 @@ const Searchs = () => {
                 }
                 // setLoading(true);
                 const res = await axios.get(
-                    // `http://localhost:5000/api/search?search=${encodeURIComponent(
                     BASE_URL_API + `search?search=${encodeURIComponent(debounced)}`,
                 );
                 setListProduct(res.data);
                 // setLoading(false);
-                console.log(res.data);
+                console.log('res.data');
             } catch (err) {
                 console.log(err);
             }
@@ -102,6 +101,8 @@ const Searchs = () => {
             setShowNot(false);
         }
     }, [debounced, listProduct]);
+
+    console.log('listProduct', listProduct);
 
     return (
         <div className="searchs-container" id="search">

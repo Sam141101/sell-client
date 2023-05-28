@@ -83,9 +83,18 @@ const Search = () => {
                 </div>
             </div>
 
-            {pagination.totalRows >= pagination.limit && (
-                <Pagination pagination={pagination} onPageChange={handlePageChange} />
-            )}
+            <div className="grid wide">
+                <div className="row">
+                    <div className="col l-12 c-12">
+                        {pagination.totalRows >= pagination.limit && (
+                            <Pagination
+                                pagination={pagination}
+                                onPageChange={handlePageChange}
+                            />
+                        )}
+                    </div>
+                </div>
+            </div>
 
             <Footer />
         </div>

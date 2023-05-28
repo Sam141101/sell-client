@@ -34,15 +34,6 @@ const HandleAddress = () => {
 
     console.log('inputs', inputs);
     const handleClick = async () => {
-        // if (
-        //     !inputs.address ||
-        //     !inputs.provinceId ||
-        //     !inputs.districtId ||
-        //     !inputs.wardId
-        // ) {
-        //     return;
-        // }
-
         let isMissingFields = false;
         const missingFields = [];
 

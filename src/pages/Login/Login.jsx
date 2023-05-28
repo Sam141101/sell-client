@@ -12,20 +12,6 @@ const Login = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const { isFetching, error } = useSelector(
-    //     (state) =>
-    //         // state.user?.login || { currentUser: null, isFetching: false, error: false },
-    //         state?.user,
-    // );
-
-    // const handleClick = (e) => {
-    //     e.preventDefault();
-    //     // e.stopPropagation();
-    //     // login(dispatch, { username, password });
-
-    //     // test
-    //     login(dispatch, { username, password }, navigate);
-    // };
 
     // test
     const { isFetching, error } = useSelector((state) => state?.auth);
@@ -38,7 +24,6 @@ const Login = () => {
         } else if (password === '') {
             inputRef2.current.focus();
         } else {
-            // console.log('kkkkk  ');
             login(dispatch, { username, password }, navigate);
         }
     };

@@ -5,7 +5,15 @@ export const sliderItems = [
         title: 'NEW YEAR COLLECITON',
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
         bg: '#f5fafd',
-        cat: 'women',
+        cat: 'TEE',
+    },
+    {
+        id: 2,
+        img: 'https://file.hstatic.net/200000312481/file/z3949117698340_9fe1c067c65fd89e397d86f27e9a904c_6ad273c5b80049ca85fd1a1aec326b93.jpg',
+        title: 'LIKE SALE',
+        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+        bg: '#fbf0f4',
+        cat: 'POLO',
     },
     {
         id: 3,
@@ -13,7 +21,7 @@ export const sliderItems = [
         title: 'LIKE SALE',
         desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
         bg: '#fbf0f4',
-        cat: 'SUMMER',
+        cat: 'SHORT',
     },
 ];
 

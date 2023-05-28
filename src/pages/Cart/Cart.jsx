@@ -123,6 +123,7 @@ const Cart = () => {
                             <Line></Line>
 
                             <ConfirmDelete
+                                axiosJWT={axiosJWT}
                                 noti={noti}
                                 setNoti={setNoti}
                                 token={user ? user.token : null}
@@ -252,7 +253,6 @@ const Cart = () => {
                                                         </div>
                                                     </div>
 
-                                                    {/* <Hr /> */}
                                                     <hr className="hr hide-on-mobile"></hr>
                                                 </div>
                                             ))}
