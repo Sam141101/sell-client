@@ -43,12 +43,12 @@ const VoucherWarehouse = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     let id = user._id;
     let token = user.token;
-    const location = useLocation();
+    // const location = useLocation();
 
     const dispatch = useDispatch();
     const axiosJWT = createAxiosInstance(user, dispatch);
 
-    const type = 0;
+    // const type = 0;
 
     const [typeCoupon, setTypeCoupon] = useState('all');
     const [listCoupon, setListCoupon] = useState([]);

@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
     AccountCircle,
-    Close,
+    // Close,
     KeyboardArrowLeft,
     KeyboardArrowRight,
     Mail,
     Menu,
+    NotificationsNone,
     Phone,
-    Search,
+    // Search,
     ShoppingCart,
 } from '@mui/icons-material';
 import Badge from '@mui/material/Badge';
@@ -20,53 +21,13 @@ import './navBar.css';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import { listItemNavBar } from '../../data';
 
-{
-    /* <ul className="nav-menu-list-mobile">
-<li className="nav-menu-list-item-mobile">
-    <Link
-        className="navbar-menu-item-link"
-        to="/"
-    >
-        HOME
-    </Link>
-</li>
-<li className="nav-menu-list-item-mobile">
-    <Link
-        className="navbar-menu-item-link"
-        to="#"
-        id="click0"
-        onClick={handleClickMore}
-    >
-        Shop
-        <KeyboardArrowRight className="navbar-menu-item-more" />
-    </Link>
-</li>
-<li className="nav-menu-list-item-mobile">
-    <Link
-        className="navbar-menu-item-link"
-        to="/"
-    >
-        kiểm tra đơn hàng
-    </Link>
-</li>
-<li className="nav-menu-list-item-mobile">
-    <Link
-        className="navbar-menu-item-link"
-        to="/about"
-    >
-        ABOUT
-    </Link>
-</li>
-</ul> */
-}
-
-const listItemNav = [
-    {
-        key: 1,
-        to: '/about',
-        onclick: true,
-    },
-];
+// const listItemNav = [
+//     {
+//         key: 1,
+//         to: '/about',
+//         onclick: true,
+//     },
+// ];
 
 const Navbar = React.memo(() => {
     // console.log('log', log);
@@ -753,19 +714,6 @@ const Navbar = React.memo(() => {
                                                                     apply
                                                                 </div>
 
-                                                                {/* {showErrorMessage && (
-                                                                    <p
-                                                                        style={{
-                                                                            color: 'red',
-                                                                            marginBottom:
-                                                                                '10px',
-                                                                        }}
-                                                                    >
-                                                                        Tài khoản mật khẩu
-                                                                        không chính xác...
-                                                                    </p>
-                                                                )} */}
-
                                                                 <button
                                                                     className="nav-btn-login-mobile"
                                                                     onClick={
@@ -806,6 +754,24 @@ const Navbar = React.memo(() => {
                                         </>
                                     )}
                                     {/* <Link to="/cart" onClick={handleClick}> */}
+
+                                    <Link onClick={handleClick}>
+                                        <div className="navbar-menu-item">
+                                            <Badge
+                                                badgeContent={user && quantity}
+                                                color="secondary"
+                                                className="mobile-cart-number"
+                                            >
+                                                <NotificationsNone
+                                                    style={{ color: 'black' }}
+                                                    fontSize="large"
+                                                    // className="mobile-icon cart"
+                                                    className="mobile-icon"
+                                                />
+                                            </Badge>
+                                        </div>
+                                    </Link>
+
                                     <Link onClick={handleClick}>
                                         <div className="navbar-menu-item">
                                             <Badge
@@ -916,115 +882,3 @@ const Navbar = React.memo(() => {
 });
 
 export default Navbar;
-
-// --------------- Phần search --------------------
-// const [searchTerm, setSearchTerm] = useState('');
-// const [listProduct, setListProduct] = useState([]);
-
-// const handleSubmit = (e) => {
-//     e.preventDefault();
-
-//     setSearchTerm('');
-// };
-
-// useEffect(() => {
-//     const showProduct = async () => {
-//         try {
-//             const res = await axios.get(
-//                 'http://localhost:5000/api/search?search=' + searchTerm,
-//             );
-//             setListProduct(res.data);
-//         } catch (err) {
-//             console.log(err);
-//         }
-//     };
-//     showProduct();
-// }, [searchTerm]);
-
-// ----------------------------------------------------------------
-
-// <div className="navbar-wrapper">
-// <div className="navbar-left">
-//     <Searchs />
-// </div>
-
-// <div className="navbar-center">
-//     <Link to="/">
-//         <img
-//             className="navbar-header-img"
-//             alt=""
-//             src="https://file.hstatic.net/200000312481/file/2222_1790556c641f404aab8dfb038b47eb0e.png"
-//         />
-//     </Link>
-// </div>
-// <div className="navbar-right">
-//     {user ? (
-//         <>
-//             <div className="navbar-user">
-//                 <div className="navbar-user-img">
-//                     <img
-//                         className="navbar-img-avatar"
-//                         src={
-//                             user.img ||
-//                             'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
-//                         }
-//                         alt=""
-//                     />
-//                     <span className="navbar-user-name">
-//                         {user.username}
-//                     </span>
-//                 </div>
-//                 <div className="navbar-list-info">
-//                     <div
-//                         className="navbar-info-user"
-//                         style={{
-//                             borderTopLeftRadius: '3px',
-//                             borderTopRightRadius: '3px',
-//                         }}
-//                         onClick={profileUser}
-//                     >
-//                         Tài khoản của tôi
-//                     </div>
-//                     <div
-//                         className="navbar-info-user"
-//                         style={{
-//                             borderBottomLeftRadius: '3px',
-//                             borderBottomRightRadius: '3px',
-//                         }}
-//                         onClick={handleLogout}
-//                     >
-//                         Đăng xuất
-//                     </div>
-//                 </div>
-//             </div>
-//             {/* <LogOut to="/logout" onClick={handleLogout}>
-//             LogOut
-//         </LogOut> */}
-//         </>
-//     ) : (
-//         <>
-//             <Link
-//                 // to="/register"
-//                 to="/confirm/register"
-//                 style={{ color: '#000', textDecoration: 'none' }}
-//             >
-//                 <div className="navbar-menu-item">REGISTER</div>
-//             </Link>
-//             <Link
-//                 to="/login"
-//                 style={{ color: '#000', textDecoration: 'none' }}
-//             >
-//                 <div className="navbar-menu-item">SIGN IN</div>
-//             </Link>
-//         </>
-//     )}
-//     {/* <Link to="/cart" onClick={handleClick}> */}
-//     <Link onClick={handleClick}>
-//         <div className="navbar-menu-item">
-//             <Badge badgeContent={user && quantity} color="secondary">
-//                 <ShoppingCart fontSize="large" />
-//             </Badge>
-//         </div>
-//     </Link>
-// </div>
-// </div>

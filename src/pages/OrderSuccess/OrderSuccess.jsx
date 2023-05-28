@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './orderSuccess.css';
 import { BASE_URL_API } from '../../requestMethods';
@@ -14,10 +14,10 @@ const OrderSuccess = () => {
     const orderId = useSelector((state) => state.temporary?.orderId);
     const cartId = useSelector((state) => state.temporary?.cartid);
 
-    const token = user.token;
+    // const token = user.token;
     const [show, setShow] = useState(true);
-    const [method, setMethod] = useState(false);
-    const location = useLocation();
+    // const [method, setMethod] = useState(false);
+    // const location = useLocation();
 
     let arr = window.location.search.slice(1).split('&');
 

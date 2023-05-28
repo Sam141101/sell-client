@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import NavBar from '../../components/NavBar/NavBar';
+// import NavBar from '../../components/NavBar/NavBar';
 // import Comment from '../../components/Comment/Comment';
 import Announcement from '../../components/Announcement/Announcement';
-import Footer from '../../components/Footer/Footer';
+// import Footer from '../../components/Footer/Footer';
 import { Add, Remove } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';

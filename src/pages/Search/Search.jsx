@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../../components/NavBar/NavBar';
-import Footer from '../../components/Footer/Footer';
+// import Navbar from '../../components/NavBar/NavBar';
+// import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
 import Product from '../../components/Product/Product';
 import './search.css';

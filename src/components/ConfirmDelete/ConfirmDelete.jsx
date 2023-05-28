@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteProduct } from '../../redux/apiCalls';
 import './confirmDelete.css';
-import { createAxiosInstance } from '../../useAxiosJWT';
+// import { createAxiosInstance } from '../../useAxiosJWT';
 
 const ConfirmDelete = ({
     noti,

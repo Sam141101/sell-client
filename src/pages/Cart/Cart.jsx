@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/NavBar/NavBar';
+// import Footer from '../../components/Footer/Footer';
+// import Navbar from '../../components/NavBar/NavBar';
 import Announcement from '../../components/Announcement/Announcement';
 import { Add, East, Remove, Reply } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';

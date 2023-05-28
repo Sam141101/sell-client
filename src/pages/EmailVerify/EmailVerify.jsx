@@ -2,7 +2,7 @@ import { KeyboardBackspace } from '@mui/icons-material';
 import axios from 'axios';
 import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BASE_URL_API } from '../../requestMethods';
 import './emailVerify.css';
 

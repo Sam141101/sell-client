@@ -29,7 +29,7 @@ const Comment = () => {
 
     const [listInfoComment, setListInfoComment] = useState({});
     const [img, setImg] = useState('');
-    const [slideIndex, setSlideIndex] = useState(0);
+    // const [slideIndex, setSlideIndex] = useState(0);
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth?.currentUser);

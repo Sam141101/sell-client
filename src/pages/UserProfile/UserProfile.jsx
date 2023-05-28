@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import app from '../../firebase';
 import { updateUser } from '../../redux/apiCalls';
 import './userProfile.css';
@@ -14,13 +14,13 @@ const UserProfile = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const token = user.token;
     const [show, setShow] = useState(false);
-    const location = useLocation();
+    // const location = useLocation();
 
     const dispatch = useDispatch();
 
     const [inputs, setInputs] = useState({});
     const [file, setFile] = useState(null);
-    const [currentImg, setCurrentImg] = useState(user.img);
+    // const [currentImg, setCurrentImg] = useState(user.img);
 
     const axiosJWT = createAxiosInstance(user, dispatch);
 

@@ -1,12 +1,12 @@
 import {
     Call,
-    Facebook,
-    Instagram,
+    // Facebook,
+    // Instagram,
     MailOutline,
     Phone,
-    Pinterest,
+    // Pinterest,
     Room,
-    Twitter,
+    // Twitter,
 } from '@mui/icons-material';
 import { Link } from '@mui/material';
 import { useState } from 'react';

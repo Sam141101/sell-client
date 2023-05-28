@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Footer from '../components/Footer/Footer';
-import Navbar from '../components/NavBar/NavBar';
+// import Footer from '../components/Footer/Footer';
+// import Navbar from '../components/NavBar/NavBar';
 import Newsletter from '../components/Newsletter/Newsletter';
-import Products from '../components/Products/Products';
+// import Products from '../components/Products/Products';
 import Slider from '../components/Slider/Slider';
 
 // tam
-import { createAxios } from '../createInstance';
-import { loginSuccess } from '../redux/authRedux';
-import { useDispatch, useSelector } from 'react-redux';
+// import { createAxios } from '../createInstance';
+// import { loginSuccess } from '../redux/authRedux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { search } from '../redux/apiCalls';
+// import { search } from '../redux/apiCalls';
 import axios from 'axios';
 import PromtionVideo from '../components/PromotionVideo/PromotionVideo';
 import { useState } from 'react';
@@ -64,24 +64,7 @@ const Info = styled.div`
 `;
 
 const Home = () => {
-    // tam
-    // const user = useSelector((state) => state.auth?.currentUser);
-    // const dispatch = useDispatch();
-    // let axiosJWT = createAxios(user, dispatch, loginSuccess);
-
-    // const [pagination, setPagination] = useState({
-    //     page: 1,
-    //     limit: 12,
-    //     totalRows: 20,
-    // });
-
     const [products, setProducts] = useState([]);
-
-    // const pagination = {
-    //     page: 1,
-    //     limit: 12,
-    //     totalRows: 20,
-    // };
 
     useEffect(() => {
         const getProducts = async () => {
