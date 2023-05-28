@@ -1,11 +1,12 @@
 import { Create } from '@mui/icons-material';
-import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
+import { createAxiosInstance } from '../../useAxiosJWT';
 
 const profile = [
     {
@@ -29,6 +30,10 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
     const accounttype = location.pathname.split('/')[2];
 
     const user = useSelector((state) => state.auth?.currentUser);
+    const quantity = useSelector((state) => state.cart?.quantity);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const axiosJWT = createAxiosInstance(user, dispatch);
 
     const [inputs, setInputs] = useState({
         pending: 0,
@@ -61,7 +66,15 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
 
     return (
         <div className="default-layout-wrapper">
-            <Navbar />
+            {/* <Navbar /> */}
+
+            <Navbar
+                axiosJWT={axiosJWT}
+                quantity={quantity}
+                user={user}
+                navigate={navigate}
+                dispatch={dispatch}
+            />
 
             <div className="default-layout-order-wrapper">
                 <div className="grid wide">
