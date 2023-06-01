@@ -1,16 +1,8 @@
-import {
-    Call,
-    // Facebook,
-    // Instagram,
-    MailOutline,
-    Phone,
-    // Pinterest,
-    Room,
-    // Twitter,
-} from '@mui/icons-material';
-import { Link } from '@mui/material';
+import { Call, Facebook, MailOutline, Phone, Room } from '@mui/icons-material';
+// import { Link } from '@mui/material';
 import { useState } from 'react';
 import './footer.css';
+import { Link } from 'react-router-dom';
 
 const data = [
     {
@@ -55,8 +47,9 @@ const data = [
 
     {
         id: 4,
-        title: '- Địa chỉ cửa hàng',
-        src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2299765283074!2d106.63520801462268!3d10.793690292309828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175295323764dd5%3A0x39ec5e2883ed2437!2zMjIgTmd1eeG7hW4gVGjDoWkgSOG7jWMsIFTDom4gVGjDoG5oLCBUw6JuIFBow7osIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCA3MDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679563296326!5m2!1svi!2s',
+        title: '- Fanpage',
+        // src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2299765283074!2d106.63520801462268!3d10.793690292309828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175295323764dd5%3A0x39ec5e2883ed2437!2zMjIgTmd1eeG7hW4gVGjDoWkgSOG7jWMsIFTDom4gVGjDoG5oLCBUw6JuIFBow7osIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCA3MDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679563296326!5m2!1svi!2s',
+        // src: '',
     },
 ];
 
@@ -177,15 +170,28 @@ const Footer = ({ layoutVoucher }) => {
                                 className={`info-title-footer-mobile ${
                                     show === data[3].id ? 'active-show-info' : ''
                                 } `}
+                                style={{ height: '130px', position: 'relative' }}
                             >
-                                <iframe
-                                    src={data[3].src}
-                                    style={{ border: '0', width: '100%' }}
-                                    allowFullScreen=""
-                                    loading="lazy"
-                                    title="Địa chỉ cửa hàng"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                ></iframe>
+                                <img
+                                    style={{
+                                        height: 'auto',
+                                        minHeight: 'initial',
+                                        width: '100%',
+                                    }}
+                                    src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04"
+                                    alt=""
+                                />
+                                <div className="shawdow"></div>
+                                <Link
+                                    style={{ textDecoration: 'none', color: 'black' }}
+                                    to="https://www.facebook.com/outerity/"
+                                >
+                                    <p className="text-link-face">OUTERITY</p>
+                                    <span className="link-face">
+                                        <Facebook />
+                                        Outerity
+                                    </span>
+                                </Link>
                             </div>
                         </div>
                     </div>
