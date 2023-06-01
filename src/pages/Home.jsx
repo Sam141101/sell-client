@@ -1,22 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-// import Footer from '../components/Footer/Footer';
-// import Navbar from '../components/NavBar/NavBar';
 import Newsletter from '../components/Newsletter/Newsletter';
-// import Products from '../components/Products/Products';
 import Slider from '../components/Slider/Slider';
 
-// tam
-// import { createAxios } from '../createInstance';
-// import { loginSuccess } from '../redux/authRedux';
-// import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { search } from '../redux/apiCalls';
-import axios from 'axios';
-import PromtionVideo from '../components/PromotionVideo/PromotionVideo';
 import { useState } from 'react';
 import Product from '../components/Product/Product';
-import { BASE_URL_API } from '../requestMethods';
 //
 
 const MoreProduct = styled.div`
@@ -81,10 +70,7 @@ const Home = ({ axios, BASE_URL_API }) => {
 
     return (
         <div style={{ overflow: 'hidden' }}>
-            {/* <Announcement /> */}
-            {/* <Navbar /> */}
             <Slider />
-            {/* <PromtionVideo /> */}
             <Info>CÁC SẢN PHẨM MỚI</Info>
 
             <div className="container-product">
@@ -105,7 +91,6 @@ const Home = ({ axios, BASE_URL_API }) => {
                 </MoreProduct>
             </Link>
             <Newsletter />
-            {/* <Footer /> */}
         </div>
     );
 };

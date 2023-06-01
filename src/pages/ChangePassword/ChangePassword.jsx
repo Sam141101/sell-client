@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import './changePassword.css';
 import { BASE_URL_API } from '../../requestMethods';
-// import { createAxiosInstance } from '../../useAxiosJWT';
 import Notify from '../../components/Notify/Notify';
 
 const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
-    // const user = useSelector((state) => state.auth?.currentUser);
     const [show, setShow] = useState(false);
-
-    // const dispatch = useDispatch();
 
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -55,10 +48,7 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
                     headers: { token: `Bearer ${user.token}` },
                 },
             );
-            // console.log(res.data.message);
             console.log('cập nhật mật khẩu thành công');
-            // setMsg(res.data.message);
-            // navigate('/login');
         } catch (error) {
             console.log('cập nhật mật khẩu thất bại');
             console.log(error);
@@ -67,20 +57,6 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
 
     return (
         <>
-            {/* {show && (
-                <div className="change-password-wrapper">
-                    <div className="change-password-noti">
-                        <img
-                            className="change-password-noti-img"
-                            src="https://png.pngtree.com/png-vector/20190228/ourmid/pngtree-check-mark-icon-design-template-vector-isolated-png-image_711429.jpg"
-                            alt=""
-                        />
-
-                        <p className="change-password-text-noti">Cập nhật hồ sơ</p>
-                    </div>
-                </div>
-            )} */}
-
             <Notify show={show} title="Đổi mật khẩu thành công" />
 
             <div className="row">
@@ -88,7 +64,6 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
                     <div className="change-password-container-right">
                         <div className="change-password-manage-user">
                             <h4 className="user-profile-file-title">Đổi mật khẩu</h4>
-                            {/* <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p> */}
                         </div>
 
                         <div className="change-password-form">

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 import { postCommnetUser } from '../../redux/apiCalls';
@@ -8,8 +7,6 @@ import './evaluate.css';
 import { CameraAlt, Clear, KeyboardBackspace, Star } from '@mui/icons-material';
 import app from '../../firebase';
 import { Rating } from '@mui/material';
-// import { BASE_URL_API } from '../../requestMethods';
-// import { createAxiosInstance } from '../../useAxiosJWT';
 
 const ratingDescriptions = {
     1: 'Tệ',
@@ -24,11 +21,6 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
     const id = location.pathname.split('/')[2];
     const order_id = location.pathname.split('/')[3];
 
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
-
-    // const user = useSelector((state) => state.auth?.currentUser);
-    console.log(user);
     const token = user.token;
     const [comment, setComment] = useState('');
     const [product, setProduct] = useState({});
@@ -36,8 +28,6 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
     const [fileList, setFileList] = useState([]);
 
     const [rating, setRating] = useState(5);
-
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleRatingChange = (event, newValue) => {
         setRating(newValue);
@@ -361,5 +351,3 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
 };
 
 export default Evaluate;
-
-// ['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AA…AAAAAAAAAAAAAAAAA8Eb43/ogdP4mfHbmAAAAAElFTkSuQmCC']

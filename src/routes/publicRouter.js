@@ -24,8 +24,8 @@ import Product from '../pages/Product/Product';
 import ProductList from '../pages/ProductList';
 import Register from '../pages/Register/Register';
 import Search from '../pages/Search/Search';
-import Test from '../pages/Test';
-import TestList from '../pages/TestList/TestList';
+// import Test from '../pages/Test';
+// import TestList from '../pages/TestList/TestList';
 import UserProfile from '../pages/UserProfile/UserProfile';
 import VoucherWarehouse from '../pages/VoucherWarehouse/VoucherWarehouse';
 

@@ -1,8 +1,4 @@
 .cart-wrapper {
-    /* padding: 35px 50px 50px; */
-    /* background-color: red; */
-    /* padding-top: 35px; */
-
     padding: 35px 0 0 0;
 }
 
@@ -20,13 +16,10 @@
 }
 
 .cart-bottom {
-    /* display: flex;
-    justify-content: space-between; */
     padding-top: 40px;
 }
 
 .cart-info {
-    /* flex: 2.5; */
     margin-right: 20px;
 }
 

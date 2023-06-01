@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
 import Product from '../Product/Product';
 import './similar.css';
-// import { BASE_URL_API } from '../../requestMethods';
 
 const Similar = ({ cat, BASE_URL_API, axios }) => {
     const [products, setProducts] = useState([]);

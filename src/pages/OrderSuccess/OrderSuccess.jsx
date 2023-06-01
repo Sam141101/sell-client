@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './orderSuccess.css';
 import { BASE_URL_API } from '../../requestMethods';
 import { resetTemporary } from '../../redux/temporaryRedux';
 import Notify from '../../components/Notify/Notify';
-// import app from '../firebase'
 
 const OrderSuccess = () => {
-    const user = useSelector((state) => state.auth?.currentUser);
     const amountProduct = useSelector((state) => state.temporary?.amount);
     const orderId = useSelector((state) => state.temporary?.orderId);
     const cartId = useSelector((state) => state.temporary?.cartid);
 
-    // const token = user.token;
     const [show, setShow] = useState(true);
-    // const [method, setMethod] = useState(false);
-    // const location = useLocation();
 
     let arr = window.location.search.slice(1).split('&');
 
@@ -58,22 +53,6 @@ const OrderSuccess = () => {
 
     return (
         <>
-            {/* {show && (
-                <div className="user-profile-mobile-frame">
-                    <div className="user-profile-wrapper">
-                        <div className="user-profile-noti">
-                            <img
-                                className="user-profile-noti-img"
-                                src="https://png.pngtree.com/png-vector/20190228/ourmid/pngtree-check-mark-icon-design-template-vector-isolated-png-image_711429.jpg"
-                                alt=""
-                            />
-
-                            <p className="user-profile-text-noti">Đặt hàng thành công</p>
-                        </div>
-                    </div>
-                </div>
-            )} */}
-
             <Notify show={show} title="Đặt hàng thành công" />
         </>
     );

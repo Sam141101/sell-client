@@ -31,11 +31,6 @@ const Cart = ({ axiosJWT, dispatch, navigate, user }) => {
     const [comfirmDelete, setComfirmDelete] = useState('');
 
     const cart = useSelector((state) => state?.cart);
-    // const user = useSelector((state) => state.auth?.currentUser);
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
-    // const axiosJWT = createAxios(user, dispatch, loginSuccess);
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleRemove = (id) => {
         deleteProduct(user.token, dispatch, id, axiosJWT);
@@ -106,9 +101,7 @@ const Cart = ({ axiosJWT, dispatch, navigate, user }) => {
     console.log('cart', cart);
 
     return (
-        // <div className="cart-mobile-frame">
         <>
-            {/* <Navbar /> */}
             <Announcement item2={`Giỏ hàng (${cart.quantity})`} show1={false} />
 
             <div className="grid wide">
@@ -147,10 +140,6 @@ const Cart = ({ axiosJWT, dispatch, navigate, user }) => {
                                                             <span className="cart-product-name">
                                                                 {product.product_id.title}
                                                             </span>
-                                                            {/* <span className="cart-product-id">
-                                                                {product.product_id.price}
-                                                                ₫
-                                                            </span> */}
 
                                                             <span className="cart-product-id">
                                                                 <span className="cart-product-id">
@@ -337,11 +326,7 @@ const Cart = ({ axiosJWT, dispatch, navigate, user }) => {
                     </div>
                 </div>
             </div>
-
-            {/* <Footer /> */}
         </>
-
-        // </div>
     );
 };
 

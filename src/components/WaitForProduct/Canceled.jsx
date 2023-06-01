@@ -1,23 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-// import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
-// import { createAxiosInstance } from '../../useAxiosJWT';
 
 const Canceled = ({ user, axiosJWT, dispatch, navigate }) => {
-    // const user = useSelector((state) => state.auth?.currentUser);
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(false);
-
-    // const dispatch = useDispatch();
-
-    const handleClick = (e) => {
-        e.preventDefault();
-    };
-
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     useEffect(() => {
         const getProduct = async () => {

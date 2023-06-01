@@ -26,8 +26,6 @@ function DefaultLayoutAuth({ children, page }) {
                 dispatch={dispatch}
             />
 
-            {/* <>{children}</> */}
-
             <>
                 {React.Children.map(children, (child) =>
                     React.cloneElement(child, {
@@ -44,8 +42,6 @@ function DefaultLayoutAuth({ children, page }) {
 
             <Footer />
         </div>
-
-        // <div>{children}</div>
     );
 }
 

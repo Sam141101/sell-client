@@ -10,11 +10,8 @@ const Login = ({ navigate, dispatch }) => {
     const inputRef1 = useRef();
     const inputRef2 = useRef();
 
-    // const dispatch = useDispatch();
-    // const navigate = useNavigate();
-
     // test
-    const { isFetching, error } = useSelector((state) => state?.auth);
+    const { isFetching } = useSelector((state) => state?.auth);
 
     const handleClick = (e) => {
         e.preventDefault();

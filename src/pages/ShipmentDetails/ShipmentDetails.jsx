@@ -318,24 +318,6 @@ const ShipmentDetails = () => {
     return (
         <div className="ship_ment-details-container">
             <>
-                {/* {show && (
-                    <div className="user-profile-mobile-frame">
-                        <div className="user-profile-wrapper">
-                            <div className="user-profile-noti">
-                                <img
-                                    className="user-profile-noti-img"
-                                    src="https://png.pngtree.com/png-vector/20190228/ourmid/pngtree-check-mark-icon-design-template-vector-isolated-png-image_711429.jpg"
-                                    alt=""
-                                />
-
-                                <p className="user-profile-text-noti">
-                                    Đặt hàng thành công
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                )} */}
-
                 <Notify show={show} title="Đặt hàng thành công" />
             </>
 

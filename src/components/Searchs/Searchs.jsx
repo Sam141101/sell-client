@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Close, Search } from '@mui/icons-material';
 
-// import { useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useRef } from 'react';
 import useDebounce from '../../hooks/useDebounce';
@@ -10,9 +8,6 @@ import './searchs.css';
 import { BASE_URL_API } from '../../requestMethods';
 
 const Searchs = ({ navigate }) => {
-    // const navigate = useNavigate();
-    // const dispatch = useDispatch();
-
     // --------------- Phần search --------------------
     const inputRef = useRef();
     const listRef = useRef();
@@ -20,9 +15,6 @@ const Searchs = ({ navigate }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [listProduct, setListProduct] = useState([]);
     const [showResult, setShowResult] = useState(true);
-    // const [isHoveringList, setIsHoveringList] = useState(false);
-
-    // const [loading, setLoading] = useState(false);
 
     const [showNot, setShowNot] = useState(false);
     const debounced = useDebounce(searchTerm, 600);
@@ -61,12 +53,12 @@ const Searchs = ({ navigate }) => {
                         setListProduct([]);
                         return;
                     }
-                    // setLoading(true);
+
                     const res = await axios.get(
                         BASE_URL_API + `search?search=${encodeURIComponent(debounced)}`,
                     );
                     setListProduct(res.data);
-                    // setLoading(false);
+
                     console.log('res.data');
                 } catch (err) {
                     console.log(err);
@@ -105,10 +97,8 @@ const Searchs = ({ navigate }) => {
         }
     }, [debounced, listProduct]);
 
-    console.log('listProduct', listProduct);
-
     return (
-        <div className="searchs-container" id="search">
+        <div className="searchs-container">
             <input
                 className="searchs-input"
                 ref={inputRef}
@@ -136,10 +126,9 @@ const Searchs = ({ navigate }) => {
             )}
 
             <button
-                // disabled={!searchTerm}
+                aria-label="Tìm kiếm"
                 id="button"
                 onClick={handleSubmit}
-                // searchValue={searchTerm ? '#393838' : 'white'}
                 className="searchs-button"
             >
                 <Search fontSize="large" />
@@ -187,27 +176,6 @@ const Searchs = ({ navigate }) => {
                                 src={product.img}
                             />
                         </div>
-
-                        // <Link
-                        //     className="searchs-item-main"
-                        //     key={index}
-                        //     onClick={() => handleClick(product)}
-                        //     to={`/product/${product._id}`}
-                        // >
-                        //     <div className="searchs-item">
-                        //         <div>
-                        //             <div className="searchs-item-title">
-                        //                 {product.title}
-                        //             </div>
-                        //             <p className="searchs-item-price">{product.price}₫</p>
-                        //         </div>
-                        //     </div>
-                        //     <img
-                        //         className="searchs-item-img"
-                        //         alt="Search"
-                        //         src={product.img}
-                        //     />
-                        // </Link>
                     ))}
 
                     <div
@@ -216,12 +184,6 @@ const Searchs = ({ navigate }) => {
                     >
                         Không có sản phẩm nào...
                     </div>
-
-                    {/* <div className="result-more-item">
-                        <Link className="result-more-item-link" to="/">
-                            Xem thêm 99 sản phẩm
-                        </Link>
-                    </div> */}
                 </div>
             )}
         </div>

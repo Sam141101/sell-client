@@ -95,15 +95,8 @@
     margin: 10px 0;
     padding-bottom: 10px;
 
-    /* padding: 20px 0px 10px 0; */
     border-bottom: 1px solid #ccc;
 }
-
-/* .wait-purchase-product-order:last-child {
-    margin: 10px 0;
-    padding: 20px 0px 10px 0;
-    border-bottom: none;
-} */
 
 .wait-for-product {
     display: block;

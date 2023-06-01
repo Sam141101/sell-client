@@ -1,28 +1,10 @@
-// import ProductList from './pages/ProductList';
-// import Home from './pages/Home';
-// import Product from './pages/Product/Product';
-// import Cart from './pages/Cart/Cart';
-// import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
-// import Pagination from './components/Pagination/Pagination';
-
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-// import Search from './pages/Search/Search';
 import ShipmentDetails from './pages/ShipmentDetails/ShipmentDetails';
-// import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 import ChangePassword from './pages/ChangePassword/ChangePassword';
-// import Test from './pages/Test';
 import { authenticatedRoutes, publicRoutes } from './routes/publicRouter';
 import DefaultLayoutPolicy from './components/Layout/DefaultLayoutPolicy';
-// import { Fragment } from 'react';
-// import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
-// import OrderCancel from './pages/OrderSuccess/OrderCancel';
-// import Evaluate from './pages/Evaluate/Evaluate';
-import Complete from './components/WaitForProduct/Complete';
 import { useEffect } from 'react';
-// import { BASE_URL_API } from './requestMethods';
-// import axios from 'axios';
-// import Cookies from 'js-cookie';
 
 import { checkAuth } from './support';
 import React from 'react';
@@ -114,7 +96,7 @@ function App() {
                 {/* <Route path="/account/profile" element={<UserProfile />} /> */}
 
                 {/* <Route path="/testlll" element={<Evaluate />} /> */}
-                <Route path="/testlll2" element={<Complete />} />
+                {/* <Route path="/testlll2" element={<Complete />} /> */}
 
                 {/* <Route path="/baocao" element={<NewPassword />} /> */}
 

@@ -1,14 +1,10 @@
 import styled from 'styled-components';
-// import NavBar from '../components/NavBar/NavBar';
 import Announcement from '../components/Announcement/Announcement';
 import Products from '../components/Products/Products';
-// import Newsletter from '../components/Newsletter/Newsletter';
-// import Footer from '../components/Footer/Footer';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import Pagination from '../components/Pagination/Pagination';
 import TestList from './TestList/TestList';
-// import { useEffect } from 'react';
 
 const Container = styled.div`
     overflow: hidden;
@@ -44,14 +40,6 @@ const ProductList = ({ BASE_URL_API, axios }) => {
 
     const url = new URL(window.location.href);
     const pageIndex = url.searchParams.get('page'); // "1"
-
-    // const handleFilters = (e) => {
-    //     const value = e.target.value;
-    //     setFilters({
-    //         ...filters,
-    //         [e.target.name]: value,
-    //     });
-    // };
 
     const [filterPage, setFilterPage] = useState(pageIndex);
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Product from '../Product/Product';
-import axios from 'axios';
-import './products.css';
+// import axios from 'axios';
+// import './products.css';
 // import { BASE_URL_API } from '../../requestMethods';
 
 const Products = ({

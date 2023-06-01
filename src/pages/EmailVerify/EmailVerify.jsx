@@ -1,9 +1,6 @@
 import { KeyboardBackspace } from '@mui/icons-material';
-// import axios from 'axios';
 import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { BASE_URL_API } from '../../requestMethods';
 import './emailVerify.css';
 
 // --------------------------------------------------------------
@@ -63,8 +60,6 @@ const EmailVerify = ({ axios, BASE_URL_API }) => {
                                                 placeholder="Gmail"
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 value={email}
-                                                // onBlur={blurEmail}
-                                                // ref={inputRef}
                                             />
                                             {msg && (
                                                 <span
@@ -77,7 +72,6 @@ const EmailVerify = ({ axios, BASE_URL_API }) => {
                                             <button
                                                 className="email-verify-button"
                                                 style={{ marginTop: '30px' }}
-                                                // disabled={!email}
                                                 onClick={handleClick}
                                             >
                                                 TIẾP THEO

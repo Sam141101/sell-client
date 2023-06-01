@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-// import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-// import '../pages/UserProfile/userProfile.css';
-// import { createAxiosInstance } from '../../useAxiosJWT';
-// import { BASE_URL_API } from '../../requestMethods';
 import FormInputAddress from '../../components/FormInputAddress/FormInputAddress';
 
 const HandleAddress = ({ user, axiosJWT, dispatch, navigate, BASE_URL_API }) => {
-    // const user = useSelector((state) => state.auth?.currentUser);
     const token = user.token;
     const id = user?._id;
 
     const location = useLocation();
-    const typePage = location.pathname.split('/')[1];
-
-    // const dispatch = useDispatch();
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const [inputs, setInputs] = useState({
         address: '',

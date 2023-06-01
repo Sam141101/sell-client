@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import { useLocation } from 'react-router-dom';
-// import axios from 'axios';
-// import Navbar from '../../components/NavBar/NavBar';
-// import Footer from '../../components/Footer/Footer';
 import Pagination from '../../components/Pagination/Pagination';
 import Product from '../../components/Product/Product';
 import './search.css';
-// import { BASE_URL_API } from '../../requestMethods';
 
 const Search = ({ axios, BASE_URL_API }) => {
     const location = useLocation();
@@ -50,8 +46,6 @@ const Search = ({ axios, BASE_URL_API }) => {
 
     return (
         <div className="search-page-mobile">
-            {/* <Navbar /> */}
-
             <div className="grid wide">
                 <div className="row">
                     <div className="col l-12 c-12">
@@ -93,8 +87,6 @@ const Search = ({ axios, BASE_URL_API }) => {
                     </div>
                 </div>
             </div>
-
-            {/* <Footer /> */}
         </div>
     );
 };

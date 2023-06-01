@@ -1,6 +1,5 @@
 .about-wrapper {
     padding: 30px 0;
-    /* display: flex; */
 }
 
 .disocunt-product {
@@ -150,11 +149,6 @@
     justify-content: space-around;
     padding: 18px 0;
 }
-
-/* .default-layout-order-file-title {
-    font-weight: 500;
-    font-size: 18px;
-} */
 
 .default-layout-order-select-link {
     text-decoration: none;

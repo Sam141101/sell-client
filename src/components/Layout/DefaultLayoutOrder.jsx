@@ -23,24 +23,6 @@ const profile = [
     },
 ];
 
-const ParentComponent = ({ children }) => {
-    return (
-        <div>
-            {React.Children.map(children, (child) => {
-                return React.cloneElement(child, { newProp: 'value' }); // add new prop to child
-            })}
-        </div>
-    );
-};
-
-const ChildComponent = ({ newProp }) => {
-    return (
-        <>
-            <p>New Prop: {newProp}</p>
-        </>
-    );
-};
-
 function DefaultLayoutOrder({ children, show1, show2, show3 }) {
     const location = useLocation();
     const pathpolicy = location.pathname.split('/')[1];
@@ -84,8 +66,6 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
 
     return (
         <div className="default-layout-wrapper">
-            {/* <Navbar /> */}
-
             <Navbar
                 axiosJWT={axiosJWT}
                 quantity={quantity}
@@ -308,7 +288,6 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                     </div>
                                 )}
 
-                                {/* <div>{children}</div> */}
                                 <div>
                                     {React.Children.map(children, (child) =>
                                         React.cloneElement(child, {

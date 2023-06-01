@@ -2,27 +2,16 @@ import React, { useState } from 'react';
 
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useLocation } from 'react-router-dom';
 import app from '../../firebase';
 import { updateUser } from '../../redux/apiCalls';
 import './userProfile.css';
-// import { createAxiosInstance } from '../../useAxiosJWT';
-// import app from '../firebase'
 
 const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
-    // const user = useSelector((state) => state.auth?.currentUser);
     const token = user.token;
     const [show, setShow] = useState(false);
-    // const location = useLocation();
-
-    // const dispatch = useDispatch();
 
     const [inputs, setInputs] = useState({});
     const [file, setFile] = useState(null);
-    // const [currentImg, setCurrentImg] = useState(user.img);
-
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleChange = (e) => {
         setInputs((prev) => {
@@ -32,41 +21,7 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
 
     console.log(inputs);
 
-    // const sendData = async (update) => {
-    //     try {
-    //         const res = await axios.put(
-    //             `http://localhost:5000/api/users/${user._id}`,
-    //             update,
-    //             {
-    //                 headers: { token: `Bearer ${user.token}` },
-    //             },
-    //         );
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
-
     console.log(file);
-
-    // const handleChangeFile = (e) => {
-    //     setFile(e.target.files[0]);
-
-    //     let fileSelected = document.getElementById('file').files;
-    //     if (fileSelected.length > 0) {
-    //         let fileToLoad = fileSelected[0];
-    //         // setCurrentImg(fileToLoad);
-    //         // console.log(fileToLoad);
-
-    //         let fileReader = new FileReader();
-    //         fileReader.onload = function (fileLoaderEvent) {
-    //             let srcData = fileLoaderEvent.target.result;
-    //             let newImg = document.getElementById('displayImg');
-    //             newImg.src = srcData;
-    //             // document
-    //         };
-    //         fileReader.readAsDataURL(fileToLoad);
-    //     }
-    // };
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -178,19 +133,6 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                                     />
                                 </div>
                             </div>
-
-                            {/* <div className="user-profile-form-item">
-                                <div className="user-profile-form-key">Địa chỉ</div>
-                                <div className="user-profile-form-value">
-                                    <input
-                                        className="user-profile-form-input"
-                                        name="address"
-                                        placeholder={user?.address || ''}
-                                        type="text"
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                            </div> */}
 
                             <div className="user-profile-form-item">
                                 <div className="user-profile-form-key">Giới tính</div>

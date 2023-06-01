@@ -136,18 +136,12 @@
     font-size: 11px;
 }
 
-.result-more-item {
-    /* text-align: center; */
-}
-
 .result-more-item-link {
     text-decoration: none;
     color: #000000;
-    /* display: none; */
     font-size: 14px;
     padding: 10px 0;
     cursor: pointer;
     text-align: center;
     z-index: 2;
-    /* transition: all 0.8s; */
 }

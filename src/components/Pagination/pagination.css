@@ -32,14 +32,6 @@
 }
 
 .pagination-button {
-    /* padding: 10px;
-    background-color: red;
-    border-radius: 3px;
-    display: flex;
-    outline: none;
-    border: none;
-    cursor: pointer; */
-
     padding: 4px;
     background-color: red;
     border-radius: 2px;
@@ -50,7 +42,6 @@
     margin: 30px 8px;
     font-size: 15px;
     font-weight: 600;
-    /* opacity: 0.4; */
 }
 
 .pagination-button:disabled {

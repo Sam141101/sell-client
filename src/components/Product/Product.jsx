@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom';
 import './product.css';
-// import img from '../../assets/download.png';
-// import { importImagesUrls } from '../utils/images';
-
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Product = ({ item }) => {

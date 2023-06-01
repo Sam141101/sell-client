@@ -11,17 +11,14 @@ const data = [
         item: [
             {
                 name: 'HOODIE',
-                // to: '/products/HOODIE',
                 to: `/products/HOODIE?page=${1}`,
             },
             {
                 name: 'TEE',
-                // to: '/products/TEE',
                 to: `/products/TEE?page=${1}`,
             },
             {
                 name: 'POLO',
-                // to: '/products/POLO',
                 to: `/products/POLO?page=${1}`,
             },
         ],
@@ -32,7 +29,6 @@ const data = [
         title: 'BOTTOM',
         item: [
             {
-                // to: '/products/SHORT',
                 name: 'SHORT',
                 to: `/products/SHORT?page=${1}`,
             },

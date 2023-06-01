@@ -12,13 +12,6 @@
     color: black;
 }
 
-.login_wrapper {
-    /* background-color: white;
-    padding: 25px;
-    width: 27%;
-    border-radius: 3px; */
-}
-
 .login_title {
     font-size: 45px;
     font-weight: 600;
@@ -38,7 +31,7 @@
     flex-wrap: wrap;
 }
 
-.login_form input[type='email'],
+/* .login_form input[type='email'], */
 .login_form input[type='text'],
 .login_form input[type='password'] {
     width: 100%;
@@ -58,11 +51,7 @@
     background: #fff;
     border-color: #ededed;
 }
-/* 
-.login_input:focus-within {
-    border: 1px solid transparent;
-    background-color: red;
-} */
+
 .login_input::placeholder {
     color: #000000;
     font-size: 14px;

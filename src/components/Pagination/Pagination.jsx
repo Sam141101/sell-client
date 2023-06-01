@@ -1,6 +1,5 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import './pagination.css';
-// import { Link } from 'react-router-dom';
 
 const Pagination = (props) => {
     const { pagination, onPageChange } = props;
@@ -18,7 +17,6 @@ const Pagination = (props) => {
             >
                 {i}
             </span>,
-            // </Link>,
         );
     }
 

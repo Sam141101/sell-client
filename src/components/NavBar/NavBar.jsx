@@ -18,26 +18,10 @@ import { getAllCart, login, logout } from '../../redux/apiCalls';
 import Searchs from '../Searchs/Searchs';
 import { resetProduct } from '../../redux/cartRedux';
 import './navBar.css';
-// import { createAxiosInstance } from '../../useAxiosJWT';
 import { listItemNavBar } from '../../data';
 
-// const listItemNav = [
-//     {
-//         key: 1,
-//         to: '/about',
-//         onclick: true,
-//     },
-// ];
-
 // const Navbar = React.memo(({axiosJWT ,quantity}) => {
-// const Navbar = (axiosJWT ,quantity}) => {
 const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
-    // console.log('log', log);
-    // const user = useSelector((state) => state.auth?.currentUser);
-    // const quantity = useSelector((state) => state.cart?.quantity);
-
-    // const navigate = useNavigate();
-    // const dispatch = useDispatch();
     const inputRef1 = useRef();
     const inputRef2 = useRef();
 
@@ -54,8 +38,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
     };
 
     // Logout
-    // const axiosJWT = createAxios(user, dispatch, loginSuccess);
-    // const axiosJWT = createAxiosInstance(user, dispatch);
+
     console.log('axiosJWT', axiosJWT);
 
     const handleLogout = (e) => {
@@ -623,8 +606,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 <AccountCircle
                                                     className="mobile-icon"
                                                     onClick={handleClickUser}
-                                                    // id="result1"
-                                                    // onClick={resultClick}
                                                 />
 
                                                 <nav className="nav-menu-user-mobile">
@@ -663,12 +644,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                                         className="nav-login-tk"
                                                                         placeholder="Email"
                                                                         ref={inputRef1}
-                                                                        // onChange={(e) =>
-                                                                        //     setUsername(
-                                                                        //         e.target
-                                                                        //             .value,
-                                                                        //     )
-                                                                        // }
                                                                         onChange={(e) =>
                                                                             changeInputUserName(
                                                                                 e,
@@ -683,12 +658,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                                         className="nav-login-mk"
                                                                         placeholder="Mật khẩu"
                                                                         ref={inputRef2}
-                                                                        // onChange={(e) =>
-                                                                        //     setPassword(
-                                                                        //         e.target
-                                                                        //             .value,
-                                                                        //     )
-                                                                        // }
                                                                         onChange={(e) =>
                                                                             changeInputPassword(
                                                                                 e,
@@ -753,7 +722,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                             </div>
                                         </>
                                     )}
-                                    {/* <Link to="/cart" onClick={handleClick}> */}
 
                                     <Link onClick={handleClick}>
                                         <div className="navbar-menu-item">
@@ -765,7 +733,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 <NotificationsNone
                                                     style={{ color: 'black' }}
                                                     fontSize="large"
-                                                    // className="mobile-icon cart"
                                                     className="mobile-icon"
                                                 />
                                             </Badge>
@@ -782,7 +749,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 <ShoppingCart
                                                     style={{ color: 'black' }}
                                                     fontSize="large"
-                                                    // className="mobile-icon cart"
                                                     className="mobile-icon"
                                                 />
                                             </Badge>
@@ -794,7 +760,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                     </div>
                 </div>
 
-                {/* <div className="grid wide"> */}
                 <div className="navbar-menu">
                     <div className="row">
                         <div className="col l-7 c-0">
@@ -812,7 +777,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                     <span className="nav-label">
                                         <Link
                                             className="navbar-menu-item-link"
-                                            // to="/products"
                                             to={`/products/all?page=${1}`}
                                         >
                                             Shop
@@ -827,7 +791,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                         </Link>
                                     </span>
                                     <div className="line"></div>
-                                    {/* ffff */}
                                     <ul className="nav-list">
                                         {listItemNavBar.map((item, index) => (
                                             <li key={index} className="nav-item">
