@@ -1,28 +1,43 @@
 export const sliderItems = [
     {
         id: 1,
-        img: 'http://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
-        title: 'NEW YEAR COLLECITON',
-        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+        img: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33.jpg',
+        setSrc: 'file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33_large.jpg',
+        // title: 'NEW YEAR COLLECITON',
+        // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
         bg: '#f5fafd',
         cat: 'TEE',
     },
+
     {
         id: 2,
-        img: 'https://file.hstatic.net/200000312481/file/z3949117698340_9fe1c067c65fd89e397d86f27e9a904c_6ad273c5b80049ca85fd1a1aec326b93.jpg',
-        title: 'LIKE SALE',
-        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+        img: 'http://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
+        setSrc: 'http://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
+        // title: 'LIKE SALE',
+        // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
         bg: '#fbf0f4',
-        cat: 'POLO',
+        cat: 'HOODIE',
     },
+
     {
         id: 3,
-        img: 'https://file.hstatic.net/200000312481/file/z3949117698340_9fe1c067c65fd89e397d86f27e9a904c_6ad273c5b80049ca85fd1a1aec326b93.jpg',
-        title: 'LIKE SALE',
-        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+        img: 'http://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
+        setSrc: 'http://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
+        // title: 'LIKE SALE',
+        // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
         bg: '#fbf0f4',
-        cat: 'SHORT',
+        cat: 'HOODIE',
     },
+
+    // {
+    //     id: 3,
+    //     img: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
+    //     setSrc: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
+    //     title: 'LIKE SALE',
+    //     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+    //     bg: '#fbf0f4',
+    //     cat: 'POLO',
+    // },
 ];
 
 // export const categories = [

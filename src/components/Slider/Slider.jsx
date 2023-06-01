@@ -73,11 +73,43 @@ const Slider = () => {
                                                 <Link
                                                     to={`/products/${item.cat}?page=${1}`}
                                                 >
-                                                    <img
+                                                    {/* <img
                                                         src={item.img}
                                                         alt=""
                                                         className="img-item"
-                                                    />
+                                                    /> */}
+
+                                                    {/* <picture>
+                                                        <source
+                                                            srcSet="//file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33_large.jpg"
+                                                            media="(max-width: 480px)"
+                                                        />
+                                                        <source
+                                                            srcSet="https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33.jpg"
+                                                            media="(min-width: 481px)"
+                                                        />
+                                                        <img
+                                                            srcSet="https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33.jpg"
+                                                            alt=""
+                                                            className="img-item"
+                                                        />
+                                                    </picture> */}
+
+                                                    <picture>
+                                                        <source
+                                                            srcSet={item.setSrc}
+                                                            media="(max-width: 480px)"
+                                                        />
+                                                        <source
+                                                            srcSet={item.img}
+                                                            media="(min-width: 481px)"
+                                                        />
+                                                        <img
+                                                            srcSet={item.img}
+                                                            alt=""
+                                                            className="img-item"
+                                                        />
+                                                    </picture>
                                                 </Link>
                                             </div>
                                         </Slide>

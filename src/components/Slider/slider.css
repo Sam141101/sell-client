@@ -76,9 +76,18 @@
 .img-item {
     /* background-size: cover; */
 
+    /* max-width: 100%; */
+    /* height: auto; */
+
+    /* width: 1200px; */
+
+    vertical-align: middle;
     max-width: 100%;
-    height: auto;
-    width: 1200px;
+    display: block;
+    width: auto !important;
+    text-align: center;
+    margin: auto;
+    overflow: hidden;
 }
 
 .mobile-block-img {
