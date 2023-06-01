@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-// import Footer from '../../components/Footer/Footer';
-// import Navbar from '../../components/NavBar/NavBar';
+
 import Announcement from '../../components/Announcement/Announcement';
 import { Add, East, Remove, Reply } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
@@ -12,7 +11,6 @@ import { Link } from 'react-router-dom';
 import ConfirmDelete from '../../components/ConfirmDelete/ConfirmDelete';
 import './cart.css';
 import React from 'react';
-// import { createAxiosInstance } from '../../useAxiosJWT';
 
 const SummaryItem = styled.div`
     font-weight: ${(props) => props.type === 'total' && '500'};

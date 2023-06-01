@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise }) => {
-    // console.log('lll', typeof notify, notify);
     const location = useLocation();
     const typePage = location.pathname.split('/')[1];
 

@@ -4,10 +4,6 @@ import './comment.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { BASE_URL_API } from '../../requestMethods';
-// import { createAxiosInstance } from '../../useAxiosJWT';
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const changDate = (isoString) => {
     const date = new Date(isoString);
@@ -30,12 +26,6 @@ const Comment = ({ axios, BASE_URL_API }) => {
 
     const [listInfoComment, setListInfoComment] = useState({});
     const [img, setImg] = useState('');
-    // const [slideIndex, setSlideIndex] = useState(0);
-
-    // const dispatch = useDispatch();
-    // const user = useSelector((state) => state.auth?.currentUser);
-
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleChangeImg = (imgItem) => {
         if (img === imgItem) {
@@ -62,7 +52,6 @@ const Comment = ({ axios, BASE_URL_API }) => {
     useEffect(() => {
         const getComment = async () => {
             try {
-                // const res = await axiosJWT.get(
                 const res = await axios.get(
                     BASE_URL_API + `comments/find/${id}/${option}`,
                 );
