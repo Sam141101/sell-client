@@ -9,15 +9,15 @@ export const sliderItems = [
         cat: 'TEE',
     },
 
-    // {
-    //     id: 2,
-    //     img: 'http://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
-    //     setSrc: 'http://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
-    //     // title: 'LIKE SALE',
-    //     // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
-    //     bg: '#fbf0f4',
-    //     cat: 'HOODIE',
-    // },
+    {
+        id: 2,
+        img: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
+        setSrc: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
+        // title: 'LIKE SALE',
+        // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+        bg: '#fbf0f4',
+        cat: 'HOODIE',
+    },
 
     {
         id: 2,
