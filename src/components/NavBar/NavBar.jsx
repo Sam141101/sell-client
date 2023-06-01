@@ -723,7 +723,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                         </>
                                     )}
 
-                                    <Link onClick={handleClick}>
+                                    {/* <Link onClick={handleClick}>
                                         <div className="navbar-menu-item">
                                             <Badge
                                                 badgeContent={user && quantity}
@@ -737,7 +737,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 />
                                             </Badge>
                                         </div>
-                                    </Link>
+                                    </Link> */}
 
                                     <Link onClick={handleClick}>
                                         <div className="navbar-menu-item">

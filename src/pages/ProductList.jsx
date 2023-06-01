@@ -109,7 +109,7 @@ const ProductList = ({ BASE_URL_API, axios }) => {
                                 </div>
                             </div>
 
-                            <div className="row">
+                            <div className="row pd-mobile">
                                 <Products
                                     cat={cat}
                                     filters={filters}

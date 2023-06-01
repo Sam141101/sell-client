@@ -58,8 +58,12 @@ const Products = ({
 
     return (
         <>
-            {products.map((item) => (
-                <div className="col l-3 c-12" key={item._id}>
+            {products.map((item, index) => (
+                // <div className="col l-3 c-12" key={item._id}>
+                <div
+                    className={`col l-3 c-6 c${index % 2 === 0 ? '2' : '1'}`}
+                    key={item._id}
+                >
                     <Product item={item} />
                 </div>
             ))}

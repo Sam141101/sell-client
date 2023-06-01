@@ -3,7 +3,7 @@ import './product.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Product = ({ item }) => {
-    console.log(item);
+    // console.log(item);
     return (
         <div className="product-container">
             <Link
@@ -18,7 +18,39 @@ const Product = ({ item }) => {
                         </span>
                     )}
                 <div className="frame-block-product">
-                    <LazyLoadImage
+                    {/* <picture>
+                        <source
+                            srcSet="https://product.hstatic.net/200000312481/product/ato1023_1_b36df82e40b34793a48f131e128895cd_medium.jpg"
+                            media="(max-width: 480px)"
+                        />
+                        <source
+                            srcSet="https://product.hstatic.net/200000312481/product/ato1023_1_b36df82e40b34793a48f131e128895cd_grande.jpg"
+                            media="(min-width: 481px)"
+                        />
+                        <LazyLoadImage
+                            className="product-image-des"
+                            srcSet="https://product.hstatic.net/200000312481/product/ato1023_1_b36df82e40b34793a48f131e128895cd_medium.jpg"
+                            alt=""
+                            height="250"
+                            width="250"
+                            effect="blur"
+                        />
+                    </picture> */}
+
+                    <picture>
+                        <source srcSet={item.setImg} media="(max-width: 480px)" />
+                        <source srcSet={item.img} media="(min-width: 481px)" />
+                        <LazyLoadImage
+                            className="product-image-des"
+                            srcSet={item.img}
+                            alt=""
+                            height="250"
+                            width="250"
+                            effect="blur"
+                        />
+                    </picture>
+
+                    {/* <LazyLoadImage
                         // className="lazy-loading-width-height-mobile lazy-loading-width-height-pc"
                         className="product-image-des"
                         src={item.img}
@@ -27,7 +59,7 @@ const Product = ({ item }) => {
                         height="250"
                         width="250"
                         effect="blur"
-                    />
+                    /> */}
                 </div>
                 {item.sizes?.every((size) => size.inStock === 0) && (
                     <span className="product-out-of-stock">Hết hàng</span>

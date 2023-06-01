@@ -75,12 +75,22 @@ const Home = ({ axios, BASE_URL_API }) => {
 
             <div className="container-product">
                 <div className="grid wide">
-                    <div className="row">
-                        {products.map((item, index) => (
-                            <div className="col l-3 c-12" key={item._id}>
-                                <Product item={item} />
-                            </div>
-                        ))}
+                    <div className="row pd-mobile">
+                        {products.map((item, index) => {
+                            console.log('index', index, `${index % 2 === 0 ? '2' : '1'}`);
+                            // <div className="col l-3 c-12" key={item._id}>
+                            // <div className="col l-3 c-6" key={item._id}>4
+                            return (
+                                <div
+                                    className={`col l-3 c-6 c${
+                                        index % 2 === 0 ? '2' : '1'
+                                    }`}
+                                    key={item._id}
+                                >
+                                    <Product item={item} />
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
