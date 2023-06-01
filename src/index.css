@@ -1,5 +1,6 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese');
+/* @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese'); */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese&display=swap');
 
 :root {
     --text-color: #000000;
