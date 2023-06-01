@@ -95,6 +95,15 @@ const Slider = () => {
                                                         />
                                                     </picture> */}
 
+                                                    <link
+                                                        rel="preload"
+                                                        href={item.img}
+                                                        as="image"
+                                                    />
+                                                    <link
+                                                        rel="prefetch"
+                                                        href={item.img}
+                                                    />
                                                     <picture>
                                                         <source
                                                             srcSet={item.setSrc}
@@ -110,6 +119,22 @@ const Slider = () => {
                                                             className="img-item"
                                                         />
                                                     </picture>
+
+                                                    {/* <picture>
+                                                        <source
+                                                            srcSet={item.setSrc}
+                                                            media="(max-width: 480px)"
+                                                        />
+                                                        <source
+                                                            srcSet={item.img}
+                                                            media="(min-width: 481px)"
+                                                        />
+                                                        <img
+                                                            srcSet={item.img}
+                                                            alt=""
+                                                            className="img-item"
+                                                        />
+                                                    </picture> */}
                                                 </Link>
                                             </div>
                                         </Slide>
