@@ -35,6 +35,11 @@
         padding: 0 15px !important;
     }
 
+    .product-image-des {
+        height: 174px !important;
+        width: 174px !important;
+    }
+
     .button-arrow {
         width: 35px !important;
         height: 35px !important;
