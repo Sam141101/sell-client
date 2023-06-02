@@ -45,8 +45,8 @@ const Product = ({ item }) => {
                             sizes="(max-width: 480px) 174px, (min-width: 481px) 250px"
                             srcSet={item.img}
                             alt=""
-                            // height="250"
-                            // width="250"
+                            height="250"
+                            width="250"
                             effect="blur"
                         />
                     </picture>

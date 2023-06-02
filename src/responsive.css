@@ -40,6 +40,11 @@
         width: 174px !important;
     }
 
+    .img-item {
+        width: 393px !important;
+        height: 196px !important;
+    }
+
     .button-arrow {
         width: 35px !important;
         height: 35px !important;
@@ -59,6 +64,7 @@
 
     .navbar-header-img {
         height: 26px !important;
+        width: auto !important;
     }
 
     .navbar-menu-item {

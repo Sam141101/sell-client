@@ -89,6 +89,8 @@ const Slider = ({ slides }) => {
                                             srcSet={slide.img}
                                             alt=""
                                             className="img-item"
+                                            width="1536px"
+                                            height="768px"
                                         />
                                     </picture>
                                 </Link>
