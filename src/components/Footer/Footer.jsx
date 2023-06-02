@@ -3,6 +3,7 @@ import { Call, Facebook, MailOutline, Phone, Room } from '@mui/icons-material';
 import { useState } from 'react';
 import './footer.css';
 import { Link } from 'react-router-dom';
+import yourImage from '../../assets/footer.jpg';
 
 const data = [
     {
@@ -180,8 +181,9 @@ const Footer = ({ layoutVoucher }) => {
                                     }}
                                     width="270"
                                     height="130"
-                                    src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04"
+                                    // src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04"
                                     alt=""
+                                    src={yourImage}
                                     // srcSet="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04 "
                                 />
                                 <div className="shawdow"></div>
