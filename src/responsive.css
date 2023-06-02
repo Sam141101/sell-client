@@ -41,7 +41,8 @@
     }
 
     .img-item {
-        width: 393px !important;
+        /* width: 393px !important; */
+        width: auto !important;
         height: 196px !important;
     }
 
