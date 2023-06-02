@@ -6,6 +6,8 @@ import Slider from '../components/Slider/Slider';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Product from '../components/Product/Product';
+import { sliderItems } from '../../src/data';
+
 //
 
 const MoreProduct = styled.div`
@@ -70,7 +72,7 @@ const Home = ({ axios, BASE_URL_API }) => {
 
     return (
         <div style={{ overflow: 'hidden' }}>
-            <Slider />
+            <Slider slides={sliderItems} />
             <Info>CÁC SẢN PHẨM MỚI</Info>
 
             <div className="container-product">
