@@ -6,7 +6,7 @@ import {
     KeyboardArrowRight,
     Mail,
     Menu,
-    NotificationsNone,
+    // NotificationsNone,
     Phone,
     // Search,
     ShoppingCart,
@@ -436,6 +436,8 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                     <Link to="/" onClick={handleClickHome}>
                                         <img
                                             className="navbar-header-img"
+                                            height="32px"
+                                            width="197px"
                                             alt=""
                                             src="https://file.hstatic.net/200000312481/file/2222_1790556c641f404aab8dfb038b47eb0e.png"
                                         />
