@@ -2,22 +2,22 @@ export const sliderItems = [
     {
         id: 1,
         img: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33.jpg',
-        setSrc: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33.jpg',
+        setSrc: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33_large.jpg',
         // title: 'NEW YEAR COLLECITON',
         // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
         // bg: '#f5fafd',
         cat: 'TEE',
     },
 
-    {
-        id: 2,
-        img: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
-        setSrc: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
-        // title: 'LIKE SALE',
-        // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
-        // bg: '#fbf0f4',
-        cat: 'HOODIE',
-    },
+    // {
+    //     id: 2,
+    //     img: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
+    //     setSrc: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
+    //     // title: 'LIKE SALE',
+    //     // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
+    //     // bg: '#fbf0f4',
+    //     cat: 'HOODIE',
+    // },
 
     {
         id: 3,
