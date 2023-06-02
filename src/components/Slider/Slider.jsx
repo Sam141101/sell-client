@@ -74,7 +74,7 @@ const Slider = ({ slides }) => {
                         <Slide bg={slide.bg} key={index}>
                             <div className="img-container">
                                 <Link to={`/products/${slide.cat}?page=${1}`}>
-                                    <link rel="preload" href={slide.img} as="image" />
+                                    <link rel="preload" href={slide.setSrc} as="image" />
                                     <link rel="prefetch" href={slide.img} />
                                     <picture>
                                         <source
