@@ -72,7 +72,7 @@ const Home = ({ axios, BASE_URL_API }) => {
 
     return (
         <div style={{ overflow: 'hidden' }}>
-            <Slider slides={sliderItems} />
+            {/* <Slider slides={sliderItems} /> */}
             <Info>CÁC SẢN PHẨM MỚI</Info>
 
             <div className="container-product">
