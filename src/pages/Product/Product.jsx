@@ -46,7 +46,7 @@ const Product = ({ axios, BASE_URL_API, dispatch, navigate, user, axiosJWT }) =>
         setAmountInStock(amount);
     };
 
-    const handleClick = () => {
+    const handleClick = async () => {
         if (!user) {
             navigate('/login');
         } else {
@@ -70,7 +70,25 @@ const Product = ({ axios, BASE_URL_API, dispatch, navigate, user, axiosJWT }) =>
                 discount: product.discountProduct_id.discount_amount,
             };
             // console.log('>>>>', checkSize);
-            addCart(user.token, dispatch, addProductCarts, cartProducts, axiosJWT);
+            const result = await addCart(
+                user.token,
+                dispatch,
+                addProductCarts,
+                cartProducts,
+                axiosJWT,
+            );
+            if (result === 'addcart-success') {
+                errorMessage = 'Thêm sản phẩm thành công.';
+            } else {
+                errorMessage = 'Thêm sản phẩm thất bại.';
+            }
+
+            if (errorMessage) {
+                setTimeout(() => {
+                    alert(errorMessage);
+                }, 800); // Sau 1 giây mới hiển thị thông báo
+                return;
+            }
         }
     };
 

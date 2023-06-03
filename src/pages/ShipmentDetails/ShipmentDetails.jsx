@@ -351,7 +351,7 @@ const ShipmentDetails = () => {
                                 </div>
 
                                 <div className="ship_ment-details-title-mobile-right">
-                                    225,000₫
+                                    {totalPriceProduct}₫
                                 </div>
                             </div>
 
@@ -590,7 +590,7 @@ const ShipmentDetails = () => {
                                             </label>
                                         </div>
 
-                                        <div
+                                        {/* <div
                                             className="ship_ment-details-block-payment"
                                             onChange={handleChange}
                                         >
@@ -604,7 +604,7 @@ const ShipmentDetails = () => {
                                             <label htmlFor="momo">
                                                 Thanh toán bằng Ví MoMo
                                             </label>
-                                        </div>
+                                        </div> */}
 
                                         <div
                                             className="ship_ment-details-block-payment"

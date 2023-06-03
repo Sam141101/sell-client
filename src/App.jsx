@@ -1,7 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import ShipmentDetails from './pages/ShipmentDetails/ShipmentDetails';
-import ChangePassword from './pages/ChangePassword/ChangePassword';
 import { authenticatedRoutes, publicRoutes } from './routes/publicRouter';
 import DefaultLayoutPolicy from './components/Layout/DefaultLayoutPolicy';
 import { useEffect } from 'react';
@@ -92,70 +90,6 @@ function App() {
                         />
                     );
                 })}
-
-                {/* <Route path="/account/profile" element={<UserProfile />} /> */}
-
-                {/* <Route path="/testlll" element={<Evaluate />} /> */}
-                {/* <Route path="/testlll2" element={<Complete />} /> */}
-
-                {/* <Route path="/baocao" element={<NewPassword />} /> */}
-
-                <Route path="/registerTest" element={<ChangePassword />} />
-
-                {/* test paypal */}
-                {/* <Route path="/test" element={<Test />} /> */}
-
-                {/* <Route path="/test11" element={<OrderSuccess />} />
-                <Route path="/test12" element={<OrderCancel />} /> */}
-
-                {/* <Route path="/ttt5" element={<Register />} /> */}
-                {/* <Route path="/change-account" element={<ChangePassword />} /> */}
-
-                {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
-
-                {/* sản phẩm */}
-                {/* <Route path="/search/:category" element={<Search />} /> */}
-                {/* <Route path="/account/profile" element={<UserProfile />} /> */}
-                {/* <Route path="/" element={<Home />} /> */}
-                {/* <Route path="/products/:category" element={<ProductList />} /> */}
-                {/* <Route path="/products" element={<ProductList />} /> */}
-                {/* <Route path="/product/:id" element={<Product />} /> */}
-
-                {/* <Route path="/cart" element={<Cart />} /> */}
-                <Route path="/order" element={<ShipmentDetails />} />
-
-                {/* <Route path="/products/:category/" element={<ProductList />} /> */}
-
-                {/* Thử nghiệm */}
-                {/* <Route
-                    path="/auth/:id/verify/:token"
-                    element={user ? <Navigate to="/" /> : <Register />}
-                /> */}
-
-                {/* đúng */}
-                {/* <Route path="/auth/:id/verify/:token" element={<Register />} /> */}
-                {/* <Route
-                    path="/cart"
-                    element={user ? <Navigate to="/login" /> : <Cart />}
-                /> */}
-
-                {/* public router */}
-                {/* 
-                 <Route path="/about" element={<About />} />
-                <Route path="/chinh-sach-doi-tra" element={<PolicyReturn />} />
-                <Route path="/chinh-sach-bao-mat" element={<PolicyProtect />} />
-                <Route path="/dieu-khoan-dich-vu" element={<PolicyService />} />
-                <Route path="/reset-password/:id/:token/" element={<NewPassword />} /> */}
-                {/* <Route
-                    path="/confirm/register"
-                    element={user ? <Navigate to="/" /> : <EmailVerify />}
-                /> */}
-                {/* <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} /> */}
-
-                {/* rác */}
-                {/* <Route path="/test" element={<Test menu={menu} />} /> */}
-                {/* <Route path="/ttt4" element={<TestList />} /> */}
-                {/* <Route path="/about" element={<Introduce />} /> */}
             </Routes>
         </Router>
     );

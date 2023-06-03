@@ -8,7 +8,8 @@ import './userProfile.css';
 
 const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
     const token = user.token;
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
+    const [imgUrl, setImgUrl] = useState(null);
 
     const [inputs, setInputs] = useState({});
     const [file, setFile] = useState(null);
@@ -19,17 +20,38 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
         });
     };
 
-    console.log(inputs);
+    // let img = document.getElementById('displayImg');
 
-    console.log(file);
+    // const handleChangeFile = (e) => {
+    //     setFile(e.target.files[0]);
+
+    //     if (e.target.files[0]) {
+    //         img.src = URL.createObjectURL(e.target.files[0]);
+    //     }
+    // };
+
+    const handleChangeFile = (e) => {
+        const selectedFile = e.target.files[0];
+        // Tạo ra một instance của đối tượng FileReader
+        const reader = new FileReader();
+
+        reader.addEventListener(
+            'load',
+            () => {
+                // Đọc dữ liệu URL base64 được tạo bởi FileReader
+                setImgUrl(reader.result);
+            },
+            false,
+        );
+
+        if (selectedFile) {
+            reader.readAsDataURL(selectedFile);
+            setFile(selectedFile);
+        }
+    };
 
     const handleClick = (e) => {
         e.preventDefault();
-
-        setShow(true);
-        setTimeout(() => {
-            setShow(false);
-        }, 3000);
 
         if (file === null) {
             const update = { ...inputs, token };
@@ -43,15 +65,9 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
 
             const uploadTask = uploadBytesResumable(storageRef, file);
 
-            // Register three observers:
-            // 1. 'state_changed' observer, called any time the state changes
-            // 2. Error observer, called on failure
-            // 3. Completion observer, called on successful completion
             uploadTask.on(
                 'state_changed',
                 (snapshot) => {
-                    // Observe state change events such as progress, pause, and resume
-                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                     const progress =
                         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
@@ -69,16 +85,52 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                 (error) => {
                     // Handle unsuccessful uploads
                 },
-                () => {
-                    // Handle successful uploads on complete
-                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        const update = { ...inputs, img: downloadURL, token };
-                        console.log(update);
-                        //   addProduct(product, dispatch);
-                        updateUser(user.token, dispatch, user._id, update, axiosJWT);
-                        // sendData(update);
-                    });
+                //          () => {
+                //             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                //                 const update = { ...inputs, img: downloadURL, token };
+
+                //                 const result = await updateUser(user.token, dispatch, user._id, update, axiosJWT);
+
+                // let errorMessage = '';
+                // if (result === "update-user-succes") {
+                //     errorMessage = 'Loại bỏ thành công sản phẩm.';
+                // } else {
+                //     errorMessage = 'Loại bỏ không thành công sản phẩm.';
+                // }
+
+                // if (errorMessage) {
+                //     setTimeout(() => {
+                //         alert(errorMessage);
+                //     }, 800); // Sau 1 giây mới hiển thị thông báo
+                //     return;
+                // }
+                async () => {
+                    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                    const update = { ...inputs, img: downloadURL, token };
+                    console.log(update);
+                    const result = await updateUser(
+                        user.token,
+                        dispatch,
+                        user._id,
+                        update,
+                        axiosJWT,
+                    );
+
+                    let errorMessage = '';
+                    if (result === 'update-user-succes') {
+                        errorMessage = 'Cập nhật thành công.';
+                    } else {
+                        errorMessage = 'Cập nhật thất bại.';
+                    }
+
+                    if (errorMessage) {
+                        setTimeout(() => {
+                            alert(errorMessage);
+                        }, 800); // Sau 1 giây mới hiển thị thông báo
+                        return;
+                    }
+
+                    // });
                 },
             );
         }
@@ -200,11 +252,24 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                     <div className="col l-3 c-12">
                         <div className="user-profile-change-img">Thay đổi hình ảnh</div>
                         <div className="user-profile-right">
-                            <label htmlFor="file">
+                            {/* <label htmlFor="file">
                                 <img
                                     className="user-profile-img-user-current"
                                     src={
                                         // currentImg ||
+                                        user.img ||
+                                        'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
+                                    }
+                                    alt=""
+                                    id="displayImg"
+                                />
+                            </label> */}
+
+                            <label htmlFor="file">
+                                <img
+                                    className="user-profile-img-user-current"
+                                    src={
+                                        imgUrl ||
                                         user.img ||
                                         'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
                                     }
@@ -217,13 +282,20 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                                 <div className="user-profile-btn-select">Chọn ảnh</div>
                             </label>
 
+                            {/* <input
+                                className="user-profile-button-select-img"
+                                type="file"
+                                id="file"
+                                // onChange={(e) => setFile(e.target.files[0])}
+
+                                onChange={handleChangeFile}
+                            /> */}
+
                             <input
                                 className="user-profile-button-select-img"
                                 type="file"
                                 id="file"
-                                onChange={(e) => setFile(e.target.files[0])}
-
-                                // onChange={handleChangeFile}
+                                onChange={handleChangeFile}
                             />
 
                             <div style={{ marginTop: '12px' }}>

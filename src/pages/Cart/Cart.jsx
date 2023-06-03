@@ -32,8 +32,21 @@ const Cart = ({ axiosJWT, dispatch, navigate, user }) => {
 
     const cart = useSelector((state) => state?.cart);
 
-    const handleRemove = (id) => {
-        deleteProduct(user.token, dispatch, id, axiosJWT);
+    const handleRemove = async (id) => {
+        const result = await deleteProduct(user.token, dispatch, id, axiosJWT);
+        let errorMessage = '';
+        if (result === 'Cart has been deleted...') {
+            errorMessage = 'Loại bỏ thành công sản phẩm.';
+        } else {
+            errorMessage = 'Loại bỏ không thành công sản phẩm.';
+        }
+
+        if (errorMessage) {
+            setTimeout(() => {
+                alert(errorMessage);
+            }, 800); // Sau 1 giây mới hiển thị thông báo
+            return;
+        }
     };
 
     const handleUpdown = (condition, id) => {

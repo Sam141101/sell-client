@@ -44,16 +44,3 @@ export const store = configureStore({
 });
 
 export let persistor = persistStore(store);
-
-// test
-// export const store = configureStore({
-//     reducer: {
-//         // auth: authReducer,
-//         // cart: cartReducer,
-
-//         auth: {
-//             authReducer,
-//             cart: cartReducer,
-//         },
-//     },
-// });

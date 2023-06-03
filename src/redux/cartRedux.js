@@ -27,11 +27,40 @@ const cartSlice = createSlice({
             console.log(action.payload);
         },
 
+        // removeProduct: (state, action) => {
+        //     state.quantity -= 1;
+        //     const tt = state.products.findIndex((item) => item._id === action.payload);
+        //     // state.total -=
+        //     //     state.products[tt].product_id.price * state.products[tt].quantity;
+        //     state.total -= state.products[tt].price * state.products[tt].quantity;
+        //     state.products.splice(tt, 1);
+        // },
+
         removeProduct: (state, action) => {
             state.quantity -= 1;
             const tt = state.products.findIndex((item) => item._id === action.payload);
-            state.total -=
-                state.products[tt].product_id.price * state.products[tt].quantity;
+            console.log('state.total', state.total);
+            console.log(
+                'state.products[tt].price * state.products[tt].quantity',
+                state.products[tt].price * state.products[tt].quantity,
+            );
+
+            if (state.products[tt].product_id.discountProduct_id.discount_amount > 0) {
+                state.total =
+                    state.total -
+                    state.products[tt].product_id.price *
+                        (1 -
+                            state.products[tt].product_id.discountProduct_id
+                                .discount_amount /
+                                100) *
+                        state.products[tt].quantity;
+            } else {
+                state.total =
+                    state.total -
+                    state.products[tt].product_id.price * state.products[tt].quantity;
+            }
+            console.log('state.total1', state.total);
+
             state.products.splice(tt, 1);
         },
 

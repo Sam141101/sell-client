@@ -24,6 +24,7 @@ import Product from '../pages/Product/Product';
 import ProductList from '../pages/ProductList';
 import Register from '../pages/Register/Register';
 import Search from '../pages/Search/Search';
+import ShipmentDetails from '../pages/ShipmentDetails/ShipmentDetails';
 // import Test from '../pages/Test';
 // import TestList from '../pages/TestList/TestList';
 import UserProfile from '../pages/UserProfile/UserProfile';
@@ -206,6 +207,12 @@ const authenticatedRoutes = [
         path: '/danh-gia-san-pham/:product_id/:order_id',
         component: Evaluate,
         layout: DefaultLayoutAuth,
+    },
+
+    {
+        path: '/order',
+        component: ShipmentDetails,
+        layout: null,
     },
 ];
 

@@ -12,13 +12,14 @@ import {
     logoutSuccess,
     logoutFailure,
     updateStart,
-    updateSuccess,
+    // updateSuccess,
     updateFailure,
+    updateSuccess,
 } from './authRedux';
 import {
-    addCartStart,
-    addCartSuccess,
-    addCartFailure,
+    // addCartStart,
+    // addCartSuccess,
+    // addCartFailure,
     removeProduct,
     addProduct,
     getAllProduct,
@@ -104,9 +105,8 @@ export const addCart = async (token, dispatch, product, cartproduct, axiosJWT) =
         const res = await axiosJWT.post(BASE_URL_API + 'carts/', product, {
             headers: { token: `Bearer ${token}` },
         });
-        // dispatch(addProduct(cartproduct));
-
-        dispatch(addProduct(res.data));
+        dispatch(addProduct(res.data.cart));
+        return res.data.message;
     } catch (err) {
         console.log(err);
     }
@@ -128,11 +128,11 @@ export const updateProduct = async (token, dispatch, id, update, condition, axio
 export const deleteProduct = async (token, dispatch, id, axiosJWT, navigate) => {
     try {
         // await axiosJWT.delete('http://localhost:5000/api/carts/' + id, {
-        await axiosJWT.delete(BASE_URL_API + 'carts/' + id, {
+        const res = await axiosJWT.delete(BASE_URL_API + 'carts/' + id, {
             headers: { token: `Bearer ${token}` },
         });
         dispatch(removeProduct(id));
-        // navigate('/');
+        return res.data; // Trả về kết quả xóa sản phẩm
     } catch (err) {
         console.log(err);
         console.log('that bai');
@@ -142,12 +142,16 @@ export const deleteProduct = async (token, dispatch, id, axiosJWT, navigate) => 
 // Update user
 export const updateUser = async (token, dispatch, id, update, axiosJWT) => {
     dispatch(updateStart());
-
+    console.log('token', token);
     try {
+        console.log('link', BASE_URL_API + `users/${id}`);
+
         const res = await axiosJWT.put(BASE_URL_API + `users/${id}`, update, {
             headers: { token: `Bearer ${token}` },
         });
-        // dispatch(updateSuccess(res.data));
+        dispatch(updateSuccess(res.data.userCurrent));
+        console.log('res', res.data);
+        return res.data.message;
     } catch (err) {
         dispatch(updateFailure());
     }
