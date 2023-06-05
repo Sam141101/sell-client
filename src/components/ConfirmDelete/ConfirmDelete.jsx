@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 
 import { deleteProduct } from '../../redux/apiCalls';
 import './confirmDelete.css';
-// import { createAxiosInstance } from '../../useAxiosJWT';
 
 const ConfirmDelete = ({
     noti,
@@ -13,14 +12,10 @@ const ConfirmDelete = ({
     axiosJWT,
     dispatch,
 }) => {
-    // const user = useSelector((state) => state.auth?.currentUser);
-    // const dispatch = useDispatch();
-
+    console.log('comfirmDelete', comfirmDelete);
     const productId = useSelector((state) =>
         state.cart.products.filter((product) => product._id === comfirmDelete),
     );
-
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     const handleClick = (type) => {
         if (type === 'yes') {

@@ -153,7 +153,13 @@
     }
 
     .footer-contact-phone {
-        padding: 25px 15px !important;
+        padding: 15px 15px !important;
+    }
+
+    .amount-order {
+        padding: 0px 4px !important;
+        top: -10px !important;
+        right: -8px !important;
     }
 
     .footer-frame {
@@ -208,6 +214,11 @@
         margin-left: 5px;
     }
 
+    .pagination-number,
+    .pagination-button {
+        margin: 5px 8px !important;
+    }
+
     .pro-price-del {
         font-size: 11px !important;
         margin-left: 8px !important;
@@ -236,7 +247,8 @@
         margin: 15px 0 !important;
     }
 
-    .ship_ment-details-add-info .select-block {
+    .ship_ment-details-add-info .select-block,
+    .user-address-form-item .select-block {
         margin-right: 0px !important;
         margin-bottom: 15px;
     }
@@ -349,6 +361,14 @@
         padding: 0 !important;
         background-color: transparent !important;
     }
+
+    .show-comment .pagination-container {
+        margin: 20px 0 20px 0 !important;
+    }
+
+    /* .show-comment .pagination-pagi {
+        justify-content: flex-end !important;
+    } */
 
     .product-info-container {
         padding: 0 15px !important;
@@ -744,6 +764,16 @@
         margin-right: 0px;
     }
 
+    .show-block-img-evaluate {
+        width: calc(100% - 40px) !important;
+    }
+
+    .show-block-img-evaluate-image {
+        /* width: calc(100% - 40px) !important; */
+        width: 100% !important;
+        height: 220px !important;
+    }
+
     .main-evaluate-comment-title-mobile {
         display: block !important;
     }
@@ -925,7 +955,7 @@
     }
 
     .wait-purchase-total-price {
-        font-size: 18px !important;
+        font-size: 16px !important;
         margin-top: 5px;
         font-weight: 400 !important;
     }

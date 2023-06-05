@@ -182,7 +182,7 @@ const Footer = ({ layoutVoucher }) => {
                                     style={{
                                         // height: 'auto',
                                         minHeight: 'initial',
-                                        // width: '100%',
+                                        width: '100%',
                                     }}
                                     width="270"
                                     height="130"

@@ -66,14 +66,30 @@ const Search = ({ axios, BASE_URL_API }) => {
                     </div>
                 </div>
 
-                <div className="row">
-                    {products.map((item, index) => (
-                        <div className="col l-3" key={index}>
+                <div className="row pd-mobile">
+                    {/* {products.map((item, index) => (
+                        // <div className="col l-3" key={index}>
+
+                        <div
+                            className={`col l-3 c-6 c${index % 2 === 0 ? '2' : '1'}`}
+                            key={index}
+                        >
                             <div className="search-container1">
                                 <Product item={item} key={item._id} />
                             </div>
                         </div>
-                    ))}
+                    ))} */}
+
+                    {products.map((item, index) => {
+                        return (
+                            <div
+                                className={`col l-3 c-6 c${index % 2 === 0 ? '2' : '1'}`}
+                                key={item._id}
+                            >
+                                <Product item={item} />
+                            </div>
+                        );
+                    })}
                 </div>
 
                 <div className="row">

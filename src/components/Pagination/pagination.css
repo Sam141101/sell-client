@@ -31,6 +31,10 @@
     opacity: 1;
 }
 
+.main-frame-img-evaluate {
+    /* border: 1px solid #ccc; */
+}
+
 .pagination-button {
     padding: 4px;
     background-color: red;
@@ -42,6 +46,19 @@
     margin: 30px 8px;
     font-size: 15px;
     font-weight: 600;
+}
+
+.show-comment .pagination-container {
+    margin: 15px 0 15px 0;
+}
+
+.show-comment .pagination-pagi {
+    justify-content: flex-end;
+}
+
+.show-comment .pagination-number,
+.show-comment .pagination-button {
+    margin: 20px 8px;
 }
 
 .pagination-button:disabled {

@@ -93,7 +93,7 @@
     line-height: 1;
     padding: 5px 10px;
     font-weight: bold;
-    z-index: 9;
+    z-index: 5;
     background: #fff;
     border: 1px solid #ededed;
 }
@@ -110,7 +110,7 @@
     line-height: 1;
     padding: 5px 10px;
     font-weight: bold;
-    z-index: 9;
+    z-index: 5;
     background: #fff;
     border: 1px solid #ededed;
 }

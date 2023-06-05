@@ -60,12 +60,12 @@ const Slider = ({ slides }) => {
         <div className="fullscreen-slider">
             <div className="slide-nav left">
                 <div className="button-arrow left" onClick={handleClickPrevious}>
-                    <ArrowLeftOutlined style={{ fontSize: '30px' }} />
+                    <ArrowLeftOutlined className="icon-btn" />
                 </div>
             </div>
             <div className="slide-nav right">
                 <div className="button-arrow right" onClick={handleClickNext}>
-                    <ArrowRightOutlined style={{ fontSize: '30px' }} />
+                    <ArrowRightOutlined className="icon-btn" />
                 </div>
             </div>
             <div className="slider-container">

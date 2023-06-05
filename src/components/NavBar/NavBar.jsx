@@ -53,14 +53,15 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
         navigate('/account/profile');
     };
 
-    // useEffect(() => {
-    //     const getCart = () => {
-    //         if (user && user?.token) {
-    //             getAllCart(user.token, dispatch, user._id, axiosJWT);
-    //         }
-    //     };
-    //     getCart();
-    // }, [dispatch, user]);
+    useEffect(() => {
+        const getCart = () => {
+            if (user && user?.token) {
+                getAllCart(user.token, dispatch, user._id, axiosJWT);
+                console.log('getCart');
+            }
+        };
+        getCart();
+    }, [dispatch, user]);
 
     const handleClickUser = (e) => {
         const action = document.querySelector('.nav-menu-user-mobile');

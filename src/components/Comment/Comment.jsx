@@ -1,9 +1,10 @@
 import { KeyboardArrowLeft, KeyboardArrowRight, Star } from '@mui/icons-material';
 import { Rating } from '@mui/material';
 import './comment.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import Pagination from '../Pagination/Pagination';
 
 const changDate = (isoString) => {
     const date = new Date(isoString);
@@ -25,6 +26,17 @@ const Comment = ({ axios, BASE_URL_API }) => {
     const [ratingValue, setRatingValue] = useState(null);
 
     const [listInfoComment, setListInfoComment] = useState({});
+    const [filterPage, setFilterPage] = useState(1);
+    const [pagination, setPagination] = useState({
+        page: 1,
+        limit: 10,
+        totalRows: 20,
+    });
+
+    const handlePageChange = (newPage) => {
+        setFilterPage(newPage);
+    };
+
     const [img, setImg] = useState('');
 
     const handleChangeImg = (imgItem) => {
@@ -49,20 +61,44 @@ const Comment = ({ axios, BASE_URL_API }) => {
         }
     };
 
+    const componentRef = useRef(null);
+
     useEffect(() => {
-        const getComment = async () => {
-            try {
-                const res = await axios.get(
-                    BASE_URL_API + `comments/find/${id}/${option}`,
-                );
-                setListInfoComment(res.data);
-            } catch (err) {}
+        const observer = new IntersectionObserver((entries) => {
+            // Phát hiện khi phần tử hiển thị trong Viewport
+            const [entry] = entries;
+            if (entry.isIntersecting) {
+                // Nếu phần tử hiển thị, ta gọi API để tải dữ liệu
+                const getComment = async () => {
+                    try {
+                        const res = await axios.get(
+                            BASE_URL_API +
+                                `comments/find/${id}/${option}?page=${filterPage}&limit=3`,
+                        );
+                        const { resultProducts, pagi } = res.data;
+
+                        setListInfoComment(resultProducts);
+                        setPagination(pagi);
+                    } catch (err) {}
+                };
+                getComment();
+                // Sau khi tải xong thì ta ngừng theo dõi thay đổi của element nữa
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(componentRef.current);
+
+        // Trả về một function để remove phần tử khỏi Intersection Observer khi unmount component
+        return () => {
+            observer.unobserve(componentRef.current);
         };
-        getComment();
-    }, [id, option]);
+    }, [id, option, filterPage]);
+
+    console.log('pagination', pagination);
 
     return (
-        <div className="comment">
+        <div className="comment" ref={componentRef}>
             <div className="grid wide">
                 <div className="row">
                     <div className="col l-12">
@@ -106,6 +142,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                               listInfoComment.mainEvaluateStar.toFixed(1),
                                           )
                                         : ratingValue
+                                    // '2.5'
                                 }
                                 onChange={(event, value) => setRatingValue(value)}
                                 defaultValue={null}
@@ -124,11 +161,13 @@ const Comment = ({ axios, BASE_URL_API }) => {
                             </div>
 
                             <div className="main-evaluate-comment-title-mobile evaluate-text-mobile">
-                                (
-                                {listInfoComment &&
+                                {/* {listInfoComment &&
                                     listInfoComment.list &&
-                                    parseFloat(listInfoComment.list.length)}{' '}
-                                Đánh giá)
+                                    parseFloat(listInfoComment.list.length)}{' '} */}
+                                {pagination &&
+                                    pagination.totalRows &&
+                                    parseFloat(pagination.totalRows)}{' '}
+                                Đánh giá
                             </div>
                         </div>
 
@@ -349,13 +388,23 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                                 </div>
                                                             </div>
                                                             <div className="main-frame-img-evaluate">
-                                                                {img && (
+                                                                {/* {img && (
                                                                     <img
                                                                         src={img}
                                                                         alt=""
                                                                         className="show-block-img-evaluate-image"
                                                                     />
-                                                                )}
+                                                                )} */}
+                                                                {img &&
+                                                                    item.img.includes(
+                                                                        img,
+                                                                    ) && (
+                                                                        <img
+                                                                            src={img}
+                                                                            alt=""
+                                                                            className="show-block-img-evaluate-image"
+                                                                        />
+                                                                    )}
                                                             </div>
 
                                                             <div
@@ -394,6 +443,17 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                 </div>
                                             </div>
                                         ))}
+                                        <div className="row">
+                                            <div className="col l-12 c-12">
+                                                {pagination.totalRows >=
+                                                    pagination.limit && (
+                                                    <Pagination
+                                                        pagination={pagination}
+                                                        onPageChange={handlePageChange}
+                                                    />
+                                                )}
+                                            </div>
+                                        </div>
                                     </>
                                 ) : (
                                     <div
@@ -415,46 +475,6 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                         </div>
                                     </div>
                                 )}
-
-                                <div
-                                    className="comment-container"
-                                    style={
-                                        listInfoComment.list > 0
-                                            ? { display: 'block' }
-                                            : { display: 'none' }
-                                    }
-                                >
-                                    <div className="comment-pagi">
-                                        <button
-                                            className="comment-pagination-button"
-                                            style={{ marginRight: '20px' }}
-                                            // disabled={page <= 1}
-                                            // onClick={() => handlePageChange(page - 1)}
-                                        >
-                                            <KeyboardArrowLeft
-                                                style={{
-                                                    color: 'white',
-                                                    fontWeight: 'bold',
-                                                }}
-                                                fontSize="large"
-                                            />
-                                        </button>
-
-                                        <button
-                                            className="comment-pagination-button"
-                                            // disabled={page >= totalPages}
-                                            // onClick={() => handlePageChange(page + 1)}
-                                        >
-                                            <KeyboardArrowRight
-                                                style={{
-                                                    color: 'white',
-                                                    fontWeight: 'bold',
-                                                }}
-                                                fontSize="large"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

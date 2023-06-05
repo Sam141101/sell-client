@@ -49,6 +49,19 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
                 },
             );
             console.log('cập nhật mật khẩu thành công');
+
+            if (res.data.message === 'Update success') {
+                errorMessage = 'Cập nhật thành công.';
+            } else {
+                errorMessage = 'Cập nhật thất bại.';
+            }
+
+            if (errorMessage) {
+                setTimeout(() => {
+                    alert(errorMessage);
+                }, 800); // Sau 1 giây mới hiển thị thông báo
+                return;
+            }
         } catch (error) {
             console.log('cập nhật mật khẩu thất bại');
             console.log(error);

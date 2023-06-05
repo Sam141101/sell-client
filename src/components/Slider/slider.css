@@ -13,8 +13,8 @@
 .button-arrow {
     width: 50px;
     height: 50px;
-    /* background-color: #7a7a7a; */
-    background-color: red;
+    background-color: #7a7a7a;
+    /* background-color: red; */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -26,6 +26,16 @@
     cursor: pointer;
     opacity: 0.5;
     z-index: 2;
+}
+
+.button-arrow.left:hover,
+.button-arrow.right:hover {
+    opacity: 0.8;
+}
+
+.icon-btn {
+    font-size: 30px !important;
+    color: white;
 }
 
 .button-arrow.left {
@@ -77,6 +87,7 @@
 .fullscreen-slider .slide-nav {
     position: absolute;
     top: 50%;
+    z-index: 2;
     transform: translateY(-50%);
 }
 

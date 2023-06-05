@@ -107,7 +107,7 @@ const Product = ({ axios, BASE_URL_API, dispatch, navigate, user, axiosJWT }) =>
         getProduct();
     }, [id]);
 
-    console.log('product', product.discountProduct_id?.discount_amount);
+    // console.log('product', product.discountProduct_id?.discount_amount);
 
     return (
         <div className="product-page-frame">
