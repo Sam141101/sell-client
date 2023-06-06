@@ -25,7 +25,7 @@ const Line = styled.div`
     margin: 25px auto 0;
 `;
 
-const Cart = ({ axiosJWT, dispatch, navigate, user }) => {
+const Cart = ({ axiosJWT, dispatch, navigate, user, setToast }) => {
     const [noti, setNoti] = useState('none');
 
     const [comfirmDelete, setComfirmDelete] = useState('');
@@ -42,9 +42,12 @@ const Cart = ({ axiosJWT, dispatch, navigate, user }) => {
         }
 
         if (errorMessage) {
-            setTimeout(() => {
-                alert(errorMessage);
-            }, 800); // Sau 1 giây mới hiển thị thông báo
+            setToast({
+                show: true,
+                title: errorMessage,
+                type: 'success',
+                duration: 1200,
+            });
             return;
         }
     };

@@ -3,9 +3,7 @@ export const sliderItems = [
         id: 1,
         img: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33.jpg',
         setSrc: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33_large.jpg',
-        // title: 'NEW YEAR COLLECITON',
-        // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
-        // bg: '#f5fafd',
+
         cat: 'TEE',
     },
 
@@ -13,9 +11,7 @@ export const sliderItems = [
     //     id: 2,
     //     img: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
     //     setSrc: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
-    //     // title: 'LIKE SALE',
-    //     // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
-    //     // bg: '#fbf0f4',
+
     //     cat: 'HOODIE',
     // },
 
@@ -23,79 +19,182 @@ export const sliderItems = [
         id: 3,
         img: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
         setSrc: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
-        // title: 'LIKE SALE',
-        // desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
-        // bg: '#fbf0f4',
+
         cat: 'TEE',
     },
-
-    // {
-    //     id: 3,
-    //     img: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
-    //     setSrc: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
-    //     title: 'LIKE SALE',
-    //     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS",
-    //     bg: '#fbf0f4',
-    //     cat: 'POLO',
-    // },
 ];
-
-// export const categories = [
-//     {
-//         id: 1,
-//         img: 'https://product.hstatic.net/200000312481/product/2_09dbfb70f56d46cf9af6429c79971938_master.jpg',
-//         title: 'HOODIE',
-//         cat: 'HOODIE',
-//     },
-
-//     {
-//         id: 2,
-//         img: 'https://product.hstatic.net/200000312481/product/922cf725-031a-490e-9119-f7e637ead334_7cc675ae142946969539978a47b9fa8d_master.jpeg',
-//         title: 'TEE',
-//         cat: 'TEE',
-//     },
-
-//     {
-//         id: 3,
-//         img: 'https://product.hstatic.net/200000312481/product/f3a03cf4-d806-412e-be17-f91053a4addb_6a54944685ec4208a8752dec361deeea_master.jpeg',
-//         title: 'SHORT',
-//         cat: 'SHORT',
-//     },
-
-//     {
-//         id: 4,
-//         img: 'https://product.hstatic.net/200000312481/product/upload_6b4e8106c4f344deae29ec0b1f640f8c_master.jpg',
-//         title: 'POLO',
-//         cat: 'POLO',
-//     },
-// ];
 
 export const listItemNavBar = [
     {
         id: 1,
         title: 'TEE',
-        // to: '/products/TEE',
         to: `/products/TEE?page=${1}`,
     },
 
     {
         id: 2,
         title: 'HOODIE',
-        // to: '/products/HOODIE',
         to: `/products/HOODIE?page=${1}`,
     },
 
     {
-        id: 1,
+        id: 3,
         title: 'POLO',
-        // to: '/products/POLO',
         to: `/products/POLO?page=${1}`,
     },
 
     {
-        id: 1,
+        id: 4,
         title: 'SHORT',
-        // to: '/products/SHORT',
         to: `/products/SHORT?page=${1}`,
     },
 ];
+
+export const listNavPc = [
+    {
+        id: 1,
+        title: 'HOME',
+        to: `/`,
+    },
+
+    {
+        id: 2,
+        title: 'Shop',
+        to: `/products/all?page=${1}`,
+    },
+
+    {
+        id: 3,
+        title: 'Kiểm tra đơn hàng',
+        to: `/wait-for-confirmation`,
+    },
+
+    {
+        id: 4,
+        title: 'ABOUT',
+        to: `/about`,
+    },
+];
+
+export const listFunctions = [
+    {
+        id: 1,
+        title: 'Tài khoản của tôi',
+        to: `account/profile`,
+        noLink: true,
+    },
+
+    {
+        id: 2,
+        title: 'Đổi mật khẩu',
+        to: `account/change-password`,
+        noLink: true,
+    },
+
+    {
+        id: 3,
+        title: 'Đăng xuất',
+        noLink: false,
+    },
+];
+
+export const listInfoMobile = [
+    {
+        id: 1,
+        title: 'HOME',
+        to: `/`,
+        noLink: true,
+    },
+
+    {
+        id: 2,
+        title: 'Shop',
+        to: `#`,
+        noLink: false,
+    },
+
+    {
+        id: 3,
+        noLink: true,
+        title: 'kiểm tra đơn hàng',
+        to: '/wait-for-confirmation',
+    },
+
+    {
+        noLink: true,
+        id: 4,
+        title: 'ABOUT',
+        to: `/about`,
+    },
+];
+
+// export const listInfoMobile1 = [
+//     {
+//         id: 1,
+//         title: 'Quay về',
+//         noLink: true,
+//         Byid: 'return0',
+//     },
+
+//     {
+//         id: 2,
+//         title: 'Xem tất cả "Shop"',
+//         noLink: false,
+//     },
+
+//     {
+//         id: 3,
+//         noLink: true,
+//         title: '- TOPS',
+//         Byid: 'click1',
+//     },
+
+//     {
+//         noLink: true,
+//         id: 4,
+//         title: '- BOTTOM',
+//         Byid: 'click2',
+//     },
+// ];
+
+// export const listInfoMobile2 = [
+//     {
+//         id: 1,
+//         title: 'Quay về',
+//         noLink: true,
+//         Byid: 'return1',
+//         notPage: true,
+//     },
+
+//     {
+//         id: 2,
+//         title: 'Xem tất cả "TOPS"',
+//         noLink: true,
+//         notPage: false,
+//         to: '#',
+//     },
+
+//     {
+//         id: 3,
+//         notPage: true,
+//         noLink: false,
+//         title: '- TEE',
+//         to: `products/TEE?page=${1}`,
+//     },
+
+//     {
+//         notPage: true,
+//         noLink: false,
+//         id: 4,
+//         title: '- POLO',
+//         to: `products/POLO?page=${1}`,
+//     },
+
+//     {
+//         notPage: true,
+//         noLink: false,
+//         id: 4,
+//         title: '- HOODIE',
+//         to: `products/HOODIE?page=${1}`,
+//     },
+// ];

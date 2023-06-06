@@ -12,19 +12,10 @@ import {
     logoutSuccess,
     logoutFailure,
     updateStart,
-    // updateSuccess,
     updateFailure,
     updateSuccess,
 } from './authRedux';
-import {
-    // addCartStart,
-    // addCartSuccess,
-    // addCartFailure,
-    removeProduct,
-    addProduct,
-    getAllProduct,
-    updatedProduct,
-} from './cartRedux';
+import { removeProduct, addProduct, getAllProduct, updatedProduct } from './cartRedux';
 
 // Login
 export const login = async (dispatch, user, navigate) => {
@@ -52,7 +43,8 @@ export const register = async (dispatch, inputss, navigate, setNotify) => {
         dispatch(registerSuccess());
         setNotify(res.data);
         // console.log(res.data);
-        navigate('/login');
+        // navigate('/login');
+        return res.data;
     } catch (err) {
         dispatch(registerFailure());
         console.log(err);
@@ -127,7 +119,6 @@ export const updateProduct = async (token, dispatch, id, update, condition, axio
 // Delete product cart
 export const deleteProduct = async (token, dispatch, id, axiosJWT, navigate) => {
     try {
-        // await axiosJWT.delete('http://localhost:5000/api/carts/' + id, {
         const res = await axiosJWT.delete(BASE_URL_API + 'carts/' + id, {
             headers: { token: `Bearer ${token}` },
         });
@@ -158,14 +149,6 @@ export const updateUser = async (token, dispatch, id, update, axiosJWT) => {
 };
 
 // ----------------------------------------------------------------
-export const search = async (dispatch, id, update) => {
-    try {
-        const search = await axios.get(BASE_URL_API + 'search/');
-        console.log(search.data);
-    } catch (err) {
-        console.log('that bai');
-    }
-};
 
 // user evaluate product
 export const postCommnetUser = async (token, user_id, infoComment, axiosJWT) => {
@@ -177,13 +160,3 @@ export const postCommnetUser = async (token, user_id, infoComment, axiosJWT) => 
         console.log(err);
     }
 };
-
-// export const getInfoProduct = async (token, user_id, infoComment) => {
-//     try {
-//         await axios.post(BASE_URL_API + `comments/${user_id}`, infoComment, {
-//             headers: { token: `Bearer ${token}` },
-//         });
-//     } catch (err) {
-//         console.log(err);
-//     }
-// };

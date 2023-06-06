@@ -20,6 +20,8 @@ const ShipmentDetails = () => {
     const userId = user._id;
     const totalPrice = total.total;
 
+    let errorMessage = '';
+
     const [inputs, setInputs] = useState({
         fullname: user.fullname,
         phone: user.phone,
@@ -72,6 +74,21 @@ const ShipmentDetails = () => {
 
     const handleClickSave = async () => {
         try {
+            let errorMessage = '';
+
+            if (
+                !inputs.address ||
+                !inputs.provinceId ||
+                !inputs.districtId ||
+                !inputs.wardId
+            ) {
+                errorMessage = 'Vui lòng điền các trường địa chỉ.';
+            }
+            if (errorMessage) {
+                alert(errorMessage);
+                return;
+            }
+
             let res;
             if (confirmAddress === 'null') {
                 res = await axiosJWT.post(BASE_URL_API + 'address/' + userId, address, {
@@ -82,7 +99,21 @@ const ShipmentDetails = () => {
                     headers: { token: `Bearer ${user.token}` },
                 });
             }
-            console.log(res.data);
+
+            if (res.data.message === 'Cập nhật thành công địa chỉ!') {
+                errorMessage = 'Cập nhật thành công địa chỉ!';
+            } else if (res.data.message === 'Thêm thành công địa chỉ!') {
+                errorMessage = 'Thêm thành công địa chỉ!';
+            } else {
+                errorMessage = 'Cập nhật địa chỉ thất bại!';
+            }
+
+            if (errorMessage) {
+                setTimeout(() => {
+                    alert(errorMessage);
+                }, 800); // Sau 1 giây mới hiển thị thông báo
+                return;
+            }
         } catch (err) {
             console.log(err);
         }
@@ -90,20 +121,13 @@ const ShipmentDetails = () => {
 
     const handleFinishClick = async () => {
         try {
-            let errorMessage = '';
             if (!inputs.fullname) {
                 errorMessage = 'Vui lòng điền tên người nhận.';
-            }
-
-            if (!inputs.phone) {
+            } else if (!inputs.phone) {
                 errorMessage = 'Điền số điện thoại người nhận.';
-            }
-
-            if (!inputs.service_id) {
+            } else if (!inputs.service_id) {
                 errorMessage = 'Chọn phương thức vận chuyển.';
-            }
-
-            if (!inputs.method) {
+            } else if (!inputs.method) {
                 errorMessage = 'Chọn phương thức thanh toán.';
             }
 
@@ -307,13 +331,6 @@ const ShipmentDetails = () => {
         address.districtId,
         address.wardId,
     ]);
-
-    console.log('address', address);
-    console.log('inputs', inputs);
-    console.log('cart', cart);
-    console.log('totalPriceDelivery', totalPriceDelivery);
-
-    console.log('notify', notify);
 
     return (
         <div className="ship_ment-details-container">

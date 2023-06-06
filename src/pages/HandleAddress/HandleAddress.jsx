@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-import { useLocation } from 'react-router-dom';
 import FormInputAddress from '../../components/FormInputAddress/FormInputAddress';
 
-const HandleAddress = ({ user, axiosJWT, dispatch, navigate, BASE_URL_API }) => {
+const HandleAddress = ({
+    user,
+    axiosJWT,
+    dispatch,
+    navigate,
+    BASE_URL_API,
+    setToast,
+}) => {
     const token = user.token;
     const id = user?._id;
-
-    const location = useLocation();
 
     const [inputs, setInputs] = useState({
         address: '',
@@ -25,32 +29,25 @@ const HandleAddress = ({ user, axiosJWT, dispatch, navigate, BASE_URL_API }) => 
 
     console.log('inputs', inputs);
     const handleClick = async () => {
-        let isMissingFields = false;
-        const missingFields = [];
+        let errorMessage = '';
 
         if (!inputs.address) {
-            isMissingFields = true;
-            missingFields.push('Địa chỉ');
-        }
-        if (!inputs.provinceId) {
-            isMissingFields = true;
-            missingFields.push('Tỉnh / Thành');
-        }
-        if (!inputs.districtId) {
-            isMissingFields = true;
-            missingFields.push('Quận / Huyện');
-        }
-        if (!inputs.wardId) {
-            isMissingFields = true;
-            missingFields.push('Phường / Xã');
+            errorMessage = 'Vui lòng nhập địa chỉ.';
+        } else if (!inputs.provinceId) {
+            errorMessage = 'Vui lòng nhập Tỉnh / Thành!';
+        } else if (!inputs.districtId) {
+            errorMessage = 'Vui lòng nhập Quận / Huyện!';
+        } else if (!inputs.wardId) {
+            errorMessage = 'Vui lòng nhập Phường / Xã!';
         }
 
-        if (isMissingFields) {
-            alert(
-                `Vui lòng cung cấp đầy đủ thông tin cho các trường: ${missingFields.join(
-                    ', ',
-                )}`,
-            );
+        if (errorMessage) {
+            setToast({
+                show: true,
+                title: errorMessage,
+                type: 'info',
+                duration: 1200,
+            });
             return;
         }
 

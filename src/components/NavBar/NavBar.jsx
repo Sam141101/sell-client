@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
     AccountCircle,
-    // Close,
     KeyboardArrowLeft,
     KeyboardArrowRight,
     Mail,
     Menu,
-    // NotificationsNone,
     Phone,
-    // Search,
     ShoppingCart,
 } from '@mui/icons-material';
 import Badge from '@mui/material/Badge';
@@ -18,7 +15,8 @@ import { getAllCart, login, logout } from '../../redux/apiCalls';
 import Searchs from '../Searchs/Searchs';
 import { resetProduct } from '../../redux/cartRedux';
 import './navBar.css';
-import { listItemNavBar } from '../../data';
+import { listFunctions, listInfoMobile, listItemNavBar, listNavPc } from '../../data';
+import FormLoginMobile from '../FormLoginMobile/FormLoginMobile';
 
 // const Navbar = React.memo(({axiosJWT ,quantity}) => {
 const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
@@ -28,29 +26,31 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
     const accessToken = user?.token;
     const id = user?._id;
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        if (!user) {
-            navigate('/login');
+    const handleClick = (name) => {
+        console.log('name--', name, typeof name);
+        const action = document.querySelector('.nav-menu-user-mobile');
+        const action1 = document.querySelector('.nav-menu-mobile');
+        action.classList.remove('actived');
+        action1.classList.remove('actived');
+        document.body.style.overflow = 'auto';
+        if (name === 'cart') {
+            if (!user) {
+                navigate('/login');
+            } else {
+                navigate(`/${name}`);
+            }
         } else {
-            navigate('/cart');
+            console.log('dddd', `/${name}`);
+            navigate(`/${name}`);
         }
     };
 
     // Logout
 
-    console.log('axiosJWT', axiosJWT);
-
     const handleLogout = (e) => {
         e.preventDefault();
         logout(dispatch, id, accessToken, axiosJWT, navigate);
         resetProduct();
-    };
-
-    // profile user
-    const profileUser = (e) => {
-        e.preventDefault();
-        navigate('/account/profile');
     };
 
     useEffect(() => {
@@ -63,74 +63,8 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
         getCart();
     }, [dispatch, user]);
 
-    const handleClickUser = (e) => {
-        const action = document.querySelector('.nav-menu-user-mobile');
-        if (action) {
-            action.classList.toggle('actived');
-        }
-
-        const action1 = document.querySelector('.nav-menu-mobile');
-        if (action1) {
-            action1.classList.remove('actived');
-        }
-
-        const list1 = document.querySelector('#list1');
-        const list0 = document.querySelector('#list0');
-        const list2 = document.querySelector('#list2');
-        const list3 = document.querySelector('#list3');
-
-        list1.classList.remove('selected1');
-        list0.classList.remove('shop0');
-        list2.classList.remove('selected2');
-        list3.classList.remove('selected3');
-
-        if (action.classList.contains('actived')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    };
-
-    const handleClickMenu = () => {
-        // document.body.style.overflow = 'hidden';
-
-        const action1 = document.querySelector('.nav-menu-mobile');
-        if (action1) {
-            action1.classList.toggle('actived');
-        }
-
-        const action = document.querySelector('.nav-menu-user-mobile');
-        if (action) {
-            action.classList.remove('actived');
-        }
-
-        const list1 = document.querySelector('#list1');
-        const list0 = document.querySelector('#list0');
-        const list2 = document.querySelector('#list2');
-        const list3 = document.querySelector('#list3');
-
-        list1.classList.remove('selected1');
-        list0.classList.remove('shop0');
-        list2.classList.remove('selected2');
-        list3.classList.remove('selected3');
-
-        if (action1.classList.contains('actived')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    };
-
-    const handleClickHome = () => {
-        const action = document.querySelector('.nav-menu-user-mobile');
-        const action1 = document.querySelector('.nav-menu-mobile');
-        action.classList.remove('actived');
-        action1.classList.remove('actived');
-        document.body.style.overflow = 'auto';
-    };
-
     //login
-    const { isFetching, error } = useSelector((state) => state?.auth);
+    const { isFetching } = useSelector((state) => state?.auth);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -156,63 +90,91 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
             const action = document.querySelector('.nav-menu-user-mobile');
             action.classList.add('actived');
         }
-
-        // setShowErrorMessage(error);
     };
 
     const changeInputUserName = (e) => {
-        // setShowErrorMessage(false);
         setUsername(e.target.value);
     };
 
     const changeInputPassword = (e) => {
-        // setShowErrorMessage(false);
         setPassword(e.target.value);
     };
 
-    const handleClickMore = (e) => {
-        // document.body.style.overflow = 'hidden';
+    const handleMenuClick = (e, buttonType) => {
+        e.preventDefault();
+        const action1 = document.querySelector('.nav-menu-mobile');
+        const action = document.querySelector('.nav-menu-user-mobile');
         const list1 = document.querySelector('#list1');
         const list0 = document.querySelector('#list0');
         const list2 = document.querySelector('#list2');
         const list3 = document.querySelector('#list3');
 
-        // e.preventDefault();
-        const taked = e.target.id;
-        console.log(taked);
+        if (buttonType !== 'More') {
+            if (buttonType === 'Menu') {
+                action1.classList.toggle('actived');
+                action.classList.remove('actived');
+                if (action1.classList.contains('actived')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
+            } else if (buttonType === 'User') {
+                action.classList.toggle('actived');
+                action1.classList.remove('actived');
 
-        if (taked === 'click0') {
-            list1.classList.add('selected1');
-            list0.classList.add('shop0');
-        } else if (taked === 'return0') {
+                if (action.classList.contains('actived')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
             list1.classList.remove('selected1');
             list0.classList.remove('shop0');
-        } else if (taked === 'click1') {
-            list2.classList.add('selected2');
-        } else if (taked === 'return1') {
             list2.classList.remove('selected2');
-        } else if (taked === 'click2') {
-            list3.classList.add('selected3');
-        } else if (taked === 'return2') {
             list3.classList.remove('selected3');
+        } else {
+            const taked = e.target.id;
+            console.log(taked);
+            switch (taked) {
+                case 'click0':
+                    list1.classList.add('selected1');
+                    list0.classList.add('shop0');
+                    break;
+                case 'return0':
+                    list1.classList.remove('selected1');
+                    list0.classList.remove('shop0');
+                    break;
+                case 'click1':
+                    list2.classList.add('selected2');
+                    break;
+                case 'return1':
+                    list2.classList.remove('selected2');
+                    break;
+                case 'click2':
+                    list3.classList.add('selected3');
+                    break;
+                case 'return2':
+                    list3.classList.remove('selected3');
+                    break;
+                default:
+                    break;
+            }
         }
     };
 
     return (
         <div className="frame-navbar">
-            {/* <div className="navbar-container" style={{ marginTop: '12px' }}> */}
             <div className="grid wide">
                 <div className="row">
                     <div className="col l-12 c-12">
                         <div className="navbar-container">
+                            {/* Mobile */}
                             <div className="nav-block">
                                 <div className="navbar-mobile-left">
-                                    {/* <Menu className="mobile-menu" /> */}
                                     <Menu
                                         className="mobile-icon menu"
-                                        onClick={handleClickMenu}
-                                        // id="result0"
-                                        // onClick={resultClick}
+                                        onClick={(e) => handleMenuClick(e, 'Menu')}
                                     />
                                     <nav className="nav-menu-mobile">
                                         <span className="box-triangle">
@@ -234,41 +196,37 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 id="list0"
                                             >
                                                 <ul className="nav-menu-list-mobile">
-                                                    <li className="nav-menu-list-item-mobile">
-                                                        <Link
-                                                            className="navbar-menu-item-link"
-                                                            to="/"
+                                                    {listInfoMobile.map((item, index) => (
+                                                        <li
+                                                            className="nav-menu-list-item-mobile"
+                                                            key={index}
                                                         >
-                                                            HOME
-                                                        </Link>
-                                                    </li>
-                                                    <li className="nav-menu-list-item-mobile">
-                                                        <Link
-                                                            className="navbar-menu-item-link"
-                                                            to="#"
-                                                            id="click0"
-                                                            onClick={handleClickMore}
-                                                        >
-                                                            Shop
-                                                            <KeyboardArrowRight className="navbar-menu-item-more" />
-                                                        </Link>
-                                                    </li>
-                                                    <li className="nav-menu-list-item-mobile">
-                                                        <Link
-                                                            className="navbar-menu-item-link"
-                                                            to="/wait-for-confirmation"
-                                                        >
-                                                            kiểm tra đơn hàng
-                                                        </Link>
-                                                    </li>
-                                                    <li className="nav-menu-list-item-mobile">
-                                                        <Link
-                                                            className="navbar-menu-item-link"
-                                                            to="/about"
-                                                        >
-                                                            ABOUT
-                                                        </Link>
-                                                    </li>
+                                                            <Link
+                                                                className="navbar-menu-item-link"
+                                                                to={item.to}
+                                                                id={
+                                                                    item.noLink === false
+                                                                        ? 'click0'
+                                                                        : undefined
+                                                                }
+                                                                onClick={
+                                                                    item.noLink === false
+                                                                        ? (e) =>
+                                                                              handleMenuClick(
+                                                                                  e,
+                                                                                  'More',
+                                                                              )
+                                                                        : null
+                                                                }
+                                                            >
+                                                                {item.title}
+                                                                {item.noLink ===
+                                                                    false && (
+                                                                    <KeyboardArrowRight className="navbar-menu-item-more" />
+                                                                )}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
                                                 </ul>
                                                 <div className="nav-list-help-mobile">
                                                     <p className="nav-list-help-title-mobile">
@@ -297,9 +255,10 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
                                                             className="navbar-menu-item-link return five "
-                                                            // to="/"
                                                             id="return0"
-                                                            onClick={handleClickMore}
+                                                            onClick={(e) =>
+                                                                handleMenuClick(e, 'More')
+                                                            }
                                                         >
                                                             <KeyboardArrowLeft className="navbar-menu-item-more return" />
                                                             Quay về
@@ -308,9 +267,12 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
                                                             className="navbar-menu-item-link text-inherit"
-                                                            // to="/products"
-                                                            to={`/products/TEE?page=${1}`}
-                                                            // onClick={handleClickMore}
+                                                            to={`/products/all?page=${1}`}
+                                                            onClick={() =>
+                                                                handleClick(
+                                                                    `products/all?page=${1}`,
+                                                                )
+                                                            }
                                                         >
                                                             Xem tất cả "Shop"
                                                         </Link>
@@ -320,7 +282,9 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                             className="navbar-menu-item-link four"
                                                             // to="/"
                                                             id="click1"
-                                                            onClick={handleClickMore}
+                                                            onClick={(e) =>
+                                                                handleMenuClick(e, 'More')
+                                                            }
                                                         >
                                                             - TOPS
                                                             <KeyboardArrowRight className="navbar-menu-item-more" />
@@ -330,7 +294,9 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                         <Link
                                                             className="navbar-menu-item-link four"
                                                             id="click2"
-                                                            onClick={handleClickMore}
+                                                            onClick={(e) =>
+                                                                handleMenuClick(e, 'More')
+                                                            }
                                                         >
                                                             - BOTTOM
                                                             <KeyboardArrowRight className="navbar-menu-item-more" />
@@ -346,50 +312,56 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 <ul className="nav-menu-list-mobile">
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
-                                                            className="navbar-menu-item-link return five "
-                                                            // to="/"
+                                                            className="navbar-menu-item-link return five"
                                                             id="return1"
-                                                            onClick={handleClickMore}
+                                                            onClick={(e) =>
+                                                                handleMenuClick(e, 'More')
+                                                            }
                                                         >
                                                             <KeyboardArrowLeft className="navbar-menu-item-more return" />
                                                             Quay về
                                                         </Link>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
-                                                        <Link
-                                                            className="navbar-menu-item-link text-inherit"
-                                                            // to="/products"
-                                                            // onClick={handleClickMore}
-                                                        >
+                                                        <Link className="navbar-menu-item-link text-inherit">
                                                             Xem tất cả "TOPS"
                                                         </Link>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
-                                                        <Link
+                                                        <div
                                                             className="navbar-menu-item-link four"
-                                                            // to="/products/TEE"
-                                                            to={`/products/TEE?page=${1}`}
+                                                            onClick={(e) =>
+                                                                handleClick(
+                                                                    `products/TEE?page=${1}`,
+                                                                )
+                                                            }
                                                         >
                                                             - TEE
-                                                        </Link>
+                                                        </div>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
-                                                        <Link
+                                                        <div
                                                             className="navbar-menu-item-link four"
-                                                            // to="/products/POLO"
-                                                            to={`/products/POLO?page=${1}`}
+                                                            onClick={(e) =>
+                                                                handleClick(
+                                                                    `products/POLO?page=${1}`,
+                                                                )
+                                                            }
                                                         >
                                                             - POLO
-                                                        </Link>
+                                                        </div>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
-                                                        <Link
+                                                        <div
                                                             className="navbar-menu-item-link four"
-                                                            // to="/products/HOODIE"
-                                                            to={`/products/HOODIE?page=${1}`}
+                                                            onClick={(e) =>
+                                                                handleClick(
+                                                                    `products/HOODIE?page=${1}`,
+                                                                )
+                                                            }
                                                         >
                                                             - HOODIE
-                                                        </Link>
+                                                        </div>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -403,29 +375,30 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                         <Link
                                                             className="navbar-menu-item-link return five "
                                                             id="return2"
-                                                            onClick={handleClickMore}
+                                                            onClick={(e) =>
+                                                                handleMenuClick(e, 'More')
+                                                            }
                                                         >
                                                             <KeyboardArrowLeft className="navbar-menu-item-more return" />
                                                             Quay về
                                                         </Link>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
-                                                        <Link
-                                                            className="navbar-menu-item-link text-inherit"
-                                                            // to="/products"
-                                                            // onClick={handleClickMore}
-                                                        >
+                                                        <Link className="navbar-menu-item-link text-inherit">
                                                             Xem tất cả "BOTTOMS"
                                                         </Link>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
-                                                        <Link
+                                                        <div
                                                             className="navbar-menu-item-link four"
-                                                            // to="/products/SHORT"
-                                                            to={`/products/SHORT?page=${1}`}
+                                                            onClick={(e) =>
+                                                                handleClick(
+                                                                    `products/SHORT?page=${1}`,
+                                                                )
+                                                            }
                                                         >
                                                             - SHORT
-                                                        </Link>
+                                                        </div>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -434,7 +407,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                 </div>
 
                                 <div className="navbar-center">
-                                    <Link to="/" onClick={handleClickHome}>
+                                    <div onClick={(e) => handleClick('')}>
                                         <img
                                             className="navbar-header-img"
                                             height="32px"
@@ -442,7 +415,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                             alt=""
                                             src="https://file.hstatic.net/200000312481/file/2222_1790556c641f404aab8dfb038b47eb0e.png"
                                         />
-                                    </Link>
+                                    </div>
                                 </div>
 
                                 <div className="navbar-right">
@@ -464,41 +437,40 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                         </span>
                                                     </div>
                                                     <div className="navbar-list-info">
-                                                        <div
-                                                            className="navbar-info-user"
-                                                            style={{
-                                                                borderTopLeftRadius:
-                                                                    '3px',
-                                                                borderTopRightRadius:
-                                                                    '3px',
-                                                            }}
-                                                            onClick={profileUser}
-                                                        >
-                                                            Tài khoản của tôi
-                                                        </div>
-                                                        <Link
-                                                            // to="/change-account"
-                                                            to="/account/change-password"
-                                                            className="navbar-info-user"
-                                                            style={{
-                                                                textDecoration: 'none',
-                                                                color: 'inherit',
-                                                            }}
-                                                        >
-                                                            Đổi mật khẩu
-                                                        </Link>
-                                                        <div
-                                                            className="navbar-info-user"
-                                                            style={{
-                                                                borderBottomLeftRadius:
-                                                                    '3px',
-                                                                borderBottomRightRadius:
-                                                                    '3px',
-                                                            }}
-                                                            onClick={handleLogout}
-                                                        >
-                                                            Đăng xuất
-                                                        </div>
+                                                        {listFunctions.map(
+                                                            (item, index) => (
+                                                                <div key={index}>
+                                                                    {item.noLink ===
+                                                                    true ? (
+                                                                        <Link
+                                                                            className={`navbar-info-user ${
+                                                                                item.title ===
+                                                                                'Tài khoản của tôi'
+                                                                                    ? 'border-top'
+                                                                                    : ''
+                                                                            }`}
+                                                                            to={`/${item.to}`}
+                                                                        >
+                                                                            {item.title}
+                                                                        </Link>
+                                                                    ) : (
+                                                                        <div
+                                                                            className={`navbar-info-user ${
+                                                                                item.title ===
+                                                                                'Đăng xuất'
+                                                                                    ? 'border-bottom'
+                                                                                    : ''
+                                                                            }`}
+                                                                            onClick={
+                                                                                handleLogout
+                                                                            }
+                                                                        >
+                                                                            Đăng xuất
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            ),
+                                                        )}
                                                     </div>
                                                 </div>
                                             </div>
@@ -506,9 +478,9 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                             <div className="mobile-user">
                                                 <AccountCircle
                                                     className="mobile-icon"
-                                                    onClick={handleClickUser}
-                                                    // id="result1"
-                                                    // onClick={resultClick}
+                                                    onClick={(e) =>
+                                                        handleMenuClick(e, 'User')
+                                                    }
                                                 />
 
                                                 <nav className="nav-menu-user-mobile">
@@ -538,38 +510,40 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                                         opacity: '1',
                                                                     }}
                                                                 >
-                                                                    {/* VŨ HUY Sang */}
                                                                     {user.username}
                                                                 </span>
                                                             </li>
-                                                            <li className="nav-info-user-mobile-list-item">
-                                                                <Link
-                                                                    to="/account/profile"
-                                                                    className="nav-info-user-mobile-list-item-link"
-                                                                >
-                                                                    Tài khoản của tôi
-                                                                </Link>
-                                                            </li>
 
-                                                            <li className="nav-info-user-mobile-list-item">
-                                                                <Link
-                                                                    // to="/change-account"
-                                                                    to="/account/change-password"
-                                                                    className="nav-info-user-mobile-list-item-link"
-                                                                >
-                                                                    Đổi mật khẩu
-                                                                </Link>
-                                                            </li>
-
-                                                            <li className="nav-info-user-mobile-list-item">
-                                                                <p
-                                                                    // to="/"
-                                                                    className="nav-info-user-mobile-list-item-link"
-                                                                    onClick={handleLogout}
-                                                                >
-                                                                    Đăng xuất
-                                                                </p>
-                                                            </li>
+                                                            {listFunctions.map(
+                                                                (item, index) => (
+                                                                    <li
+                                                                        className="nav-info-user-mobile-list-item"
+                                                                        key={index}
+                                                                    >
+                                                                        <div
+                                                                            onClick={
+                                                                                item.noLink ===
+                                                                                true
+                                                                                    ? (
+                                                                                          e,
+                                                                                      ) =>
+                                                                                          handleClick(
+                                                                                              item.to,
+                                                                                          )
+                                                                                    : (
+                                                                                          e,
+                                                                                      ) =>
+                                                                                          handleLogout(
+                                                                                              e,
+                                                                                          )
+                                                                            }
+                                                                            className="nav-info-user-mobile-list-item-link"
+                                                                        >
+                                                                            {item.title}
+                                                                        </div>
+                                                                    </li>
+                                                                ),
+                                                            )}
                                                         </ul>
                                                     </div>
                                                 </nav>
@@ -580,7 +554,6 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                             <div className="hide-on-mobile">
                                                 <div className="pc-user">
                                                     <Link
-                                                        // to="/register"
                                                         to="/confirm/register"
                                                         style={{
                                                             color: '#000',
@@ -608,7 +581,9 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                             <div className="mobile-user">
                                                 <AccountCircle
                                                     className="mobile-icon"
-                                                    onClick={handleClickUser}
+                                                    onClick={(e) =>
+                                                        handleMenuClick(e, 'User')
+                                                    }
                                                 />
 
                                                 <nav className="nav-menu-user-mobile">
@@ -626,123 +601,28 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     </span>
 
                                                     <div className="nav-info-user-mobile">
-                                                        <div className="nav-header-login-mobile ">
-                                                            <h2 className="nav-header-login-mobile-title">
-                                                                đăng nhập tài khoản
-                                                            </h2>
-                                                            <p className="nav-header-login-mobile-desc">
-                                                                Nhập email và mật khẩu của
-                                                                bạn
-                                                            </p>
-                                                        </div>
-
-                                                        <div className="form-login-mobile">
-                                                            <form
-                                                                action=""
-                                                                className="nav-form-mobile-login"
-                                                            >
-                                                                <div className="nav-form-block">
-                                                                    <input
-                                                                        type="text"
-                                                                        className="nav-login-tk"
-                                                                        placeholder="Email"
-                                                                        ref={inputRef1}
-                                                                        onChange={(e) =>
-                                                                            changeInputUserName(
-                                                                                e,
-                                                                            )
-                                                                        }
-                                                                    />
-                                                                </div>
-
-                                                                <div className="nav-form-block">
-                                                                    <input
-                                                                        type="password"
-                                                                        className="nav-login-mk"
-                                                                        placeholder="Mật khẩu"
-                                                                        ref={inputRef2}
-                                                                        onChange={(e) =>
-                                                                            changeInputPassword(
-                                                                                e,
-                                                                            )
-                                                                        }
-                                                                    />
-                                                                </div>
-
-                                                                <div className="nav-login-desc-police">
-                                                                    This site is protected
-                                                                    by reCAPTCHA and the
-                                                                    Google
-                                                                    <Link
-                                                                        to=""
-                                                                        className="nav-login-link"
-                                                                    >
-                                                                        Privacy Policy
-                                                                    </Link>
-                                                                    and
-                                                                    <Link className="nav-login-link">
-                                                                        Terms of Service
-                                                                    </Link>
-                                                                    apply
-                                                                </div>
-
-                                                                <button
-                                                                    className="nav-btn-login-mobile"
-                                                                    onClick={
-                                                                        handleClickLogin
-                                                                    }
-                                                                    disabled={isFetching}
-                                                                >
-                                                                    đăng nhập
-                                                                </button>
-
-                                                                <div className="nav-more-info-mobile">
-                                                                    <p className="nav-more-info-mobile-text">
-                                                                        Khách hàng mới?
-                                                                        <Link
-                                                                            className="nav-more-info-mobile"
-                                                                            to="/confirm/register"
-                                                                        >
-                                                                            Tạo tài khoản
-                                                                        </Link>
-                                                                    </p>
-
-                                                                    <p className="nav-more-info-mobile-text">
-                                                                        Quên mật khẩu?
-                                                                        <Link
-                                                                            className="nav-more-info-mobile"
-                                                                            to="/forgot-password"
-                                                                        >
-                                                                            Khôi phục mật
-                                                                            khẩu
-                                                                        </Link>
-                                                                    </p>
-                                                                </div>
-                                                            </form>
-                                                        </div>
+                                                        <FormLoginMobile
+                                                            inputRef1={inputRef1}
+                                                            changeInputUserName={
+                                                                changeInputUserName
+                                                            }
+                                                            changeInputPassword={
+                                                                changeInputPassword
+                                                            }
+                                                            inputRef2={inputRef2}
+                                                            isFetching={isFetching}
+                                                            handleClickLogin={
+                                                                handleClickLogin
+                                                            }
+                                                            handleClick={handleClick}
+                                                        />
                                                     </div>
                                                 </nav>
                                             </div>
                                         </>
                                     )}
 
-                                    {/* <Link onClick={handleClick}>
-                                        <div className="navbar-menu-item">
-                                            <Badge
-                                                badgeContent={user && quantity}
-                                                color="secondary"
-                                                className="mobile-cart-number"
-                                            >
-                                                <NotificationsNone
-                                                    style={{ color: 'black' }}
-                                                    fontSize="large"
-                                                    className="mobile-icon"
-                                                />
-                                            </Badge>
-                                        </div>
-                                    </Link> */}
-
-                                    <Link onClick={handleClick}>
+                                    <div onClick={(e) => handleClick('cart')}>
                                         <div className="navbar-menu-item">
                                             <Badge
                                                 badgeContent={user && quantity}
@@ -756,81 +636,56 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 />
                                             </Badge>
                                         </div>
-                                    </Link>
+                                    </div>
                                 </div>
                             </div>
+                            {/* ------ */}
                         </div>
                     </div>
                 </div>
 
+                {/* PC || LAPTOP */}
                 <div className="navbar-menu">
                     <div className="row">
                         <div className="col l-7 c-0">
                             <div className="nav-list-mobile hide-on-mobile">
-                                <div className="nav-menu">
-                                    <span className="nav-label">
-                                        <Link className="navbar-menu-item-link" to="/">
-                                            HOME
-                                        </Link>
-                                    </span>
-                                    <div className="line"></div>
-                                </div>
-
-                                <div className="nav-menu">
-                                    <span className="nav-label">
-                                        <Link
-                                            className="navbar-menu-item-link"
-                                            to={`/products/all?page=${1}`}
-                                        >
-                                            Shop
-                                            <span
-                                                style={{
-                                                    marginLeft: '3px',
-                                                    fontSize: '16px',
-                                                }}
+                                {listNavPc.map((item, index) => (
+                                    <div className="nav-menu" key={index}>
+                                        <span className="nav-label">
+                                            <Link
+                                                className="navbar-menu-item-link"
+                                                to={item.to}
                                             >
-                                                &#9662;
-                                            </span>
-                                        </Link>
-                                    </span>
-                                    <div className="line"></div>
-                                    <ul className="nav-list">
-                                        {listItemNavBar.map((item, index) => (
-                                            <li key={index} className="nav-item">
-                                                <Link
-                                                    className="nav-menu-item-link"
-                                                    to={item.to}
-                                                >
-                                                    {item.title}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div className="nav-menu" style={{ zIndex: '7' }}>
-                                    <span className="nav-label">
-                                        <Link
-                                            className="navbar-menu-item-link"
-                                            to="/wait-for-confirmation"
-                                        >
-                                            kiểm tra đơn hàng
-                                        </Link>
-                                    </span>
-                                    <div className="line"></div>
-                                </div>
-
-                                <div className="nav-menu">
-                                    <span className="nav-label">
-                                        <Link
-                                            className="navbar-menu-item-link"
-                                            to="/about"
-                                        >
-                                            ABOUT
-                                        </Link>
-                                    </span>
-                                    <div className="line"></div>
-                                </div>
+                                                {item.title}
+                                                {item.title === 'Shop' && (
+                                                    <span
+                                                        style={{
+                                                            marginLeft: '3px',
+                                                            fontSize: '16px',
+                                                        }}
+                                                    >
+                                                        &#9662;
+                                                    </span>
+                                                )}
+                                            </Link>
+                                        </span>
+                                        <div className="line"></div>
+                                        {item.title === 'Shop' && (
+                                            <ul className="nav-list">
+                                                {listItemNavBar.map((item, index) => (
+                                                    <li key={index} className="nav-item">
+                                                        <Link
+                                                            className="nav-menu-item-link"
+                                                            to={item.to}
+                                                        >
+                                                            {item.title}
+                                                        </Link>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                    </div>
+                                ))}
                             </div>
                         </div>
 

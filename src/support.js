@@ -1,5 +1,3 @@
-import { useDispatch } from 'react-redux';
-import { logoutSuccess } from './redux/authRedux';
 import jwt_decode from 'jwt-decode';
 import { logout } from './redux/apiCalls';
 import { resetProduct } from './redux/cartRedux';
@@ -11,6 +9,16 @@ export const togglePasswordVisibility = (id) => {
         x.type = 'text';
     } else {
         x.type = 'password';
+    }
+};
+
+export const notifyCondition = (message, time) => {
+    console.log('support', message, time);
+    if (message) {
+        setTimeout(() => {
+            alert(message);
+        }, time);
+        return;
     }
 };
 

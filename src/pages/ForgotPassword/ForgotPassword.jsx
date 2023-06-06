@@ -4,35 +4,46 @@ import './forgotPassword.css';
 
 // --------------------------------------------------------------
 
-const ForgotPassword = ({ BASE_URL_API, axios }) => {
+const ForgotPassword = ({ BASE_URL_API, axios, setToast }) => {
     const [email, setEmail] = useState('');
-    const [msg, setMsg] = useState('');
 
     const handleClick = async (e) => {
         e.preventDefault();
         let errorMessage = '';
+        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
         if (!email) {
             errorMessage = 'Vui lòng nhập Email.';
-        }
-
-        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!regex.test(email)) {
+        } else if (!regex.test(email)) {
             errorMessage = 'Email không hợp lệ!';
         }
 
         if (errorMessage) {
-            alert(errorMessage);
+            setToast({
+                show: true,
+                title: errorMessage,
+                type: 'info',
+                duration: 1200,
+            });
             return;
         }
 
         try {
             const url = BASE_URL_API + `auth/forgot-password`;
             const { data: res } = await axios.post(url, { email });
-            console.log('xác thực email');
-            setMsg(res.message);
+            setToast({
+                show: true,
+                title: res.message,
+                type: 'success',
+                duration: 1200,
+            });
         } catch (error) {
-            console.log('xác thực email thất bại');
+            setToast({
+                show: true,
+                title: 'xác thực email thất bại',
+                type: 'error',
+                duration: 1200,
+            });
             console.log(error);
         }
     };
@@ -64,15 +75,6 @@ const ForgotPassword = ({ BASE_URL_API, axios }) => {
                                                 value={email}
                                             />
 
-                                            {msg && (
-                                                <span
-                                                    className="email-verify-span"
-                                                    id="email"
-                                                >
-                                                    {msg}
-                                                </span>
-                                            )}
-
                                             <div className="forgot-password-desc-police">
                                                 This site is protected by reCAPTCHA and
                                                 the Google
@@ -89,7 +91,6 @@ const ForgotPassword = ({ BASE_URL_API, axios }) => {
                                             <div className="forgot-password-buttons">
                                                 <button
                                                     className="email-verify-button"
-                                                    // disabled={!email}
                                                     onClick={handleClick}
                                                 >
                                                     Gửi

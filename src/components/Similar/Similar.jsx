@@ -8,34 +8,40 @@ const Similar = ({ cat, BASE_URL_API, axios }) => {
     const componentRef = useRef(null);
 
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            // Phát hiện khi phần tử hiển thị trong Viewport
-            const [entry] = entries;
-            if (entry.isIntersecting) {
-                // Nếu phần tử hiển thị, ta gọi API để tải dữ liệu
-                const getProducts = async () => {
-                    try {
-                        console.log('gọi api rồi');
-                        const res = await axios.get(
-                            BASE_URL_API + `products/similar/?category=${cat}`,
-                        );
-                        setProducts(res.data);
-                    } catch (err) {}
-                };
+        const element = componentRef.current;
+        if (element != null) {
+            const observer = new IntersectionObserver((entries) => {
+                // Phát hiện khi phần tử hiển thị trong Viewport
+                const [entry] = entries;
+                if (entry.isIntersecting) {
+                    // Nếu phần tử hiển thị, ta gọi API để tải dữ liệu
+                    const getProducts = async () => {
+                        try {
+                            console.log('gọi api rồi');
+                            const res = await axios.get(
+                                BASE_URL_API + `products/similar/?category=${cat}`,
+                            );
+                            setProducts(res.data);
+                        } catch (err) {}
+                    };
 
-                getProducts();
-                // Sau khi tải xong thì ta ngừng theo dõi thay đổi của element nữa
-                observer.disconnect();
-            }
-        });
+                    getProducts();
+                    // Sau khi tải xong thì ta ngừng theo dõi thay đổi của element nữa
+                    observer.disconnect();
+                }
+            });
 
-        observer.observe(componentRef.current);
+            observer.observe(element);
 
-        // Trả về một function để remove phần tử khỏi Intersection Observer khi unmount component
-        return () => {
-            observer.unobserve(componentRef.current);
-        };
-    }, [cat]);
+            // Trả về một function để remove phần tử khỏi Intersection Observer khi unmount component
+            return () => {
+                if (observer && element) {
+                    observer.unobserve(element);
+                    observer.disconnect();
+                }
+            };
+        }
+    }, [axios, BASE_URL_API, cat]);
 
     return (
         <div ref={componentRef}>

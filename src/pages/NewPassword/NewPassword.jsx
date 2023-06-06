@@ -7,12 +7,12 @@ import './newPassword.css';
 
 // --------------------------------------------------------------
 
-const NewPassword = ({ axios, BASE_URL_API, navigate }) => {
+const NewPassword = ({ axios, BASE_URL_API, navigate, setToast }) => {
     const [email, setEmail] = useState('');
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
-    const [msg, setMsg] = useState('');
+    // const [msg, setMsg] = useState('');
 
     const [validUrl, setValidUrl] = useState(false);
 
@@ -26,22 +26,23 @@ const NewPassword = ({ axios, BASE_URL_API, navigate }) => {
         let errorMessage = '';
         if (!password || !passwordConfirm) {
             errorMessage = 'Vui lòng điền đầy đủ thông tin cần thiết.';
-        }
-
-        if (password.length < 6) {
+        } else if (password.length < 6) {
             errorMessage = 'Mật khẩu không được ít hơn 6 kí tự.';
-        }
-
-        if (password !== passwordConfirm) {
+        } else if (password !== passwordConfirm) {
             errorMessage = 'Mật khẩu không trùng khớp.';
         }
 
         if (errorMessage) {
-            alert(errorMessage);
+            setToast({
+                show: true,
+                title: errorMessage,
+                type: 'info',
+                duration: 1200,
+            });
             return;
         }
 
-        console.log(password, passwordConfirm);
+        // console.log(password, passwordConfirm);
         try {
             const url = BASE_URL_API + `auth/new-password`;
             const res = await axios.post(url, {
@@ -50,8 +51,14 @@ const NewPassword = ({ axios, BASE_URL_API, navigate }) => {
                 id: id,
             });
             // console.log(res.data.message);
-            console.log('cập nhật mật khẩu thành công');
-            setMsg(res.data.message);
+            // console.log('cập nhật mật khẩu thành công');
+            // setMsg(res.data.message);
+            setToast({
+                show: true,
+                title: res.data.message,
+                type: 'success',
+                duration: 1200,
+            });
             navigate('/login');
         } catch (error) {
             console.log('cập nhật mật khẩu thất bại');
@@ -137,14 +144,14 @@ const NewPassword = ({ axios, BASE_URL_API, navigate }) => {
                                                         id="password"
                                                     ></span>
 
-                                                    {msg && (
+                                                    {/* {msg && (
                                                         <span
                                                             className="new-password-span"
                                                             id="email"
                                                         >
                                                             {msg}
                                                         </span>
-                                                    )}
+                                                    )} */}
 
                                                     <button
                                                         className="login_button"

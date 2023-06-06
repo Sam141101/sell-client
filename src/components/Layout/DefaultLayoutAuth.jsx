@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
+import Toast from '../Toast/Toast';
+import { useState } from 'react';
 
 function DefaultLayoutAuth({ children, page }) {
     const user = useSelector((state) => state.auth?.currentUser);
@@ -16,8 +18,22 @@ function DefaultLayoutAuth({ children, page }) {
 
     const axiosJWT = createAxiosInstance(user, dispatch);
 
+    const [toast, setToast] = useState({
+        show: false,
+    });
+
     return (
         <div className="default-layout-wrapper">
+            {toast.show && (
+                <Toast
+                    title={toast.title}
+                    message={toast.message}
+                    type={toast.type}
+                    duration={toast.duration}
+                    show={toast.show}
+                    setShow={setToast}
+                />
+            )}
             <Navbar
                 axiosJWT={axiosJWT}
                 quantity={quantity}
@@ -36,6 +52,7 @@ function DefaultLayoutAuth({ children, page }) {
                         axios: axios,
                         dispatch: dispatch,
                         BASE_URL_API: BASE_URL_API,
+                        setToast: setToast,
                     }),
                 )}
             </>

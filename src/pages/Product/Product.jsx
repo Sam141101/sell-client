@@ -23,7 +23,15 @@ const FilterColor = styled.div`
     border: 1px solid #ccc;
 `;
 
-const Product = ({ axios, BASE_URL_API, dispatch, navigate, user, axiosJWT }) => {
+const Product = ({
+    axios,
+    BASE_URL_API,
+    dispatch,
+    navigate,
+    user,
+    axiosJWT,
+    setToast,
+}) => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
     const [product, setProduct] = useState({});
@@ -56,7 +64,12 @@ const Product = ({ axios, BASE_URL_API, dispatch, navigate, user, axiosJWT }) =>
             }
 
             if (errorMessage) {
-                alert(errorMessage);
+                setToast({
+                    show: true,
+                    title: errorMessage,
+                    type: 'info',
+                    duration: 1200,
+                });
                 return;
             }
 
@@ -84,9 +97,15 @@ const Product = ({ axios, BASE_URL_API, dispatch, navigate, user, axiosJWT }) =>
             }
 
             if (errorMessage) {
-                setTimeout(() => {
-                    alert(errorMessage);
-                }, 800); // Sau 1 giây mới hiển thị thông báo
+                // setTimeout(() => {
+                //     alert(errorMessage);
+                // }, 800); // Sau 1 giây mới hiển thị thông báo
+                setToast({
+                    show: true,
+                    title: errorMessage,
+                    type: 'success',
+                    duration: 1200,
+                });
                 return;
             }
         }

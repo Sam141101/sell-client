@@ -991,7 +991,72 @@
         padding-bottom: 0px !important;
     }
 
-    .voucher-item {
-        /* margin-bottom: 0 !important; */
+    .evaluate_main {
+        padding: 0 15px;
+    }
+
+    .evaluate_title {
+        font-size: 25px !important;
+    }
+
+    .toast {
+        min-width: 300px !important;
+        padding: 7px 0 !important;
+    }
+
+    #toast {
+        right: 14px !important;
+    }
+
+    .toast__title {
+        font-size: 14px !important;
+    }
+
+    .info_product-evaluate-img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .info_product-evaluate-desc span {
+        font-size: 14px !important;
+        padding: 0 !important;
+    }
+
+    .info_product-evaluate-desc {
+        padding: 1px 0 !important;
+        line-height: 16px !important;
+        font-size: 12px !important;
+    }
+
+    .evaluate_container {
+        padding: 10px 0 20px 0 !important;
+    }
+
+    .evaluate-quality-img-block {
+        padding: 15px 20px !important;
+    }
+
+    .evaluate-selected {
+        padding: 0 !important;
+    }
+
+    .image-upload-comment {
+        width: 300px !important;
+    }
+
+    .input-box-evaluate {
+        width: 100% !important;
+        min-height: 150px !important;
+
+        padding: 10px 13px !important;
+        font-size: 14px !important;
+        line-height: 18px !important;
+    }
+
+    .evaluate_button {
+        height: 50px !important;
+        line-height: 50px !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
     }
 }

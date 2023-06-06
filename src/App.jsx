@@ -35,12 +35,7 @@ function App() {
                             key={index}
                             path={route.path}
                             element={
-                                <Layout
-                                    item2={route.item2}
-                                    show1={route.show1}
-                                    // show2={route.show2}
-                                    // show3={route.show3}
-                                >
+                                <Layout item2={route.item2} show1={route.show1}>
                                     <Page />
                                 </Layout>
                             }
@@ -56,14 +51,6 @@ function App() {
                     if (route.layout) {
                         Layout = route.layout;
                     } else if (route.layout === null) {
-                        // if (route.show1 || route.show2 || route.show3) {
-                        //     Layout = 'div';
-                        // } else {
-                        //     Layout = React.Fragment;
-                        // }
-
-                        // Layout = React.Fragment;
-
                         Layout = 'div';
                     }
 
@@ -84,7 +71,6 @@ function App() {
                                     </Layout>
                                 ) : (
                                     <Navigate to="/login" replace />
-                                    // navigate('/')
                                 )
                             }
                         />

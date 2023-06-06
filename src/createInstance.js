@@ -5,14 +5,7 @@ import { BASE_URL_API } from './requestMethods';
 export const refreshToken = async (id) => {
     try {
         // axios.defaults.withCredentials = true; // thêm vào đây
-        const res = await axios.post(
-            'http://localhost:5000/api/auth/refresh/' + id,
-            // BASE_URL_API +'auth/refresh/' + id,
-
-            // , {
-            //     withCredentials: true,
-            // }
-        );
+        const res = await axios.post(BASE_URL_API + 'auth/refresh/' + id);
 
         return res.data;
     } catch (err) {
@@ -51,30 +44,3 @@ export const createAxios = (user, dispatch, stateSuccess) => {
 
     return newInstance;
 };
-
-// export const createAxios = (user, dispatch, stateSuccess) => {
-//     const newInstance = axios.create();
-//     newInstance.interceptors.request.use(
-//         async (config) => {
-//             let date = new Date();
-//             const decodedToken = jwt_decode(user?.token);
-//             if (decodedToken.exp < date.getTime() / 1000) {
-//                 const data = await refreshToken();
-//                 console.log('data', data);
-//                 const refreshUser = {
-//                     ...user,
-//                     token: data.token,
-//                 };
-//                 dispatch(stateSuccess(refreshUser));
-//                 config.headers['token'] = 'Bearer ' + data.token;
-//             }
-//             return config;
-//         },
-//         (err) => {
-//             console.log(err);
-//             return Promise.reject(err);
-//         },
-//     );
-
-//     return newInstance;
-// };

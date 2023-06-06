@@ -241,7 +241,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                         Nhận xét
                                     </h3>
                                     <div className="row">
-                                        <div className="col l-6">
+                                        <div className="col l-6 c-12">
                                             <div className="evaluate-selected">
                                                 <div className="evaluate-star">
                                                     <div className="evaluate-quality">
@@ -316,7 +316,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                             </div>
                                         </div>
 
-                                        <div className="col l-6">
+                                        <div className="col l-6 c-12">
                                             <div className="evaluate_form-input">
                                                 <div className="evaluate_form">
                                                     <textarea

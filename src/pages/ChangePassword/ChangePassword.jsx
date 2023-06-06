@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import './changePassword.css';
 import { BASE_URL_API } from '../../requestMethods';
-import Notify from '../../components/Notify/Notify';
 
-const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
-    const [show, setShow] = useState(false);
-
+const ChangePassword = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -13,26 +10,22 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
     const handleClick = async (e) => {
         e.preventDefault();
 
-        // setShow(true);
-        // setTimeout(() => {
-        //     setShow(false);
-        // }, 3000);
-
         let errorMessage = '';
         if (!currentPassword || !newPassword || !confirmPassword) {
             errorMessage = 'Vui lòng điền đầy đủ thông tin cần thiết.';
-        }
-
-        if (newPassword.length < 6) {
+        } else if (newPassword.length < 6) {
             errorMessage = 'Mật khẩu không được ít hơn 6 kí tự.';
-        }
-
-        if (newPassword !== confirmPassword) {
+        } else if (newPassword !== confirmPassword) {
             errorMessage = 'Mật khẩu xác nhận không trùng khớp.';
         }
 
         if (errorMessage) {
-            alert(errorMessage);
+            setToast({
+                show: true,
+                title: errorMessage,
+                type: 'info',
+                duration: 1200,
+            });
             return;
         }
 
@@ -48,7 +41,6 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
                     headers: { token: `Bearer ${user.token}` },
                 },
             );
-            console.log('cập nhật mật khẩu thành công');
 
             if (res.data.message === 'Update success') {
                 errorMessage = 'Cập nhật thành công.';
@@ -57,21 +49,27 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate }) => {
             }
 
             if (errorMessage) {
-                setTimeout(() => {
-                    alert(errorMessage);
-                }, 800); // Sau 1 giây mới hiển thị thông báo
+                setToast({
+                    show: true,
+                    title: errorMessage,
+                    type: 'success',
+                    duration: 1200,
+                });
                 return;
             }
         } catch (error) {
-            console.log('cập nhật mật khẩu thất bại');
+            setToast({
+                show: true,
+                title: 'Đổi mật khẩu thất bại',
+                type: 'error',
+                duration: 1200,
+            });
             console.log(error);
         }
     };
 
     return (
         <>
-            <Notify show={show} title="Đổi mật khẩu thành công" />
-
             <div className="row">
                 <div className="col l-12 c-12">
                     <div className="change-password-container-right">

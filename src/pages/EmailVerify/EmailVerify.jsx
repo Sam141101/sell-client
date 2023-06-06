@@ -5,25 +5,28 @@ import './emailVerify.css';
 
 // --------------------------------------------------------------
 
-const EmailVerify = ({ axios, BASE_URL_API }) => {
+const EmailVerify = ({ axios, BASE_URL_API, setToast }) => {
     const [email, setEmail] = useState('');
-    const [msg, setMsg] = useState('');
 
     const handleClick = async (e) => {
         e.preventDefault();
 
+        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
         let errorMessage = '';
         if (!email) {
             errorMessage = 'Vui lòng nhập Email.';
-        }
-
-        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!regex.test(email)) {
+        } else if (!regex.test(email)) {
             errorMessage = 'Email không hợp lệ!';
         }
 
         if (errorMessage) {
-            alert(errorMessage);
+            setToast({
+                show: true,
+                title: errorMessage,
+                type: 'info',
+                duration: 1200,
+            });
             return;
         }
 
@@ -31,8 +34,19 @@ const EmailVerify = ({ axios, BASE_URL_API }) => {
             const url = BASE_URL_API + `auth/confirm/register`;
             const { data: res } = await axios.post(url, { email });
             console.log('xác thực email');
-            setMsg(res.message);
+            setToast({
+                show: true,
+                title: res.message,
+                type: 'success',
+                duration: 1200,
+            });
         } catch (error) {
+            setToast({
+                show: true,
+                title: 'xác thực email thất bại',
+                type: 'error',
+                duration: 1200,
+            });
             console.log('xác thực email thất bại');
         }
     };
@@ -61,14 +75,14 @@ const EmailVerify = ({ axios, BASE_URL_API }) => {
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 value={email}
                                             />
-                                            {msg && (
+                                            {/* {msg && (
                                                 <span
                                                     className="email-verify-span"
                                                     id="email"
                                                 >
                                                     {msg}
                                                 </span>
-                                            )}
+                                            )} */}
                                             <button
                                                 className="email-verify-button"
                                                 style={{ marginTop: '30px' }}

@@ -64,38 +64,44 @@ const Comment = ({ axios, BASE_URL_API }) => {
     const componentRef = useRef(null);
 
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            // Phát hiện khi phần tử hiển thị trong Viewport
-            const [entry] = entries;
-            if (entry.isIntersecting) {
-                // Nếu phần tử hiển thị, ta gọi API để tải dữ liệu
-                const getComment = async () => {
-                    try {
-                        const res = await axios.get(
-                            BASE_URL_API +
-                                `comments/find/${id}/${option}?page=${filterPage}&limit=3`,
-                        );
-                        const { resultProducts, pagi } = res.data;
+        const element = componentRef.current;
+        if (element != null) {
+            const observer = new IntersectionObserver((entries) => {
+                // Phát hiện khi phần tử hiển thị trong Viewport
+                const [entry] = entries;
+                if (entry.isIntersecting) {
+                    // Nếu phần tử hiển thị, ta gọi API để tải dữ liệu
+                    const getComment = async () => {
+                        try {
+                            const res = await axios.get(
+                                BASE_URL_API +
+                                    `comments/find/${id}/${option}?page=${filterPage}&limit=3`,
+                            );
+                            const { resultProducts, pagi } = res.data;
 
-                        setListInfoComment(resultProducts);
-                        setPagination(pagi);
-                    } catch (err) {}
-                };
-                getComment();
-                // Sau khi tải xong thì ta ngừng theo dõi thay đổi của element nữa
-                observer.disconnect();
-            }
-        });
+                            setListInfoComment(resultProducts);
+                            setPagination(pagi);
+                        } catch (err) {}
+                    };
+                    getComment();
+                    // Sau khi tải xong thì ta ngừng theo dõi thay đổi của element nữa
+                    observer.disconnect();
+                }
+            });
 
-        observer.observe(componentRef.current);
+            observer.observe(element);
 
-        // Trả về một function để remove phần tử khỏi Intersection Observer khi unmount component
-        return () => {
-            observer.unobserve(componentRef.current);
-        };
-    }, [id, option, filterPage]);
+            // Trả về một function để remove phần tử khỏi Intersection Observer khi unmount component
+            return () => {
+                if (observer && element) {
+                    observer.unobserve(element);
+                    observer.disconnect();
+                }
+            };
+        }
+    }, [axios, BASE_URL_API, filterPage, id, option]);
 
-    console.log('pagination', pagination);
+    console.log('componentRef.current', componentRef.current);
 
     return (
         <div className="comment" ref={componentRef}>

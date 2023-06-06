@@ -8,7 +8,7 @@ import { togglePasswordVisibility } from '../../support';
 
 // --------------------------------------------------------------
 
-const Register = ({ axios, BASE_URL_API, dispatch, navigate }) => {
+const Register = ({ axios, BASE_URL_API, dispatch, navigate, setToast }) => {
     const [inputs, setInputs] = useState({});
     const [notify, setNotify] = useState('');
 
@@ -28,7 +28,7 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate }) => {
         });
     };
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
         let errorMessage = '';
 
@@ -40,22 +40,21 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate }) => {
             !inputs.confirmPassword
         ) {
             errorMessage = 'Vui lòng điền đầy đủ thông tin cần thiết.';
-        }
-
-        if (inputs.username.length < 6 && inputs.username.trim()) {
+        } else if (inputs.username.length < 6 && inputs.username.trim()) {
             errorMessage = 'Tên tài khoản ít hơn 6 kí tự hoặc có khoảng trắng.';
-        }
-
-        if (inputs.password.length < 6) {
+        } else if (inputs.password.length < 6) {
             errorMessage = 'Mật khẩu không được ít hơn 6 kí tự.';
-        }
-
-        if (inputs.password !== inputs.confirmPassword) {
+        } else if (inputs.password !== inputs.confirmPassword) {
             errorMessage = 'Mật khẩu không trùng khớp.';
         }
 
         if (errorMessage) {
-            alert(errorMessage);
+            setToast({
+                show: true,
+                title: errorMessage,
+                type: 'info',
+                duration: 1200,
+            });
             return;
         }
 
@@ -63,8 +62,19 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate }) => {
             userid: userid.id,
             inputs,
         };
-        register(dispatch, inputss, navigate, setNotify);
-        // navigate('/login');
+        const result = await register(dispatch, inputss, navigate, setNotify);
+
+        if (result === 'Đăng ký tài khoản thành công.') {
+            errorMessage = 'Đăng ký tài khoản thành công.';
+        }
+
+        setToast({
+            show: true,
+            title: errorMessage,
+            type: 'success',
+            duration: 1200,
+        });
+        navigate('/login');
     };
 
     useEffect(() => {

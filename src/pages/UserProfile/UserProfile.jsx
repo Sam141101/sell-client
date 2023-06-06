@@ -5,13 +5,15 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/
 import app from '../../firebase';
 import { updateUser } from '../../redux/apiCalls';
 import './userProfile.css';
+import {} from '../../support';
 
-const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
+const UserProfile = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
     const token = user.token;
-    // const [show, setShow] = useState(false);
     const [imgUrl, setImgUrl] = useState(null);
 
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState({
+        gender: user.gender,
+    });
     const [file, setFile] = useState(null);
 
     const handleChange = (e) => {
@@ -19,16 +21,6 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
             return { ...prev, [e.target.name]: e.target.value, token: user.token };
         });
     };
-
-    // let img = document.getElementById('displayImg');
-
-    // const handleChangeFile = (e) => {
-    //     setFile(e.target.files[0]);
-
-    //     if (e.target.files[0]) {
-    //         img.src = URL.createObjectURL(e.target.files[0]);
-    //     }
-    // };
 
     const handleChangeFile = (e) => {
         const selectedFile = e.target.files[0];
@@ -50,12 +42,57 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
         }
     };
 
-    const handleClick = (e) => {
+    console.log('inputs', inputs);
+
+    const handleClick = async (e) => {
         e.preventDefault();
+
+        let state;
+        let errorMessage = '';
+        var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+        if (
+            !inputs.fullname &&
+            !inputs.gender &&
+            !inputs.phone &&
+            !inputs.email &&
+            !file
+        ) {
+            errorMessage = 'Vui lòng điền đầy thông tin muốn thay đổi.';
+        } else if (inputs.email && !regex.test(inputs.email)) {
+            errorMessage = 'Email không hợp lệ!';
+        }
+
+        setToast({
+            show: true,
+            title: errorMessage,
+            type: 'info',
+            duration: 1200,
+        });
 
         if (file === null) {
             const update = { ...inputs, token };
-            updateUser(user.token, dispatch, user._id, update, axiosJWT);
+            const result = await updateUser(
+                user.token,
+                dispatch,
+                user._id,
+                update,
+                axiosJWT,
+            );
+            if (result === 'update-user-succes') {
+                errorMessage = 'Cập nhật thành công.';
+                state = 'success';
+            } else {
+                errorMessage = 'Cập nhật thất bại.';
+                state = 'error';
+            }
+
+            setToast({
+                show: true,
+                title: errorMessage,
+                type: state,
+                duration: 1200,
+            });
         } else {
             // add info
             const fileName = new Date().getTime() + file.name;
@@ -85,25 +122,7 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                 (error) => {
                     // Handle unsuccessful uploads
                 },
-                //          () => {
-                //             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                //                 const update = { ...inputs, img: downloadURL, token };
 
-                //                 const result = await updateUser(user.token, dispatch, user._id, update, axiosJWT);
-
-                // let errorMessage = '';
-                // if (result === "update-user-succes") {
-                //     errorMessage = 'Loại bỏ thành công sản phẩm.';
-                // } else {
-                //     errorMessage = 'Loại bỏ không thành công sản phẩm.';
-                // }
-
-                // if (errorMessage) {
-                //     setTimeout(() => {
-                //         alert(errorMessage);
-                //     }, 800); // Sau 1 giây mới hiển thị thông báo
-                //     return;
-                // }
                 async () => {
                     const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                     const update = { ...inputs, img: downloadURL, token };
@@ -116,21 +135,20 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                         axiosJWT,
                     );
 
-                    let errorMessage = '';
                     if (result === 'update-user-succes') {
                         errorMessage = 'Cập nhật thành công.';
+                        state = 'success';
                     } else {
                         errorMessage = 'Cập nhật thất bại.';
+                        state = 'error';
                     }
 
-                    if (errorMessage) {
-                        setTimeout(() => {
-                            alert(errorMessage);
-                        }, 800); // Sau 1 giây mới hiển thị thông báo
-                        return;
-                    }
-
-                    // });
+                    setToast({
+                        show: true,
+                        title: errorMessage,
+                        type: state,
+                        duration: 1200,
+                    });
                 },
             );
         }
@@ -148,13 +166,13 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                     <div className="col l-9 c-12">
                         <div className="user-profile-form-left">
                             <div className="user-profile-form-item">
-                                <div className="user-profile-form-key">Tên đăng nhập</div>
+                                <div className="user-profile-form-key">Họ và tên</div>
                                 <div className="user-profile-form-value">
                                     <input
                                         className="user-profile-form-input"
-                                        name="username"
+                                        name="fullname"
                                         type="text"
-                                        placeholder={user.username}
+                                        placeholder={user.fullname}
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -194,7 +212,7 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                                             display: 'flex',
                                             marginLeft: '5px',
                                         }}
-                                        onChange={handleChange}
+                                        // onChange={handleChange}
                                     >
                                         <input
                                             className="user-profile-form-value-select"
@@ -202,6 +220,8 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                                             name="gender"
                                             id="male"
                                             value="Nam"
+                                            onChange={handleChange}
+                                            checked={inputs.gender === 'Nam'}
                                         />
                                         <label
                                             className="user-profile-form-value-label"
@@ -215,6 +235,8 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                                             name="gender"
                                             id="female"
                                             value="Nữ"
+                                            checked={inputs.gender === 'Nữ'}
+                                            onChange={handleChange}
                                         />
                                         <label
                                             className="user-profile-form-value-label"
@@ -228,6 +250,8 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                                             name="gender"
                                             id="other"
                                             value="Khác"
+                                            checked={inputs.gender === 'Khác'}
+                                            onChange={handleChange}
                                         />
                                         <label
                                             className="user-profile-form-value-label"
@@ -252,19 +276,6 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                     <div className="col l-3 c-12">
                         <div className="user-profile-change-img">Thay đổi hình ảnh</div>
                         <div className="user-profile-right">
-                            {/* <label htmlFor="file">
-                                <img
-                                    className="user-profile-img-user-current"
-                                    src={
-                                        // currentImg ||
-                                        user.img ||
-                                        'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
-                                    }
-                                    alt=""
-                                    id="displayImg"
-                                />
-                            </label> */}
-
                             <label htmlFor="file">
                                 <img
                                     className="user-profile-img-user-current"
@@ -281,15 +292,6 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate }) => {
                             <label htmlFor="file">
                                 <div className="user-profile-btn-select">Chọn ảnh</div>
                             </label>
-
-                            {/* <input
-                                className="user-profile-button-select-img"
-                                type="file"
-                                id="file"
-                                // onChange={(e) => setFile(e.target.files[0])}
-
-                                onChange={handleChangeFile}
-                            /> */}
 
                             <input
                                 className="user-profile-button-select-img"

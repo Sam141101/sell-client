@@ -287,6 +287,18 @@
     display: block;
     padding: 8px 12px 8px 12px;
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar-info-user.border-top {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.navbar-info-user.border-bottom {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .navbar-info-user:hover {
@@ -713,15 +725,13 @@
     margin-top: 16px;
     font-size: 12px;
     text-align: center;
+
+    /* text-decoration: none; */
+    color: #d1d1d1;
+    margin-left: 3px;
 }
 
 .nav-more-info-mobile-text {
     margin-bottom: 4px;
     color: #677279;
-}
-
-.nav-more-info-mobile {
-    text-decoration: none;
-    color: #d1d1d1;
-    margin-left: 3px;
 }
