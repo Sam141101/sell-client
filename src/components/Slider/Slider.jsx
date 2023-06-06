@@ -23,16 +23,6 @@ const Slide = styled.div`
 `;
 
 const Slider = ({ slides }) => {
-    // const [slideIndex, setSlideIndex] = useState(0);
-
-    // const handleClick = (direction) => {
-    //     if (direction === 'left') {
-    //         setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
-    //     } else if (direction === 'right') {
-    //         setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
-    //     }
-    // };
-
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
     useEffect(() => {
@@ -75,7 +65,8 @@ const Slider = ({ slides }) => {
                             <div className="img-container">
                                 <Link to={`/products/${slide.cat}?page=${1}`}>
                                     <link rel="preload" href={slide.img} as="image" />
-                                    <link rel="prefetch" href={slide.img} />
+                                    <link rel="preload" href={slide.setSrc} as="image" />
+                                    {/* <link rel="prefetch" href={slide.img} /> */}
                                     <picture>
                                         <source
                                             srcSet={slide.setSrc}
@@ -100,94 +91,6 @@ const Slider = ({ slides }) => {
                 </Wrapper>
             </div>
         </div>
-
-        // <div className="slider-top-mobile">
-        //     {/* <div className="hide-on-mobile"> */}
-        //     <div className="grid ">
-        //         <div className="row">
-        //             <div className="col l-12">
-        //                 <div className="slider-container">
-        //                     <div
-        //                         className="button-arrow left"
-        //                         onClick={() => handleClick('left')}
-        //                     >
-        //                         <ArrowLeftOutlined style={{ fontSize: '30px' }} />
-        //                     </div>
-        //                     {/* <Wrapper slideIndex={slideIndex}>
-        //                         {sliderItems.map((item) => (
-        //                             <Slide bg={item.bg} key={item.id}>
-        //                                 <div className="img-container">
-        //                                     <Link to={`/products/${item.cat}?page=${1}`}>
-        //                                         <link
-        //                                             rel="preload"
-        //                                             href={item.img}
-        //                                             as="image"
-        //                                         />
-        //                                         <link rel="prefetch" href={item.img} />
-        // <picture>
-        //     <source
-        //         srcSet={item.setSrc}
-        //         media="(max-width: 480px)"
-        //     />
-        //     <source
-        //         srcSet={item.img}
-        //         media="(min-width: 481px)"
-        //     />
-        //     <img
-        //         srcSet={item.img}
-        //         alt=""
-        //         className="img-item"
-        //     />
-        // </picture>
-        //                                     </Link>
-        //                                 </div>
-        //                             </Slide>
-        //                         ))}
-        //                     </Wrapper> */}
-
-        //                     <div
-        //                         className="button-arrow right"
-        //                         onClick={() => handleClick('right')}
-        //                     >
-        //                         <ArrowRightOutlined style={{ fontSize: '30px' }} />
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        //     {/* </div> */}
-        //     {/*
-        //     <div className="mobile-block-img">
-        //         <img
-        //             src="https://file.hstatic.net/200000312481/file/z3949119209444_8fbde8be80833559e1e4ae7477cc13af_14b8c722c505407495bd2f3c98841131_large.jpg"
-        //             alt=""
-        //             className="mobile-img-slider"
-        //         />
-        //     </div> */}
-        // </div>
-
-        // <div className="fullscreen-slider">
-        //     {slides.map((slide, index) => (
-        //         <div
-        //             key={index}
-        //             className={`fullscreen-slide ${
-        //                 index === currentSlideIndex ? 'active' : 'inactive'
-        //             }`}
-        //         >
-        //             <picture>
-        //                 <source srcSet={slide.setSrc} media="(max-width: 480px)" />
-        //                 <source srcSet={slide.img} media="(min-width: 481px)" />
-        //                 <img srcSet={slide.img} alt="" className="img-item" />
-        //             </picture>
-        //         </div>
-        //     ))}
-        //     <button className="previous" onClick={handleClickPrevious}>
-        //         Previous
-        //     </button>
-        //     <button className="next" onClick={handleClickNext}>
-        //         Next
-        //     </button>
-        // </div>
     );
 };
 
