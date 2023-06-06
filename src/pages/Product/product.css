@@ -2,6 +2,10 @@
     overflow: hidden;
 }
 
+.product-image-des-pc {
+    max-width: 100%;
+}
+
 .amount-sizes {
     margin-left: 35px;
     font-size: 18px;

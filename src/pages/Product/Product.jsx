@@ -138,11 +138,27 @@ const Product = ({
                     <div className="row">
                         <div className="col l-7 c-12">
                             <div className="product-img-container-block">
-                                <img
+                                {/* <img
                                     className="product-image"
                                     alt=""
                                     src={product?.img}
-                                />
+                                /> */}
+
+                                <picture>
+                                    <source
+                                        srcSet={product?.grandeImg}
+                                        media="(max-width: 480px)"
+                                    />
+                                    <source
+                                        srcSet={product?.img}
+                                        media="(min-width: 481px)"
+                                    />
+                                    <img
+                                        className="product-image-des-pc"
+                                        srcSet={product?.img}
+                                        alt=""
+                                    />
+                                </picture>
                             </div>
                         </div>
 

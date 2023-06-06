@@ -39,11 +39,11 @@ const Product = ({ item }) => {
 
                     <picture>
                         <source srcSet={item.setImg} media="(max-width: 480px)" />
-                        <source srcSet={item.img} media="(min-width: 481px)" />
+                        <source srcSet={item.grandeImg} media="(min-width: 481px)" />
                         <LazyLoadImage
                             className="product-image-des"
                             // sizes="(max-width: 480px) 174px, (min-width: 481px) 250px"
-                            srcSet={item.img}
+                            srcSet={item.grandeImg}
                             alt=""
                             // height="250"
                             // width="250"
