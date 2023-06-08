@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
 import Product from '../Product/Product';
-// import axios from 'axios';
-// import './products.css';
-// import { BASE_URL_API } from '../../requestMethods';
 
 const Products = ({
     cat,
-    filters,
     sort,
     filterPage,
     setPagination,
@@ -15,28 +11,18 @@ const Products = ({
     BASE_URL_API,
 }) => {
     const [products, setProducts] = useState([]);
-    // const [filteredProducts, setFilteredProducts] = useState([]);
 
     let limit = pagination.limit;
-    // const user = useSelector((state) => state.auth?.currentUser);
-    // const axiosJWT = createAxiosInstance(user, dispatch);
 
     useEffect(() => {
         const getProducts = async () => {
             try {
-                console.log(
-                    'productlist',
-                    BASE_URL_API +
-                        `products/?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`,
-                );
                 const res = await axios.get(
                     BASE_URL_API +
                         `products/?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`,
                 );
 
                 const { resultProducts, pagi } = res.data;
-
-                console.log('resultData', res.data);
                 setProducts(resultProducts);
 
                 if (setPagination) {
@@ -46,7 +32,6 @@ const Products = ({
                 }
 
                 console.log(res.data);
-                // pagination = res.data.pagi;
             } catch (err) {
                 console.log(err);
             }
@@ -61,7 +46,6 @@ const Products = ({
     return (
         <>
             {products.map((item, index) => (
-                // <div className="col l-3 c-12" key={item._id}>
                 <div
                     className={`col l-3 c-6 c${index % 2 === 0 ? '2' : '1'}`}
                     key={item._id}
