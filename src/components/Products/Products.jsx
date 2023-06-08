@@ -24,12 +24,19 @@ const Products = ({
     useEffect(() => {
         const getProducts = async () => {
             try {
+                console.log(
+                    'productlist',
+                    BASE_URL_API +
+                        `products/?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`,
+                );
                 const res = await axios.get(
                     BASE_URL_API +
                         `products/?category=${cat}&page=${filterPage}&limit=${limit}&sort=${sort}`,
                 );
 
                 const { resultProducts, pagi } = res.data;
+
+                console.log('resultData', res.data);
                 setProducts(resultProducts);
 
                 if (setPagination) {

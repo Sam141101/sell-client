@@ -5,7 +5,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/
 import app from '../../firebase';
 import { updateUser } from '../../redux/apiCalls';
 import './userProfile.css';
-import {} from '../../support';
+// import {} from '../../support';
 
 const UserProfile = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
     const token = user.token;

@@ -25,6 +25,7 @@ export const login = async (dispatch, user, navigate) => {
         const res = await axios.post(BASE_URL_API + 'auth/login', user, {
             withCredentials: true,
         });
+        console.log('Success-login', res.data);
         dispatch(loginSuccess(res.data));
         navigate('/');
     } catch (err) {
@@ -79,7 +80,6 @@ export const logout = async (dispatch, id, token, axiosJWT, navigate) => {
 // Get ALL product cart
 export const getAllCart = async (token, dispatch, userId, axiosJWT) => {
     try {
-        // const res = await axios.get(BASE_URL_API + 'carts/find/' + userId, {
         const res = await axiosJWT.get(BASE_URL_API + 'carts/find/' + userId, {
             headers: { token: `Bearer ${token}` },
         });

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './voucherWarehouse.css';
 import { BASE_URL_API } from '../../requestMethods';
+import { changDate } from '../../support';
 
 const data = [
     {
@@ -20,21 +21,6 @@ const data = [
         type: 'expire',
     },
 ];
-
-const changDate = (isoString) => {
-    if (isoString == null) {
-        return `không có giới hạn thời gian`;
-    } else {
-        const date = new Date(isoString);
-        const day = date.getDate().toString().padStart(2, '0');
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        const year = date.getFullYear().toString();
-        const hour = date.getHours().toString().padStart(2, '0');
-        const minute = date.getMinutes().toString().padStart(2, '0');
-        const second = date.getSeconds().toString().padStart(2, '0');
-        return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
-    }
-};
 
 const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate }) => {
     let id = user._id;
@@ -144,7 +130,8 @@ const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate }) => {
                                                 {item.minimum_purchase_amount}
                                             </div>
                                             <div className="voucher-item-expired">
-                                                HSD: {changDate(item.expiration_date)}
+                                                HSD:{' '}
+                                                {changDate(item.expiration_date, true)}
                                             </div>
                                         </div>
                                     </div>

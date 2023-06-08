@@ -126,11 +126,8 @@ const Product = ({
         getProduct();
     }, [id]);
 
-    // console.log('product', product.discountProduct_id?.discount_amount);
-
     return (
         <div className="product-page-frame">
-            {/* <NavBar /> */}
             <Announcement item1={product?.categories} item2={product?.title} />
 
             <div className="product-wrapper">

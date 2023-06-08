@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { BASE_URL_API } from '../../requestMethods';
+// import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 
-const Canceled = ({ user, axiosJWT, dispatch, navigate }) => {
+const Canceled = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API }) => {
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(false);
 
@@ -72,8 +72,14 @@ const Canceled = ({ user, axiosJWT, dispatch, navigate }) => {
 
                             <div className="wait-purchase-block">
                                 <div className="wait-purchase-status">
-                                    <span>Trạng thái:</span>
-                                    Đã huỷ
+                                    <>
+                                        <span>Trạng thái:</span>
+                                        Đã huỷ
+                                    </>
+                                    <div>
+                                        <span>Thời gian đặt hàng:</span>
+                                        {changDate(item.createdAt)}
+                                    </div>
                                 </div>
 
                                 <div className="wait-purchase-total-price">

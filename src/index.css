@@ -1,14 +1,7 @@
 @import 'normalize.css';
 /* @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese'); */
 /* @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese&display=swap'); */
-/*  
-@font-face {
-    font-family: 'Quicksand';
-    font-style: normal;
-    font-weight: 300;
-    src: url('../src/assets/fonts/Quicksand-Light.ttf') format('truetype');
-    font-display: swap;
-}
+
 @font-face {
     font-family: 'Quicksand';
     font-style: normal;
@@ -31,7 +24,7 @@
     font-weight: 700;
     src: url('../src/assets/fonts/Quicksand-Bold.ttf') format('truetype');
     font-display: swap;
-}  */
+}
 
 :root {
     --text-color: #000000;

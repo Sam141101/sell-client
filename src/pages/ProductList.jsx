@@ -35,7 +35,7 @@ const ProductList = ({ BASE_URL_API, axios }) => {
     console.log('BASE_URL_API', BASE_URL_API);
     const location = useLocation();
     const cat = location.pathname.split('/')[2];
-    const [filters, setFilters] = useState({});
+    // const [filters, setFilters] = useState({});
     const [sort, setSort] = useState('newest');
 
     const url = new URL(window.location.href);
@@ -112,7 +112,7 @@ const ProductList = ({ BASE_URL_API, axios }) => {
                             <div className="row pd-mobile">
                                 <Products
                                     cat={cat}
-                                    filters={filters}
+                                    // filters={filters}
                                     sort={sort}
                                     filterPage={filterPage}
                                     setPagination={setPagination}

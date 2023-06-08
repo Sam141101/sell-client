@@ -144,15 +144,6 @@ const NewPassword = ({ axios, BASE_URL_API, navigate, setToast }) => {
                                                         id="password"
                                                     ></span>
 
-                                                    {/* {msg && (
-                                                        <span
-                                                            className="new-password-span"
-                                                            id="email"
-                                                        >
-                                                            {msg}
-                                                        </span>
-                                                    )} */}
-
                                                     <button
                                                         className="login_button"
                                                         onClick={handleClick}

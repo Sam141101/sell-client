@@ -2,9 +2,25 @@ import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import './pagination.css';
 
 const Pagination = (props) => {
-    const { pagination, onPageChange } = props;
+    const {
+        pagination,
+        onPageChange,
+        // setFilterPage,
+    } = props;
     const { page, totalRows, limit } = pagination;
     const totalPages = Math.ceil(totalRows / limit);
+
+    // const onPageChange = (newPage) => {
+    //     // Update the filterPage state with the new page value
+    //     setFilterPage(newPage);
+
+    //     // Get the current URL and append the new "page" query parameter
+    //     const url = new URL(window.location.href);
+    //     url.searchParams.set('page', newPage);
+
+    //     // Change the URL and add a new record to the browser's history
+    //     window.history.pushState({}, '', url);
+    // };
 
     const pageNumbers = [];
 

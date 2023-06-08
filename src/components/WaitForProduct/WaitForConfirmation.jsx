@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 
-const WaitForConfirmation = ({ user, axiosJWT, navigate }) => {
+const WaitForConfirmation = ({ user, axiosJWT, navigate, changDate, BASE_URL_API }) => {
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(false);
 
@@ -89,8 +88,15 @@ const WaitForConfirmation = ({ user, axiosJWT, navigate }) => {
 
                             <div className="wait-purchase-block">
                                 <div className="wait-purchase-status">
-                                    <span>Trạng thái:</span>
-                                    Chờ xác nhận
+                                    <>
+                                        <span>Trạng thái:</span>
+                                        Chờ xác nhận
+                                    </>
+                                    <div>
+                                        <span>Thời gian đặt hàng:</span>
+                                        {changDate(item.createdAt)}
+                                        {/* {item.createdAt} */}
+                                    </div>
                                 </div>
 
                                 <div className="wait-purchase-total-price">

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BASE_URL_API } from '../../requestMethods';
+// import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 
-const Complete = ({ user, axiosJWT, dispatch, navigate }) => {
+const Complete = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API }) => {
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(false);
     useEffect(() => {
@@ -85,8 +85,14 @@ const Complete = ({ user, axiosJWT, dispatch, navigate }) => {
 
                             <div className="wait-purchase-block">
                                 <div className="wait-purchase-status">
-                                    <span>Trạng thái:</span>
-                                    Hoàn thành
+                                    <>
+                                        <span>Trạng thái:</span>
+                                        Hoàn thành
+                                    </>
+                                    <div>
+                                        <span>Thời gian đặt hàng:</span>
+                                        {changDate(item.createdAt)}
+                                    </div>
                                 </div>
 
                                 <div className="wait-purchase-total-price">

@@ -63,7 +63,10 @@ const Slider = ({ slides }) => {
                     {slides.map((slide, index) => (
                         <Slide bg={slide.bg} key={index}>
                             <div className="img-container">
-                                <Link to={`/products/${slide.cat}?page=${1}`}>
+                                <Link
+                                    to={`/products/${slide.cat}?page=${1}`}
+                                    aria-label="See more about tee"
+                                >
                                     <link rel="preload" href={slide.img} as="image" />
                                     <link rel="preload" href={slide.setSrc} as="image" />
                                     {/* <link rel="prefetch" href={slide.img} /> */}

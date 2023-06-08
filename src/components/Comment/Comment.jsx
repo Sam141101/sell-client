@@ -5,17 +5,7 @@ import { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Pagination from '../Pagination/Pagination';
-
-const changDate = (isoString) => {
-    const date = new Date(isoString);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear().toString();
-    const hour = date.getHours().toString().padStart(2, '0');
-    const minute = date.getMinutes().toString().padStart(2, '0');
-    const second = date.getSeconds().toString().padStart(2, '0');
-    return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
-};
+import { changDate } from '../../support';
 
 // const Comment = ({dispatch, user, axiosJWT, BASE_URL_API}) => {
 const Comment = ({ axios, BASE_URL_API }) => {

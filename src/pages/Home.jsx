@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Newsletter from '../components/Newsletter/Newsletter';
 import Slider from '../components/Slider/Slider';
 
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Product from '../components/Product/Product';
 import { sliderItems } from '../../src/data';
-
-//
 
 const MoreProduct = styled.div`
     display: flex;
@@ -19,25 +16,26 @@ const MoreProduct = styled.div`
 `;
 
 const More = styled.div`
+    width: 128px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    display: inline-block;
-    padding: 10px 28px;
+    display: flex;
     line-height: normal;
-    border: 1px solid #ffffff;
-    border-radius: 0;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 0px;
     text-transform: uppercase;
     font-size: 12px;
     text-align: center;
     letter-spacing: 1px;
-    background-color: #d1d1d1;
-    -webkit-transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86),
-        border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86),
-        border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    background-color: rgb(161 161 161);
+    transition: color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s,
+        border 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
     z-index: 1;
-    color: #fff;
+    color: rgb(255, 255, 255);
     overflow: hidden;
-    font-weight: bold;
+    font-weight: 700;
 
     &:hover {
         color: #000;
@@ -48,13 +46,13 @@ const More = styled.div`
 
 const Info = styled.div`
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     padding: 30px 0;
     color: red;
 `;
 
-const Home = ({ axios, BASE_URL_API, setToast }) => {
+const Home = ({ axios, BASE_URL_API }) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -99,7 +97,6 @@ const Home = ({ axios, BASE_URL_API, setToast }) => {
                     <More>Xem thêm</More>
                 </MoreProduct>
             </Link>
-            <Newsletter />
         </div>
     );
 };

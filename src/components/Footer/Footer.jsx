@@ -1,9 +1,7 @@
 import { Call, Facebook, MailOutline, Phone, Room } from '@mui/icons-material';
-// import { Link } from '@mui/material';
 import { useState } from 'react';
 import './footer.css';
 import { Link } from 'react-router-dom';
-// import yourImage from '../../assets/footer.jpg';
 
 const data = [
     {
@@ -75,7 +73,7 @@ const Footer = ({ layoutVoucher }) => {
                                     <Call />
                                 </div>
                                 <span>Hỗ trợ / Mua hàng:</span>
-                                <span style={{ color: 'red', marginLeft: '10px' }}>
+                                <span style={{ color: '#f52424', marginLeft: '10px' }}>
                                     086 2642568
                                 </span>
                             </div>
