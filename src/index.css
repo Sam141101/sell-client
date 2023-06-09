@@ -1,8 +1,8 @@
 @import 'normalize.css';
 /* @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese'); */
-/* @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese&display=swap');
 
-@font-face {
+/* @font-face {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 400;
@@ -24,7 +24,7 @@
     font-weight: 700;
     src: url('../src/assets/fonts/Quicksand-Bold.ttf') format('truetype');
     font-display: swap;
-}
+} */
 
 :root {
     --text-color: #000000;
@@ -38,6 +38,11 @@
 
     --header-height: 116px;
     --header-mobile-height: 70px;
+
+    --color-red-comment: #ee4d2d;
+    --color-red: red;
+    --color-white: #fff;
+    --color-black: black;
 }
 
 * {
@@ -61,4 +66,80 @@ body {
     color: #000000;
     overflow-x: hidden;
     background: #fff;
+}
+
+/* width - height */
+.w100pt {
+    width: 100%;
+}
+.h100pt {
+    height: 100%;
+}
+
+/* font */
+.fw500 {
+    font-weight: 500;
+}
+.tx-tran {
+    text-transform: uppercase;
+}
+.fz16 {
+    font-size: 16px;
+}
+.fz15 {
+    font-size: 15px;
+}
+
+/* flex */
+.display-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.display-flex-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.df {
+    display: flex;
+}
+.df.ai {
+    align-items: center;
+}
+.df.jc {
+    justify-content: center;
+}
+.df.flex-direction {
+    flex-direction: column;
+}
+.df.flex-w {
+    flex-wrap: wrap;
+}
+
+.dib {
+    display: inline-block;
+}
+.db {
+    display: block;
+}
+
+/* khác */
+.cs {
+    cursor: pointer;
+}
+
+/* bor */
+.bd50pt {
+    border-radius: 50%;
+}
+
+/* margin */
+/* .mt30 {
+    margin-top: 30px;
+} */
+
+.out {
+    outline: none;
 }

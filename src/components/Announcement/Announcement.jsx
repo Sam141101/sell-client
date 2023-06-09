@@ -11,7 +11,7 @@ const Announcement = ({
     // console.log(typeof show1);
 
     return (
-        <div className="announcement-container">
+        <div className="announcement-container display-flex">
             <div className="grid wide">
                 <div className="row">
                     <div className="col l-12">
