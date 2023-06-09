@@ -64,12 +64,12 @@ const Footer = ({ layoutVoucher }) => {
 
     return (
         <footer className={`footer ${layoutVoucher ? 'layout-voucher' : ''}`}>
-            <div className="footer-contact-phone">
+            <div className="footer-contact-phone db">
                 <div className="grid wide">
                     <div className="row">
                         <div className="col l-12" style={{ fontSize: '15px' }}>
-                            <div className="block-footer">
-                                <div className="block-footer-icon">
+                            <div className="block-footer df ai">
+                                <div className="block-footer-icon df ai jc bd50pt">
                                     <Call />
                                 </div>
                                 <span>Hỗ trợ / Mua hàng:</span>
@@ -112,9 +112,12 @@ const Footer = ({ layoutVoucher }) => {
                                     show === data[1].id ? 'active-show-info' : ''
                                 } `}
                             >
-                                <ul className="footer-list">
+                                <ul className="footer-list df flex-direction h100pt">
                                     {data[1].items.map((item) => (
-                                        <li key={item.name} className="footer-list-item">
+                                        <li
+                                            key={item.name}
+                                            className="footer-list-item db"
+                                        >
                                             <Link
                                                 style={{
                                                     textDecoration: 'none',
@@ -143,15 +146,15 @@ const Footer = ({ layoutVoucher }) => {
                                     show === data[2].id ? 'active-show-info' : ''
                                 } `}
                             >
-                                <div className="footer-contact-item">
+                                <div className="footer-contact-item df ai">
                                     <Room style={{ marginRight: '10px' }} />{' '}
                                     {data[2].room}
                                 </div>
-                                <div className="footer-contact-item">
+                                <div className="footer-contact-item df ai">
                                     <Phone style={{ marginRight: '10px' }} />{' '}
                                     {data[2].phone}
                                 </div>
-                                <div className="footer-contact-item">
+                                <div className="footer-contact-item df ai">
                                     <MailOutline style={{ marginRight: '10px' }} />{' '}
                                     {data[2].mail}
                                 </div>
@@ -192,13 +195,13 @@ const Footer = ({ layoutVoucher }) => {
                                     // src={yourImage}
                                     // srcSet="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04 "
                                 />
-                                <div className="shawdow"></div>
+                                <div className="shawdow h100pt w100pt"></div>
                                 <Link
                                     style={{ textDecoration: 'none', color: 'black' }}
                                     to="https://www.facebook.com/outerity/"
                                 >
                                     <p className="text-link-face">OUTERITY</p>
-                                    <span className="link-face">
+                                    <span className="link-face fw500 cs">
                                         <Facebook />
                                         Outerity
                                     </span>

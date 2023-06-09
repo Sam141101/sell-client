@@ -80,6 +80,9 @@ body {
 .fw500 {
     font-weight: 500;
 }
+.fw600 {
+    font-weight: 600;
+}
 .tx-tran {
     text-transform: uppercase;
 }
