@@ -19,7 +19,7 @@ export const sliderItems = [
 
     {
         id: 3,
-        // img: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
+        img: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
         setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/slider2min.jpg?alt=media&token=a1b0e0a3-81d5-4f39-815e-4df35af71f11&_gl=1*1lh1jyq*_ga*ODQ0ODA3ODExLjE2Nzk0MTMwNjc.*_ga_CW55HF8NVT*MTY4NjA4MzI1MS4zLjEuMTY4NjA4MzQwNy4wLjAuMA..',
         // setSrc: '%PUBLIC_URL%/assets/AnyConv.com__slider2min.webp',
         // setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/AnyConv.com__slider2min.webp?alt=media&token=fc8d4a10-fc27-494e-a128-e2d65355af02&_gl=1*aam6au*_ga*ODQ0ODA3ODExLjE2Nzk0MTMwNjc.*_ga_CW55HF8NVT*MTY4NjI3OTgzMS41LjEuMTY4NjI3OTkxOC4wLjAuMA..',
