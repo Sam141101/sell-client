@@ -2,23 +2,15 @@
     padding: 20px 0;
     height: 100%;
 }
-
 .wait-purchase-no-order {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
 }
-
-.wait-purchase-details-product {
-    display: flex;
-    align-items: center;
-}
-
 .wait-purchase-img {
     width: 150px;
 }
-
 .wait-purchase-info {
     flex: 1;
     height: 150px;
@@ -26,120 +18,79 @@
     justify-content: space-between;
     padding: 0px 50px;
 }
-
-.wait-purchase-name-size {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    font-size: 18px;
-}
-
+.wait-purchase-name-size,
 .wait-purchase-price-quanti {
     height: 100%;
-    display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     font-size: 18px;
 }
-
 .wait-purchase-block {
-    display: flex;
     padding: 10px 0 15px 0;
     justify-content: space-between;
-    align-items: center;
     margin-right: 50px;
-    font-size: 16px;
 }
 .wait-purchase-status {
     margin-left: 10px;
 }
-
 .wait-purchase-status span {
     margin-right: 5px;
 }
-
 .wait-purchase-cancel-order-button {
     padding: 13px 20px;
-    background: red;
+    background: var(--color-red);
     border-radius: 5px;
     font-size: 18px;
-    cursor: pointer;
-    color: white;
-    font-weight: 500;
-    outline: none;
+    color: var(--color-white);
     border: none;
     line-height: 18px;
 }
-
 .wait-purchase-cancel-order {
     margin-right: 50px;
-    display: flex;
     justify-content: flex-end;
 }
-
 .wait-purchase-evaluate-order {
     margin-right: 50px;
-    display: flex;
     justify-content: flex-end;
     padding-top: 10px;
     border-top: 1px solid #ccc;
     margin-top: 10px;
 }
-
-.wait-purchase-info-block {
-    display: flex;
-    justify-content: space-around;
-}
 .wait-purchase-product-order {
     margin: 10px 0;
     padding-bottom: 10px;
-
     border-bottom: 1px solid #ccc;
 }
-
 .wait-for-product {
-    display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
     width: 600px;
 }
-
 .wait-for-frame-block {
     border-bottom: 1px solid #ccc;
 }
-
 .wait-for-product-list {
     background-color: rgb(228 226 226);
     padding: 15px 10px;
     margin-bottom: 15px;
     border-radius: 3px;
 }
-
 .wait-for-product-list:last-child {
     margin-bottom: 0;
 }
-
 .wait-purchase-total-price {
     font-size: 22px;
-    font-weight: 500;
 }
-
 .wait-purchase-total-price-text {
     color: red;
     margin-left: 10px;
 }
-
 .wait-purchase-evaluate {
     padding: 13px 20px;
     background: red;
     border-radius: 5px;
     font-size: 18px;
-    cursor: pointer;
     color: white;
-    font-weight: 500;
-    outline: none;
     border: none;
     line-height: 18px;
     text-decoration: none;

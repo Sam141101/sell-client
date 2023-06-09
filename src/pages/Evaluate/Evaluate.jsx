@@ -196,7 +196,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                 <div className="grid wide">
                     <div className="row">
                         <div className="col l-12 c-12">
-                            <div className="evaluate_header">
+                            <div className="evaluate_header df ai jc">
                                 <Link to="/complete" className="evaluate_link">
                                     <KeyboardBackspace className="evaluate_link-icon" />
                                 </Link>
@@ -235,7 +235,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                 </div>
                             </div>
 
-                            <div className="evaluate_container">
+                            <div className="evaluate_container df jc">
                                 <div className="evaluate_wrapper">
                                     <h3 className="evaluate_product-title-content">
                                         Nhận xét
@@ -243,7 +243,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                     <div className="row">
                                         <div className="col l-6 c-12">
                                             <div className="evaluate-selected">
-                                                <div className="evaluate-star">
+                                                <div className="evaluate-star df ai">
                                                     <div className="evaluate-quality">
                                                         Chất lượng sản phẩm
                                                     </div>
@@ -265,7 +265,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                                     </p>
                                                 </div>
 
-                                                <div className="evaluate-upload-img">
+                                                <div className="evaluate-upload-img df flex-direction">
                                                     <label
                                                         className="evaluate-label"
                                                         htmlFor="file"
@@ -300,7 +300,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                                                     className="image-upload-comment"
                                                                 />
                                                                 <div
-                                                                    className="image-delete-upload-comment"
+                                                                    className="image-delete-upload-comment df ai jc sc"
                                                                     onClick={() =>
                                                                         handleRemoveImage(
                                                                             i,
@@ -317,7 +317,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                         </div>
 
                                         <div className="col l-6 c-12">
-                                            <div className="evaluate_form-input">
+                                            <div className="evaluate_form-input df flex-direction">
                                                 <div className="evaluate_form">
                                                     <textarea
                                                         value={comment}
@@ -332,7 +332,7 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                                 </div>
 
                                                 <button
-                                                    className="evaluate_button"
+                                                    className="evaluate_button out tx-tran dib"
                                                     onClick={handleClick}
                                                 >
                                                     GỬI

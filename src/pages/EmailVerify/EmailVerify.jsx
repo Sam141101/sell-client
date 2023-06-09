@@ -63,11 +63,11 @@ const EmailVerify = ({ axios, BASE_URL_API, setToast }) => {
                         </div>
 
                         <div className="col l-6 c-12">
-                            <div className="email-verify-container">
+                            <div className="email-verify-container df jc">
                                 <div className="email-verify-wrapper">
-                                    <div className="email-verify-form">
+                                    <div className="email-verify-form df">
                                         {/* Email */}
-                                        <div className="email-verify-form-input">
+                                        <div className="email-verify-form-input df flex-direction">
                                             <input
                                                 className="email-verify-input"
                                                 type="email"
@@ -120,15 +120,18 @@ const EmailVerify = ({ axios, BASE_URL_API, setToast }) => {
                                                 style={{ textDecoration: 'none' }}
                                                 to="/login"
                                             >
-                                                <span className="email-verify-text-line">
+                                                <span className="email-verify-text-line fw500 cs">
                                                     Đăng nhập
                                                 </span>
                                             </Link>
                                         </p>
 
-                                        <Link to="/" className="email-verify-return-home">
+                                        <Link
+                                            to="/"
+                                            className="email-verify-return-home df ai"
+                                        >
                                             <KeyboardBackspace className="email-verify-return-home-icon" />
-                                            <p className="email-verify-return-home-text">
+                                            <p className="email-verify-return-home-text fw500">
                                                 Quay lại trang chủ
                                             </p>
                                         </Link>

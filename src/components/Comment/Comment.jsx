@@ -119,7 +119,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                     }
                 >
                     <div className="main-evaluate-comment df ai">
-                        <div className="main-evaluate-comment-left ai flex-direction">
+                        <div className="main-evaluate-comment-left df ai flex-direction">
                             <div className="main-evaluate-comment-title hide-on-mobile">
                                 {listInfoComment &&
                                     listInfoComment.mainEvaluateStar &&

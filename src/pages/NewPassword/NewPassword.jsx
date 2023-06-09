@@ -3,8 +3,6 @@ import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import './newPassword.css';
-
 // --------------------------------------------------------------
 
 const NewPassword = ({ axios, BASE_URL_API, navigate, setToast }) => {
@@ -93,13 +91,13 @@ const NewPassword = ({ axios, BASE_URL_API, navigate, setToast }) => {
                         <div className="grid">
                             <div className="row">
                                 <div className="col l-6 c-12">
-                                    <div className="login_header">
+                                    <div className="login_header df ai jc">
                                         <h1 className="login_title">Đăng nhập</h1>
                                     </div>
                                 </div>
 
                                 <div className="col l-6 c-12">
-                                    <div className="login_container">
+                                    <div className="login_container df jc">
                                         <div className="login_wrapper">
                                             <div className="login_form">
                                                 <div className="forgot-password-title-text">
@@ -110,7 +108,7 @@ const NewPassword = ({ axios, BASE_URL_API, navigate, setToast }) => {
                                                     {email}
                                                 </div>
 
-                                                <div className="login_form-input">
+                                                <div className="login_form-input df flex-direction">
                                                     <input
                                                         className="login_input"
                                                         type="text"
@@ -145,7 +143,7 @@ const NewPassword = ({ axios, BASE_URL_API, navigate, setToast }) => {
                                                     ></span>
 
                                                     <button
-                                                        className="login_button"
+                                                        className="login_button out dib cs"
                                                         onClick={handleClick}
                                                     >
                                                         ĐỒNG Ý

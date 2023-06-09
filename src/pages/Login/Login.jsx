@@ -31,17 +31,17 @@ const Login = ({ navigate, dispatch }) => {
                 <div className="grid">
                     <div className="row">
                         <div className="col l-6 c-12">
-                            <div className="login_header">
+                            <div className="login_header df ai jc">
                                 <h1 className="login_title">Đăng nhập</h1>
                             </div>
                         </div>
 
                         <div className="col l-6 c-12">
-                            <div className="login_container">
+                            <div className="login_container df jc">
                                 <div className="login_wrapper">
                                     <div className="login_form">
                                         {/* Email */}
-                                        <div className="login_form-input">
+                                        <div className="login_form-input df flex-direction">
                                             {!isFetching && (
                                                 <span className="login_error">
                                                     Yêu cầu không hợp lệ, hoặc quá hạn,
@@ -75,7 +75,7 @@ const Login = ({ navigate, dispatch }) => {
                                                 id="password"
                                             ></span>
                                             <button
-                                                className="login_button"
+                                                className="login_button out dib cs"
                                                 onClick={handleClick}
                                                 disabled={isFetching}
                                             >
@@ -112,7 +112,7 @@ const Login = ({ navigate, dispatch }) => {
                                                 style={{ textDecoration: 'none' }}
                                                 to="/confirm/register"
                                             >
-                                                <span className="login_text-line">
+                                                <span className="login_text-line fw500 cs">
                                                     Đăng kí
                                                 </span>
                                             </Link>

@@ -35,18 +35,18 @@ const Canceled = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API 
                         <div className="wait-for-product-list" key={item._id}>
                             {item?.products.map((item, index) => (
                                 <div className="wait-purchase-product-order" key={index}>
-                                    <div className="wait-purchase-details-product">
+                                    <div className="wait-purchase-details-product df ai">
                                         <img
                                             className="wait-purchase-img"
                                             alt=""
                                             src={item.product_id.img}
                                         />
                                         <div className="wait-purchase-info">
-                                            <div className="wait-purchase-name-size">
+                                            <div className="wait-purchase-name-size df flex-direction">
                                                 <div>{item.product_id.title}</div>
                                                 <div>{item.size}</div>
                                             </div>
-                                            <div className="wait-purchase-price-quanti">
+                                            <div className="wait-purchase-price-quanti df flex-direction">
                                                 <div style={{ textAlign: 'right' }}>
                                                     x{item.quantity}
                                                 </div>
@@ -70,7 +70,7 @@ const Canceled = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API 
                                 </div>
                             ))}
 
-                            <div className="wait-purchase-block">
+                            <div className="wait-purchase-block df ai fz16">
                                 <div className="wait-purchase-status">
                                     <>
                                         <span>Trạng thái:</span>
@@ -82,15 +82,15 @@ const Canceled = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API 
                                     </div>
                                 </div>
 
-                                <div className="wait-purchase-total-price">
+                                <div className="wait-purchase-total-price fw500">
                                     Tổng số tiền:
                                     <span className="wait-purchase-total-price-text">
                                         {item.amount + item.transportFee}₫
                                     </span>
                                 </div>
                             </div>
-                            <div className="wait-purchase-cancel-order">
-                                <button className="wait-purchase-cancel-order-button">
+                            <div className="wait-purchase-cancel-order df">
+                                <button className="wait-purchase-cancel-order-button cs fw500 out">
                                     Chi tiết Đơn huỷ
                                 </button>
                             </div>
@@ -102,7 +102,7 @@ const Canceled = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API 
                     <img
                         src="https://rtworkspace.com/wp-content/plugins/rtworkspace-ecommerce-wp-plugin/assets/img/empty-cart.png"
                         alt="imag"
-                        className="wait-for-product"
+                        className="wait-for-product db"
                     />
                 </div>
             )}

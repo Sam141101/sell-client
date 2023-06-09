@@ -19,7 +19,7 @@ const Toast = ({ title, message, type = 'info', duration = 3000, setShow, show }
         show && (
             <div id="toast">
                 <div
-                    className={`toast toast--${type}`}
+                    className={`toast df toast--${type}`}
                     style={{
                         animation: `slideInLeft ease .3s, fadeOut linear 1s ${delay}s forwards`,
                     }}

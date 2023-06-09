@@ -2,8 +2,6 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-// import { sliderItems } from '../../data';
 import './slider.css';
 
 const Wrapper = styled.div`
@@ -11,7 +9,6 @@ const Wrapper = styled.div`
     display: flex;
     transform: translateX(${(props) => props.slideIndex * -100}vw);
     transition: all 1.5s ease;
-    // position: relative;
 `;
 
 const Slide = styled.div`
@@ -19,7 +16,6 @@ const Slide = styled.div`
     width: 100vw;
     display: flex;
     align-items: center;
-    // background-color: ${(props) => props.bg};
 `;
 
 const Slider = ({ slides }) => {
@@ -49,16 +45,22 @@ const Slider = ({ slides }) => {
     return (
         <div className="fullscreen-slider">
             <div className="slide-nav left">
-                <div className="button-arrow left" onClick={handleClickPrevious}>
+                <div
+                    className="button-arrow bd50pt df ai jc left"
+                    onClick={handleClickPrevious}
+                >
                     <ArrowLeftOutlined className="icon-btn" />
                 </div>
             </div>
             <div className="slide-nav right">
-                <div className="button-arrow right" onClick={handleClickNext}>
+                <div
+                    className="button-arrow bd50pt df ai jc right"
+                    onClick={handleClickNext}
+                >
                     <ArrowRightOutlined className="icon-btn" />
                 </div>
             </div>
-            <div className="slider-container">
+            <div className="slider-container df">
                 <Wrapper slideIndex={currentSlideIndex}>
                     {slides.map((slide, index) => (
                         <Slide bg={slide.bg} key={index}>

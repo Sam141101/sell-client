@@ -16,6 +16,7 @@ import {
     updateSuccess,
 } from './authRedux';
 import { removeProduct, addProduct, getAllProduct, updatedProduct } from './cartRedux';
+import { getProductList } from './productRedux';
 
 // Login
 export const login = async (dispatch, user, navigate) => {
@@ -32,6 +33,18 @@ export const login = async (dispatch, user, navigate) => {
         console.log(err);
         dispatch(loginFailure());
         navigate('/login');
+    }
+};
+
+export const getProducts = async (token, dispatch, axios) => {
+    try {
+        const res = await axios.get(BASE_URL_API + 'carts/find/', {
+            headers: { token: `Bearer ${token}` },
+        });
+        dispatch(getProductList(res.data));
+    } catch (err) {
+        console.log('that bai');
+        console.log(err);
     }
 };
 

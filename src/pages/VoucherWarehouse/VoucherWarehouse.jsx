@@ -59,16 +59,16 @@ const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate }) => {
                 <div className="voucher-file-title">Kho Voucher</div>
             </div>
 
-            <ul className="list-choose-voucher">
+            <ul className="list-choose-voucher df ai">
                 {data.map((item, index) => (
-                    <li key={index} className="item-choose-voucher">
+                    <li key={index} className="item-choose-voucher fz16 fw500">
                         <span
                             onClick={() => handleClick(item.type)}
                             style={{
                                 color: `${typeCoupon === item.type ? '#ee4d2d' : '#555'}`,
                             }}
                             to={item.to}
-                            className="item-type-voucher"
+                            className="item-type-voucher cs"
                         >
                             {item.title}
                         </span>
@@ -80,14 +80,16 @@ const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate }) => {
 
             <div className="voucher-list">
                 {listCoupon && listCoupon.length === 0 && (
-                    <div className="no-vouchers">
+                    <div className="no-vouchers df flex-direction ai">
                         <img
                             src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/0e8c07c8449d8d509f72f5576f79a983.png"
                             alt=""
                             className="no-vouchers-img"
                         />
 
-                        <span className="no-vouchers-title">Không có voucher nào!</span>
+                        <span className="no-vouchers-title fz16 fw500">
+                            Không có voucher nào!
+                        </span>
                     </div>
                 )}
                 <div className="voucher-list-frame">
@@ -113,12 +115,12 @@ const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate }) => {
                                                     ? { backgroundColor: '#ee4d2d' }
                                                     : { backgroundColor: '#00bfa5' }
                                             }
-                                            className="voucher-item-type"
+                                            className="voucher-item-type df ai jc fw500"
                                         >
                                             {item.descCoupon}
                                         </div>
-                                        <div className="voucher-item-desc-block">
-                                            <div className="voucher-item-code">
+                                        <div className="voucher-item-desc-block df jc flex-direction">
+                                            <div className="voucher-item-code fw500 fz16">
                                                 Mã code: {item.coupon_code}
                                             </div>
                                             <div className="voucher-item-discount-amout">

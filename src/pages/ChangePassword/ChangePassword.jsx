@@ -79,13 +79,13 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
 
                         <div className="change-password-form">
                             <div className="change-password-form-left">
-                                <div className="change-password-form-item">
+                                <div className="change-password-form-item df ai">
                                     <div className="change-password-form-key">
                                         Mật khẩu cũ
                                     </div>
                                     <div className="change-password-form-value">
                                         <input
-                                            className="change-password-form-input"
+                                            className="change-password-form-input df ai"
                                             type="text"
                                             onChange={(e) =>
                                                 setCurrentPassword(e.target.value)
@@ -95,13 +95,13 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
                                     </div>
                                 </div>
 
-                                <div className="change-password-form-item">
+                                <div className="change-password-form-item df ai">
                                     <div className="change-password-form-key">
                                         Mật khẩu mới
                                     </div>
                                     <div className="change-password-form-value">
                                         <input
-                                            className="change-password-form-input"
+                                            className="change-password-form-input df ai"
                                             type="text"
                                             onChange={(e) =>
                                                 setNewPassword(e.target.value)
@@ -111,13 +111,13 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
                                     </div>
                                 </div>
 
-                                <div className="change-password-form-item">
+                                <div className="change-password-form-item df ai">
                                     <div className="change-password-form-key">
                                         Xác nhận mật khẩu
                                     </div>
                                     <div className="change-password-form-value">
                                         <input
-                                            className="change-password-form-input"
+                                            className="change-password-form-input df ai"
                                             type="text"
                                             onChange={(e) =>
                                                 setConfirmPassword(e.target.value)
@@ -128,7 +128,7 @@ const ChangePassword = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
                                 </div>
 
                                 <button
-                                    className="change-password-form-save-info"
+                                    className="change-password-form-save-info fz15 cs"
                                     onClick={handleClick}
                                 >
                                     Lưu

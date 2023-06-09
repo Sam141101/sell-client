@@ -98,9 +98,9 @@ const Searchs = ({ navigate }) => {
     }, [debounced, listProduct]);
 
     return (
-        <div className="searchs-container">
+        <div className="searchs-container df">
             <input
-                className="searchs-input"
+                className="searchs-input fw500"
                 ref={inputRef}
                 placeholder="Tìm kiếm sản phẩm..."
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -115,7 +115,7 @@ const Searchs = ({ navigate }) => {
 
             {!!searchTerm && (
                 <div
-                    className="searchs-button-close"
+                    className="searchs-button-close bd50pt df cs"
                     onClick={() => {
                         setSearchTerm('');
                         inputRef.current.focus();
@@ -129,20 +129,20 @@ const Searchs = ({ navigate }) => {
                 aria-label="Tìm kiếm"
                 id="button"
                 onClick={handleSubmit}
-                className="searchs-button"
+                className="searchs-button cs df ai jc"
             >
                 <Search fontSize="large" />
             </button>
 
             {showResult && searchTerm.length > 0 && (
                 <div
-                    className="searchs-list"
+                    className="searchs-list cs"
                     ref={listRef}
                     onMouseLeave={() => setShowResult(false)}
                 >
                     {listProduct?.map((product, index) => (
                         <div
-                            className="searchs-item-main"
+                            className="searchs-item-main df ai cs"
                             key={index}
                             onClick={() => handleClick(product)}
                         >
@@ -180,7 +180,7 @@ const Searchs = ({ navigate }) => {
 
                     <div
                         style={showNot ? { display: 'block' } : { display: 'none' }}
-                        className="result-more-item-link"
+                        className="result-more-item-link cs"
                     >
                         Không có sản phẩm nào...
                     </div>

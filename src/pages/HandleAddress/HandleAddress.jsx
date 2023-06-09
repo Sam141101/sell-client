@@ -102,7 +102,7 @@ const HandleAddress = ({
     return (
         <div className="row">
             <div className="col l-12 c-12">
-                <div className="address-manage-user">
+                <div className="address-manage-user df ai">
                     <h4 className="user-profile-file-title">Thông tin địa chỉ</h4>
                 </div>
 
@@ -110,12 +110,12 @@ const HandleAddress = ({
                     <div className="row">
                         <div className="col l-12 c-12">
                             <div className="user-profile-form-frame">
-                                <div className="user-address-form-item">
-                                    <div className="user-change-address-form-key">
+                                <div className="user-address-form-item df flex-direction">
+                                    <div className="user-change-address-form-key db fz16 fw500">
                                         Nhập địa chỉ
                                     </div>
 
-                                    <div className="frame-update-address">
+                                    <div className="frame-update-address df flex-direction w100pt">
                                         <FormInputAddress
                                             inputs={inputs}
                                             setInputs={setInputs}
@@ -125,7 +125,7 @@ const HandleAddress = ({
                                         />
                                     </div>
 
-                                    <span className="advertise">{advertise}</span>
+                                    <span className="advertise fz15">{advertise}</span>
                                 </div>
                             </div>
                         </div>

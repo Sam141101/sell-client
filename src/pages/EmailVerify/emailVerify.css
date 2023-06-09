@@ -1,16 +1,12 @@
 .email-verify-container {
-    display: flex;
-    justify-content: center;
     background-color: white;
     padding: 100px;
     border-left: 1px solid #ededed;
 }
-
 .email-verify-title {
     font-size: 45px;
     font-weight: 600;
 }
-
 .email-verify-title::after {
     margin: 20px auto 0;
     content: '';
@@ -19,12 +15,9 @@
     width: 60px;
     height: 4px;
 }
-
 .email-verify-form {
-    display: flex;
     flex-wrap: wrap;
 }
-
 .email-verify-form input[type='email'] {
     width: 80%;
     height: 55px;
@@ -36,32 +29,25 @@
     -webkit-appearance: none;
     outline: none;
 }
-
 .register_form input[type='email']:focus {
     background: #fff;
     border-color: #ededed;
 }
-
 .email-verify-input::placeholder {
     color: #000000;
     font-size: 14px;
 }
-
 .email-verify-agreement {
     font-size: 12px;
     margin: 20px 0;
 }
-
 .email-verify-button {
     outline: none;
     width: fit-content;
-
     padding: 0 30px;
     height: 55px;
     line-height: 55px;
-
     font-weight: 600;
-
     color: #fff;
     background-color: #d1d1d1;
     display: inline-block;
@@ -73,24 +59,20 @@
     overflow: hidden;
     letter-spacing: 1px;
 }
-
 .email-verify-button:disabled {
     cursor: not-allowed;
 }
-
 .email-verify-button:hover {
     color: #000000;
     background-color: transparent;
     border: 1px solid #d1d1d1;
 }
-
 .email-verify-span {
     padding: 10px 0;
     font-size: 14px;
     color: red;
     font-weight: 500;
 }
-
 .email-verify-header {
     display: flex;
     align-items: center;
@@ -98,17 +80,6 @@
     background-color: white;
     height: 100%;
 }
-
-.email-verify-header-container {
-    display: flex;
-    align-items: center;
-}
-
-.email-verify-header-img {
-    height: 38px;
-    cursor: pointer;
-}
-
 .email-verify-text {
     white-space: pre;
     padding-right: 4px;
@@ -116,59 +87,26 @@
     text-align: center;
     width: 100%;
 }
-
 .email-verify-form-input {
-    display: flex;
-    flex-direction: column;
     width: 100%;
 }
-
 .email-verify-text-line {
     color: #ee4d2d;
-    font-weight: 500;
     margin-left: 7px;
-    cursor: pointer;
 }
-
-.email-verify-header-img {
-    height: 38px;
-    cursor: pointer;
-}
-
-.email-verify-header-title {
-    font-size: 26px;
-    padding-left: 25px;
-}
-
-.email-verify-header-help {
-    color: red;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.email-verify-frame {
-    overflow: hidden;
-}
-
 .email-verify-main {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-
 .email-verify-return-home {
     text-decoration: none;
     color: black;
-    display: flex;
-    align-items: center;
     margin-top: 30px;
 }
-
 .email-verify-return-home-text {
     font-size: 14px;
     margin-left: 15px;
-    font-weight: 500;
 }
-
 .email-verify-return-home-icon {
     font-size: 25px !important;
 }

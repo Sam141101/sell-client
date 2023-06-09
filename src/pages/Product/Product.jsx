@@ -134,7 +134,7 @@ const Product = ({
                 <div className="grid wide">
                     <div className="row">
                         <div className="col l-7 c-12">
-                            <div className="product-img-container-block">
+                            <div className="product-img-container-block df flex-direction">
                                 {/* <img
                                     className="product-image"
                                     alt=""
@@ -209,7 +209,7 @@ const Product = ({
                                         <div className="product-select-swap" key={s._id}>
                                             <div className="roduct-select-swap">
                                                 <div
-                                                    className={`product-swatch-block ${
+                                                    className={`product-swatch-block df fw500 cs jc ai ${
                                                         s.inStock === 0
                                                             ? 'block-close'
                                                             : ''
@@ -233,19 +233,21 @@ const Product = ({
                                         </div>
                                     ))}
                                     {amountInStock !== 0 && (
-                                        <div className="amount-sizes">
+                                        <div className="amount-sizes fw500">
                                             {amountInStock} có sẵn
                                         </div>
                                     )}
                                 </div>
 
-                                <div className="product-amount-container">
-                                    <div className="product-remove-input">
+                                <div className="product-amount-container df ai">
+                                    <div className="product-remove-input df cs fz16 out ai jc">
                                         <Remove onClick={() => handleQuantity('dec')} />
                                     </div>
 
-                                    <span className="product-amount">{quantity}</span>
-                                    <div className="product-add-input">
+                                    <span className="product-amount df ai jc">
+                                        {quantity}
+                                    </span>
+                                    <div className="product-add-input df cs fz16 out ai jc">
                                         <Add onClick={() => handleQuantity('inc')} />
                                     </div>
                                 </div>
@@ -257,7 +259,7 @@ const Product = ({
                                         </button>
                                     ) : (
                                         <button
-                                            className="product-button"
+                                            className="product-button tx-tran cs df jc ai"
                                             onClick={handleClick}
                                         >
                                             Thêm vào giỏ
@@ -265,7 +267,7 @@ const Product = ({
                                     )}
                                 </div>
 
-                                <span className="product-des-note3">Mô tả</span>
+                                <span className="product-des-note3 db fw500">Mô tả</span>
 
                                 <div className="product-des-note">
                                     🔹 Bảng size Outerity

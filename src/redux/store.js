@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import cartReducer from './cartRedux';
-// import userReducer from './userRedux';
 import authReducer from './authRedux';
+import productReducer from './productRedux';
 import temporaryReducer from './temporaryRedux';
 import {
     persistStore,
@@ -25,6 +25,7 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     auth: authReducer,
     temporary: temporaryReducer,
+    product: productReducer,
     // auth: {
     //     authReducer,
     //     cart: cartReducer,

@@ -28,7 +28,7 @@ const Pagination = (props) => {
         pageNumbers.push(
             <span
                 key={i}
-                className={`pagination-number ${i === page ? 'active' : ''}`}
+                className={`pagination-number cs fz16 ${i === page ? 'active' : ''}`}
                 onClick={() => handleClick(i)}
             >
                 {i}
@@ -48,14 +48,11 @@ const Pagination = (props) => {
 
     return (
         <div className="pagination-container">
-            {/* <span className="pagination-text">
-                Trang số {page} - {totalPages}{' '}
-            </span> */}
             {totalPages > 1 && (
-                <div className="pagination-pagi">
+                <div className="pagination-pagi df ai jc">
                     {page > 1 && (
                         <button
-                            className="pagination-button"
+                            className="pagination-button df out cs fz15"
                             onClick={() => handlePageChange(page - 1)}
                         >
                             <KeyboardArrowLeft
@@ -69,7 +66,7 @@ const Pagination = (props) => {
 
                     {page < totalPages && (
                         <button
-                            className="pagination-button"
+                            className="pagination-button df out cs fz15"
                             onClick={() => handlePageChange(page + 1)}
                         >
                             <KeyboardArrowRight

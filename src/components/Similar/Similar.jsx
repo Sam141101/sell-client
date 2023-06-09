@@ -45,7 +45,7 @@ const Similar = ({ cat, BASE_URL_API, axios }) => {
 
     return (
         <div ref={componentRef}>
-            <div className="similar-title-relate">SẢN PHẨM LIÊN QUAN</div>
+            <div className="similar-title-relate fw500">SẢN PHẨM LIÊN QUAN</div>
             <div className="grid wide">
                 <div className="row pd-mobile">
                     {products.map((item, index) => {

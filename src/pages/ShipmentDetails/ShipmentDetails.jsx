@@ -380,12 +380,7 @@ const ShipmentDetails = () => {
                                             key={index}
                                             quanti={item.quantity}
                                         >
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                }}
-                                            >
+                                            <div className="df ai">
                                                 <img
                                                     className="ship_ment-details-img"
                                                     src={item.product_id.img}
@@ -607,22 +602,6 @@ const ShipmentDetails = () => {
                                             </label>
                                         </div>
 
-                                        {/* <div
-                                            className="ship_ment-details-block-payment"
-                                            onChange={handleChange}
-                                        >
-                                            <input
-                                                className="ship_ment-details-form-value-select"
-                                                type="radio"
-                                                name="method"
-                                                id="momo"
-                                                value="momo"
-                                            />
-                                            <label htmlFor="momo">
-                                                Thanh toán bằng Ví MoMo
-                                            </label>
-                                        </div> */}
-
                                         <div
                                             className="ship_ment-details-block-payment"
                                             onChange={handleChange}
@@ -678,12 +657,7 @@ const ShipmentDetails = () => {
                                                 key={index}
                                                 quanti={item.quantity}
                                             >
-                                                <div
-                                                    style={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                    }}
-                                                >
+                                                <div className="df ai">
                                                     <img
                                                         className="ship_ment-details-img"
                                                         src={item.product_id.img}
@@ -725,20 +699,16 @@ const ShipmentDetails = () => {
                                                         ? {
                                                               backgroundColor: '#338dbc',
                                                               color: 'white',
-                                                              cursor: 'pointer',
                                                           }
                                                         : {}
                                                 }
-                                                className={`ship_ment-details-use-voucher ${
+                                                className={`ship_ment-details-use-voucher cs ${
                                                     notify ===
                                                     'Át mã giảm giá thành công.'
                                                         ? 'disabled'
                                                         : ''
                                                 }`}
                                                 onClick={handleUseVoucher}
-                                                // disabled={
-
-                                                // }
                                             >
                                                 Sử dụng
                                             </button>
@@ -747,7 +717,6 @@ const ShipmentDetails = () => {
                                         {notify && (
                                             <p className="notify-voucher-line">
                                                 {notify}
-                                                {/* Không thể sử dunjg */}
                                             </p>
                                         )}
                                     </div>

@@ -168,12 +168,12 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
             <div className="grid wide">
                 <div className="row">
                     <div className="col l-12 c-12">
-                        <div className="navbar-container">
+                        <div className="navbar-container df ai">
                             {/* Mobile */}
-                            <div className="nav-block">
+                            <div className="nav-block df ai w100pt">
                                 <div className="navbar-mobile-left">
                                     <Menu
-                                        className="mobile-icon menu"
+                                        className="mobile-icon cs menu"
                                         onClick={(e) => handleMenuClick(e, 'Menu')}
                                     />
                                     <nav className="nav-menu-mobile">
@@ -202,7 +202,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                             key={index}
                                                         >
                                                             <Link
-                                                                className="navbar-menu-item-link"
+                                                                className="navbar-menu-item-link fz16 fw600 tx-tran df ai"
                                                                 to={item.to}
                                                                 id={
                                                                     item.noLink === false
@@ -233,13 +233,13 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                         Bạn cần hỗ trợ?
                                                     </p>
                                                     <div className="nav-list-contact-mobile">
-                                                        <Phone className="nav-list-help-icon-mobile" />
+                                                        <Phone className="nav-list-help-icon-mobile fz16" />
                                                         <p className="nav-list-help-text-mobile">
                                                             Liên hệ: 0862642568
                                                         </p>
                                                     </div>
                                                     <div className="nav-list-contact-mobile">
-                                                        <Mail className="nav-list-help-icon-mobile" />
+                                                        <Mail className="nav-list-help-icon-mobile fz16" />
                                                         <p className="nav-list-help-text-mobile">
                                                             outerity.local@gmail.com
                                                         </p>
@@ -254,7 +254,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 <ul className="nav-menu-list-mobile">
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
-                                                            className="navbar-menu-item-link return five "
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai return five "
                                                             id="return0"
                                                             onClick={(e) =>
                                                                 handleMenuClick(e, 'More')
@@ -266,7 +266,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
-                                                            className="navbar-menu-item-link text-inherit"
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai text-inherit"
                                                             to={`/products/all?page=${1}`}
                                                             onClick={() =>
                                                                 handleClick(
@@ -279,7 +279,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
-                                                            className="navbar-menu-item-link four"
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai four"
                                                             // to="/"
                                                             id="click1"
                                                             onClick={(e) =>
@@ -292,7 +292,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
-                                                            className="navbar-menu-item-link four"
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai four"
                                                             id="click2"
                                                             onClick={(e) =>
                                                                 handleMenuClick(e, 'More')
@@ -312,7 +312,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 <ul className="nav-menu-list-mobile">
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
-                                                            className="navbar-menu-item-link return five"
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai return five"
                                                             id="return1"
                                                             onClick={(e) =>
                                                                 handleMenuClick(e, 'More')
@@ -323,13 +323,13 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                         </Link>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
-                                                        <Link className="navbar-menu-item-link text-inherit">
+                                                        <Link className="navbar-menu-item-link fz16 fw600 tx-tran df ai text-inherit">
                                                             Xem tất cả "TOPS"
                                                         </Link>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
                                                         <div
-                                                            className="navbar-menu-item-link four"
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai four"
                                                             onClick={(e) =>
                                                                 handleClick(
                                                                     `products/TEE?page=${1}`,
@@ -341,7 +341,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
                                                         <div
-                                                            className="navbar-menu-item-link four"
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai four"
                                                             onClick={(e) =>
                                                                 handleClick(
                                                                     `products/POLO?page=${1}`,
@@ -353,7 +353,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
                                                         <div
-                                                            className="navbar-menu-item-link four"
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai four"
                                                             onClick={(e) =>
                                                                 handleClick(
                                                                     `products/HOODIE?page=${1}`,
@@ -373,7 +373,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 <ul className="nav-menu-list-mobile">
                                                     <li className="nav-menu-list-item-mobile">
                                                         <Link
-                                                            className="navbar-menu-item-link return five "
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai return five "
                                                             id="return2"
                                                             onClick={(e) =>
                                                                 handleMenuClick(e, 'More')
@@ -384,13 +384,13 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                         </Link>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
-                                                        <Link className="navbar-menu-item-link text-inherit">
+                                                        <Link className="navbar-menu-item-link fz16 fw600 tx-tran df ai text-inherit">
                                                             Xem tất cả "BOTTOMS"
                                                         </Link>
                                                     </li>
                                                     <li className="nav-menu-list-item-mobile">
                                                         <div
-                                                            className="navbar-menu-item-link four"
+                                                            className="navbar-menu-item-link fz16 fw600 tx-tran df ai four"
                                                             onClick={(e) =>
                                                                 handleClick(
                                                                     `products/SHORT?page=${1}`,
@@ -406,10 +406,10 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                     </nav>
                                 </div>
 
-                                <div className="navbar-center">
+                                <div className="navbar-center df ai h100pt">
                                     <div onClick={(e) => handleClick('')}>
                                         <img
-                                            className="navbar-header-img"
+                                            className="navbar-header-img cs"
                                             height="32px"
                                             width="197px"
                                             alt=""
@@ -418,32 +418,32 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                     </div>
                                 </div>
 
-                                <div className="navbar-right">
+                                <div className="navbar-right df ai h100pt">
                                     {user ? (
                                         <>
                                             <div className="hide-on-mobile">
                                                 <div className="navbar-user">
-                                                    <div className="navbar-user-img">
+                                                    <div className="navbar-user-img df ai">
                                                         <img
-                                                            className="navbar-img-avatar"
+                                                            className="navbar-img-avatar cs bd50pt"
                                                             src={
                                                                 user.img ||
                                                                 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
                                                             }
                                                             alt=""
                                                         />
-                                                        <span className="navbar-user-name">
+                                                        <span className="navbar-user-name fz15 fw500">
                                                             {user.username}
                                                         </span>
                                                     </div>
-                                                    <div className="navbar-list-info">
+                                                    <div className="navbar-list-info fz15 fw500 ">
                                                         {listFunctions.map(
                                                             (item, index) => (
                                                                 <div key={index}>
                                                                     {item.noLink ===
                                                                     true ? (
                                                                         <Link
-                                                                            className={`navbar-info-user ${
+                                                                            className={`navbar-info-user db cs ${
                                                                                 item.title ===
                                                                                 'Tài khoản của tôi'
                                                                                     ? 'border-top'
@@ -455,7 +455,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                                         </Link>
                                                                     ) : (
                                                                         <div
-                                                                            className={`navbar-info-user ${
+                                                                            className={`navbar-info-user cs ${
                                                                                 item.title ===
                                                                                 'Đăng xuất'
                                                                                     ? 'border-bottom'
@@ -477,7 +477,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
 
                                             <div className="mobile-user">
                                                 <AccountCircle
-                                                    className="mobile-icon"
+                                                    className="mobile-icon cs"
                                                     onClick={(e) =>
                                                         handleMenuClick(e, 'User')
                                                     }
@@ -498,7 +498,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                     </span>
 
                                                     <div className="nav-info-user-mobile">
-                                                        <div className="nav-info-user-mobile-title">
+                                                        <div className="nav-info-user-mobile-title fz16 fw500 tx-tran">
                                                             Thông tin tài khoản
                                                         </div>
 
@@ -552,7 +552,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                     ) : (
                                         <>
                                             <div className="hide-on-mobile">
-                                                <div className="pc-user">
+                                                <div className="pc-user df">
                                                     <Link
                                                         to="/confirm/register"
                                                         style={{
@@ -560,7 +560,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                             textDecoration: 'none',
                                                         }}
                                                     >
-                                                        <div className="navbar-menu-item">
+                                                        <div className="navbar-menu-item fz15 cs">
                                                             Đăng kí
                                                         </div>
                                                     </Link>
@@ -571,7 +571,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                             textDecoration: 'none',
                                                         }}
                                                     >
-                                                        <div className="navbar-menu-item">
+                                                        <div className="navbar-menu-item fz15 cs">
                                                             Đăng nhập
                                                         </div>
                                                     </Link>
@@ -580,7 +580,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
 
                                             <div className="mobile-user">
                                                 <AccountCircle
-                                                    className="mobile-icon"
+                                                    className="mobile-icon cs"
                                                     onClick={(e) =>
                                                         handleMenuClick(e, 'User')
                                                     }
@@ -623,7 +623,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                     )}
 
                                     <div onClick={(e) => handleClick('cart')}>
-                                        <div className="navbar-menu-item">
+                                        <div className="navbar-menu-item fz15 cs">
                                             <Badge
                                                 badgeContent={user && quantity}
                                                 color="secondary"
@@ -632,7 +632,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 <ShoppingCart
                                                     style={{ color: 'black' }}
                                                     fontSize="large"
-                                                    className="mobile-icon"
+                                                    className="mobile-icon cs"
                                                 />
                                             </Badge>
                                         </div>
@@ -648,12 +648,12 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                 <div className="navbar-menu">
                     <div className="row">
                         <div className="col l-7 c-0">
-                            <div className="nav-list-mobile hide-on-mobile">
+                            <div className="nav-list-mobile df hide-on-mobile">
                                 {listNavPc.map((item, index) => (
                                     <div className="nav-menu" key={index}>
                                         <span className="nav-label">
                                             <Link
-                                                className="navbar-menu-item-link"
+                                                className="navbar-menu-item-link fz16 fw600 tx-tran df ai"
                                                 to={item.to}
                                             >
                                                 {item.title}
@@ -675,7 +675,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                                                 {listItemNavBar.map((item, index) => (
                                                     <li key={index} className="nav-item">
                                                         <Link
-                                                            className="nav-menu-item-link"
+                                                            className="nav-menu-item-link db fz16"
                                                             to={item.to}
                                                         >
                                                             {item.title}
@@ -690,7 +690,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
                         </div>
 
                         <div className="col l-5 c-12">
-                            <div className="navbar-left">
+                            <div className="navbar-left df ai h100pt">
                                 <Searchs navigate={navigate} />
                             </div>
                         </div>

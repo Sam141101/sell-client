@@ -123,3 +123,6 @@ select {
 .select-block:last-child {
     margin-right: 0px;
 }
+.add-address-right {
+    margin-top: 20px;
+}

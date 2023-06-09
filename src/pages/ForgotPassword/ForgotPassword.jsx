@@ -60,10 +60,10 @@ const ForgotPassword = ({ BASE_URL_API, axios, setToast }) => {
                         </div>
 
                         <div className="col l-6 c-12">
-                            <div className="email-verify-container">
+                            <div className="email-verify-container df jc">
                                 <div className="email-verify-wrapper">
-                                    <div className="email-verify-form">
-                                        <div className="email-verify-form-input">
+                                    <div className="email-verify-form df">
+                                        <div className="email-verify-form-input df flex-direction">
                                             <div className="forgot-password-title-text">
                                                 Phục hồi mật khẩu
                                             </div>

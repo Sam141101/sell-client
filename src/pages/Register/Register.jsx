@@ -101,16 +101,16 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate, setToast }) => {
                     <div className="grid">
                         <div className="row">
                             <div className="col l-6 c-12">
-                                <div className="register_header">
+                                <div className="register_header df ai jc ">
                                     <h1 className="register_title">Tạo tài khoản</h1>
                                 </div>
                             </div>
 
                             <div className="col l-6 c-12">
-                                <div className="register_container">
+                                <div className="register_container df ai">
                                     <div className="register_wrapper">
                                         <div className="register_form">
-                                            <div className="register_form-input">
+                                            <div className="register_form-input df flex-direction">
                                                 <input
                                                     className="register_input"
                                                     type="text"
@@ -216,7 +216,7 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate, setToast }) => {
                                                 </span>
 
                                                 <button
-                                                    className="register_button"
+                                                    className="register_button cs out dib tx-tran"
                                                     onClick={handleClick}
                                                 >
                                                     ĐĂNG KÝ
@@ -253,7 +253,7 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate, setToast }) => {
                                                     style={{ textDecoration: 'none' }}
                                                     to="/login"
                                                 >
-                                                    <span className="register_text-line">
+                                                    <span className="register_text-line fw500 cs">
                                                         Đăng nhập
                                                     </span>
                                                 </Link>

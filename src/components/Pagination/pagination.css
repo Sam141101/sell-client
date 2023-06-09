@@ -2,65 +2,35 @@
     text-align: center;
     margin: 0px 0 20px 0;
 }
-
-.pagination-pagi {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* margin-top: 15px; */
-}
-
-.pagination-text {
-    font-size: 18px;
-    font-weight: 500;
-}
-
 .pagination-number {
-    cursor: pointer;
     margin: 30px 8px;
-    font-size: 16px;
     font-weight: 600;
     opacity: 0.4;
 }
-
 .pagination-number.active {
     opacity: 1;
 }
-
 .pagination-number:hover {
     opacity: 1;
 }
-
-.main-frame-img-evaluate {
-    /* border: 1px solid #ccc; */
-}
-
 .pagination-button {
     padding: 4px;
-    background-color: red;
+    background-color: var(--color-red);
     border-radius: 2px;
-    display: flex;
-    outline: none;
     border: none;
-    cursor: pointer;
     margin: 30px 8px;
-    font-size: 15px;
     font-weight: 600;
 }
-
 .show-comment .pagination-container {
     margin: 15px 0 15px 0;
 }
-
 .show-comment .pagination-pagi {
     justify-content: flex-end;
 }
-
 .show-comment .pagination-number,
 .show-comment .pagination-button {
     margin: 20px 8px;
 }
-
 .pagination-button:disabled {
     opacity: 0.6;
     cursor: not-allowed;

@@ -49,7 +49,7 @@ const Search = ({ axios, BASE_URL_API }) => {
             <div className="grid wide">
                 <div className="row">
                     <div className="col l-12 c-12">
-                        <div className="search-container">
+                        <div className="search-container df flex-direction">
                             <h3 className="search-title">Tìm kiếm</h3>
                             <p className="search-title-info">
                                 Có {pagination.totalRows} sản phẩm cho tìm kiếm

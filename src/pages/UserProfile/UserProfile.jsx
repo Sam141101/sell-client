@@ -165,11 +165,11 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
                 <div className="row">
                     <div className="col l-9 c-12">
                         <div className="user-profile-form-left">
-                            <div className="user-profile-form-item">
+                            <div className="user-profile-form-item df ai">
                                 <div className="user-profile-form-key">Họ và tên</div>
                                 <div className="user-profile-form-value">
                                     <input
-                                        className="user-profile-form-input"
+                                        className="user-profile-form-input df ai"
                                         name="fullname"
                                         type="text"
                                         placeholder={user.fullname}
@@ -178,11 +178,11 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
                                 </div>
                             </div>
 
-                            <div className="user-profile-form-item">
+                            <div className="user-profile-form-item df ai">
                                 <div className="user-profile-form-key">Email</div>
                                 <div className="user-profile-form-value">
                                     <input
-                                        className="user-profile-form-input"
+                                        className="user-profile-form-input df ai"
                                         name="email"
                                         placeholder={user.email}
                                         type="text"
@@ -191,11 +191,11 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
                                 </div>
                             </div>
 
-                            <div className="user-profile-form-item">
+                            <div className="user-profile-form-item df ai">
                                 <div className="user-profile-form-key">Số điện thoại</div>
                                 <div className="user-profile-form-value">
                                     <input
-                                        className="user-profile-form-input"
+                                        className="user-profile-form-input df ai"
                                         name="phone"
                                         placeholder={user?.phone || ''}
                                         type="text"
@@ -204,7 +204,7 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
                                 </div>
                             </div>
 
-                            <div className="user-profile-form-item">
+                            <div className="user-profile-form-item df ai">
                                 <div className="user-profile-form-key">Giới tính</div>
                                 <div className="user-profile-form-value">
                                     <div
@@ -290,7 +290,9 @@ const UserProfile = ({ user, axiosJWT, dispatch, navigate, setToast }) => {
                             </label>
 
                             <label htmlFor="file">
-                                <div className="user-profile-btn-select">Chọn ảnh</div>
+                                <div className="user-profile-btn-select cs fz16 df ai">
+                                    Chọn ảnh
+                                </div>
                             </label>
 
                             <input

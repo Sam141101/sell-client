@@ -10,8 +10,10 @@ const FormLoginMobile = ({
 }) => {
     return (
         <>
-            <div className="nav-header-login-mobile ">
-                <h2 className="nav-header-login-mobile-title">đăng nhập tài khoản</h2>
+            <div className="nav-header-login-mobile">
+                <h2 className="nav-header-login-mobile-title fw500 tx-tran">
+                    đăng nhập tài khoản
+                </h2>
                 <p className="nav-header-login-mobile-desc">
                     Nhập email và mật khẩu của bạn
                 </p>
@@ -50,7 +52,7 @@ const FormLoginMobile = ({
                     </div>
 
                     <button
-                        className="nav-btn-login-mobile"
+                        className="nav-btn-login-mobile w100pt out tx-tran dib"
                         onClick={handleClickLogin}
                         disabled={isFetching}
                     >

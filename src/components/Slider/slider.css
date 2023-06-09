@@ -1,56 +1,38 @@
 .slider-container {
     width: 100%;
-    /* height: 80vh; */
-    display: flex;
     position: relative;
-    /* overflow: hidden; */
 }
-
 .position {
     position: relative;
 }
-
 .button-arrow {
     width: 50px;
     height: 50px;
     background-color: #7a7a7a;
-    /* background-color: red; */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto;
-    cursor: pointer;
     opacity: 0.5;
     z-index: 2;
 }
-
 .button-arrow.left:hover,
 .button-arrow.right:hover {
     opacity: 0.8;
 }
-
 .icon-btn {
     font-size: 30px !important;
-    color: white;
+    color: var(--color-white);
 }
-
 .button-arrow.left {
     left: 30px;
 }
-
 .button-arrow.right {
-    /* right: 67.5%; */
     right: 30px;
 }
-
 .img-container {
     height: 100%;
 }
-
 .img-item {
     vertical-align: middle;
     max-width: 100%;
@@ -61,40 +43,33 @@
     overflow: hidden;
     height: 100%;
 }
-
 .mobile-block-img {
     margin-bottom: 20px;
     display: none;
 }
-
 .mobile-img-slider {
     display: block;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
 }
-
 /* test */
 .fullscreen-slider {
     position: relative;
-    /* height: calc(100vh - 80px); */
     height: 100%;
     overflow: hidden;
     /* thêm margin-top để giảm khoảng cách slider điều chỉnh lại vị trí thêm margin cho nút */
     margin-top: -20px;
 }
-
 .fullscreen-slider .slide-nav {
     position: absolute;
     top: 50%;
     z-index: 2;
     transform: translateY(-50%);
 }
-
 .fullscreen-slider .slide-nav.left {
     left: 0;
 }
-
 .fullscreen-slider .slide-nav.right {
     right: 0;
 }

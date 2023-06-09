@@ -59,6 +59,7 @@ const Home = ({ axios, BASE_URL_API }) => {
         const getProducts = async () => {
             try {
                 const res = await axios.get(BASE_URL_API + `products/home/`);
+                // dispatch(getProductList(res.data));
                 setProducts(res.data);
                 console.log(res.data);
             } catch (err) {
