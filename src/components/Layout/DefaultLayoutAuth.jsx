@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,10 @@ import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 import Toast from '../Toast/Toast';
 import { useState } from 'react';
+import { Suspense } from 'react';
+
+const Footer = React.lazy(() => import('../Footer/Footer'));
+// const Similar = React.lazy(() => import('../../components/Similar/Similar'));
 
 function DefaultLayoutAuth({ children, page }) {
     const user = useSelector((state) => state.auth?.currentUser);
@@ -57,7 +61,15 @@ function DefaultLayoutAuth({ children, page }) {
                 )}
             </>
 
-            <Footer />
+            <Suspense
+                fallback={
+                    <p style={{ padding: '20px 0', textAlign: 'center', width: '100%' }}>
+                        Loading...
+                    </p>
+                }
+            >
+                <Footer />
+            </Suspense>
         </div>
     );
 }

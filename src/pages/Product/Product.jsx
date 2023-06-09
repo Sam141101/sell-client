@@ -299,7 +299,13 @@ const Product = ({
                 </div>
             </div>
 
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense
+                fallback={
+                    <p style={{ padding: '20px 0', textAlign: 'center', width: '100%' }}>
+                        Loading...
+                    </p>
+                }
+            >
                 <Comment BASE_URL_API={BASE_URL_API} axios={axios} />
 
                 {product?.categories && (

@@ -171,20 +171,23 @@ const Footer = ({ layoutVoucher }) => {
                                 } `}
                                 style={{ height: '130px', position: 'relative' }}
                             >
-                                <link
+                                {/* <Link
                                     rel="preload"
                                     href="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04"
                                     as="image"
-                                />
+                                /> */}
                                 <img
                                     style={{
                                         // height: 'auto',
                                         minHeight: 'initial',
                                         width: '100%',
+                                        height: '100%',
+                                        maxWidth: '100%',
                                     }}
-                                    width="270"
-                                    height="130"
-                                    src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04"
+                                    // width="270"
+                                    // height="130"
+                                    src="https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33_large.jpg"
+                                    // src="https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/AnyConv.com__slider2min.webp?alt=media&token=fc8d4a10-fc27-494e-a128-e2d65355af02&_gl=1*aam6au*_ga*ODQ0ODA3ODExLjE2Nzk0MTMwNjc.*_ga_CW55HF8NVT*MTY4NjI3OTgzMS41LjEuMTY4NjI3OTkxOC4wLjAuMA.."
                                     alt=""
                                     // src={yourImage}
                                     // srcSet="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04 "
