@@ -30,7 +30,7 @@ const ConfirmDelete = ({
     return (
         <div className="confirm-delete-container" style={{ display: noti }}>
             <div className="confirm-delete-wrapper">
-                <h1 className="confirm-delete-title">
+                <h1 className="confirm-delete-title fz15 fw500">
                     Bạn chắc chắn muốn bỏ sản phẩm này ?
                 </h1>
 
@@ -38,15 +38,15 @@ const ConfirmDelete = ({
                     {comfirmDelete && productId[0].product_id.title}
                 </div>
 
-                <div className="confirm-delete-wrapper-button">
+                <div className="confirm-delete-wrapper-button df ai">
                     <div
-                        className="confirm-delete-button-yes"
+                        className="confirm-delete-button-yes df jc ai cs fz15 out"
                         onClick={() => handleClick('yes')}
                     >
                         Có
                     </div>
                     <div
-                        className="confirm-delete-button-no"
+                        className="confirm-delete-button-no df jc ai cs fz15 out"
                         onClick={() => handleClick('no')}
                     >
                         Không

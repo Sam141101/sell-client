@@ -10,8 +10,8 @@
 }
 
 .confirm-delete-wrapper {
-     padding: 20px;
-    background-color: #fff;
+    padding: 20px;
+    background-color: var(--color-white);
     width: 500px;
     max-height: 100%;
     position: absolute;
@@ -23,9 +23,7 @@
 
 .confirm-delete-title {
     margin-top: 30px;
-    font-weight: 500;
-    color: #ee4d2d;
-    font-size: 15px;
+    color: var(--color-red-comment);
 }
 
 .confirm-delete-name-product {
@@ -34,43 +32,28 @@
 }
 
 .confirm-delete-wrapper-button {
-    display: flex;
     margin-top: 50px;
-    align-items: center;
 }
 
 .confirm-delete-button-yes {
     height: 40px;
     padding: 10px;
     flex: 1;
-    outline: 0;
-    color: white;
+    color: var(--color-white);
     border: 1px solid rgba(0, 0, 0, 0.09);
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
     overflow: visible;
-    background: #ee4d2d;
-    font-size: 15px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: var(--color-red-comment);
 }
 
 .confirm-delete-button-no {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 40px;
     padding: 10px;
     flex: 1;
-    outline: 0;
-    background: #fff;
+    background: var(--color-white);
     color: #555;
     border: 1px solid rgba(0, 0, 0, 0.09);
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
     overflow: visible;
-    font-size: 15px;
     margin-left: 20px;
-    cursor: pointer;
 }
-
