@@ -133,8 +133,8 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
 
     return (
         <>
-            <div className="input-group">
-                <span className="input-group-address">
+            <div className="input-group df ai">
+                <span className="input-group-address df ai jc">
                     <Home className="input-group-address-icon" />
                 </span>
 
@@ -143,13 +143,13 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
                     type="text"
                     placeholder="Địa chỉ"
                     onChange={handleChange}
-                    className="form-control"
+                    className="form-control out fw500"
                     value={notify !== 'null' ? inputs.address : inputs.address}
                 />
             </div>
 
-            <div className="add-address-left">
-                <div className="select-block">
+            <div className="add-address-left w100pt df">
+                <div className="select-block df">
                     <label
                         className={`label-addres ${
                             inputs.provinceId !== 0 ? 'block' : ''
@@ -171,7 +171,7 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
                     </select>
                 </div>
 
-                <div className="select-block">
+                <div className="select-block df">
                     <label
                         className={`label-addres ${
                             inputs.districtId !== 0 ? 'block' : ''
@@ -198,7 +198,7 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
                     </select>
                 </div>
 
-                <div className="select-block">
+                <div className="select-block df">
                     <label
                         className={`label-addres ${inputs.wardId !== 0 ? 'block' : ''}`}
                     >
@@ -222,7 +222,10 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
             </div>
 
             <div className="add-address-right">
-                <button className="comfirm-update-address" onClick={handleClick}>
+                <button
+                    className="comfirm-update-address fw500 out cs fz16 df ai jc"
+                    onClick={handleClick}
+                >
                     {typePage === 'account' ? 'Cập nhật' : 'Lưu'}
                 </button>
             </div>

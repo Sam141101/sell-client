@@ -1,107 +1,43 @@
 .input-group {
-    /* margin: 15px 0px; */
     margin-bottom: 15px;
     height: 42px;
-    display: flex;
-    align-items: center;
     position: relative;
 }
-
 .input-group-address {
     padding: 7.4px 14px;
     border: none;
     height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #333;
     text-align: center;
     background-color: #eee;
-    /* border: 1px solid #ccc; */
     white-space: nowrap;
     vertical-align: middle;
 }
-
 .input-group-address-icon {
     width: 16px !important;
     height: 16px !important;
 }
-
 .form-control {
     height: 42px;
     border: 1px solid #eee;
-    outline: none;
     color: #333;
-    font-weight: 500;
     font-size: 14px;
     line-height: 1.42857143;
     padding: 6px 10px;
     width: 370px;
 }
-
-.block-confirm-address {
-    width: 120px;
-    /* margin-left: 10px; */
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 8px 20px;
-    background-color: #ccc;
-    color: white;
-    font-weight: 500;
-    border-radius: 2px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .comfirm-update-address {
     width: 120px;
     padding: 8px 20px;
     background-color: #ccc;
-    color: white;
-    font-weight: 500;
+    color: var(--color-white);
     border-radius: 2px;
-    outline: none;
     border: none;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
-
-.block-response {
-    margin-top: 15px;
-    font-size: 16px;
-    color: red;
-}
-
-.frame-update-address {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-}
-
 .advertise {
     margin-top: 15px;
-    color: red;
-    font-size: 15px;
+    color: var(--color-red);
 }
-
-.add-address-right {
-    margin-top: 20px;
-    /* width: 35%; */
-}
-
-.add-address-left {
-    width: 100%;
-    display: flex;
-}
-
-.comfirm-update-address {
-}
-
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -113,7 +49,6 @@ select {
     /* background: #ccc; */
     background-image: none;
 }
-
 select {
     font-size: 14px;
     flex: 1;
@@ -176,8 +111,6 @@ select {
 
 .select-block {
     position: relative;
-    display: flex;
-    /* width: 200px; */
     width: 33.33333%;
     height: 42px;
     line-height: 42px;
@@ -187,7 +120,6 @@ select {
     box-shadow: 0 0 0 1px #d9d9d9;
     margin-right: 20px;
 }
-
 .select-block:last-child {
     margin-right: 0px;
 }
