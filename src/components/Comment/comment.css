@@ -1,31 +1,18 @@
 .comment {
-    /* background-color: aqua; */
     padding: 0 0 35px 0;
 }
 .main-evaluate-comment {
     padding: 30px;
-    display: flex;
     border: 1px solid #f9ede5;
     margin: 15px 0;
     background-color: #fffbf8;
-    align-items: center;
 }
-
 .main-evaluate-comment-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     margin-right: 30px;
 }
-
 .main-evaluate-comment-right {
     margin-left: 15px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    flex-wrap: wrap;
 }
-
 .main-evaluate-comment-right-option {
     cursor: pointer;
     font-size: 16px;
@@ -42,7 +29,6 @@
     background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.09);
     box-sizing: border-box;
-    display: inline-block;
     margin-right: 10px;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.87);
@@ -51,86 +37,56 @@
     margin-bottom: 5px;
     margin-top: 5px;
 }
-
 .main-evaluate-comment-right-option.option-active {
-    border-color: var(--brand-primary-color, #ee4d2d);
-    fill: var(--brand-primary-color, #ee4d2d);
-    color: var(--brand-primary-color, #ee4d2d);
+    border-color: var(--brand-primary-color, var(--color-red-comment));
+    fill: var(--brand-primary-color, var(--color-red-comment));
+    color: var(--brand-primary-color, var(--color-red-comment));
 }
-
 .main-evaluate-comment-title {
     font-size: 30px;
-    color: #ee4d2d;
-    font-weight: 500;
-    /* font-family: Helvetica Neue, Helvetica, Arial, 文泉驛正黑, WenQuanYi Zen Hei,
-        Hiragino Sans GB, 儷黑 Pro, LiHei Pro, Heiti TC, 微軟正黑體, Microsoft JhengHei UI,
-        Microsoft JhengHei, sans-serif; */
+    color: var(--color-red-comment);
     padding-bottom: 10px;
     line-height: 24px;
 }
-
 .main-evaluate-comment-desc {
     font-size: 18px;
     margin-left: 5px;
     font-weight: 400;
 }
-
 .show-comment {
     background: #f7f6f6;
     padding: 0 30px;
 }
-
 .comment-title {
-    text-transform: uppercase;
     font-size: 21px;
-    font-weight: 500;
-    /* text-align: center; */
-    /* margin: 20px 0; */
 }
-
 .not-evaluate-option {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     height: 400px;
-    justify-content: center;
 }
-
 .show-block-img-evaluate-image {
     height: 400px;
     margin-top: 5px;
-    cursor: pointer;
 }
-
 .show-block-img-evaluate {
     position: relative;
 }
-
 .not-evaluate-option-text {
-    font-size: 16px;
-    font-weight: 500;
     margin-top: 25px;
 }
-
 .button-arrow-evaluate-left {
     background-color: #dcd9d9;
     width: 25px;
     height: 25px;
     line-height: 25px;
     transition: all 0.1s cubic-bezier(0.4, 0, 0.6, 1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     outline: 0;
     margin-top: -12.5px;
     box-shadow: 0 1px 12px 0 rgba(0, 0, 0, 0.12);
-    cursor: pointer;
+    /* cursor: pointer; */
     position: absolute;
     top: 50%;
     font-size: 20px;
-    border-radius: 50%;
 }
-
 .button-arrow-evaluate-left-icon {
     height: 17px !important;
     width: 17px !important;
@@ -138,189 +94,98 @@
     fill: currentColor;
     transition: width 0.1s cubic-bezier(0.4, 0, 0.6, 1) !important;
 }
-
 .show-block-img-evaluate:hover .button-arrow-evaluate-left {
     width: 50px;
     height: 50px;
     line-height: 50px;
     margin-top: -25px;
 }
-
 .show-block-img-evaluate:hover .button-arrow-evaluate-left-icon {
     height: 30px !important;
     width: 30px !important;
 }
-
 .buy {
     padding: 15px 0;
     border-bottom: 1px solid #ccc;
 }
-
-.user {
-    display: flex;
-}
-
 .user-img {
     width: 45px;
     height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
 }
-
 .user-comment {
     padding-left: 10px;
 }
-
 .comment-block-img {
     margin-right: 15px;
 }
-
 .img-content.active-option-img {
     cursor: zoom-out;
-    border: 1.5px solid #ee4d2d;
+    border: 1.5px solid var(--color-red-comment);
     padding: 3px;
 }
-
 .user-name {
-    font-size: 16px;
-    cursor: pointer;
     margin-bottom: 5px;
     line-height: 14px;
 }
-
 .evaluate {
     margin-bottom: 5px;
 }
-
 .day-comment {
     font-size: 13px;
     opacity: 0.8;
 }
-
 .comment-line {
     margin: 0 10px;
-
     font-size: 13px;
     opacity: 0.8;
 }
-
 .text-comment {
     margin: 12px 35px 12px 0;
-    font-size: 16px;
     line-height: 16px;
-    /* word-wrap: break-word; */
 }
-
-.date-size-title-product {
-    display: flex;
-    align-items: center;
-}
-
 .comment-img {
     margin: 10px 35px 10px 0;
-    display: flex;
-    flex-wrap: wrap;
 }
-
 .img-content {
     width: 72px;
     height: 72px;
     border: 1.5px solid #ccc;
     cursor: zoom-in;
 }
-
 .comment-container {
     padding: 20px 0;
 }
-
-.comment-pagi {
-    display: flex;
-    justify-content: end;
-}
-
-.comment-pagination-button {
-    padding: 5px;
-    background-color: red;
-    border-radius: 3px;
-    display: flex;
-    outline: none;
-    border: none;
-    cursor: pointer;
-}
-
-.comment-pagination-button:hover {
-    opacity: 0.85;
-}
-
-.comment-pagination-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .not-buy {
     background-color: rgb(192, 192, 220);
     margin-top: 30px;
 }
-
-.rating-comment {
-    font-size: 21px;
-    font-weight: 500;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-
 .input-comment {
     margin-left: 15px;
 }
-
-.input-box {
-    width: 100%;
-    font-size: 14px;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.button-comment {
-    padding: 15px 20px;
-    font-size: 16px;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-weight: 600;
-    background-color: #ee4d2d;
-    cursor: pointer;
-}
-
 .evaluate .MuiRating-iconFilled,
 .evaluate .MuiRating-iconEmpty,
 .evaluate .MuiRating-iconHover {
     font-size: 16px !important;
     margin-right: 2px;
 }
-
 .evaluate .MuiRating-iconFilled {
-    color: #ee4d2d;
+    color: var(--color-red-comment);
 }
-
 .main-evaluate-comment .MuiRating-iconFilled,
 .main-evaluate-comment .MuiRating-iconEmpty,
 .main-evaluate-comment .MuiRating-iconHover {
     font-size: 25px;
     margin-right: 0px;
 }
-
 .main-evaluate-comment .MuiRating-iconFilled {
-    color: #ee4d2d;
+    color: var(--color-red-comment);
 }
-
 .main-evaluate-comment-title-mobile {
     margin-left: 8px;
     display: none;
     font-size: 13px;
-    color: red;
+    color: var(--color-red-comment);
 }
-
 .main-evaluate-comment-title-mobile.evaluate-text-mobile {
     color: rgba(12, 12, 12, 0.54);
     text-transform: capitalize;

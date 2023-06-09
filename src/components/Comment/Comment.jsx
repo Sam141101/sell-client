@@ -99,7 +99,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                 <div className="row">
                     <div className="col l-12">
                         <div
-                            className="comment-title"
+                            className="comment-title fw500 tx-tran"
                             style={
                                 listInfoComment.mainEvaluateStar !== 0
                                     ? { display: 'block' }
@@ -118,8 +118,8 @@ const Comment = ({ axios, BASE_URL_API }) => {
                             : { display: 'none' }
                     }
                 >
-                    <div className="main-evaluate-comment">
-                        <div className="main-evaluate-comment-left">
+                    <div className="main-evaluate-comment df ai">
+                        <div className="main-evaluate-comment-left ai flex-direction">
                             <div className="main-evaluate-comment-title hide-on-mobile">
                                 {listInfoComment &&
                                     listInfoComment.mainEvaluateStar &&
@@ -138,7 +138,6 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                               listInfoComment.mainEvaluateStar.toFixed(1),
                                           )
                                         : ratingValue
-                                    // '2.5'
                                 }
                                 onChange={(event, value) => setRatingValue(value)}
                                 defaultValue={null}
@@ -167,9 +166,9 @@ const Comment = ({ axios, BASE_URL_API }) => {
                             </div>
                         </div>
 
-                        <div className="main-evaluate-comment-right">
+                        <div className="main-evaluate-comment-right df flex-w w100pt ai">
                             <div
-                                className={`main-evaluate-comment-right-option ${
+                                className={`main-evaluate-comment-right-option fz16 dib ${
                                     option === 'all' ? 'option-active' : ''
                                 }`}
                                 onClick={() => setOption('all')}
@@ -178,7 +177,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                             </div>
                             <div></div>
                             <div
-                                className={`main-evaluate-comment-right-option ${
+                                className={`main-evaluate-comment-right-option fz16 dib ${
                                     option === '5' ? 'option-active' : ''
                                 }`}
                                 onClick={() => setOption('5')}
@@ -191,7 +190,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                             </div>
 
                             <div
-                                className={`main-evaluate-comment-right-option ${
+                                className={`main-evaluate-comment-right-option fz16 dib ${
                                     option === '4' ? 'option-active' : ''
                                 }`}
                                 onClick={() => setOption('4')}
@@ -204,7 +203,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                             </div>
 
                             <div
-                                className={`main-evaluate-comment-right-option ${
+                                className={`main-evaluate-comment-right-option fz16 dib ${
                                     option === '3' ? 'option-active' : ''
                                 }`}
                                 onClick={() => setOption('3')}
@@ -217,7 +216,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                             </div>
 
                             <div
-                                className={`main-evaluate-comment-right-option ${
+                                className={`main-evaluate-comment-right-option fz16 dib ${
                                     option === '2' ? 'option-active' : ''
                                 }`}
                                 onClick={() => setOption('2')}
@@ -229,7 +228,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                 )
                             </div>
                             <div
-                                className={`main-evaluate-comment-right-option ${
+                                className={`main-evaluate-comment-right-option fz16 dib ${
                                     option === '1' ? 'option-active' : ''
                                 }`}
                                 onClick={() => setOption('1')}
@@ -241,7 +240,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                 )
                             </div>
                             <div
-                                className={`main-evaluate-comment-right-option ${
+                                className={`main-evaluate-comment-right-option fz16 dib ${
                                     option === 'comment' ? 'option-active' : ''
                                 }`}
                                 onClick={() => setOption('comment')}
@@ -253,7 +252,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                 )
                             </div>
                             <div
-                                className={`main-evaluate-comment-right-option ${
+                                className={`main-evaluate-comment-right-option fz16 dib ${
                                     option === 'img' ? 'option-active' : ''
                                 }`}
                                 onClick={() => setOption('img')}
@@ -278,15 +277,15 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                     <>
                                         {listInfoComment?.list.map((item) => (
                                             <div className="buy" key={item._id}>
-                                                <div className="user">
+                                                <div className="df">
                                                     <img
                                                         src={item.user_id.img}
                                                         alt=""
-                                                        className="user-img"
+                                                        className="user-img bd50pt cs"
                                                     />
 
                                                     <div className="user-comment">
-                                                        <p className="user-name">
+                                                        <p className="user-name cs fz16">
                                                             {item.user_id.username}
                                                         </p>
 
@@ -302,7 +301,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                                 className="quality-rating-star"
                                                             />
                                                         </div>
-                                                        <div className="date-size-title-product">
+                                                        <div className="df ai">
                                                             <div className="day-comment">
                                                                 {changDate(
                                                                     item.createdAt,
@@ -318,7 +317,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                             </div>
                                                         </div>
                                                         <p
-                                                            className="text-comment"
+                                                            className="text-comment fz16"
                                                             style={{
                                                                 overflowWrap:
                                                                     'break-word',
@@ -327,7 +326,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                             {item.comment}
                                                         </p>
 
-                                                        <div className="comment-img">
+                                                        <div className="comment-img df flex-w">
                                                             {item.img?.map(
                                                                 (imgItem, index) => (
                                                                     <div
@@ -367,7 +366,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                                 }}
                                                             >
                                                                 <div
-                                                                    className="button-arrow-evaluate-left"
+                                                                    className="button-arrow-evaluate-left df jc ai cs bd50pt"
                                                                     onClick={() =>
                                                                         handleClick(
                                                                             item.img,
@@ -384,13 +383,6 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                                 </div>
                                                             </div>
                                                             <div className="main-frame-img-evaluate">
-                                                                {/* {img && (
-                                                                    <img
-                                                                        src={img}
-                                                                        alt=""
-                                                                        className="show-block-img-evaluate-image"
-                                                                    />
-                                                                )} */}
                                                                 {img &&
                                                                     item.img.includes(
                                                                         img,
@@ -398,7 +390,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                                         <img
                                                                             src={img}
                                                                             alt=""
-                                                                            className="show-block-img-evaluate-image"
+                                                                            className="show-block-img-evaluate-image cs"
                                                                         />
                                                                     )}
                                                             </div>
@@ -418,7 +410,7 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                                 }}
                                                             >
                                                                 <div
-                                                                    className="button-arrow-evaluate-left"
+                                                                    className="button-arrow-evaluate-left df jc ai cs bd50pt"
                                                                     onClick={() =>
                                                                         handleClick(
                                                                             item.img,
@@ -459,13 +451,13 @@ const Comment = ({ axios, BASE_URL_API }) => {
                                                 : { display: 'none' }
                                         }
                                     >
-                                        <div className="not-evaluate-option">
+                                        <div className="not-evaluate-option df ai flex-direction jc">
                                             <img
                                                 className="not-evaluate-option-img"
                                                 src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/eac95a8ac896158642c2761a9e9cd52e.png"
                                                 alt="chưa có đánh giá"
                                             />
-                                            <p className="not-evaluate-option-text">
+                                            <p className="not-evaluate-option-text fw500 fz16">
                                                 Chưa có đánh giá
                                             </p>
                                         </div>
