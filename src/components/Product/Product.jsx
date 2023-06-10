@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './product.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { formatMoney } from '../../support';
 
 const Product = ({ item }) => {
     // console.log(item);
@@ -47,16 +48,18 @@ const Product = ({ item }) => {
                 <p className="product-price-text">
                     <span>
                         {item.discountProduct_id?.discount_amount
-                            ? item.price *
-                              (1 - item.discountProduct_id.discount_amount / 100)
-                            : item.price}
+                            ? formatMoney(
+                                  item.price *
+                                      (1 - item.discountProduct_id.discount_amount / 100),
+                              )
+                            : formatMoney(item.price)}
                         ₫
                     </span>
 
                     {item.discountProduct_id?.discount_amount &&
                         item.discountProduct_id.discount_amount !== 0 && (
                             <span className="pro-price-del">
-                                <del>{item.price}₫</del>
+                                <del>{formatMoney(item.price)}₫</del>
                             </span>
                         )}
                 </p>

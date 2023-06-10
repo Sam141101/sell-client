@@ -9,6 +9,7 @@ const Products = ({
     pagination,
     axios,
     BASE_URL_API,
+    formatMoney,
 }) => {
     const [products, setProducts] = useState([]);
 
@@ -50,7 +51,7 @@ const Products = ({
                     className={`col l-3 c-6 c${index % 2 === 0 ? '2' : '1'}`}
                     key={item._id}
                 >
-                    <Product item={item} />
+                    <Product formatMoney={formatMoney} item={item} />
                 </div>
             ))}
         </>

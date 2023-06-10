@@ -80,9 +80,19 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
+    width: 100%;
 }
 
 .list-product-mobile-filter-container {
-    display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+}
+
+.product-list-title {
+    font-weight: 600;
+}
+.product-list-selected {
+    max-width: 150px !important;
+    padding: 10px;
+    border: 1px solid #ccc !important;
+    appearance: auto !important;
 }

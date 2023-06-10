@@ -9,6 +9,7 @@ import { addCart } from '../../redux/apiCalls';
 import './product.css';
 import React from 'react';
 import { Suspense } from 'react';
+import { formatMoney } from '../../support';
 
 const Comment = React.lazy(() => import('../../components/Comment/Comment'));
 const Similar = React.lazy(() => import('../../components/Similar/Similar'));
@@ -177,18 +178,20 @@ const Product = ({
                                         )}
 
                                     <span className="pro-price">
-                                        {product.discountProduct_id?.discount_amount
-                                            ? product.price *
-                                              (1 -
-                                                  product.discountProduct_id
-                                                      ?.discount_amount /
-                                                      100)
-                                            : product.price}
+                                        {formatMoney(
+                                            product.discountProduct_id?.discount_amount
+                                                ? product.price *
+                                                      (1 -
+                                                          product.discountProduct_id
+                                                              ?.discount_amount /
+                                                              100)
+                                                : product.price,
+                                        )}
                                         ₫
                                     </span>
                                     {product.discountProduct_id?.discount_amount &&
                                         product.discountProduct_id?.discount_amount !==
-                                            0 && <del>{product.price}₫</del>}
+                                            0 && <del>{formatMoney(product.price)}₫</del>}
                                 </div>
 
                                 <div className="product-filter">

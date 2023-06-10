@@ -80,7 +80,7 @@ export const logout = async (dispatch, id, token, axiosJWT, navigate) => {
             },
         );
         dispatch(logoutSuccess());
-        // if (navigate !== undefined) {
+        console.log('logout');
         if (!navigate) {
             navigate('/');
         }
@@ -96,6 +96,7 @@ export const getAllCart = async (token, dispatch, userId, axiosJWT) => {
         const res = await axiosJWT.get(BASE_URL_API + 'carts/find/' + userId, {
             headers: { token: `Bearer ${token}` },
         });
+        console.log('api get cart');
         dispatch(getAllProduct(res.data));
     } catch (err) {
         console.log('that bai');

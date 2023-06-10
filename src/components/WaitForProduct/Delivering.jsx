@@ -4,7 +4,14 @@ import React, { useState, useEffect } from 'react';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 
-const Delivering = ({ user, axiosJWT, navigate, changDate, BASE_URL_API }) => {
+const Delivering = ({
+    user,
+    axiosJWT,
+    navigate,
+    changDate,
+    BASE_URL_API,
+    formatMoney,
+}) => {
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(false);
 
@@ -69,14 +76,21 @@ const Delivering = ({ user, axiosJWT, navigate, changDate, BASE_URL_API }) => {
                                                 <div>
                                                     {item.discount !== 0 && (
                                                         <del>
-                                                            {item.product_id.price}₫
+                                                            {formatMoney(
+                                                                item.product_id.price,
+                                                            )}
+                                                            ₫
                                                         </del>
                                                     )}
                                                     <span className="disocunt-product">
-                                                        {item.discount
-                                                            ? item.product_id.price *
-                                                              (1 - item.discount / 100)
-                                                            : item.product_id.price}
+                                                        {formatMoney(
+                                                            item.discount
+                                                                ? item.product_id.price *
+                                                                      (1 -
+                                                                          item.discount /
+                                                                              100)
+                                                                : item.product_id.price,
+                                                        )}
                                                         ₫
                                                     </span>
                                                 </div>
@@ -101,7 +115,7 @@ const Delivering = ({ user, axiosJWT, navigate, changDate, BASE_URL_API }) => {
                                 <div className="wait-purchase-total-price fw500">
                                     Tổng số tiền:
                                     <span className="wait-purchase-total-price-text">
-                                        {item.amount + item.transportFee}₫
+                                        {formatMoney(item.amount + item.transportFee)}₫
                                     </span>
                                 </div>
                             </div>

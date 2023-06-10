@@ -1,16 +1,14 @@
 import styled from 'styled-components';
-
 import Announcement from '../../components/Announcement/Announcement';
 import { Add, East, Remove, Reply } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
-
 import ClearIcon from '@mui/icons-material/Clear';
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { deleteProduct, getAllCart, updateProduct } from '../../redux/apiCalls';
 import { Link } from 'react-router-dom';
 import ConfirmDelete from '../../components/ConfirmDelete/ConfirmDelete';
 import './cart.css';
-import React from 'react';
+import { formatMoney } from '../../support';
 
 const SummaryItem = styled.div`
     font-weight: ${(props) => props.type === 'total' && '500'};
@@ -165,18 +163,22 @@ const Cart = ({ axiosJWT, dispatch, navigate, user, setToast }) => {
                                                                     {product.product_id
                                                                         .discountProduct_id
                                                                         ?.discount_amount
-                                                                        ? product
-                                                                              .product_id
-                                                                              .price *
-                                                                          (1 -
+                                                                        ? formatMoney(
                                                                               product
                                                                                   .product_id
-                                                                                  .discountProduct_id
-                                                                                  ?.discount_amount /
-                                                                                  100)
-                                                                        : product
-                                                                              .product_id
-                                                                              .price}
+                                                                                  .price *
+                                                                                  (1 -
+                                                                                      product
+                                                                                          .product_id
+                                                                                          .discountProduct_id
+                                                                                          ?.discount_amount /
+                                                                                          100),
+                                                                          )
+                                                                        : formatMoney(
+                                                                              product
+                                                                                  .product_id
+                                                                                  .price,
+                                                                          )}
                                                                     ₫
                                                                 </span>
                                                                 {product.product_id
@@ -184,11 +186,11 @@ const Cart = ({ axiosJWT, dispatch, navigate, user, setToast }) => {
                                                                     ?.discount_amount !==
                                                                     0 && (
                                                                     <del>
-                                                                        {
+                                                                        {formatMoney(
                                                                             product
                                                                                 .product_id
-                                                                                .price
-                                                                        }
+                                                                                .price,
+                                                                        )}
                                                                         ₫
                                                                     </del>
                                                                 )}
@@ -236,7 +238,10 @@ const Cart = ({ axiosJWT, dispatch, navigate, user, setToast }) => {
                                                             <div className="cart-product-price-mobile">
                                                                 Thành tiền:
                                                                 <span>
-                                                                    {product.price}₫
+                                                                    {formatMoney(
+                                                                        product.price,
+                                                                    )}
+                                                                    ₫
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -257,7 +262,7 @@ const Cart = ({ axiosJWT, dispatch, navigate, user, setToast }) => {
                                                         </div>
 
                                                         <div className="cart-product-price">
-                                                            {product.price}₫
+                                                            {formatMoney(product.price)}₫
                                                         </div>
                                                     </div>
 
@@ -276,7 +281,7 @@ const Cart = ({ axiosJWT, dispatch, navigate, user, setToast }) => {
                                                 <div className="cart-summary-item-text1 df fz16 ai">
                                                     Tổng tiền:
                                                     <span className="cart-summary-item-price">
-                                                        {cart.total}₫
+                                                        {formatMoney(cart.total)}₫
                                                     </span>
                                                 </div>
                                             </SummaryItem>

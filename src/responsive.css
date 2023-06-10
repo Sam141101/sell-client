@@ -362,7 +362,16 @@
     }
 
     .list-product-mobile-filter-container {
-        display: none !important;
+        margin-top: 20px !important;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .product-list-title {
+        margin-left: 10px !important;
+        font-size: 16px !important;
+    }
+    .product-list-selected {
     }
 
     .mm {

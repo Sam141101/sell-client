@@ -54,7 +54,7 @@ const Info = styled.div`
 
 const Home = ({ axios, BASE_URL_API }) => {
     const [products, setProducts] = useState([]);
-
+    console.log('home');
     useEffect(() => {
         const getProducts = async () => {
             try {

@@ -15,23 +15,7 @@ const Title = styled.h1`
     font-weight: 700;
 `;
 
-const Filter = styled.div``;
-
-const FilterText = styled.span`
-    font-size: 20px;
-    margin-right: 20px;
-    font-weight: 600;
-`;
-
-const Select = styled.select`
-    padding: 10px;
-    border: 1px solid #ccc !important;
-    appearance: auto !important;
-`;
-
-const Option = styled.option``;
-
-const ProductList = ({ BASE_URL_API, axios }) => {
+const ProductList = ({ BASE_URL_API, axios, formatMoney }) => {
     console.log('BASE_URL_API', BASE_URL_API);
     const location = useLocation();
     const cat = location.pathname.split('/')[2];
@@ -83,26 +67,27 @@ const ProductList = ({ BASE_URL_API, axios }) => {
                                         <Title>
                                             {cat === 'all' ? 'Tất cả sản phẩm' : cat}
                                         </Title>
-                                        <div className="list-product-mobile-filter-container">
+                                        <div className="list-product-mobile-filter-container df ai">
                                             {/* <FilterContainer> */}
-                                            <Filter>
-                                                <FilterText>Sắp xếp sản phẩm:</FilterText>
-                                                <Select
-                                                    onChange={(e) =>
-                                                        setSort(e.target.value)
-                                                    }
-                                                >
-                                                    <Option value="newest">
-                                                        mới nhất
-                                                    </Option>
-                                                    <Option value="asc">
-                                                        Giá tăng dần
-                                                    </Option>
-                                                    <Option value="desc">
-                                                        Giá giảm dần
-                                                    </Option>
-                                                </Select>
-                                            </Filter>
+                                            {/* <div cl> */}
+                                            <span
+                                                className="product-list-title"
+                                                style={{
+                                                    marginRight: '20px',
+                                                    fontSize: '20px',
+                                                }}
+                                            >
+                                                Sắp xếp sản phẩm:
+                                            </span>
+                                            <select
+                                                className="product-list-selected"
+                                                onChange={(e) => setSort(e.target.value)}
+                                            >
+                                                <option value="newest">mới nhất</option>
+                                                <option value="asc">Giá tăng dần</option>
+                                                <option value="desc">Giá giảm dần</option>
+                                            </select>
+                                            {/* </div> */}
                                             {/* </FilterContainer> */}
                                         </div>
                                     </div>
@@ -119,6 +104,7 @@ const ProductList = ({ BASE_URL_API, axios }) => {
                                     pagination={pagination}
                                     BASE_URL_API={BASE_URL_API}
                                     axios={axios}
+                                    formatMoney={formatMoney}
                                 />
                             </div>
 

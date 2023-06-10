@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import { useNavigate } from 'react-router-dom';
@@ -11,7 +10,6 @@ import { useState } from 'react';
 import { Suspense } from 'react';
 
 const Footer = React.lazy(() => import('../Footer/Footer'));
-// const Similar = React.lazy(() => import('../../components/Similar/Similar'));
 
 function DefaultLayoutAuth({ children, page }) {
     const user = useSelector((state) => state.auth?.currentUser);

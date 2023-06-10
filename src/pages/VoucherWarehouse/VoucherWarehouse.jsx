@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import './voucherWarehouse.css';
 import { BASE_URL_API } from '../../requestMethods';
 import { changDate } from '../../support';
@@ -22,7 +21,7 @@ const data = [
     },
 ];
 
-const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate }) => {
+const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate, formatMoney }) => {
     let id = user._id;
     let token = user.token;
 
@@ -127,9 +126,13 @@ const VoucherWarehouse = ({ user, axiosJWT, dispatch, navigate }) => {
                                                 Giảm giá{' '}
                                                 {item.discount_type === 'percentage'
                                                     ? `${item.discount_amount}%`
-                                                    : `${item.discount_amount}₫`}{' '}
+                                                    : `${formatMoney(
+                                                          item.discount_amount,
+                                                      )}₫`}{' '}
                                                 cho đơn hàng tối thiểu là ₫
-                                                {item.minimum_purchase_amount}
+                                                {formatMoney(
+                                                    item.minimum_purchase_amount,
+                                                )}
                                             </div>
                                             <div className="voucher-item-expired">
                                                 HSD:{' '}

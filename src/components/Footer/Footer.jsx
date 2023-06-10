@@ -47,8 +47,6 @@ const data = [
     {
         id: 4,
         title: '- Fanpage',
-        // src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2299765283074!2d106.63520801462268!3d10.793690292309828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175295323764dd5%3A0x39ec5e2883ed2437!2zMjIgTmd1eeG7hW4gVGjDoWkgSOG7jWMsIFTDom4gVGjDoG5oLCBUw6JuIFBow7osIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCA3MDAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1679563296326!5m2!1svi!2s',
-        // src: '',
     },
 ];
 
@@ -174,11 +172,6 @@ const Footer = ({ layoutVoucher }) => {
                                 } `}
                                 style={{ height: '130px', position: 'relative' }}
                             >
-                                {/* <Link
-                                    rel="preload"
-                                    href="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04"
-                                    as="image"
-                                /> */}
                                 <img
                                     style={{
                                         // height: 'auto',
@@ -190,10 +183,7 @@ const Footer = ({ layoutVoucher }) => {
                                     // width="270"
                                     // height="130"
                                     src="https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33_large.jpg"
-                                    // src="https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/AnyConv.com__slider2min.webp?alt=media&token=fc8d4a10-fc27-494e-a128-e2d65355af02&_gl=1*aam6au*_ga*ODQ0ODA3ODExLjE2Nzk0MTMwNjc.*_ga_CW55HF8NVT*MTY4NjI3OTgzMS41LjEuMTY4NjI3OTkxOC4wLjAuMA.."
                                     alt=""
-                                    // src={yourImage}
-                                    // srcSet="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/338233871_6020967487988331_4356177899829670963_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=dd9801&_nc_ohc=Xc_-lm7CVPoAX-QhRlc&_nc_ht=scontent.fsgn8-4.fna&edm=AOvyQZUEAAAA&oh=00_AfDKkCxguU9SP6w2TVDpozDLWUGjWPVnP93j49ILKrtwNg&oe=647DDD04 "
                                 />
                                 <div className="shawdow h100pt w100pt"></div>
                                 <Link

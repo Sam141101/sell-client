@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 import { createAxiosInstance } from '../../useAxiosJWT';
-import { changDate } from '../../support';
+import { changDate, formatMoney } from '../../support';
 
 const profile = [
     {
@@ -300,6 +300,7 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             BASE_URL_API: BASE_URL_API,
                                             axios: axios,
                                             changDate: changDate,
+                                            formatMoney: formatMoney,
                                         }),
                                     )}
                                 </div>

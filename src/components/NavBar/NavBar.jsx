@@ -17,6 +17,7 @@ import { resetProduct } from '../../redux/cartRedux';
 import './navBar.css';
 import { listFunctions, listInfoMobile, listItemNavBar, listNavPc } from '../../data';
 import FormLoginMobile from '../FormLoginMobile/FormLoginMobile';
+import { formatMoney } from '../../support';
 
 // const Navbar = React.memo(({axiosJWT ,quantity}) => {
 const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
@@ -691,7 +692,7 @@ const Navbar = ({ axiosJWT, quantity, user, navigate, dispatch }) => {
 
                         <div className="col l-5 c-12">
                             <div className="navbar-left df ai h100pt">
-                                <Searchs navigate={navigate} />
+                                <Searchs formatMoney={formatMoney} navigate={navigate} />
                             </div>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ import useDebounce from '../../hooks/useDebounce';
 import './searchs.css';
 import { BASE_URL_API } from '../../requestMethods';
 
-const Searchs = ({ navigate }) => {
+const Searchs = ({ navigate, formatMoney }) => {
     // --------------- Phần search --------------------
     const inputRef = useRef();
     const listRef = useRef();
@@ -152,19 +152,24 @@ const Searchs = ({ navigate }) => {
                                         {product.title}
                                     </div>
                                     <p className="searchs-item-price">
-                                        {/* {product.price}₫ */}
                                         <span>
                                             {product?.discount_amount
-                                                ? product.price *
-                                                  (1 - product.discount_amount / 100)
-                                                : product.price}
+                                                ? formatMoney(
+                                                      product.price *
+                                                          (1 -
+                                                              product.discount_amount /
+                                                                  100),
+                                                  )
+                                                : formatMoney(product.price)}
                                             ₫
                                         </span>
 
                                         {product?.discount_amount &&
                                             product.discount_amount !== 0 && (
                                                 <span className="pro-price-del">
-                                                    <del>{product.price}₫</del>
+                                                    <del>
+                                                        {formatMoney(product.price)}₫
+                                                    </del>
                                                 </span>
                                             )}
                                     </p>

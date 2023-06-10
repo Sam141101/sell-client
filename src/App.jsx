@@ -13,8 +13,9 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log('check auth');
         checkAuth(user, dispatch);
-    }, [user]);
+    }, [user, dispatch]);
 
     return (
         <Router>

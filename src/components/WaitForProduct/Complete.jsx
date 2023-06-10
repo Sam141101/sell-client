@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 
-const Complete = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API }) => {
+const Complete = ({
+    user,
+    axiosJWT,
+    dispatch,
+    navigate,
+    changDate,
+    BASE_URL_API,
+    formatMoney,
+}) => {
     const [product, setProduct] = useState([]);
     const [show, setShow] = useState(false);
     useEffect(() => {
         const getProduct = async () => {
             try {
                 const res = await axiosJWT.get(
-                    // BASE_URL_API + 'orders/find/complete/' + user._id,
                     BASE_URL_API + `orders/find/wait-for-order/${user._id}/complete`,
                     {
                         headers: { token: `Bearer ${user.token}` },
@@ -24,7 +30,7 @@ const Complete = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API 
             } catch (err) {}
         };
         getProduct();
-    }, [user._id, user.token]);
+    }, [user._id, user.token, axiosJWT, BASE_URL_API]);
 
     return (
         <>
@@ -52,14 +58,21 @@ const Complete = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API 
                                                 <div>
                                                     {item1.discount !== 0 && (
                                                         <del>
-                                                            {item1.product_id.price}₫
+                                                            {formatMoney(
+                                                                item1.product_id.price,
+                                                            )}
+                                                            ₫
                                                         </del>
                                                     )}
                                                     <span className="disocunt-product">
-                                                        {item1.discount
-                                                            ? item1.product_id.price *
-                                                              (1 - item1.discount / 100)
-                                                            : item1.product_id.price}
+                                                        {formatMoney(
+                                                            item1.discount
+                                                                ? item1.product_id.price *
+                                                                      (1 -
+                                                                          item1.discount /
+                                                                              100)
+                                                                : item1.product_id.price,
+                                                        )}
                                                         ₫
                                                     </span>
                                                 </div>
@@ -98,7 +111,7 @@ const Complete = ({ user, axiosJWT, dispatch, navigate, changDate, BASE_URL_API 
                                 <div className="wait-purchase-total-price fw500">
                                     Tổng số tiền:
                                     <span className="wait-purchase-total-price-text">
-                                        {item.amount + item.transportFee}₫
+                                        {formatMoney(item.amount + item.transportFee)}₫
                                     </span>
                                 </div>
                             </div>

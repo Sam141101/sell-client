@@ -7,6 +7,7 @@ import './evaluate.css';
 import { CameraAlt, Clear, KeyboardBackspace, Star } from '@mui/icons-material';
 import app from '../../firebase';
 import { Rating } from '@mui/material';
+import { formatMoney } from '../../support';
 
 const ratingDescriptions = {
     1: 'Tệ',
@@ -229,7 +230,8 @@ const Evaluate = ({ user, dispatch, navigate, axiosJWT, BASE_URL_API }) => {
                                             Kiểu: <span>{product.categories}</span>
                                         </p>
                                         <p className="info_product-evaluate-desc">
-                                            Tổng số tiền: <span>{product.price}₫</span>
+                                            Tổng số tiền:{' '}
+                                            <span>{formatMoney(product.price)}₫</span>
                                         </p>
                                     </div>
                                 </div>

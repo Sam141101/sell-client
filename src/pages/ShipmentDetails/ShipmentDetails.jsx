@@ -9,6 +9,7 @@ import { addTemporary } from '../../redux/temporaryRedux';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import FormInputAddress from '../../components/FormInputAddress/FormInputAddress';
 import Notify from '../../components/Notify/Notify';
+import { formatMoney } from '../../support';
 
 const ShipmentDetails = () => {
     const user = useSelector((state) => state.auth?.currentUser);
@@ -368,7 +369,7 @@ const ShipmentDetails = () => {
                                 </div>
 
                                 <div className="ship_ment-details-title-mobile-right">
-                                    {totalPriceProduct}₫
+                                    {formatMoney(totalPriceProduct)}₫
                                 </div>
                             </div>
 
@@ -400,7 +401,7 @@ const ShipmentDetails = () => {
                                             </div>
 
                                             <div className="ship_ment-details-price-mobile">
-                                                {item.price}₫
+                                                {formatMoney(item.price)}₫
                                             </div>
                                         </div>
                                     ))}
@@ -453,13 +454,15 @@ const ShipmentDetails = () => {
                                 <div className="ship_ment-details-total-delivery">
                                     <div className="ship_ment-details-title-price-product">
                                         <span>Tạm tính</span>
-                                        <span>{totalPriceProduct}₫</span>
+                                        <span>{formatMoney(totalPriceProduct)}₫</span>
                                     </div>
                                     <div className="ship_ment-details-delivery-price">
                                         <span>Phí vận chuyển</span>
                                         {confirmAddress !== 'null' &&
                                         inputs.service_id ? (
-                                            <span>{totalPriceDelivery}₫</span>
+                                            <span>
+                                                {formatMoney(totalPriceDelivery)}₫
+                                            </span>
                                         ) : (
                                             <span>–</span>
                                         )}
@@ -473,7 +476,10 @@ const ShipmentDetails = () => {
                                     <div className="ship_ment-details-text-price">
                                         VND{' '}
                                         <div className="ship_ment-details-number-price">
-                                            {totalPriceProduct + totalPriceDelivery}₫
+                                            {formatMoney(
+                                                totalPriceProduct + totalPriceDelivery,
+                                            )}
+                                            ₫
                                         </div>
                                     </div>
                                 </div>
@@ -676,7 +682,7 @@ const ShipmentDetails = () => {
                                                     </div>
                                                 </div>
 
-                                                <div>{item.price}₫</div>
+                                                <div>{formatMoney(item.price)}₫</div>
                                             </div>
                                         ))}
                                     </div>
@@ -724,13 +730,15 @@ const ShipmentDetails = () => {
                                     <div className="ship_ment-details-total-delivery">
                                         <div className="ship_ment-details-title-price-product">
                                             <span>Tạm tính</span>
-                                            <span>{totalPriceProduct}₫</span>
+                                            <span>{formatMoney(totalPriceProduct)}₫</span>
                                         </div>
                                         <div className="ship_ment-details-delivery-price">
                                             <span>Phí vận chuyển</span>
                                             {confirmAddress !== 'null' &&
                                             inputs.service_id ? (
-                                                <span>{totalPriceDelivery}₫</span>
+                                                <span>
+                                                    {formatMoney(totalPriceDelivery)}₫
+                                                </span>
                                             ) : (
                                                 <span>–</span>
                                             )}
@@ -744,7 +752,11 @@ const ShipmentDetails = () => {
                                         <div className="ship_ment-details-text-price">
                                             VND{' '}
                                             <div className="ship_ment-details-number-price">
-                                                {totalPriceProduct + totalPriceDelivery}₫
+                                                {formatMoney(
+                                                    totalPriceProduct +
+                                                        totalPriceDelivery,
+                                                )}
+                                                ₫
                                             </div>
                                         </div>
                                     </div>
