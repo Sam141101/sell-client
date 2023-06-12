@@ -38,7 +38,6 @@ const data = [
 
 const TestList = () => {
     const [show, setShow] = useState(1);
-    console.log(show);
 
     const handleClick = (id) => {
         if (show === id) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
+import { Link } from 'react-router-dom';
 
 const WaitForConfirmation = ({
     user,
@@ -54,76 +55,67 @@ const WaitForConfirmation = ({
         <>
             {show ? (
                 <div className="wait-purchase-container">
-                    {product?.map((item) => (
-                        <div className="wait-for-product-list" key={item._id}>
-                            {item?.products.map((item1, index) => (
+                    {product?.map((item1) => (
+                        <div className="wait-for-product-list" key={item1._id}>
+                            {item1?.products.map((item, index) => (
                                 <div className="wait-purchase-product-order" key={index}>
-                                    <div className="wait-purchase-details-product df ai">
+                                    <Link
+                                        to={`/wait-for-confirmation/${item1._id}`}
+                                        className="wait-purchase-details-product df ai"
+                                    >
                                         <img
                                             className="wait-purchase-img"
                                             alt=""
-                                            src={item1.product_id.img}
+                                            src={item.product_id.img}
                                         />
                                         <div className="wait-purchase-info">
                                             <div className="wait-purchase-name-size df flex-direction">
-                                                <div>{item1.product_id.title}</div>
-                                                <div>{item1.size}</div>
+                                                <div>{item.product_id.title}</div>
+                                                <div>{item.size}</div>
                                             </div>
                                             <div className="wait-purchase-price-quanti df flex-direction">
                                                 <div style={{ textAlign: 'right' }}>
-                                                    x{item1.quantity}
+                                                    x{item.quantity}
                                                 </div>
                                                 <div>
-                                                    {item1.discount !== 0 && (
+                                                    {item.discount !== 0 && (
                                                         <del>
                                                             {formatMoney(
-                                                                item1.product_id.price,
+                                                                item.product_id.price,
                                                             )}
                                                             ₫
                                                         </del>
                                                     )}
                                                     <span className="disocunt-product">
                                                         {formatMoney(
-                                                            item1.discount
-                                                                ? item1.product_id.price *
+                                                            item.discount
+                                                                ? item.product_id.price *
                                                                       (1 -
-                                                                          item1.discount /
+                                                                          item.discount /
                                                                               100)
-                                                                : item1.product_id.price,
+                                                                : item.product_id.price,
                                                         )}
                                                         ₫
                                                     </span>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             ))}
 
                             <div className="wait-purchase-block df ai fz16">
-                                <div className="wait-purchase-status">
-                                    <>
-                                        <span>Trạng thái:</span>
-                                        Chờ xác nhận
-                                    </>
-                                    <div>
-                                        <span>Thời gian đặt hàng:</span>
-                                        {changDate(item.createdAt)}
-                                        {/* {item.createdAt} */}
-                                    </div>
-                                </div>
-
                                 <div className="wait-purchase-total-price fw500">
-                                    Tổng số tiền:
+                                    <span>Tổng số tiền:</span>
                                     <span className="wait-purchase-total-price-text">
-                                        {formatMoney(item.amount + item.transportFee)}₫
+                                        {formatMoney(item1.amount + item1.transportFee)}₫
                                     </span>
                                 </div>
                             </div>
                             <div className="wait-purchase-cancel-order df">
                                 <button
                                     className="wait-purchase-cancel-order-button cs fw500 out"
-                                    onClick={() => handleClick(item._id.toString())}
+                                    onClick={() => handleClick(item1._id.toString())}
                                 >
                                     Huỷ đơn
                                 </button>

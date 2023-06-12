@@ -164,7 +164,8 @@ const Product = ({
                             <div className="product-info-container">
                                 <h1 className="product-title">{product?.title}</h1>
                                 <div className="product-price">
-                                    {product.discountProduct_id?.discount_amount &&
+                                    {/* {product.discountProduct_id?.discount_amount && */}
+                                    {product.discountProduct_id &&
                                         product.discountProduct_id?.discount_amount !==
                                             0 && (
                                             <span className="block-product-discount">
@@ -189,7 +190,7 @@ const Product = ({
                                         )}
                                         ₫
                                     </span>
-                                    {product.discountProduct_id?.discount_amount &&
+                                    {product.discountProduct_id &&
                                         product.discountProduct_id?.discount_amount !==
                                             0 && <del>{formatMoney(product.price)}₫</del>}
                                 </div>

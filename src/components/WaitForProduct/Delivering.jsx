@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 // import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
+import { Link } from 'react-router-dom';
 
 const Delivering = ({
     user,
@@ -45,6 +46,7 @@ const Delivering = ({
                     setShow(true);
                 }
                 setProduct(res.data);
+                console.log('derrrrr', res.data);
             } catch (err) {}
         };
         getProduct();
@@ -54,11 +56,14 @@ const Delivering = ({
         <>
             {show ? (
                 <div className="wait-purchase-container">
-                    {product?.map((item) => (
-                        <div className="wait-for-product-list" key={item._id}>
-                            {item?.products.map((item, index) => (
+                    {product?.map((item1) => (
+                        <div className="wait-for-product-list" key={item1._id}>
+                            {item1?.products.map((item, index) => (
                                 <div className="wait-purchase-product-order" key={index}>
-                                    <div className="wait-purchase-details-product df ai">
+                                    <Link
+                                        to={`/delivering/${item1._id}`}
+                                        className="wait-purchase-details-product df ai"
+                                    >
                                         <img
                                             className="wait-purchase-img"
                                             alt=""
@@ -96,33 +101,22 @@ const Delivering = ({
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             ))}
 
                             <div className="wait-purchase-block df ai fz16">
-                                <div className="wait-purchase-status">
-                                    <>
-                                        <span>Trạng thái:</span>
-                                        Đang giao hàng
-                                    </>
-                                    <div>
-                                        <span>Thời gian đặt hàng:</span>
-                                        {changDate(item.createdAt)}
-                                    </div>
-                                </div>
-
                                 <div className="wait-purchase-total-price fw500">
-                                    Tổng số tiền:
+                                    <span>Tổng số tiền:</span>
                                     <span className="wait-purchase-total-price-text">
-                                        {formatMoney(item.amount + item.transportFee)}₫
+                                        {formatMoney(item1.amount + item1.transportFee)}₫
                                     </span>
                                 </div>
                             </div>
                             <div className="wait-purchase-cancel-order df">
                                 <button
                                     className="wait-purchase-cancel-order-button cs fw500 out"
-                                    onClick={() => handleClick(item._id.toString())}
+                                    onClick={() => handleClick(item1._id.toString())}
                                 >
                                     Đã nhận được hàng
                                 </button>

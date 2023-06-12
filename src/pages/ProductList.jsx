@@ -16,14 +16,13 @@ const Title = styled.h1`
 `;
 
 const ProductList = ({ BASE_URL_API, axios, formatMoney }) => {
-    console.log('BASE_URL_API', BASE_URL_API);
     const location = useLocation();
     const cat = location.pathname.split('/')[2];
     // const [filters, setFilters] = useState({});
     const [sort, setSort] = useState('newest');
 
     const url = new URL(window.location.href);
-    const pageIndex = url.searchParams.get('page'); // "1"
+    let pageIndex = url.searchParams.get('page'); // "1"
 
     const [filterPage, setFilterPage] = useState(pageIndex);
 
@@ -36,6 +35,7 @@ const ProductList = ({ BASE_URL_API, axios, formatMoney }) => {
     const handlePageChange = (newPage) => {
         // Update the filterPage state with the new page value
         setFilterPage(newPage);
+        console.log('thay đổi cái newPage', newPage);
 
         // Get the current URL and append the new "page" query parameter
         const url = new URL(window.location.href);
@@ -105,6 +105,7 @@ const ProductList = ({ BASE_URL_API, axios, formatMoney }) => {
                                     BASE_URL_API={BASE_URL_API}
                                     axios={axios}
                                     formatMoney={formatMoney}
+                                    pageIndex={pageIndex}
                                 />
                             </div>
 

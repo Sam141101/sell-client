@@ -9,7 +9,7 @@ const cartSlice = createSlice({
     },
     reducers: {
         getAllProduct: (state, action) => {
-            console.log('action.payload.product', action.payload.product);
+            // console.log('action.payload.product', action.payload.product);
             state.products = action.payload.product;
             state.total = action.payload.pricecart;
             state.quantity = action.payload.quanticart;

@@ -247,7 +247,7 @@ const Cart = ({ axiosJWT, dispatch, navigate, user, setToast }) => {
                                                         </div>
                                                     </div>
 
-                                                    <div className="cart-price-detail df ai jc">
+                                                    <div className="cart-price-detail df ai flex-direction">
                                                         <div
                                                             className="cart-delete-product df jc ai cs"
                                                             onClick={() =>

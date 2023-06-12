@@ -16,6 +16,12 @@
     .hide-on-mobile {
         display: none !important;
     }
+    .mobile-in-block {
+        display: block !important;
+    }
+    .mobile-famre {
+        flex-wrap: wrap-reverse;
+    }
 
     .navbar-mobile-left {
         display: block !important;
@@ -575,7 +581,10 @@
     .change-password-container {
         padding: 30px 15px 0 !important;
     }
-
+    .default-layout-order-wrapper.detailss {
+        padding: 0 !important;
+        background-color: transparent !important;
+    }
     /* .change-password-more-item {
         margin-bottom: 20px;
     } */
@@ -618,12 +627,7 @@
     }
 
     .ship_ment-details-title {
-        padding: 21px 15px;
-    }
-
-    .ship_ment-details-container-right {
-        padding: 0 !important;
-        background-color: #fafafa;
+        padding: 21px 15px !important;
     }
 
     .ship_ment-details-product-list {
@@ -663,6 +667,12 @@
 
     .ship_ment-details-number-price {
         font-size: 22px !important;
+    }
+
+    .ship_ment-details-container-right {
+        padding: 0 !important;
+        background-color: #fafafa;
+        margin: 0 !important;
     }
 
     .ship_ment-details-show-mobile {
@@ -842,7 +852,21 @@
         font-size: 16px !important;
         margin-right: 15px !important;
     }
+    .order-details-status-service
+    /* .order-details-address  */ {
+        width: 100% !important;
+        margin-bottom: 15px !important;
+        padding-bottom: 15px !important;
+        border-bottom: 1px solid #ccc !important;
+    }
 
+    .order-details-address {
+        width: 100% !important;
+    }
+
+    .order-details-title {
+        flex-direction: column !important;
+    }
     .wait-for-product {
         max-width: 100%;
     }
@@ -905,15 +929,6 @@
         padding: 5px 0 !important;
         margin-right: 0 !important;
         align-items: flex-start !important;
-    }
-
-    .wait-purchase-status {
-        margin-left: 0px !important;
-        font-size: 14px !important;
-    }
-
-    .wait-purchase-status span {
-        font-weight: 500;
     }
 
     .wait-purchase-total-price {
@@ -1020,5 +1035,14 @@
         line-height: 50px !important;
         font-size: 14px !important;
         font-weight: 500 !important;
+    }
+
+    /* tuỳ chỉnh hình ảnh */
+    .product-list-mt .product-image-des,
+    .container-product .product-image-des,
+    .simlirrr .product-image-des,
+    .search-product-ff .product-image-des {
+        height: 174px !important;
+        width: 174px !important;
     }
 }

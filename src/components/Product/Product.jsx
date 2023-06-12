@@ -5,6 +5,7 @@ import { formatMoney } from '../../support';
 
 const Product = ({ item }) => {
     // console.log(item);
+    // console.log('có produt chưa', item);
     return (
         <div className="product-container">
             <Link
@@ -12,7 +13,7 @@ const Product = ({ item }) => {
                 to={`/product/${item._id}`}
                 className="product-frame-img"
             >
-                {item.discountProduct_id?.discount_amount &&
+                {item.discountProduct_id &&
                     item.discountProduct_id.discount_amount !== 0 && (
                         <span className="product-discount">
                             -{item.discountProduct_id.discount_amount}%
@@ -24,11 +25,8 @@ const Product = ({ item }) => {
                         <source srcSet={item.grandeImg} media="(min-width: 481px)" />
                         <LazyLoadImage
                             className="product-image-des"
-                            // sizes="(max-width: 480px) 174px, (min-width: 481px) 250px"
                             srcSet={item.grandeImg}
                             alt=""
-                            // height="250"
-                            // width="250"
                             effect="blur"
                         />
                     </picture>

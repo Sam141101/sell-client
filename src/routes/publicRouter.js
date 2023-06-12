@@ -1,5 +1,6 @@
 import DefaultLayoutAuth from '../components/Layout/DefaultLayoutAuth';
 import DefaultLayoutOrder from '../components/Layout/DefaultLayoutOrder';
+import OrderDetails from '../components/OrderDetails/OrderDetails';
 import Canceled from '../components/WaitForProduct/Canceled';
 import Complete from '../components/WaitForProduct/Complete';
 import Delivering from '../components/WaitForProduct/Delivering';
@@ -83,6 +84,7 @@ const publicRoutes = [
 
     {
         path: '/auth/:id/verify/:token',
+        // path: 'test/register',
         component: Register,
         layout: DefaultLayoutAuth,
     },
@@ -173,7 +175,7 @@ const authenticatedRoutes = [
         path: '/account/profile',
         component: UserProfile,
         layout: DefaultLayoutOrder,
-        show2: 1,
+        // show2: 1,
     },
 
     // change password
@@ -213,6 +215,14 @@ const authenticatedRoutes = [
         path: '/order',
         component: ShipmentDetails,
         layout: null,
+    },
+
+    {
+        path: '/:status/:id',
+        component: OrderDetails,
+        layout: DefaultLayoutOrder,
+        show1: 1,
+        show2: 1,
     },
 ];
 

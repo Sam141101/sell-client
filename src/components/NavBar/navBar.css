@@ -109,6 +109,7 @@
 }
 .nav-menu {
     position: relative;
+    z-index: 2;
     margin-right: 25px;
 }
 .nav-menu > .nav-label {

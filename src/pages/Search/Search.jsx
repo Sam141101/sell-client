@@ -66,7 +66,7 @@ const Search = ({ axios, BASE_URL_API }) => {
                     </div>
                 </div>
 
-                <div className="row pd-mobile">
+                <div className="row pd-mobile search-product-ff">
                     {products.map((item, index) => {
                         return (
                             <div

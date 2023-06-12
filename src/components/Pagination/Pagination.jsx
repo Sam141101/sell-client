@@ -38,6 +38,7 @@ const Pagination = (props) => {
 
     const handlePageChange = (newPage) => {
         if (onPageChange) {
+            console.log('click bên pagination', newPage);
             onPageChange(newPage);
         }
     };
@@ -45,6 +46,12 @@ const Pagination = (props) => {
     const handleClick = (newPage) => {
         onPageChange(newPage);
     };
+
+    console.log('load pagi', page);
+    setTimeout(function () {
+        console.log('scrool');
+        window.scrollTo(0, 0);
+    }, 200); // delay 300ms
 
     return (
         <div className="pagination-container">

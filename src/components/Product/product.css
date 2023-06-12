@@ -5,13 +5,6 @@
 .product-container:hover .product-info {
     opacity: 1;
 }
-.product-image-des {
-    height: 100%;
-    width: 100%;
-    max-width: 100%;
-    z-index: 2;
-    object-fit: cover;
-}
 .product-title-text {
     color: #232121;
     line-height: 16px;
@@ -68,4 +61,31 @@
     color: #939393;
     font-size: 13px;
     margin-left: 10px;
+}
+
+/* Quy định cho từng khung ảnh */
+/* .product-image-des {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    z-index: 2;
+    object-fit: cover;
+} */
+
+.product-list-mt .product-image-des {
+    height: 200px;
+    width: 200px;
+    max-width: 100%;
+    z-index: 2;
+    object-fit: cover;
+}
+
+.container-product .product-image-des,
+.simlirrr .product-image-des,
+.search-product-ff .product-image-des {
+    height: 277px;
+    width: 277px;
+    max-width: 100%;
+    z-index: 2;
+    object-fit: cover;
 }

@@ -41,6 +41,7 @@ const EmailVerify = ({ axios, BASE_URL_API, setToast }) => {
                 duration: 1200,
             });
         } catch (error) {
+            console.log(error);
             setToast({
                 show: true,
                 title: 'xác thực email thất bại',
@@ -84,7 +85,7 @@ const EmailVerify = ({ axios, BASE_URL_API, setToast }) => {
                                                 </span>
                                             )} */}
                                             <button
-                                                className="email-verify-button"
+                                                className="email-verify-button cs"
                                                 style={{ marginTop: '30px' }}
                                                 onClick={handleClick}
                                             >

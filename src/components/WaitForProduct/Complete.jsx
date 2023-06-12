@@ -40,7 +40,10 @@ const Complete = ({
                         <div className="wait-for-product-list" key={item._id}>
                             {item?.products.map((item1, index) => (
                                 <div className="wait-purchase-product-order" key={index}>
-                                    <div className="wait-purchase-details-product df ai">
+                                    <Link
+                                        to={`/complete/${item._id}`}
+                                        className="wait-purchase-details-product df ai"
+                                    >
                                         <img
                                             className="wait-purchase-img"
                                             alt=""
@@ -78,7 +81,7 @@ const Complete = ({
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
 
                                     <div className="wait-purchase-evaluate-order df">
                                         <Link
@@ -97,19 +100,8 @@ const Complete = ({
                             ))}
 
                             <div className="wait-purchase-block df ai fz16">
-                                <div className="wait-purchase-status">
-                                    <>
-                                        <span>Trạng thái:</span>
-                                        Hoàn thành
-                                    </>
-                                    <div>
-                                        <span>Thời gian đặt hàng:</span>
-                                        {changDate(item.createdAt)}
-                                    </div>
-                                </div>
-
                                 <div className="wait-purchase-total-price fw500">
-                                    Tổng số tiền:
+                                    <span>Tổng số tiền:</span>
                                     <span className="wait-purchase-total-price-text">
                                         {formatMoney(item.amount + item.transportFee)}₫
                                     </span>

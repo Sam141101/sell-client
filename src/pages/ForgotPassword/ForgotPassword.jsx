@@ -90,7 +90,7 @@ const ForgotPassword = ({ BASE_URL_API, axios, setToast }) => {
 
                                             <div className="forgot-password-buttons">
                                                 <button
-                                                    className="email-verify-button"
+                                                    className="email-verify-button cs"
                                                     onClick={handleClick}
                                                 >
                                                     Gửi
