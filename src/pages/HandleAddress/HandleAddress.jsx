@@ -91,16 +91,16 @@ const HandleAddress = ({
                         headers: { token: `Bearer ${token}` },
                     });
                     if (res.data !== null) {
-                        setInputs({
-                            address: res.data.address,
-                            provinceId: res.data.province_id,
-                            districtId: res.data.district_id,
-                            wardId: res.data.ward_id,
+                        // setInputs({
+                        //     address: res.data.address,
+                        //     provinceId: res.data.province_id,
+                        //     districtId: res.data.district_id,
+                        //     wardId: res.data.ward_id,
 
-                            provinceName: res.data.province,
-                            districtName: res.data.district,
-                            wardName: res.data.ward,
-                        });
+                        //     provinceName: res.data.province,
+                        //     districtName: res.data.district,
+                        //     wardName: res.data.ward,
+                        // });
                         dispatch(getAddress(res.data));
                     } else {
                         setNotify(`${res.data}`);
