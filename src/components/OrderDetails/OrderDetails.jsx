@@ -32,16 +32,37 @@ const OrderDetails = ({
     const location = useLocation();
     const orderId = location.pathname.split('/')[2];
     const statusOrder = location.pathname.split('/')[1];
+    let tt;
+    if (statusOrder === 'wait-for-confirmation') {
+        tt = 'pending';
+    } else if (statusOrder === 'waiting-for-the-goods') {
+        tt = 'accept';
+    } else if (statusOrder === 'delivering') {
+        tt = 'delivery';
+    } else if (statusOrder === 'complete') {
+        tt = 'complete';
+    } else if (statusOrder === 'canceled') {
+        tt = 'cancel';
+    }
 
     const address = useSelector((state) => state.address?.currentAddress);
     const orderDetails = useSelector((state) => {
-        const products = state?.order[statusOrder]; // hoặc dùng Array.isArray(state?.order[statusOrder]) để kiểm tra
+        const products = state?.order[tt];
         if (Array.isArray(products)) {
             return products.filter((product) => product._id === orderId);
         } else {
             return [];
         }
     });
+
+    //     const orderDetails = useSelector((state) =>
+    //     state.order.products.find((product) => product._id === productId),
+    // );
+
+    // const orderDetails = useSelector((state) => {
+    //     state?.order[statusOrder].filter((product) => product._id === orderId);
+    // });
+
     console.log('orderDetails', orderDetails);
 
     console.log('orderId', orderId);

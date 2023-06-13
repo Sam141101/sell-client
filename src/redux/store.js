@@ -4,6 +4,7 @@ import authReducer from './authRedux';
 import orderReducer from './orderRedux';
 import temporaryReducer from './temporaryRedux';
 import addressReducer from './addressRedux';
+import productReducer from './productRedux';
 import {
     persistStore,
     persistReducer,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
     temporary: temporaryReducer,
     order: orderReducer,
     address: addressReducer,
+    product: productReducer,
     // auth: {
     //     authReducer,
     //     cart: cartReducer,

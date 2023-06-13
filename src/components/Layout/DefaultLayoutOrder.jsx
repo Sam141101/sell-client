@@ -72,7 +72,6 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                     //     //     headers: { token: `Bearer ${user.token}` },
                     //     // },
                     // );
-
                     const res = await axios.get(
                         BASE_URL_API +
                             `orders/amount2222222/fffffffffff/ffffffffffffffff/fffff/${user._id}`,

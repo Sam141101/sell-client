@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Product from '../components/Product/Product';
 import { sliderItems } from '../../src/data';
+import { getProductLists } from '../redux/productRedux';
+import { useSelector } from 'react-redux';
 
 const MoreProduct = styled.div`
     display: flex;
@@ -52,14 +54,16 @@ const Info = styled.div`
     color: red;
 `;
 
-const Home = ({ axios, BASE_URL_API }) => {
-    const [products, setProducts] = useState([]);
+const Home = ({ axios, BASE_URL_API, dispatch }) => {
+    // const [products, setProducts] = useState([]);
+    const products = useSelector((state) => state.product?.currentProduct);
+
     useEffect(() => {
         const getProducts = async () => {
             try {
                 const res = await axios.get(BASE_URL_API + `products/home/`);
-                // dispatch(getProductList(res.data));
-                setProducts(res.data);
+                dispatch(getProductLists(res.data));
+                // setProducts(res.data);
                 console.log(res.data);
             } catch (err) {
                 console.log(err);
@@ -76,7 +80,7 @@ const Home = ({ axios, BASE_URL_API }) => {
             <div className="container-product">
                 <div className="grid wide">
                     <div className="row pd-mobile">
-                        {products.map((item, index) => {
+                        {products?.map((item, index) => {
                             return (
                                 <div
                                     className={`col l-3 c-6 c${
