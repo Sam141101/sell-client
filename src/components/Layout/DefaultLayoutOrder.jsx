@@ -57,8 +57,9 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
             pathpolicy === 'waiting-for-the-goods' ||
             pathpolicy === 'delivering' ||
             pathpolicy === 'complete' ||
-            pathpolicy === 'canceled' ||
-            pathpolicy === 'account'
+            pathpolicy === 'canceled'
+            // ||
+            // pathpolicy === 'account'
         ) {
             console.log('vooo');
             const getProduct = async () => {

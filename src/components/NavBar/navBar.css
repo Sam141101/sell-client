@@ -349,25 +349,25 @@
 .nav-menu-mobile.actived .box-frame-transform {
     display: block;
 }
-.nav-header-login-mobile {
+/* .nav-header-login-mobile {
     text-align: center;
-}
-.nav-header-login-mobile-title {
+} */
+/* .nav-header-login-mobile-title {
     margin-bottom: 4px;
     font-size: 17px;
     font-style: normal;
     color: var(--color-black);
-}
-.nav-header-login-mobile-desc {
+} */
+/* .nav-header-login-mobile-desc {
     margin: 0 0 10px 0;
     line-height: 21px;
-}
-.nav-form-block {
+} */
+/* .nav-form-block {
     width: 100%;
     margin-bottom: 12px;
     position: relative;
-}
-.nav-login-tk {
+} */
+/* .nav-login-tk {
     display: block;
     padding: 10px;
     border-radius: 2px;
@@ -388,8 +388,8 @@
 .nav-login-tk::placeholder {
     font-weight: 600;
     color: #1b1b1c;
-}
-.nav-login-mk {
+} */
+/* .nav-login-mk {
     display: block;
     padding: 10px;
     font-size: 12px;
@@ -411,16 +411,16 @@
 .nav-login-mk::placeholder {
     font-weight: 600;
     color: #1b1b1c;
-}
-.nav-login-link {
+} */
+/* .nav-login-link {
     text-decoration: none;
     color: #2962ff;
     margin: 0 3px;
-}
-.nav-login-desc-police {
+} */
+/* .nav-login-desc-police {
     margin-bottom: 12px;
-}
-.nav-btn-login-mobile {
+} */
+/* .nav-btn-login-mobile {
     padding: 0px 28px;
     height: 42px;
     line-height: 42px;
@@ -438,15 +438,15 @@
     color: var(--color-black);
     background-color: transparent;
     border: 1px solid #d1d1d1;
-}
-.nav-more-info-mobile {
+} */
+/* .nav-more-info-mobile {
     margin-top: 16px;
     font-size: 12px;
     text-align: center;
     color: #d1d1d1;
     margin-left: 3px;
-}
-.nav-more-info-mobile-text {
+} */
+/* .nav-more-info-mobile-text {
     margin-bottom: 4px;
     color: #677279;
-}
+} */
