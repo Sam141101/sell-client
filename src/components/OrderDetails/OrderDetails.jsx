@@ -108,7 +108,7 @@ const OrderDetails = ({
             </div>
             <div className="order-details-container">
                 {/* {order.orderList?.products.map((item, index) => ( */}
-                {orderDetails?.products.map((item, index) => (
+                {orderDetails[0]?.products.map((item, index) => (
                     <Link
                         to={`/product/${item.product_id._id}`}
                         className="wait-purchase-product-order"
@@ -156,7 +156,7 @@ const OrderDetails = ({
                     <span>
                         {formatMoney(
                             // order.orderList?.amount + order.orderList?.transportFee,
-                            orderDetails?.amount + orderDetails?.transportFee,
+                            orderDetails[0]?.amount + orderDetails[0]?.transportFee,
                         )}
                         ₫
                     </span>
@@ -175,7 +175,7 @@ const OrderDetails = ({
                         <p className="fw500 fz16">Phương thức thanh toán</p>
                         <p>
                             {/* {order.orderList?.method === 'paypal' */}
-                            {orderDetails?.method === 'paypal'
+                            {orderDetails[0]?.method === 'paypal'
                                 ? 'Thanh toán PayPal'
                                 : 'Thanh toán khi nhận hàng'}
                         </p>
@@ -187,12 +187,12 @@ const OrderDetails = ({
                 <p className="df ai order-detaild-sb">
                     <span className="fw500 fz16">Mã đơn hàng</span>
                     {/* <span>{order.orderList?._id}</span> */}
-                    <span>{orderDetails?._id}</span>
+                    <span>{orderDetails[0]?._id}</span>
                 </p>
                 <p className="df ai order-detaild-sb">
                     <span className="fz15">Thời gian đặt hàng</span>
                     {/* <span>{changDate(order.orderList?.createdAt)}</span> */}
-                    <span>{changDate(orderDetails?.createdAt)}</span>
+                    <span>{changDate(orderDetails[0]?.createdAt)}</span>
                 </p>
             </div>
         </div>
