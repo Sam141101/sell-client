@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 import { Link } from 'react-router-dom';
+import { getOrderAccept } from '../../redux/orderRedux';
+import { useSelector } from 'react-redux';
 
 const WaitForTheGoods = ({
     user,
     axiosJWT,
     navigate,
-    changDate,
+    dispatch,
     BASE_URL_API,
     formatMoney,
+    amountaccept,
 }) => {
-    const [product, setProduct] = useState([]);
-    const [show, setShow] = useState(false);
-
+    let product = useSelector((state) => state.order?.accept);
     const handleClick = async (e) => {
         try {
             const res = await axiosJWT.put(
@@ -40,10 +41,7 @@ const WaitForTheGoods = ({
                         headers: { token: `Bearer ${user.token}` },
                     },
                 );
-                if (res.data.length > 0) {
-                    setShow(true);
-                }
-                setProduct(res.data);
+                dispatch(getOrderAccept(res.data));
             } catch (err) {}
         };
         getProduct();
@@ -51,7 +49,7 @@ const WaitForTheGoods = ({
 
     return (
         <>
-            {show ? (
+            {amountaccept ? (
                 <div className="wait-purchase-container">
                     {product?.map((item1) => (
                         <div className="wait-for-product-list" key={item1._id}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
 import FormInputAddress from '../../components/FormInputAddress/FormInputAddress';
+import { getAddress } from '../../redux/addressRedux';
+import { useSelector } from 'react-redux';
 
 const HandleAddress = ({
     user,
@@ -10,6 +11,8 @@ const HandleAddress = ({
     BASE_URL_API,
     setToast,
 }) => {
+    let getUseraddress = useSelector((state) => state.address?.currentAddress);
+
     const token = user.token;
     const id = user?._id;
 
@@ -63,39 +66,51 @@ const HandleAddress = ({
                 });
             }
             setAdvertise(res.data.message);
+            dispatch(getAddress(res.data.address));
         } catch (err) {
             console.log(err);
         }
     };
 
     useEffect(() => {
-        const getAddress = async () => {
-            try {
-                const res = await axiosJWT.get(BASE_URL_API + 'address/' + id, {
-                    headers: { token: `Bearer ${token}` },
-                });
-                if (res.data !== null) {
-                    setInputs({
-                        address: res.data.address,
-                        provinceId: res.data.province_id,
-                        districtId: res.data.district_id,
-                        wardId: res.data.ward_id,
+        if (getUseraddress) {
+            setInputs({
+                address: getUseraddress.address,
+                provinceId: getUseraddress.province_id,
+                districtId: getUseraddress.district_id,
+                wardId: getUseraddress.ward_id,
 
-                        provinceName: res.data.province,
-                        districtName: res.data.district,
-                        wardName: res.data.ward,
+                provinceName: getUseraddress.province,
+                districtName: getUseraddress.district,
+                wardName: getUseraddress.ward,
+            });
+        } else {
+            const getAddress = async () => {
+                try {
+                    const res = await axiosJWT.get(BASE_URL_API + 'address/' + id, {
+                        headers: { token: `Bearer ${token}` },
                     });
-                    // setInputs(res.data);
-                } else {
-                    setNotify(`${res.data}`);
+                    if (res.data !== null) {
+                        setInputs({
+                            address: res.data.address,
+                            provinceId: res.data.province_id,
+                            districtId: res.data.district_id,
+                            wardId: res.data.ward_id,
+
+                            provinceName: res.data.province,
+                            districtName: res.data.district,
+                            wardName: res.data.ward,
+                        });
+                    } else {
+                        setNotify(`${res.data}`);
+                    }
+                } catch (err) {
+                    console.log(err);
                 }
-            } catch (err) {
-                console.log(err);
-                console.log('that bai');
-            }
-        };
-        getAddress();
-    }, [token, id]);
+            };
+            getAddress();
+        }
+    }, [getUseraddress, id, token]);
 
     console.log('inputs', inputs);
 

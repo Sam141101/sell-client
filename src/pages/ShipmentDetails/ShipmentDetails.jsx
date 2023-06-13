@@ -11,10 +11,12 @@ import Notify from '../../components/Notify/Notify';
 import { formatMoney } from '../../support';
 import { resetProduct } from '../../redux/cartRedux';
 import { logout } from '../../redux/apiCalls';
+import { getAddress } from '../../redux/addressRedux';
 
 const ShipmentDetails = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const cart = useSelector((state) => state.cart?.products);
+    let getUseraddress = useSelector((state) => state.address?.currentAddress);
     console.log('cart', cart);
     const quantiProduct = useSelector((state) => state.cart?.quantity);
     const total = useSelector((state) => state?.cart);
@@ -38,6 +40,7 @@ const ShipmentDetails = () => {
     const [initialTotalPriceDelivery, setInitialTotalPriceDelivery] =
         useState(totalPriceDelivery); /// 30000 ------> total delivery
 
+    console.log('getUseraddress', getUseraddress);
     const [address, setAddress] = useState({
         address: '',
         provinceId: 0,
@@ -48,6 +51,7 @@ const ShipmentDetails = () => {
         districtName: '',
         wardName: '',
     });
+
     const [confirmAddress, setConfirmAddress] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -96,6 +100,7 @@ const ShipmentDetails = () => {
                     headers: { token: `Bearer ${user.token}` },
                 });
             }
+            dispatch(getAddress(res.data.address));
 
             if (res.data.message === 'Cập nhật thành công địa chỉ!') {
                 errorMessage = 'Cập nhật thành công địa chỉ!';
@@ -240,33 +245,45 @@ const ShipmentDetails = () => {
     }, [notify, infoCoupon, couponUpdated]);
 
     useEffect(() => {
-        const getAddress = async () => {
-            try {
-                const res = await axiosJWT.get(BASE_URL_API + 'address/' + userId, {
-                    headers: { token: `Bearer ${user.token}` },
-                });
-                if (res.data !== null) {
-                    setAddress({
-                        address: res.data.address,
-                        provinceId: res.data.province_id,
-                        districtId: res.data.district_id,
-                        wardId: res.data.ward_id,
+        if (getUseraddress) {
+            setAddress({
+                address: getUseraddress?.address,
+                provinceId: getUseraddress?.province_id,
+                districtId: getUseraddress?.district_id,
+                wardId: getUseraddress?.ward_id,
 
-                        provinceName: res.data.province,
-                        districtName: res.data.district,
-                        wardName: res.data.ward,
+                provinceName: getUseraddress?.province,
+                districtName: getUseraddress?.district,
+                wardName: getUseraddress?.ward,
+            });
+        } else {
+            console.log('khoong phai goi api adddresss');
+            const getAddress = async () => {
+                try {
+                    const res = await axiosJWT.get(BASE_URL_API + 'address/' + userId, {
+                        headers: { token: `Bearer ${user.token}` },
                     });
-                    // setInputs(res.data);
-                } else {
-                    setConfirmAddress(`${res.data}`);
+                    if (res.data !== null) {
+                        setAddress({
+                            address: res.data.address,
+                            provinceId: res.data.province_id,
+                            districtId: res.data.district_id,
+                            wardId: res.data.ward_id,
+
+                            provinceName: res.data.province,
+                            districtName: res.data.district,
+                            wardName: res.data.ward,
+                        });
+                    } else {
+                        setConfirmAddress(`${res.data}`);
+                    }
+                } catch (err) {
+                    console.log(err);
                 }
-            } catch (err) {
-                console.log(err);
-                console.log('that bai');
-            }
-        };
-        getAddress();
-    }, [user.token, userId]);
+            };
+            getAddress();
+        }
+    }, [getUseraddress, userId, user.token]);
 
     // Lấy ra các phương thức vận chuyển
     useEffect(() => {

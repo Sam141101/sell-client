@@ -24,17 +24,21 @@ const OrderDetails = ({
     BASE_URL_API,
     axiosJWT,
     user,
-    axios,
     changDate,
     formatMoney,
-    // dispatch,
+    dispatch,
     navigate,
 }) => {
-    const address = useSelector((state) => state.address?.currentAddress);
-
     const location = useLocation();
     const orderId = location.pathname.split('/')[2];
     const statusOrder = location.pathname.split('/')[1];
+
+    const address = useSelector((state) => state.address?.currentAddress);
+    const orderDetails = useSelector((state) =>
+        state?.order[statusOrder].find((product) => product._id === orderId),
+    );
+    console.log('orderDetails', orderDetails);
+
     console.log('orderId', orderId);
     const [order, setOrder] = useState({});
 
@@ -47,7 +51,6 @@ const OrderDetails = ({
             try {
                 const res = await axiosJWT.get(
                     BASE_URL_API + `orders/${user._id}/` + orderId,
-                    // BASE_URL_API + `orders/find/` + orderId,
                     {
                         headers: { token: `Bearer ${user.token}` },
                     },
@@ -64,7 +67,7 @@ const OrderDetails = ({
     }, [user.token, orderId]);
 
     return (
-        <div style={{ paddingBottom: '15px' }}>
+        <div className="enviroment-mobile env-mobi-active">
             <div className="order-title-relate df ai fw500" style={{ textAlign: 'left' }}>
                 <KeyboardBackspace
                     onClick={handleReturn}

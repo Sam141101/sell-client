@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 import { Link } from 'react-router-dom';
+import { getOrderPending } from '../../redux/orderRedux';
+import { useSelector } from 'react-redux';
 
 const WaitForConfirmation = ({
     user,
     axiosJWT,
     navigate,
-    changDate,
     BASE_URL_API,
     formatMoney,
+    dispatch,
+    amountpending,
 }) => {
-    const [product, setProduct] = useState([]);
-    const [show, setShow] = useState(false);
+    let product = useSelector((state) => state.order?.pending);
 
     const handleClick = async (e) => {
         try {
@@ -39,11 +41,7 @@ const WaitForConfirmation = ({
                         headers: { token: `Bearer ${user.token}` },
                     },
                 );
-
-                if (res.data.length > 0) {
-                    setShow(true);
-                }
-                setProduct(res.data);
+                dispatch(getOrderPending(res.data));
             } catch (err) {}
         };
         getProduct();
@@ -53,7 +51,7 @@ const WaitForConfirmation = ({
 
     return (
         <>
-            {show ? (
+            {amountpending !== 0 ? (
                 <div className="wait-purchase-container">
                     {product?.map((item1) => (
                         <div className="wait-for-product-list" key={item1._id}>

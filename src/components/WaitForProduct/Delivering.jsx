@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-
-// import { BASE_URL_API } from '../../requestMethods';
+import React, { useEffect } from 'react';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getOrderDelivery } from '../../redux/orderRedux';
 
 const Delivering = ({
     user,
     axiosJWT,
     navigate,
-    changDate,
     BASE_URL_API,
     formatMoney,
+    amountdelivery,
+    dispatch,
 }) => {
-    const [product, setProduct] = useState([]);
-    const [show, setShow] = useState(false);
-
+    let product = useSelector((state) => state.order?.delivery);
     const handleClick = async (e) => {
         try {
             const res = await axiosJWT.put(
@@ -42,11 +41,7 @@ const Delivering = ({
                         headers: { token: `Bearer ${user.token}` },
                     },
                 );
-                if (res.data.length > 0) {
-                    setShow(true);
-                }
-                setProduct(res.data);
-                console.log('derrrrr', res.data);
+                dispatch(getOrderDelivery(res.data));
             } catch (err) {}
         };
         getProduct();
@@ -54,7 +49,7 @@ const Delivering = ({
 
     return (
         <>
-            {show ? (
+            {amountdelivery !== 0 ? (
                 <div className="wait-purchase-container">
                     {product?.map((item1) => (
                         <div className="wait-for-product-list" key={item1._id}>

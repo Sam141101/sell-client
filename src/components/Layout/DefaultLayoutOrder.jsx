@@ -3,12 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Navbar from '../NavBar/NavBar';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
 import { createAxiosInstance } from '../../useAxiosJWT';
 import { changDate, formatMoney } from '../../support';
 import { getAddress } from '../../redux/addressRedux';
+import {
+    getAmountAccept,
+    getAmountCancel,
+    getAmountComplete,
+    getAmountDelivery,
+    getAmountPending,
+} from '../../redux/orderRedux';
 
 const profile = [
     {
@@ -26,6 +33,12 @@ const profile = [
 ];
 
 function DefaultLayoutOrder({ children, show1, show2, show3 }) {
+    let amountpending = useSelector((state) => state.order?.amountpending);
+    let amountaccept = useSelector((state) => state.order?.amountaccept);
+    let amountdelivery = useSelector((state) => state.order?.amountdelivery);
+    let amountcomplete = useSelector((state) => state.order?.amountcomplete);
+    let amountcancel = useSelector((state) => state.order?.amountcancel);
+
     const location = useLocation();
     const pathpolicy = location.pathname.split('/')[1];
     console.log('pathpolicy', pathpolicy, typeof pathpolicy);
@@ -38,21 +51,14 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
     const navigate = useNavigate();
     const axiosJWT = createAxiosInstance(user, dispatch);
 
-    const [inputs, setInputs] = useState({
-        pending: 0,
-        accept: 0,
-        delivery: 0,
-        complete: 0,
-        cancel: 0,
-    });
-
     useEffect(() => {
         if (
             pathpolicy === 'wait-for-confirmation' ||
             pathpolicy === 'waiting-for-the-goods' ||
             pathpolicy === 'delivering' ||
             pathpolicy === 'complete' ||
-            pathpolicy === 'canceled'
+            pathpolicy === 'canceled' ||
+            pathpolicy === 'account'
         ) {
             console.log('vooo');
             const getProduct = async () => {
@@ -66,13 +72,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                         // },
                     );
 
-                    setInputs({
-                        pending: res.data.pending,
-                        accept: res.data.accept,
-                        delivery: res.data.delivery,
-                        complete: res.data.complete,
-                        cancel: res.data.cancel,
-                    });
+                    dispatch(getAmountPending(res.data.pending));
+                    dispatch(getAmountAccept(res.data.accept));
+                    dispatch(getAmountDelivery(res.data.delivery));
+                    dispatch(getAmountComplete(res.data.complete));
+                    dispatch(getAmountCancel(res.data.cancel));
                     dispatch(getAddress(res.data.address));
                 } catch (err) {
                     console.log(err);
@@ -84,15 +88,15 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
 
     return (
         <div className="default-layout-wrapper">
-            {!show2 && (
-                <Navbar
-                    axiosJWT={axiosJWT}
-                    quantity={quantity}
-                    user={user}
-                    navigate={navigate}
-                    dispatch={dispatch}
-                />
-            )}
+            {/* {!show2 && ( */}
+            <Navbar
+                axiosJWT={axiosJWT}
+                quantity={quantity}
+                user={user}
+                navigate={navigate}
+                dispatch={dispatch}
+            />
+            {/* )} */}
 
             <div
                 className={`default-layout-order-wrapper ${
@@ -105,131 +109,128 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
             >
                 <div className="grid wide">
                     <div className="row">
-                        {!show2 && (
-                            <div className="col l-3 c-12">
-                                <div className="default-layout-order-container-left">
-                                    <div className="default-layout-order-container-left-info">
-                                        <img
-                                            className="default-layout-order-img-user"
-                                            src={
-                                                user.img ||
-                                                'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
-                                            }
-                                            alt=""
-                                        />
-                                        <div className="default-layout-order-change-info-user">
-                                            <h4 className="default-layout-order-title-user">
-                                                {user.username}
-                                            </h4>
-                                            <span className="default-layout-order-change-info">
-                                                <Create
-                                                    style={{
-                                                        fontSize: '18px',
-                                                        marginRight: '5px',
-                                                    }}
-                                                />
-                                                Sửa hồ sơ
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="default-layout-order-more-items">
-                                        <Link
-                                            style={{
-                                                textDecoration: 'none',
-                                                color: `${
-                                                    pathpolicy === 'account'
-                                                        ? '#ee4d2d'
-                                                        : ''
-                                                } `,
-                                            }}
-                                            to="/account/profile"
-                                        >
-                                            <div className="default-layout-order-item">
-                                                <img
-                                                    className="default-layout-order-img-item "
-                                                    src="https://cf.shopee.vn/file/ba61750a46794d8847c3f463c5e71cc4"
-                                                    alt=""
-                                                />
-                                                Tài khoản của tôi
-                                            </div>
-                                        </Link>
-
-                                        <div className="default-layout-order-account">
-                                            {profile.map((item, i) => (
-                                                <div
-                                                    className="default-layout-order-account-frame"
-                                                    key={i}
-                                                >
-                                                    <Link
-                                                        className={`default-layout-order-account-link ${
-                                                            accounttype === `${item.to}`
-                                                                ? 'active'
-                                                                : ''
-                                                        }`}
-                                                        to={`/account/${item.to}`}
-                                                    >
-                                                        {item.title}
-                                                    </Link>
-                                                </div>
-                                            ))}
-                                        </div>
-
-                                        <Link
-                                            style={{
-                                                textDecoration: 'none',
-                                                color: `${
-                                                    pathpolicy ===
-                                                        'wait-for-confirmation' ||
-                                                    pathpolicy ===
-                                                        'waiting-for-the-goods' ||
-                                                    pathpolicy === 'delivering' ||
-                                                    pathpolicy === 'complete' ||
-                                                    pathpolicy === 'canceled'
-                                                        ? '#ee4d2d'
-                                                        : ''
-                                                } `,
-                                            }}
-                                            to="/wait-for-confirmation"
-                                        >
-                                            <div className="default-layout-order-item">
-                                                <img
-                                                    className="default-layout-order-img-item"
-                                                    src="https://cf.shopee.vn/file/f0049e9df4e536bc3e7f140d071e9078"
-                                                    alt=""
-                                                />
-                                                Đơn mua
-                                            </div>
-                                        </Link>
-
-                                        <Link
-                                            // style={{ textDecoration: 'none' }}
-                                            style={{
-                                                textDecoration: 'none',
-                                                color: `${
-                                                    pathpolicy === 'voucher-user'
-                                                        ? '#ee4d2d'
-                                                        : ''
-                                                } `,
-                                            }}
-                                            to="/voucher-user"
-                                        >
-                                            <div className="default-layout-order-item">
-                                                <img
-                                                    className="default-layout-order-img-item "
-                                                    src="https://down-vn.img.susercontent.com/file/84feaa363ce325071c0a66d3c9a88748"
-                                                    alt=""
-                                                />
-                                                Kho voucher
-                                            </div>
-                                        </Link>
+                        {/* {!show2 && ( */}
+                        <div className="left-deffau col l-3 c-12">
+                            <div className="default-layout-order-container-left">
+                                <div className="default-layout-order-container-left-info">
+                                    <img
+                                        className="default-layout-order-img-user"
+                                        src={
+                                            user.img ||
+                                            'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
+                                        }
+                                        alt=""
+                                    />
+                                    <div className="default-layout-order-change-info-user">
+                                        <h4 className="default-layout-order-title-user">
+                                            {user.username}
+                                        </h4>
+                                        <span className="default-layout-order-change-info">
+                                            <Create
+                                                style={{
+                                                    fontSize: '18px',
+                                                    marginRight: '5px',
+                                                }}
+                                            />
+                                            Sửa hồ sơ
+                                        </span>
                                     </div>
                                 </div>
+
+                                <div className="default-layout-order-more-items">
+                                    <Link
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: `${
+                                                pathpolicy === 'account' ? '#ee4d2d' : ''
+                                            } `,
+                                        }}
+                                        to="/account/profile"
+                                    >
+                                        <div className="default-layout-order-item">
+                                            <img
+                                                className="default-layout-order-img-item "
+                                                src="https://cf.shopee.vn/file/ba61750a46794d8847c3f463c5e71cc4"
+                                                alt=""
+                                            />
+                                            Tài khoản của tôi
+                                        </div>
+                                    </Link>
+
+                                    <div className="default-layout-order-account">
+                                        {profile.map((item, i) => (
+                                            <div
+                                                className="default-layout-order-account-frame"
+                                                key={i}
+                                            >
+                                                <Link
+                                                    className={`default-layout-order-account-link ${
+                                                        accounttype === `${item.to}`
+                                                            ? 'active'
+                                                            : ''
+                                                    }`}
+                                                    to={`/account/${item.to}`}
+                                                >
+                                                    {item.title}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <Link
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: `${
+                                                pathpolicy === 'wait-for-confirmation' ||
+                                                pathpolicy === 'waiting-for-the-goods' ||
+                                                pathpolicy === 'delivering' ||
+                                                pathpolicy === 'complete' ||
+                                                pathpolicy === 'canceled'
+                                                    ? '#ee4d2d'
+                                                    : ''
+                                            } `,
+                                        }}
+                                        to="/wait-for-confirmation"
+                                    >
+                                        <div className="default-layout-order-item">
+                                            <img
+                                                className="default-layout-order-img-item"
+                                                src="https://cf.shopee.vn/file/f0049e9df4e536bc3e7f140d071e9078"
+                                                alt=""
+                                            />
+                                            Đơn mua
+                                        </div>
+                                    </Link>
+
+                                    <Link
+                                        // style={{ textDecoration: 'none' }}
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: `${
+                                                pathpolicy === 'voucher-user'
+                                                    ? '#ee4d2d'
+                                                    : ''
+                                            } `,
+                                        }}
+                                        to="/voucher-user"
+                                    >
+                                        <div className="default-layout-order-item">
+                                            <img
+                                                className="default-layout-order-img-item "
+                                                src="https://down-vn.img.susercontent.com/file/84feaa363ce325071c0a66d3c9a88748"
+                                                alt=""
+                                            />
+                                            Kho voucher
+                                        </div>
+                                    </Link>
+                                </div>
                             </div>
-                        )}
+                        </div>
+                        {/* )} */}
                         <div className="col l-9 c-12">
                             <div className="default-layout-order-container-right">
-                                {show1 && !show2 && (
+                                {/* {show1 && !show2 && ( */}
+                                {show1 && (
                                     <div className="default-layout-order-manage-user">
                                         <Link
                                             style={{
@@ -243,9 +244,9 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/wait-for-confirmation"
                                         >
                                             Chờ xác nhận
-                                            {inputs.pending !== 0 && (
+                                            {amountpending !== 0 && (
                                                 <span className="amount-order">
-                                                    {inputs.pending}
+                                                    {amountpending}
                                                 </span>
                                             )}
                                         </Link>
@@ -261,9 +262,9 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/waiting-for-the-goods"
                                         >
                                             Chờ lấy hàng
-                                            {inputs.accept !== 0 && (
+                                            {amountaccept !== 0 && (
                                                 <span className="amount-order">
-                                                    {inputs.accept}
+                                                    {amountaccept}
                                                 </span>
                                             )}
                                         </Link>
@@ -280,9 +281,9 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/delivering"
                                         >
                                             Đang giao
-                                            {inputs.delivery !== 0 && (
+                                            {amountdelivery !== 0 && (
                                                 <span className="amount-order">
-                                                    {inputs.delivery}
+                                                    {amountdelivery}
                                                 </span>
                                             )}
                                         </Link>
@@ -297,9 +298,9 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/complete"
                                         >
                                             Hoàn thành
-                                            {inputs.complete !== 0 && (
+                                            {amountcomplete !== 0 && (
                                                 <span className="amount-order">
-                                                    {inputs.complete}
+                                                    {amountcomplete}
                                                 </span>
                                             )}
                                         </Link>
@@ -313,9 +314,9 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             to="/canceled"
                                         >
                                             Đã huỷ
-                                            {inputs.cancel !== 0 && (
+                                            {amountcancel !== 0 && (
                                                 <span className="amount-order">
-                                                    {inputs.cancel}
+                                                    {amountcancel}
                                                 </span>
                                             )}
                                         </Link>
@@ -334,6 +335,11 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                                             axios: axios,
                                             changDate: changDate,
                                             formatMoney: formatMoney,
+                                            amountpending: amountpending,
+                                            amountaccept: amountaccept,
+                                            amountdelivery: amountdelivery,
+                                            amountcomplete: amountcomplete,
+                                            amountcancel: amountcancel,
                                         }),
                                     )}
                                 </div>

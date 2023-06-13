@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 // import { BASE_URL_API } from '../../requestMethods';
 import './waitForProduct.css';
 import '../../pages/About/about.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getOrderCancel } from '../../redux/orderRedux';
 
 const Canceled = ({
     user,
     axiosJWT,
     dispatch,
-    navigate,
-    changDate,
     BASE_URL_API,
     formatMoney,
+    amountcancel,
 }) => {
-    const [product, setProduct] = useState([]);
-    const [show, setShow] = useState(false);
-
+    let product = useSelector((state) => state.order?.cancel);
     useEffect(() => {
         const getProduct = async () => {
             try {
@@ -27,10 +26,7 @@ const Canceled = ({
                         headers: { token: `Bearer ${user.token}` },
                     },
                 );
-                if (res.data.length > 0) {
-                    setShow(true);
-                }
-                setProduct(res.data);
+                dispatch(getOrderCancel(res.data));
             } catch (err) {}
         };
         getProduct();
@@ -38,7 +34,7 @@ const Canceled = ({
 
     return (
         <>
-            {show ? (
+            {amountcancel ? (
                 <div className="wait-purchase-container">
                     {product?.map((item1) => (
                         <div className="wait-for-product-list" key={item1._id}>

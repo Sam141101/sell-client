@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import cartReducer from './cartRedux';
 import authReducer from './authRedux';
-import productReducer from './productRedux';
+import orderReducer from './orderRedux';
 import temporaryReducer from './temporaryRedux';
 import addressReducer from './addressRedux';
 import {
@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
     cart: cartReducer,
     auth: authReducer,
     temporary: temporaryReducer,
-    product: productReducer,
+    order: orderReducer,
     address: addressReducer,
     // auth: {
     //     authReducer,
