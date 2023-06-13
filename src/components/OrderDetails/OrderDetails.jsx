@@ -45,31 +45,31 @@ const OrderDetails = ({
     console.log('orderDetails', orderDetails);
 
     console.log('orderId', orderId);
-    const [order, setOrder] = useState({});
+    // const [order, setOrder] = useState({});
 
     const handleReturn = () => {
         navigate(`/${statusOrder}`);
     };
 
-    useEffect(() => {
-        const getOrderDetail = async () => {
-            try {
-                const res = await axiosJWT.get(
-                    BASE_URL_API + `orders/${user._id}/` + orderId,
-                    {
-                        headers: { token: `Bearer ${user.token}` },
-                    },
-                );
-                setOrder(res.data);
-                console.log('res.data', res.data);
-            } catch (err) {
-                console.log(err);
-                console.log('that bai');
-            }
-        };
+    // useEffect(() => {
+    //     const getOrderDetail = async () => {
+    //         try {
+    //             const res = await axiosJWT.get(
+    //                 BASE_URL_API + `orders/${user._id}/` + orderId,
+    //                 {
+    //                     headers: { token: `Bearer ${user.token}` },
+    //                 },
+    //             );
+    //             setOrder(res.data);
+    //             console.log('res.data', res.data);
+    //         } catch (err) {
+    //             console.log(err);
+    //             console.log('that bai');
+    //         }
+    //     };
 
-        getOrderDetail();
-    }, [user.token, orderId]);
+    //     getOrderDetail();
+    // }, [user.token, orderId]);
 
     return (
         <div className="enviroment-mobile env-mobi-active">
@@ -107,7 +107,8 @@ const OrderDetails = ({
                 </div>
             </div>
             <div className="order-details-container">
-                {order.orderList?.products.map((item, index) => (
+                {/* {order.orderList?.products.map((item, index) => ( */}
+                {orderDetails?.products.map((item, index) => (
                     <Link
                         to={`/product/${item.product_id._id}`}
                         className="wait-purchase-product-order"
@@ -154,7 +155,8 @@ const OrderDetails = ({
                     <span>Thành tiền:</span>
                     <span>
                         {formatMoney(
-                            order.orderList?.amount + order.orderList?.transportFee,
+                            // order.orderList?.amount + order.orderList?.transportFee,
+                            orderDetails?.amount + orderDetails?.transportFee,
                         )}
                         ₫
                     </span>
@@ -172,7 +174,8 @@ const OrderDetails = ({
                     <div className="df flex-direction">
                         <p className="fw500 fz16">Phương thức thanh toán</p>
                         <p>
-                            {order.orderList?.method === 'paypal'
+                            {/* {order.orderList?.method === 'paypal' */}
+                            {orderDetails?.method === 'paypal'
                                 ? 'Thanh toán PayPal'
                                 : 'Thanh toán khi nhận hàng'}
                         </p>
@@ -183,11 +186,13 @@ const OrderDetails = ({
             <div className="order-details-id" style={{}}>
                 <p className="df ai order-detaild-sb">
                     <span className="fw500 fz16">Mã đơn hàng</span>
-                    <span>{order.orderList?._id}</span>
+                    {/* <span>{order.orderList?._id}</span> */}
+                    <span>{orderDetails?._id}</span>
                 </p>
                 <p className="df ai order-detaild-sb">
                     <span className="fz15">Thời gian đặt hàng</span>
-                    <span>{changDate(order.orderList?.createdAt)}</span>
+                    {/* <span>{changDate(order.orderList?.createdAt)}</span> */}
+                    <span>{changDate(orderDetails?.createdAt)}</span>
                 </p>
             </div>
         </div>
