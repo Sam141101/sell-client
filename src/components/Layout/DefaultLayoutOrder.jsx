@@ -64,13 +64,13 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
             console.log('vooo');
             const getProduct = async () => {
                 try {
-                    const res = await axiosJWT.get(
+                    const res = await axios.get(
                         // BASE_URL_API +
                         // `orders/user-amount-order-status?userid=${user._id}`,
                         BASE_URL_API + `orders/amount/${user._id}`,
-                        {
-                            headers: { token: `Bearer ${user.token}` },
-                        },
+                        // {
+                        //     headers: { token: `Bearer ${user.token}` },
+                        // },
                     );
 
                     dispatch(getAmountPending(res.data.pending));
