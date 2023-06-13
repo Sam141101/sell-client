@@ -5,7 +5,14 @@ import { Home } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL_API } from '../../requestMethods';
-const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise }) => {
+const FormInputAddress = ({
+    setInputs,
+    inputs,
+    handleClick,
+    notify,
+    setAdvertise,
+    // getUseraddress,
+}) => {
     const location = useLocation();
     const typePage = location.pathname.split('/')[1];
 
@@ -77,11 +84,12 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
                 console.log('err', err);
             }
         };
+
         fetchProvinces();
     }, []);
 
     useEffect(() => {
-        if (inputs.provinceId !== 0) {
+        if (inputs.provinceId !== 0 && listAddress.province.length > 0) {
             const fetchDistricts = async () => {
                 try {
                     const res = await axios.post(
@@ -104,10 +112,11 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
                 return { ...prev, district: [], ward: [] };
             });
         }
-    }, [inputs.provinceId]);
+    }, [inputs.provinceId, listAddress.province]);
 
     useEffect(() => {
-        if (inputs.districtId !== 0) {
+        if (inputs.districtId !== 0 && listAddress.district.length > 0) {
+            console.log('warrddddd', inputs.districtId);
             const fetchWards = async () => {
                 try {
                     const res = await axios.post(BASE_URL_API + 'shippings/list-ward', {
@@ -124,12 +133,10 @@ const FormInputAddress = ({ setInputs, inputs, handleClick, notify, setAdvertise
             fetchWards();
         } else {
             setListAddress((prev) => {
-                return { ...prev, district: [], ward: [] };
+                return { ...prev, ward: [] };
             });
         }
-    }, [inputs.districtId]);
-
-    // console.log('district', listAddress);
+    }, [inputs.districtId, listAddress.district]);
 
     return (
         <>

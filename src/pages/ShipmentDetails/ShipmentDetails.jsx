@@ -16,7 +16,7 @@ import { getAddress } from '../../redux/addressRedux';
 const ShipmentDetails = () => {
     const user = useSelector((state) => state.auth?.currentUser);
     const cart = useSelector((state) => state.cart?.products);
-    let getUseraddress = useSelector((state) => state.address?.currentAddress);
+    // let getUseraddress = useSelector((state) => state.address?.currentAddress);
     console.log('cart', cart);
     const quantiProduct = useSelector((state) => state.cart?.quantity);
     const total = useSelector((state) => state?.cart);
@@ -40,7 +40,7 @@ const ShipmentDetails = () => {
     const [initialTotalPriceDelivery, setInitialTotalPriceDelivery] =
         useState(totalPriceDelivery); /// 30000 ------> total delivery
 
-    console.log('getUseraddress', getUseraddress);
+    // console.log('getUseraddress', getUseraddress);
     const [address, setAddress] = useState({
         address: '',
         provinceId: 0,
@@ -245,65 +245,60 @@ const ShipmentDetails = () => {
     }, [notify, infoCoupon, couponUpdated]);
 
     useEffect(() => {
-        if (getUseraddress) {
-            setAddress({
-                address: getUseraddress?.address,
-                provinceId: getUseraddress?.province_id,
-                districtId: getUseraddress?.district_id,
-                wardId: getUseraddress?.ward_id,
+        const getAddress = async () => {
+            try {
+                const res = await axiosJWT.get(BASE_URL_API + 'address/' + userId, {
+                    headers: { token: `Bearer ${user.token}` },
+                });
+                if (res.data !== null) {
+                    setAddress({
+                        address: res.data.address,
+                        provinceId: res.data.province_id,
+                        districtId: res.data.district_id,
+                        wardId: res.data.ward_id,
 
-                provinceName: getUseraddress?.province,
-                districtName: getUseraddress?.district,
-                wardName: getUseraddress?.ward,
-            });
-        } else {
-            console.log('khoong phai goi api adddresss');
-            const getAddress = async () => {
-                try {
-                    const res = await axiosJWT.get(BASE_URL_API + 'address/' + userId, {
-                        headers: { token: `Bearer ${user.token}` },
+                        provinceName: res.data.province,
+                        districtName: res.data.district,
+                        wardName: res.data.ward,
                     });
-                    if (res.data !== null) {
-                        setAddress({
-                            address: res.data.address,
-                            provinceId: res.data.province_id,
-                            districtId: res.data.district_id,
-                            wardId: res.data.ward_id,
-
-                            provinceName: res.data.province,
-                            districtName: res.data.district,
-                            wardName: res.data.ward,
-                        });
-                    } else {
-                        setConfirmAddress(`${res.data}`);
-                    }
-                } catch (err) {
-                    console.log(err);
+                    // setInputs(res.data);
+                } else {
+                    setConfirmAddress(`${res.data}`);
                 }
-            };
-            getAddress();
-        }
-    }, [getUseraddress, userId, user.token]);
+            } catch (err) {
+                console.log(err);
+                console.log('that bai');
+            }
+        };
+        getAddress();
+    }, [user.token, userId]);
 
     // Lấy ra các phương thức vận chuyển
     useEffect(() => {
         console.log('lấy ra phương thức chuyển lần đầu tiên');
-        const getService = async () => {
-            try {
-                const res = await axiosJWT.get(
-                    BASE_URL_API + 'shippings/service-pack/' + userId,
-                    {
-                        headers: { token: `Bearer ${user.token}` },
-                    },
-                );
-                console.log('lấy ra phương thức chuyển lần 2');
-                setServicePack(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        getService();
-    }, [user.token, userId, confirmAddress]);
+        if (
+            address.address !== '' &&
+            address.provinceId !== 0 &&
+            address.districtId !== 0 &&
+            address.wardId !== 0
+        ) {
+            const getService = async () => {
+                try {
+                    const res = await axiosJWT.get(
+                        BASE_URL_API + 'shippings/service-pack/' + userId,
+                        {
+                            headers: { token: `Bearer ${user.token}` },
+                        },
+                    );
+                    console.log('lấy ra phương thức chuyển lần 2');
+                    setServicePack(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            getService();
+        }
+    }, [user.token, userId, confirmAddress, address]);
 
     // Lấy ra giá vận chuyển
     useEffect(() => {

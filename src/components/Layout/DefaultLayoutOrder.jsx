@@ -84,7 +84,7 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
             };
             getProduct();
         }
-    }, [user._id, user.token]);
+    }, [user._id, user.token, dispatch, pathpolicy]);
 
     return (
         <div className="default-layout-wrapper">

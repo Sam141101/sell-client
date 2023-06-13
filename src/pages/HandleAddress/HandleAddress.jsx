@@ -11,7 +11,7 @@ const HandleAddress = ({
     BASE_URL_API,
     setToast,
 }) => {
-    let getUseraddress = useSelector((state) => state.address?.currentAddress);
+    // let getUseraddress = useSelector((state) => state.address?.currentAddress);
 
     const token = user.token;
     const id = user?._id;
@@ -72,46 +72,75 @@ const HandleAddress = ({
         }
     };
 
+    // useEffect(() => {
+    //     if (getUseraddress) {
+    //         setInputs({
+    //             address: getUseraddress.address,
+    //             provinceId: getUseraddress.province_id,
+    //             districtId: getUseraddress.district_id,
+    //             wardId: getUseraddress.ward_id,
+
+    //             provinceName: getUseraddress.province,
+    //             districtName: getUseraddress.district,
+    //             wardName: getUseraddress.ward,
+    //         });
+    //     } else {
+    //         const getAddress122 = async () => {
+    //             try {
+    //                 const res = await axiosJWT.get(BASE_URL_API + 'address/' + id, {
+    //                     headers: { token: `Bearer ${token}` },
+    //                 });
+    //                 if (res.data !== null) {
+    //                     // setInputs({
+    //                     //     address: res.data.address,
+    //                     //     provinceId: res.data.province_id,
+    //                     //     districtId: res.data.district_id,
+    //                     //     wardId: res.data.ward_id,
+
+    //                     //     provinceName: res.data.province,
+    //                     //     districtName: res.data.district,
+    //                     //     wardName: res.data.ward,
+    //                     // });
+    //                     dispatch(getAddress(res.data));
+    //                 } else {
+    //                     setNotify(`${res.data}`);
+    //                 }
+    //             } catch (err) {
+    //                 console.log(err);
+    //             }
+    //         };
+    //         getAddress122();
+    //     }
+    // }, [getUseraddress, id, token]);
+
     useEffect(() => {
-        if (getUseraddress) {
-            setInputs({
-                address: getUseraddress.address,
-                provinceId: getUseraddress.province_id,
-                districtId: getUseraddress.district_id,
-                wardId: getUseraddress.ward_id,
+        const getAddress = async () => {
+            try {
+                const res = await axiosJWT.get(BASE_URL_API + 'address/' + id, {
+                    headers: { token: `Bearer ${token}` },
+                });
+                if (res.data !== null) {
+                    setInputs({
+                        address: res.data.address,
+                        provinceId: res.data.province_id,
+                        districtId: res.data.district_id,
+                        wardId: res.data.ward_id,
 
-                provinceName: getUseraddress.province,
-                districtName: getUseraddress.district,
-                wardName: getUseraddress.ward,
-            });
-        } else {
-            const getAddress122 = async () => {
-                try {
-                    const res = await axiosJWT.get(BASE_URL_API + 'address/' + id, {
-                        headers: { token: `Bearer ${token}` },
+                        provinceName: res.data.province,
+                        districtName: res.data.district,
+                        wardName: res.data.ward,
                     });
-                    if (res.data !== null) {
-                        // setInputs({
-                        //     address: res.data.address,
-                        //     provinceId: res.data.province_id,
-                        //     districtId: res.data.district_id,
-                        //     wardId: res.data.ward_id,
-
-                        //     provinceName: res.data.province,
-                        //     districtName: res.data.district,
-                        //     wardName: res.data.ward,
-                        // });
-                        dispatch(getAddress(res.data));
-                    } else {
-                        setNotify(`${res.data}`);
-                    }
-                } catch (err) {
-                    console.log(err);
+                    // setInputs(res.data);
+                } else {
+                    setNotify(`${res.data}`);
                 }
-            };
-            getAddress122();
-        }
-    }, [getUseraddress, id, token]);
+            } catch (err) {
+                console.log(err);
+                console.log('that bai');
+            }
+        };
+        getAddress();
+    }, [token, id]);
 
     console.log('inputs', inputs);
 
@@ -138,6 +167,7 @@ const HandleAddress = ({
                                             handleClick={handleClick}
                                             notify={notify}
                                             setAdvertise={setAdvertise}
+                                            // getUseraddress={getUseraddress}
                                         />
                                     </div>
 

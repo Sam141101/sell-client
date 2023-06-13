@@ -34,9 +34,14 @@ const OrderDetails = ({
     const statusOrder = location.pathname.split('/')[1];
 
     const address = useSelector((state) => state.address?.currentAddress);
-    const orderDetails = useSelector((state) =>
-        state?.order[statusOrder].find((product) => product._id === orderId),
-    );
+    const orderDetails = useSelector((state) => {
+        const products = state?.order[statusOrder]; // hoặc dùng Array.isArray(state?.order[statusOrder]) để kiểm tra
+        if (Array.isArray(products)) {
+            return products.filter((product) => product._id === orderId);
+        } else {
+            return [];
+        }
+    });
     console.log('orderDetails', orderDetails);
 
     console.log('orderId', orderId);
