@@ -85,7 +85,7 @@ const HandleAddress = ({
                 wardName: getUseraddress.ward,
             });
         } else {
-            const getAddress = async () => {
+            const getAddress122 = async () => {
                 try {
                     const res = await axiosJWT.get(BASE_URL_API + 'address/' + id, {
                         headers: { token: `Bearer ${token}` },
@@ -101,6 +101,7 @@ const HandleAddress = ({
                             districtName: res.data.district,
                             wardName: res.data.ward,
                         });
+                        dispatch(getAddress(res.data.address));
                     } else {
                         setNotify(`${res.data}`);
                     }
@@ -108,7 +109,7 @@ const HandleAddress = ({
                     console.log(err);
                 }
             };
-            getAddress();
+            getAddress122();
         }
     }, [getUseraddress, id, token]);
 
