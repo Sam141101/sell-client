@@ -77,6 +77,7 @@ function DefaultLayoutOrder({ children, show1, show2, show3 }) {
                         BASE_URL_API +
                             `orders/amount2222222/fffffffffff/ffffffffffffffff/fffff/${user._id}`,
                     );
+                    console.log('ress', res.data);
 
                     dispatch(getAmountPending(res.data.pending));
                     dispatch(getAmountAccept(res.data.accept));
