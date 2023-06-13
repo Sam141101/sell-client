@@ -101,7 +101,7 @@ const HandleAddress = ({
                             districtName: res.data.district,
                             wardName: res.data.ward,
                         });
-                        dispatch(getAddress(res.data.address));
+                        dispatch(getAddress(res.data));
                     } else {
                         setNotify(`${res.data}`);
                     }
