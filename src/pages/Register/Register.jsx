@@ -13,9 +13,12 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate, setToast }) => {
     const [notify, setNotify] = useState('');
 
     // ------------- nhập gmail để tới bước tiếp theo ------
-    const [userid, setUserid] = useState({});
+    const [userid, setUserid] = useState({
+        // id: '555555',
+    });
 
     const [validUrl, setValidUrl] = useState(false);
+    // const [validUrl, setValidUrl] = useState(true);
 
     const param = useParams();
 
@@ -59,11 +62,11 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate, setToast }) => {
         }
 
         const inputss = {
-            userid: userid.id,
+            userid: userid,
             inputs,
         };
         const result = await register(dispatch, inputss, navigate, setNotify);
-
+        console.log(result);
         if (result === 'Đăng ký tài khoản thành công.') {
             errorMessage = 'Đăng ký tài khoản thành công.';
         }
@@ -92,6 +95,8 @@ const Register = ({ axios, BASE_URL_API, dispatch, navigate, setToast }) => {
         };
         verifyEmailUrl();
     }, [param]);
+
+    console.log('userid', userid);
 
     return (
         <>
