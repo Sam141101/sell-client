@@ -1,10 +1,8 @@
-// import 'sl' from './assets/slider2min.png';
-
 export const sliderItems = [
     {
         id: 1,
-        img: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33.jpg',
-        setSrc: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33_large.jpg',
+        img: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/slider1High.webp?alt=media&token=a69c8f81-2b95-44b7-826a-78a49cfcd9c4',
+        setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/Slider1Min.webp?alt=media&token=619acdb1-16b5-407d-a198-76bd1066d6f3',
 
         cat: 'TEE',
     },
@@ -19,10 +17,8 @@ export const sliderItems = [
 
     {
         id: 3,
-        img: 'https://file.hstatic.net/200000312481/file/meow_copy_dcd15b165a7449dcbfb1a7e10aad4f2b.jpg',
-        // setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/slider2min.jpg?alt=media&token=a1b0e0a3-81d5-4f39-815e-4df35af71f11&_gl=1*1lh1jyq*_ga*ODQ0ODA3ODExLjE2Nzk0MTMwNjc.*_ga_CW55HF8NVT*MTY4NjA4MzI1MS4zLjEuMTY4NjA4MzQwNy4wLjAuMA..',
-        setSrc: 'https://file.hstatic.net/200000312481/file/dacbiet_7c9134bbbea44077b081bbdcaa2a4b33_large.jpg',
-        // setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/AnyConv.com__slider2min.webp?alt=media&token=fc8d4a10-fc27-494e-a128-e2d65355af02&_gl=1*aam6au*_ga*ODQ0ODA3ODExLjE2Nzk0MTMwNjc.*_ga_CW55HF8NVT*MTY4NjI3OTgzMS41LjEuMTY4NjI3OTkxOC4wLjAuMA..',
+        img: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/slider2High.webp?alt=media&token=90c965d3-a735-41e1-a2b6-88a6bcb107ff',
+        setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/slider2min.jpg?alt=media&token=a1b0e0a3-81d5-4f39-815e-4df35af71f11',
         cat: 'TEE',
     },
 ];
