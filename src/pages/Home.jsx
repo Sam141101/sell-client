@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Slider from '../components/Slider/Slider';
 
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+// import { useState } from 'react';
 import Product from '../components/Product/Product';
 import { sliderItems } from '../../src/data';
 import { getProductLists } from '../redux/productRedux';

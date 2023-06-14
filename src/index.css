@@ -92,19 +92,6 @@ body {
 .fz15 {
     font-size: 15px;
 }
-
-/* flex */
-.display-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.display-flex-wrap {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
 .df {
     display: flex;
 }
@@ -120,29 +107,20 @@ body {
 .df.flex-w {
     flex-wrap: wrap;
 }
-
 .dib {
     display: inline-block;
 }
 .db {
     display: block;
 }
-
 /* khác */
 .cs {
     cursor: pointer;
 }
-
 /* bor */
 .bd50pt {
     border-radius: 50%;
 }
-
-/* margin */
-/* .mt30 {
-    margin-top: 30px;
-} */
-
 .out {
     outline: none;
 }

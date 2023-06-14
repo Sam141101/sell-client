@@ -2,18 +2,10 @@ export const sliderItems = [
     {
         id: 1,
         img: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/slider1High.webp?alt=media&token=a69c8f81-2b95-44b7-826a-78a49cfcd9c4',
-        setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/Slider1Min.webp?alt=media&token=619acdb1-16b5-407d-a198-76bd1066d6f3',
+        setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/Slider1Min.webp?alt=media&token=fd1eeff8-18b9-4eb2-a051-9df5a4eb9e6d',
 
         cat: 'TEE',
     },
-
-    // {
-    //     id: 2,
-    //     img: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
-    //     setSrc: 'https://file.hstatic.net/200000312481/file/160167174_187614549831716_8814664794363049413_n_f575b6c1fe4747debb6c45d4b2d01630.jpg',
-
-    //     cat: 'HOODIE',
-    // },
 
     {
         id: 3,
@@ -126,74 +118,3 @@ export const listInfoMobile = [
         to: `/about`,
     },
 ];
-
-// export const listInfoMobile1 = [
-//     {
-//         id: 1,
-//         title: 'Quay về',
-//         noLink: true,
-//         Byid: 'return0',
-//     },
-
-//     {
-//         id: 2,
-//         title: 'Xem tất cả "Shop"',
-//         noLink: false,
-//     },
-
-//     {
-//         id: 3,
-//         noLink: true,
-//         title: '- TOPS',
-//         Byid: 'click1',
-//     },
-
-//     {
-//         noLink: true,
-//         id: 4,
-//         title: '- BOTTOM',
-//         Byid: 'click2',
-//     },
-// ];
-
-// export const listInfoMobile2 = [
-//     {
-//         id: 1,
-//         title: 'Quay về',
-//         noLink: true,
-//         Byid: 'return1',
-//         notPage: true,
-//     },
-
-//     {
-//         id: 2,
-//         title: 'Xem tất cả "TOPS"',
-//         noLink: true,
-//         notPage: false,
-//         to: '#',
-//     },
-
-//     {
-//         id: 3,
-//         notPage: true,
-//         noLink: false,
-//         title: '- TEE',
-//         to: `products/TEE?page=${1}`,
-//     },
-
-//     {
-//         notPage: true,
-//         noLink: false,
-//         id: 4,
-//         title: '- POLO',
-//         to: `products/POLO?page=${1}`,
-//     },
-
-//     {
-//         notPage: true,
-//         noLink: false,
-//         id: 4,
-//         title: '- HOODIE',
-//         to: `products/HOODIE?page=${1}`,
-//     },
-// ];

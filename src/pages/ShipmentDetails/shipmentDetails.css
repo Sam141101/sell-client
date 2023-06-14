@@ -250,31 +250,3 @@
 .mobile-in-block {
     display: none;
 }
-.ship_ment-details-title-mobile {
-    justify-content: space-between;
-    padding: 17.5px 15px;
-    border-top: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6;
-    line-height: 24px;
-}
-.ship_ment-details-title-mobile-left {
-    color: #338dbc;
-}
-.ship_ment-details-title-mobile-icon {
-    font-size: 24px !important;
-}
-.ship_ment-details-title-mobile-info {
-    margin-left: 10px;
-    font-size: 14px;
-}
-.ship_ment-details-info-mobile-icon {
-    font-size: 20px !important;
-    margin-top: 3px;
-}
-.ship_ment-details-title-mobile-right {
-    font-size: 18px;
-}
-.shipment-frame-main {
-    flex-wrap: wrap;
-    width: 100vw;
-}
