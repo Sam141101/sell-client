@@ -183,7 +183,7 @@
         flex-wrap: wrap;
         width: 100vw;
     }
-    */ .nav-menu-user-mobile {
+    .nav-menu-user-mobile {
         position: absolute;
         left: 0;
         top: 64px;
