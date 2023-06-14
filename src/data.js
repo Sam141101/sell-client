@@ -18,7 +18,7 @@ export const sliderItems = [
     {
         id: 3,
         img: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/slider2High.webp?alt=media&token=90c965d3-a735-41e1-a2b6-88a6bcb107ff',
-        setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/slider2min.jpg?alt=media&token=a1b0e0a3-81d5-4f39-815e-4df35af71f11',
+        setSrc: 'https://firebasestorage.googleapis.com/v0/b/shop-2bc2a.appspot.com/o/AnyConv.com__slider2min.webp?alt=media&token=fc8d4a10-fc27-494e-a128-e2d65355af02',
         cat: 'TEE',
     },
 ];
